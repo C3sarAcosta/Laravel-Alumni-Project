@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('nc');
-            $table->integer('year_graduated');
-            $table->integer('is_admin')->default(2);
-            $table->foreignId('id_career');            
+            $table->string('role');
+            $table->string('control_number')->nullable();
+            $table->integer('year_graduated')->nullable();
+            $table->foreignId('id_career')->nullable();            
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

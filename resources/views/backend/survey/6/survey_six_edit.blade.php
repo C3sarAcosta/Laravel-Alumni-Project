@@ -18,8 +18,8 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="organization_selector">¿Pertenece a organizaciones sociales?</label>
                 <div class="controls">
-                    <select name="organization_selector" id="organization_selector" onchange="changeSelect()"
-                        class="form-control" required=""
+                    <select name="organization_selector" id="organization_selector" class="form-control" onchange="changeSelect()"
+                        title="¿Pertenece a alguna organización?" required=""
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -34,6 +34,7 @@ $userAnswer = $userData['0'];
                 <label for="organization">Mencionar organizaciones</label>
                 <input id="organization" name="organization" type="text" class="form-control"
                     {{$userAnswer->organization_yes_no == "Si" ? "value=$userAnswer->organization" : "disabled" }}
+                title="Mencione esas organizaciones"
                 placeholder="Mencione cuáles organizaciones pertenece">
             </div>
         </div>
@@ -42,7 +43,8 @@ $userAnswer = $userData['0'];
                 <label for="agency_selector">¿Pertenece a organismos de profesionistas?</label>
                 <div class="controls">
                     <select name="agency_selector" id="agency_selector" onchange="changeSelect()" class="form-control"
-                        required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
+                        title="¿Pertenece a algún organismo profesionista?" required=""
+                        oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         <option {{ $userAnswer->agency_yes_no == "Si" ? "selected" : "" }} value="Si">Sí</option>
@@ -56,6 +58,7 @@ $userAnswer = $userData['0'];
                 <label for="agency">Mencionar organismos</label>
                 <input id="agency" name="agency" type="text" class="form-control" {{$userAnswer->agency_yes_no == "Si" ?
                 "value=$userAnswer->agency" : "disabled" }}
+                title="Mencione esos organismos"
                 placeholder="Mencione cuáles organismos pertenece">
             </div>
         </div>
@@ -64,7 +67,7 @@ $userAnswer = $userData['0'];
                 <label for="association_selector">¿Pertenece a asociaciones de egresados?</label>
                 <div class="controls">
                     <select name="association_selector" id="association_selector" onchange="changeSelect()"
-                        class="form-control" required=""
+                        title="¿Pertenece a alguna asociaciones de egresados?" class="form-control" required=""
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -79,6 +82,7 @@ $userAnswer = $userData['0'];
                 <label for="association">Mencionar asosiación</label>
                 <input id="association" name="association" type="text" class="form-control"
                     {{$userAnswer->association_yes_no == "Si" ? "value=$userAnswer->association" : "disabled" }}
+                title="Mencione esas asosiaciones"
                 placeholder="Mencione cuáles asociaciones pertenece">
             </div>
         </div>

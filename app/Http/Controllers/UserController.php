@@ -10,13 +10,16 @@ class UserController extends Controller
 {
     public function index()
     {
-        $is_admin = Auth::user()->is_admin;
+        $role = Auth::user()->role;
         $user_id = Crypt::encrypt(Auth::user()->id);
 
-        if ($is_admin == 1) {
-            return  redirect()->route('admin.index');
-        } else {
-            return redirect()->route('student.index', $user_id);
+        switch ($role) {
+            case "admin":
+                return  redirect()->route('admin.index');
+                break;
+            case "student":
+                return redirect()->route('student.index', $user_id);
+                break;
         }
     }
 }

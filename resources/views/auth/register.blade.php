@@ -28,12 +28,11 @@
                     required />
             </div>
 
-
             <div class="mt-4">
-                <x-jet-label for="nc" value="{{ __('Número de Control') }}" />
+                <x-jet-label for="control_number" value="{{ __('Número de Control') }}" />
                 <x-jet-input pattern="[0-9]{8}" autocomplete="off"
-                    title="Porfavor ingrese un número de control correcto de 8 dígitos" id="nc"
-                    class="block mt-1 w-full" type="text" name="nc" :value="old('nc')" required />
+                    title="Porfavor ingrese un número de control correcto de 8 dígitos" id="control_number"
+                    class="block mt-1 w-full" type="text" name="control_number" :value="old('control_number')" required />
             </div>
 
             <div class="mt-4">
@@ -56,12 +55,13 @@
                 </select>
             </div>
 
+            <input id="role" name="role" style="display: none"  value="student" />
+
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Contraseña') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
                     autocomplete="new-password" />
             </div>
-
 
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirmar Contraseña') }}" />

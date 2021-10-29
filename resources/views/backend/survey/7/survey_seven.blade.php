@@ -17,7 +17,10 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="comments">Comentarios</label>
                 <textarea id="comments" name="comments" class="form-control" rows="8"
-                    placeholder="Escriba aquí sus comentarios"></textarea>
+                    placeholder="Escribe aquí sus comentarios"
+                    required 
+                    oninvalid="this.setCustomValidity('Por favor es importante tu opinión')"
+                    oninput="setCustomValidity('')"></textarea>
             </div>
         </div>
     </div>

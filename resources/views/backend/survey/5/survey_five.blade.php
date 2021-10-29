@@ -18,7 +18,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                 <label for="courses_selector">¿Le gustaria tomar cursos de actualización?</label>
                 <div class="controls">
                     <select name="courses_selector" id="courses_selector" onchange="changeSelect()" class="form-control"
-                        required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
+                        title="¿Le interesa tomar cursos?" required=""
+                        oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         <option value="Si">Sí</option>
@@ -31,6 +32,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="courses">Mencionar cursos</label>
                 <input id="courses" name="courses" type="text" class="form-control" disabled=""
+                    title="Mencionar los cursos, como cursos de marketing"
                     placeholder="Mencione cuáles serían de su agrado">
             </div>
         </div>
@@ -42,7 +44,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                 <label for="master_selector">¿Le gustaria tomar algún postgrado?</label>
                 <div class="controls">
                     <select id="master_selector" name="master_selector" onchange="changeSelect()" class="form-control"
-                        required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
+                        title="¿Le interesa tomar algún postgrado?" required=""
+                        oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         <option value="Si">Sí</option>
@@ -55,6 +58,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="master">Postgrado</label>
                 <input id="master" name="master" type="text" class="form-control" disabled=""
+                    title="Mencionar los postgrados, como ejemplo en mecatrónica"
                     placeholder="Mencione cuál sería de su agrado">
             </div>
         </div>

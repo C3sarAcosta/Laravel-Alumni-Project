@@ -4,7 +4,7 @@ $userinfo =$userSurvey['0'];
 
 @extends('student.student_master')
 
-@section('TopTitle')Dashboard @endsection
+@section('TopTitle')Tablero @endsection
 
 @section('head')
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />

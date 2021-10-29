@@ -14,7 +14,7 @@
                 <img src="{{ empty(Auth::user()->profile_photo_path) ? Auth::user()->profile_photo_url : url("storage/".Auth::user()->profile_photo_path)}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{ asset('student.view') }}" class="d-block">{{ Auth::user()->name }}</a>
+                <a href="{{ route('student.view') }}" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
 

@@ -33,6 +33,7 @@ class SurveyThreeController extends Controller
             }
             if (str_contains($request->do_for_living, "trabaja")) {
                 $data->long_take_job = $request->long_take_job;
+                $data->hear_about = $request->hear_about;
                 $data->competence1 = $request->competence1 == true ? 1 : 0;
                 $data->competence2 = $request->competence2 == true ? 1 : 0;
                 $data->competence3 = $request->competence3 == true ? 1 : 0;
@@ -97,13 +98,51 @@ class SurveyThreeController extends Controller
 
         $editData->do_for_living = $request->do_for_living;
 
-        if ($request->do_for_living != "No estudia ni trabaja") {
-            if (str_contains($request->do_for_living, "Estudia")) {
+        switch ($request->do_for_living) {
+            case "No estudia ni trabaja":
+                $editData->speciality = null;
+                $editData->school = null;
+                $editData->long_take_job = null;
+                $editData->hear_about = null;
+                $editData->competence1 = 0;
+                $editData->competence2 = 0;
+                $editData->competence3 = 0;
+                $editData->competence4 = 0;
+                $editData->competence5 = 0;
+                $editData->competence6 = 0;
+                $editData->language_most_spoken = null;
+                $editData->speak_percent = null;
+                $editData->write_percent = null;
+                $editData->read_percent = null;
+                $editData->listen_percent = null;
+                $editData->seniority = null;
+                $editData->year = null;
+                $editData->salary = null;
+                $editData->management_level = null;
+                $editData->job_condition = null;
+                $editData->job_relationship = null;
+                $editData->business_name = null;
+                $editData->business_activity = null;
+                $editData->address = null;
+                $editData->zip = null;
+                $editData->suburb = null;
+                $editData->state = null;
+                $editData->city = null;
+                $editData->municipality = null;
+                $editData->phone = null;
+                $editData->fax = null;
+                $editData->web_page = null;
+                $editData->boss_email = null;
+                $editData->business_structure = null;
+                $editData->company_size = null;
+                $editData->business_activity_selector = null;
+                break;
+
+            case "Estudia y trabaja":
                 $editData->speciality = $request->speciality;
                 $editData->school = $request->school;
-            }
-            if (str_contains($request->do_for_living, "trabaja")) {
                 $editData->long_take_job = $request->long_take_job;
+                $editData->hear_about = $request->hear_about;
                 $editData->competence1 = $request->competence1 == true ? 1 : 0;
                 $editData->competence2 = $request->competence2 == true ? 1 : 0;
                 $editData->competence3 = $request->competence3 == true ? 1 : 0;
@@ -136,8 +175,87 @@ class SurveyThreeController extends Controller
                 $editData->business_structure = $request->business_structure;
                 $editData->company_size = $request->company_size;
                 $editData->business_activity_selector = $request->business_activity_selector;
-            }
+                break;
+
+            case "Estudia":
+                $editData->speciality = $request->speciality;
+                $editData->school = $request->school;
+                $editData->long_take_job = null;
+                $editData->hear_about = null;
+                $editData->competence1 = 0;
+                $editData->competence2 = 0;
+                $editData->competence3 = 0;
+                $editData->competence4 = 0;
+                $editData->competence5 = 0;
+                $editData->competence6 = 0;
+                $editData->language_most_spoken = null;
+                $editData->speak_percent = null;
+                $editData->write_percent = null;
+                $editData->read_percent = null;
+                $editData->listen_percent = null;
+                $editData->seniority = null;
+                $editData->year = null;
+                $editData->salary = null;
+                $editData->management_level = null;
+                $editData->job_condition = null;
+                $editData->job_relationship = null;
+                $editData->business_name = null;
+                $editData->business_activity = null;
+                $editData->address = null;
+                $editData->zip = null;
+                $editData->suburb = null;
+                $editData->state = null;
+                $editData->city = null;
+                $editData->municipality = null;
+                $editData->phone = null;
+                $editData->fax = null;
+                $editData->web_page = null;
+                $editData->boss_email = null;
+                $editData->business_structure = null;
+                $editData->company_size = null;
+                $editData->business_activity_selector = null;
+                break;
+
+            case "Trabaja":
+                $editData->speciality = null;
+                $editData->school = null;
+                $editData->long_take_job = $request->long_take_job;
+                $editData->hear_about = $request->hear_about;
+                $editData->competence1 = $request->competence1 == true ? 1 : 0;
+                $editData->competence2 = $request->competence2 == true ? 1 : 0;
+                $editData->competence3 = $request->competence3 == true ? 1 : 0;
+                $editData->competence4 = $request->competence4 == true ? 1 : 0;
+                $editData->competence5 = $request->competence5 == true ? 1 : 0;
+                $editData->competence6 = $request->competence6 == true ? 1 : 0;
+                $editData->language_most_spoken = $request->language_most_spoken;
+                $editData->speak_percent = $request->speak_percent;
+                $editData->write_percent = $request->write_percent;
+                $editData->read_percent = $request->read_percent;
+                $editData->listen_percent = $request->listen_percent;
+                $editData->seniority = $request->seniority;
+                $editData->year = $request->year;
+                $editData->salary = $request->salary;
+                $editData->management_level = $request->management_level;
+                $editData->job_condition = $request->job_condition;
+                $editData->job_relationship = $request->job_relationship;
+                $editData->business_name = $request->business_name;
+                $editData->business_activity = $request->business_activity;
+                $editData->address = $request->address;
+                $editData->zip = $request->zip;
+                $editData->suburb = $request->suburb;
+                $editData->state = $request->state;
+                $editData->city = $request->city;
+                $editData->municipality = $request->municipality;
+                $editData->phone = $request->phone;
+                $editData->fax = $request->fax;
+                $editData->web_page = $request->web_page;
+                $editData->boss_email = $request->boss_email;
+                $editData->business_structure = $request->business_structure;
+                $editData->company_size = $request->company_size;
+                $editData->business_activity_selector = $request->business_activity_selector;
+                break;
         }
+
 
         $editData->save();
 

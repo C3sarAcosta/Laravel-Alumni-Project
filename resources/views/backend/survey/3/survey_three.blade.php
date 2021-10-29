@@ -17,8 +17,10 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="do_for_living">Actividad a la que se dedica actualmente</label>
                 <div class="controls">
-                    <select name="do_for_living" id="do_for_living" onchange="changeActivity()" required
-                        class="form-control">
+                    <select name="do_for_living" id="do_for_living" onchange="changeActivity()" class="form-control"
+                        title="Por favor seleccione una actividad" required=""
+                        oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
+                        oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         <option value="Trabaja">Trabaja</option>
                         <option value="Estudia">Estudia</option>
@@ -30,6 +32,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         </div>
     </div>
 
+    <hr id="hr1" style="display: none">
     <div class="row" name="study_row" id="study_row" style="display: none">
         <div class="col-6">
             <div class="form-group">
@@ -55,6 +58,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         </div>
     </div>
 
+    <hr id="hr2" style="display: none">
     <div class="row" name="work_row" id="work_row" style="display: none">
         <div class="col-6">
             <div class="form-group">
@@ -323,7 +327,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="zip">Código Postal</label>
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()"
-                    placeholder="Código Postal" />
+                    onkeypress="ValidateNumbers(event);" placeholder="Código Postal" />
             </div>
         </div>
         <div class="col-4">
@@ -362,7 +366,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-4">
             <div class="form-group">
                 <label for="phone">Teléfono</label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Teléfono">
+                <input type="tel" maxlength="10" pattern="[0-9]{10}" class="form-control" id="phone" name="phone"
+                    onkeypress="ValidateNumbers(event);" placeholder="Teléfono" title="Por favor escribe tu teléfono" />
             </div>
         </div>
         <div class="col-4">
@@ -381,7 +386,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="boss_email">Jefe inmediato</label>
                 <input type="text" class="form-control" id="boss_email" name="boss_email"
-                    placeholder="Correo electrónico del jefe" />
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Correo electrónico del jefe" />
             </div>
         </div>
 
@@ -431,8 +436,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="Caucho y Plastico">Caucho y Plástico</option>
                         <option value="Minerales no metalicos">Minerales no metálicos</option>
                         <option value="Industrias metalicas basicas">Industrias metálicas básicas</option>
-                        <option value="Productos metalicos, maquinaria y equipo">Productos metálicos, maquinaria y
-                            equipo
+                        <option value="Productos metalicos, maquinaria y equipo">
+                            Productos metálicos, maquinaria y equipo
                         </option>
                         <option value="Construccion">Construcción</option>
                         <option value="Electricidad, gas y agua">Electricidad, gas y agua</option>
@@ -440,9 +445,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="Transporte, almacenaje y comunicaciones">Transporte, almacenaje y comunicaciones
                         </option>
                         <option value="Servicios financieros, seguros, actividades inmobiliarias y de alquiler">
-                            Servicios
-                            financieros, seguros,
-                            actividades inmobiliarias y de alquiler</option>
+                            Servicios financieros, seguros, actividades inmobiliarias y de alquiler
+                        </option>
                         <option value="Educacion">Educación</option>
                         <option value="Otra">Otra</option>
                     </select>

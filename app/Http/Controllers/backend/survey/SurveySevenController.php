@@ -51,8 +51,10 @@ class SurveySevenController extends Controller
         $editData = SurveySeven::all()->where('user_id', $request->user_id)->first();
         $validateData = $request->validate(['user_id' => 'required']);
 
-        $editData->comments = $request->comments;
-        $editData->save();
+        if($request->comments!= null || $request->comments!=""){
+            $editData->comments = $request->comments;
+            $editData->save();
+        }
 
         $notification = array(
             'message' => 'Encuesta *Comentarios y Sugerencias* actualizada con éxito',

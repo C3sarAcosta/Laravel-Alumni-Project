@@ -27,10 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'nc',
+        'control_number',
         'year_graduated',
         'id_career',
-        'is_admin'
+        'role'
     ];
 
     /**

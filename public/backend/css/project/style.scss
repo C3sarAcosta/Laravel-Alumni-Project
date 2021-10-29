@@ -1,5 +1,4 @@
 @import "./properties";
-@import "../roboto";
 
 * {
     font-family: "Roboto";
@@ -12,12 +11,13 @@
 // Index animation start
 .swiper {
     width: 100%;
+    height: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
 .swiper-slide {
-    @include WidthHeightValues(300px);
+    @include WidthHeightValues(430px);
     @include FlexCenter;
     background-position: center;
     background-size: cover;

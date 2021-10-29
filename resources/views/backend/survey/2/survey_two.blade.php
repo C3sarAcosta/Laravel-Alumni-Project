@@ -21,6 +21,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                 <label for="quality_teachers">Calidad de los docentes</label>
                 <div class="controls">
                     <select name="quality_teachers" id="quality_teachers" required="" class="form-control"
+                        title="Por favor seleccione la calidad de sus docentes"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -37,6 +38,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                 <label for="syllabus">Plan de estudios</label>
                 <div class="controls">
                     <select name="syllabus" id="syllabus" required="" class="form-control"
+                        title="Por favor selecciona la calidad de plan de estudios"    
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -53,6 +55,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                 <label for="study_condition">Satisfacción condiciones de estudio (infraestructura)</label>
                 <div class="controls">
                     <select name="study_condition" id="study_condition" required="" class="form-control"
+                        title="Por favor selecciona la calidad de condiciones de estudio"    
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -72,6 +75,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                 <label for="experience">Experiencia obtenida a través de la residencia<br />profesional</label>
                 <div class="controls">
                     <select name="experience" id="experience" required="" class="form-control"
+                        title="Por favor selecciona como fue la experiencia en tu residencia"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -89,6 +93,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                     enseñanza</label>
                 <div class="controls">
                     <select name="study_emphasis" id="study_emphasis" required="" class="form-control"
+                        title="Por favor selecciona la calidad de énfasis que se le prestaba a la investigación"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -106,6 +111,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                     desarrollo</label>
                 <div class="controls">
                     <select name="participate_projects" id="participate_projects" required="" class="form-control"
+                        title="Por favor selecciona la calidad de poder participar en proyectos"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>

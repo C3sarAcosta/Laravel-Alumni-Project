@@ -18,7 +18,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                 <label for="organization_selector">¿Pertenece a organizaciones sociales?</label>
                 <div class="controls">
                     <select name="organization_selector" id="organization_selector" onchange="changeSelect()"
-                        class="form-control" required=""
+                        title="¿Pertenece a alguna organización?" class="form-control" required=""
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -32,7 +32,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="organization">Mencionar organizaciones</label>
                 <input id="organization" name="organization" type="text" class="form-control" disabled=""
-                    placeholder="Mencione cuáles organizaciones pertenece">
+                    title="Mencione esas organizaciones" placeholder="Mencione cuáles organizaciones pertenece">
             </div>
         </div>
         <div class="col-6">
@@ -40,7 +40,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                 <label for="agency_selector">¿Pertenece a organismos de profesionistas?</label>
                 <div class="controls">
                     <select name="agency_selector" id="agency_selector" onchange="changeSelect()" class="form-control"
-                        required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
+                        title="¿Pertenece a algún organismo profesionista?" required=""
+                        oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         <option value="Si">Sí</option>
@@ -53,7 +54,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="agency">Mencionar organismos</label>
                 <input id="agency" name="agency" type="text" class="form-control" disabled=""
-                    placeholder="Mencione cuáles organismos pertenece">
+                    title="Mencione esos organismos" placeholder="Mencione cuáles organismos pertenece">
             </div>
         </div>
         <div class="col-6">
@@ -61,7 +62,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                 <label for="association_selector">¿Pertenece a asociaciones de egresados?</label>
                 <div class="controls">
                     <select name="association_selector" id="association_selector" onchange="changeSelect()"
-                        class="form-control" required=""
+                        title="¿Pertenece a alguna asociaciones de egresados?" class="form-control" required=""
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -75,7 +76,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="association">Mencionar asosiación</label>
                 <input id="association" name="association" type="text" class="form-control" disabled=""
-                    placeholder="Mencione cuáles asociaciones pertenece">
+                    title="Mencione esas asosiaciones" placeholder="Mencione cuáles asociaciones pertenece">
             </div>
         </div>
     </div>

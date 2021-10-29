@@ -20,6 +20,7 @@ class CreateSurveyThreesTable extends Migration
             $table->string('speciality')->nullable();
             $table->string('school')->nullable();
             $table->string('long_take_job')->nullable();
+            $table->string('hear_about')->nullable();         
             $table->smallInteger('competence1')->nullable();
             $table->smallInteger('competence2')->nullable();
             $table->smallInteger('competence3')->nullable();

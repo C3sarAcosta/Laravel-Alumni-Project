@@ -19,7 +19,8 @@ $userAnswer = $userData['0'];
                 <label for="courses_selector">¿Le gustaria tomar cursos de actualización?</label>
                 <div class="controls">
                     <select name="courses_selector" id="courses_selector" onchange="changeSelect()" class="form-control"
-                        required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
+                        title="¿Le interesa tomar cursos?" required=""
+                        oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         <option {{ $userAnswer->courses_yes_no == "Si" ? "selected" : "" }} value="Si">Sí</option>
@@ -31,9 +32,10 @@ $userAnswer = $userData['0'];
         <div class="col-6">
             <div class="form-group">
                 <label for="courses">Mencionar cursos</label>
-                <input id="courses" name="courses" type="text" class="form-control" 
-                    {{$userAnswer->courses_yes_no== "Si" ? "value=$userAnswer->courses" : "disabled" }}
-                    placeholder="Mencione cuáles serían de su agrado">
+                <input id="courses" name="courses" type="text" class="form-control" {{$userAnswer->courses_yes_no== "Si"
+                ? "value=$userAnswer->courses" : "disabled" }}
+                title="Mencionar los cursos, como cursos de marketing"
+                placeholder="Mencione cuáles serían de su agrado">
             </div>
         </div>
     </div>
@@ -44,7 +46,8 @@ $userAnswer = $userData['0'];
                 <label for="master_selector">¿Le gustaria tomar algún postgrado?</label>
                 <div class="controls">
                     <select id="master_selector" name="master_selector" onchange="changeSelect()" class="form-control"
-                        required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
+                        title="¿Le interesa tomar algún postgrado?" required=""
+                        oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         <option {{ $userAnswer->master_yes_no == "Si" ? "selected" : "" }} value="Si">Sí</option>
@@ -56,9 +59,10 @@ $userAnswer = $userData['0'];
         <div class="col-6">
             <div class="form-group">
                 <label for="master">Postgrado</label>
-                <input id="master" name="master" type="text" class="form-control"
-                {{$userAnswer->master_yes_no== "Si" ? "value=$userAnswer->master" : "disabled" }}
-                    placeholder="Mencione cuál sería de su agrado">
+                <input id="master" name="master" type="text" class="form-control" {{$userAnswer->master_yes_no== "Si" ?
+                "value=$userAnswer->master" : "disabled" }}
+                title="Mencionar los postgrados, como ejemplo en mecatrónica"
+                placeholder="Mencione cuál sería de su agrado">
             </div>
         </div>
     </div>
