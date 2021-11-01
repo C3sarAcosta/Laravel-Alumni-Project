@@ -6,19 +6,18 @@
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-$userAnswer = $userData['0'];
 @endphp
 
 @section('student_content')
-<form method="post" action=" {{route('survey.seven.update')}} ">
+<form method="post" action=" {{ route('survey.seven.update') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-12">
             <div class="form-group">
                 <label for="comments">Comentarios</label>
                 <textarea id="comments" name="comments" class="form-control" rows="8"
-                    placeholder="Escriba aquí sus comentarios"> {{$userAnswer->comments}} </textarea>
+                    placeholder="Escriba aquí sus comentarios"> {{ userData->comments }} </textarea>
             </div>
         </div>
     </div>

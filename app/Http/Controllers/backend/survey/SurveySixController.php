@@ -8,12 +8,15 @@ use App\Models\SurveySix;
 use App\Models\StudentSurvey;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Enums\Status;
+use App\Enums\YesNoQuestion;
 
 class SurveySixController extends Controller
 {
     public function SurveySixView()
     {
-        return view('backend.survey.6.survey_six');
+        $data['yes_no'] = YesNoQuestion::getValues();
+        return view('backend.survey.6.survey_six', $data);
     }
 
     public function SurveySixStore(Request $request)
@@ -24,17 +27,17 @@ class SurveySixController extends Controller
         $data = new SurveySix();
         $data->user_id = $request->user_id;
         $data->organization_yes_no = $request->organization_selector;
-        $data->organization = $request->organization_selector == "Si" ? $request->organization : null;
+        $data->organization = $request->organization_selector == YesNoQuestion::Yes ? strtr($request->organization, config('global.accented_chars')) : null;
 
         $data->agency_yes_no = $request->agency_selector;
-        $data->agency = $request->agency_selector == "Si" ? $request->agency : null;
+        $data->agency = $request->agency_selector == YesNoQuestion::Yes ? strtr($request->agency, config('global.accented_chars')) : null;
 
         $data->association_yes_no = $request->association_selector;
-        $data->association = $request->association_selector == "Si" ? $request->association : null;
+        $data->association = $request->association_selector == YesNoQuestion::Yes ? strtr($request->association, config('global.accented_chars')) : null;
         $data->save();
 
-        $user_update = StudentSurvey::where('user_id', $request->user_id)->firstOrFail();
-        $user_update->survey_six_done = 1;
+        $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
+        $user_update->survey_six_done = Status::Active;
         $user_update->save();
 
         $notification = array(
@@ -48,7 +51,8 @@ class SurveySixController extends Controller
     public function SurveySixEdit($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userData'] = SurveySix::where('user_id', $id)->get();
+        $data['userData'] = SurveySix::where('user_id', $id)->first();
+        $data['yes_no'] = YesNoQuestion::getValues();
         return view('backend.survey.6.survey_six_edit', $data);
     }
 
@@ -59,13 +63,13 @@ class SurveySixController extends Controller
         $validateData = $request->validate(['user_id' => 'required']);
 
         $editData->organization_yes_no = $request->organization_selector;
-        $editData->organization = $request->organization_selector == "Si" ? $request->organization : null;
+        $editData->organization = $request->organization_selector == YesNoQuestion::Yes ? strtr($request->organization, config('global.accented_chars')) : null;
 
         $editData->agency_yes_no = $request->agency_selector;
-        $editData->agency = $request->agency_selector == "Si" ? $request->agency : null;
+        $editData->agency = $request->agency_selector == YesNoQuestion::Yes ? strtr($request->agency, config('global.accented_chars')) : null;
 
         $editData->association_yes_no = $request->association_selector;
-        $editData->association = $request->association_selector == "Si" ? $request->association : null;
+        $editData->association = $request->association_selector == YesNoQuestion::Yes ? strtr($request->association, config('global.accented_chars')) : null;
         $editData->save();
 
         $notification = array(
@@ -79,9 +83,9 @@ class SurveySixController extends Controller
     public function SurveySixVerifiedRoute($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+        $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['userSurvey']['0']['survey_six_done'] == 1) {
+        if ($data['survey_six_done'] == Status::Active) {
             return redirect()->route('survey.six.edit', $user_id);
         } else {
             return redirect()->route('survey.six.index');

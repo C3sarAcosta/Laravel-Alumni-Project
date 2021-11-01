@@ -8,6 +8,7 @@ use App\Models\SurveySeven;
 use App\Models\StudentSurvey;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Enums\Status;
 
 class SurveySevenController extends Controller
 {
@@ -23,11 +24,12 @@ class SurveySevenController extends Controller
 
         $data = new SurveySeven();
         $data->user_id = $request->user_id;
-        $data->comments = $request->comments;
+
+        $data->comments = strtr($request->comments, config('global.accented_chars'));
         $data->save();
 
-        $user_update = StudentSurvey::where('user_id', $request->user_id)->firstOrFail();
-        $user_update->survey_seven_done = 1;
+        $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
+        $user_update->survey_seven_done = Status::Active;
         $user_update->save();
 
         $notification = array(
@@ -41,7 +43,7 @@ class SurveySevenController extends Controller
     public function SurveySevenEdit($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userData'] = SurveySeven::where('user_id', $id)->get();
+        $data['userData'] = SurveySeven::where('user_id', $id)->first();
         return view('backend.survey.7.survey_seven_edit', $data);
     }
 
@@ -51,8 +53,8 @@ class SurveySevenController extends Controller
         $editData = SurveySeven::all()->where('user_id', $request->user_id)->first();
         $validateData = $request->validate(['user_id' => 'required']);
 
-        if($request->comments!= null || $request->comments!=""){
-            $editData->comments = $request->comments;
+        if ($request->comments != null || $request->comments != "") {
+            $editData->comments = strtr($request->comments, config('global.accented_chars'));
             $editData->save();
         }
 
@@ -67,9 +69,9 @@ class SurveySevenController extends Controller
     public function SurveySevenVerifiedRoute($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+        $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['userSurvey']['0']['survey_seven_done'] == 1) {
+        if ($data['survey_seven_done'] == Status::Active) {
             return redirect()->route('survey.seven.edit', $user_id);
         } else {
             return redirect()->route('survey.seven.index');

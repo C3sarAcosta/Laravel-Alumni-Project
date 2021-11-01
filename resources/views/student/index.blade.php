@@ -1,7 +1,3 @@
-@php
-$userinfo =$userSurvey['0'];
-@endphp
-
 @extends('student.student_master')
 
 @section('TopTitle')Tablero @endsection
@@ -42,9 +38,9 @@ return $route;
         <div class="swiper-slide">
             <div class="container-image">
                 <div class="container-loader">
-                    {!! CheckSurvey($userinfo['survey_one_done']) !!}
+                    {!! CheckSurvey($studentSurvey['survey_one_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($userinfo['survey_one_done'], 'one') }}">
+                <a href="{{ ReturnRoute($studentSurvey['survey_one_done'], 'one') }}" title="Perfil del egresado">
                     <img src="{{ asset('backend/img/school/sn1.png') }}" />
                 </a>
                 <div class="container-text">
@@ -55,9 +51,9 @@ return $route;
         <div class="swiper-slide">
             <div class="container-image">
                 <div class="container-loader">
-                    {!! CheckSurvey($userinfo['survey_two_done']) !!}
+                    {!! CheckSurvey($studentSurvey['survey_two_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($userinfo['survey_two_done'], 'two') }}">
+                <a href="{{ ReturnRoute($studentSurvey['survey_two_done'], 'two') }}" title="Pertinencia y disponibilidad">
                     <img src="{{ asset('backend/img/school/sn2.png') }}" />
                 </a>
                 <div class="container-text">
@@ -68,9 +64,10 @@ return $route;
         <div class="swiper-slide">
             <div class="container-image">
                 <div class="container-loader">
-                    {!! CheckSurvey($userinfo['survey_three_done']) !!}
+                    {!! CheckSurvey($studentSurvey['survey_three_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($userinfo['survey_three_done'], 'three') }}">
+                <a href="{{ ReturnRoute($studentSurvey['survey_three_done'], 'three') }}"
+                    title="Ubicación laboral de los egresados">
                     <img src="{{ asset('backend/img/school/sn3.png') }}" />
                 </a>
                 <div class="container-text">
@@ -81,9 +78,10 @@ return $route;
         <div class="swiper-slide">
             <div class="container-image">
                 <div class="container-loader">
-                    {!! CheckSurvey($userinfo['survey_four_done']) !!}
+                    {!! CheckSurvey($studentSurvey['survey_four_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($userinfo['survey_four_done'], 'four') }}">
+                <a href="{{ ReturnRoute($studentSurvey['survey_four_done'], 'four') }}"
+                    title="Desempeño profesional de los egresados">
                     <img src="{{ asset('backend/img/school/sn4.png') }}" />
                 </a>
                 <div class="container-text">
@@ -94,9 +92,9 @@ return $route;
         <div class="swiper-slide">
             <div class="container-image">
                 <div class="container-loader">
-                    {!! CheckSurvey($userinfo['survey_five_done']) !!}
+                    {!! CheckSurvey($studentSurvey['survey_five_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($userinfo['survey_five_done'], 'five') }}">
+                <a href="{{ ReturnRoute($studentSurvey['survey_five_done'], 'five') }}" title="Expéctativas de desarrollo">
                     <img src="{{ asset('backend/img/school/sn5.png') }}" />
                 </a>
                 <div class="container-text">
@@ -107,9 +105,9 @@ return $route;
         <div class="swiper-slide">
             <div class="container-image">
                 <div class="container-loader">
-                    {!! CheckSurvey($userinfo['survey_six_done']) !!}
+                    {!! CheckSurvey($studentSurvey['survey_six_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($userinfo['survey_six_done'], 'six') }}">
+                <a href="{{ ReturnRoute($studentSurvey['survey_six_done'], 'six') }}" title="Participación social de los egresados">
                     <img src="{{ asset('backend/img/school/sn6.png') }}" />
                 </a>
                 <div class="container-text">
@@ -120,9 +118,9 @@ return $route;
         <div class="swiper-slide">
             <div class="container-image">
                 <div class="container-loader">
-                    {!! CheckSurvey($userinfo['survey_seven_done']) !!}
+                    {!! CheckSurvey($studentSurvey['survey_seven_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($userinfo['survey_seven_done'], 'seven') }}">
+                <a href="{{ ReturnRoute($studentSurvey['survey_seven_done'], 'seven') }}" title="Comentarios y sugerencias">
                     <img src="{{ asset('backend/img/school/sn7.png') }}" />
                 </a>
                 <div class="container-text">
@@ -133,9 +131,9 @@ return $route;
         <div class="swiper-slide">
             <div class="container-image">
                 <div class="container-loader">
-                    {!! CheckSurvey($userinfo['survey_eight_done']) !!}
+                    {!! CheckSurvey($studentSurvey['survey_eight_done']) !!}
                 </div>
-                <a href="">
+                <a href="" title="Ocho">
                     <img src="{{ asset('backend/img/school/sn8.png') }}" />
                 </a>
                 <div class="container-text">

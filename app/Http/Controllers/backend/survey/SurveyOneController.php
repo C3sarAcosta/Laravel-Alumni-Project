@@ -6,14 +6,28 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SurveyOne;
 use App\Models\StudentSurvey;
+use App\Models\Career;
+use App\Models\Specialty;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+//Enums
+use App\Enums\Status;
+use App\Enums\Month;
+use App\Enums\Language;
+use App\Enums\MaritalStatus;
+use App\Enums\YesNoQuestion;
 
 class SurveyOneController extends Controller
 {
     public function SurveyOneView()
     {
-        return view('backend.survey.1.survey_one');
+        $data['months'] = Month::getValues();
+        $data['languages'] = Language::getValues();
+        $data['marital_status'] = MaritalStatus::getValues();
+        $data['yes_no'] = YesNoQuestion::getValues();
+        $data['careers'] = Career::pluck('name', 'id');
+        $data['specialties'] = Specialty::pluck('name', 'id');
+        return view('backend.survey.1.survey_one', $data);
     }
 
     public function SurveyOneStore(Request $request)
@@ -23,20 +37,20 @@ class SurveyOneController extends Controller
 
         $data = new SurveyOne();
         $data->user_id = $request->user_id;
-        $data->first_name = $request->name;
-        $data->fathers_surname = $request->fathers_surname;
-        $data->mothers_surname = $request->mothers_surname;
+        $data->first_name = strtr($request->name, config('global.accented_chars'));
+        $data->fathers_surname = strtr($request->fathers_surname, config('global.accented_chars'));
+        $data->mothers_surname = strtr($request->mothers_surname, config('global.accented_chars'));
         $data->control_number = $request->control_number;
         $data->birthday = $request->birthday;
         $data->curp = $request->curp;
         $data->sex = $request->sex;
         $data->marital_status = $request->marital_status;
-        $data->address = $request->address;
+        $data->address = strtr($request->address, config('global.accented_chars'));
         $data->zip_code = $request->zip;
-        $data->suburb = $request->suburb;
-        $data->state = $request->state;
-        $data->city = $request->city;
-        $data->municipality = $request->municipality;
+        $data->suburb = strtr($request->suburb, config('global.accented_chars'));
+        $data->state = strtr($request->state, config('global.accented_chars'));
+        $data->city = strtr($request->city, config('global.accented_chars'));
+        $data->municipality = strtr($request->municipality, config('global.accented_chars'));
         $data->phone = $request->phone;
         $data->cellphone = $request->cellphone;
         $data->email = $request->email;
@@ -47,12 +61,12 @@ class SurveyOneController extends Controller
         $data->year = $request->year;
         $data->percent_english = $request->percent_english;
         $data->another_language = $request->another_language;
-        $data->percent_another_language = $request->another_language == "Ninguno" ? "0" : $request->percent_another_language;
-        $data->software = $request->software;
+        $data->percent_another_language = $request->another_language == Language::None ? "0" : $request->percent_another_language;
+        $data->software = strtr($request->software, config('global.accented_chars'));
         $data->save();
 
-        $user_update = StudentSurvey::where('user_id', $request->user_id)->firstOrFail();
-        $user_update->survey_one_done = 1;
+        $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
+        $user_update->survey_one_done = Status::Active;
         $user_update->save();
 
         $notification = array(
@@ -66,7 +80,13 @@ class SurveyOneController extends Controller
     public function SurveyOneEdit($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userData'] = SurveyOne::where('user_id', $id)->get();
+        $data['userData'] = SurveyOne::where('user_id', $id)->first();
+        $data['months'] = Month::getValues();
+        $data['languages'] = Language::getValues();
+        $data['marital_status'] = MaritalStatus::getValues();
+        $data['yes_no'] = YesNoQuestion::getValues();
+        $data['careers'] = Career::pluck('name', 'id');
+        $data['specialties'] = Specialty::pluck('name', 'id');
         return view('backend.survey.1.survey_one_edit', $data);
     }
 
@@ -76,20 +96,20 @@ class SurveyOneController extends Controller
         $editData = SurveyOne::all()->where('user_id', $request->user_id)->first();
         $validateData = $request->validate(['user_id' => 'required']);
 
-        $editData->first_name = $request->name;
-        $editData->fathers_surname = $request->fathers_surname;
-        $editData->mothers_surname = $request->mothers_surname;
+        $editData->first_name = strtr($request->name, config('global.accented_chars'));
+        $editData->fathers_surname = strtr($request->fathers_surname, config('global.accented_chars'));
+        $editData->mothers_surname = strtr($request->mothers_surname, config('global.accented_chars'));
         $editData->control_number = $request->control_number;
         $editData->birthday = $request->birthday;
         $editData->curp = $request->curp;
         $editData->sex = $request->sex;
         $editData->marital_status = $request->marital_status;
-        $editData->address = $request->address;
+        $editData->address = strtr($request->address, config('global.accented_chars'));
         $editData->zip_code = $request->zip;
-        $editData->suburb = $request->suburb;
-        $editData->state = $request->state;
-        $editData->city = $request->city;
-        $editData->municipality = $request->municipality;
+        $editData->suburb = strtr($request->suburb, config('global.accented_chars'));
+        $editData->state = strtr($request->state, config('global.accented_chars'));
+        $editData->city = strtr($request->city, config('global.accented_chars'));
+        $editData->municipality = strtr($request->municipality, config('global.accented_chars'));
         $editData->phone = $request->phone;
         $editData->cellphone = $request->cellphone;
         $editData->email = $request->email;
@@ -100,8 +120,8 @@ class SurveyOneController extends Controller
         $editData->year = $request->year;
         $editData->percent_english = $request->percent_english;
         $editData->another_language = $request->another_language;
-        $editData->percent_another_language = $request->another_language == "Ninguno" ? "0" : $request->percent_another_language;
-        $editData->software = $request->software;
+        $editData->percent_another_language = $request->another_language == Language::None ? "0" : $request->percent_another_language;
+        $editData->software = strtr($request->software, config('global.accented_chars'));
         $editData->save();
 
         $notification = array(
@@ -115,10 +135,10 @@ class SurveyOneController extends Controller
     public function SurveyOneVerifiedRoute($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+        $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['userSurvey']['0']['survey_one_done'] == 1) {
-            return  redirect()->route('survey.one.edit', $user_id);
+        if ($data['survey_one_done'] == Status::Active) {
+            return redirect()->route('survey.one.edit', $user_id);
         } else {
             return redirect()->route('survey.one.index');
         }

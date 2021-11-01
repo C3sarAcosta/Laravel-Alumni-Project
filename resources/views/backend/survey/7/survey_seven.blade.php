@@ -1,17 +1,17 @@
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @extends('student.student_master')
 
 @section('TopTitle')Comentarios y Sugerencias @endsection
 
 @section('title_section')Comentarios y sugerencias @endsection
 
+@php
+$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
+@endphp
+
 @section('student_content')
-<form method="post" action=" {{route('survey.seven.store')}} ">
+<form method="post" action=" {{ route('survey.seven.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-12">
             <div class="form-group">

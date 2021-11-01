@@ -6,13 +6,12 @@
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-$userAnswer = $userData['0'];
 @endphp
 
 @section('student_content')
-<form method="post" action=" {{route('survey.four.update')}} ">
+<form method="post" action=" {{ route('survey.four.update') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -25,19 +24,19 @@ $userAnswer = $userData['0'];
                         required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{ $userAnswer->efficiency_work_activities == "Muy eficiente" ? "selected" : "" }}
+                        <option {{ $userData->efficiency_work_activities == "Muy eficiente" ? "selected" : "" }}
                             value="Muy eficiente">
                             Muy eficiente
                         </option>
-                        <option {{ $userAnswer->efficiency_work_activities == "Eficiente" ? "selected" : "" }}
+                        <option {{ $userData->efficiency_work_activities == "Eficiente" ? "selected" : "" }}
                             value="Eficiente">
                             Eficiente
                         </option>
-                        <option {{ $userAnswer->efficiency_work_activities == "Poco eficiente" ? "selected" : "" }}
+                        <option {{ $userData->efficiency_work_activities == "Poco eficiente" ? "selected" : "" }}
                             value="Poco eficiente">
                             Poco eficiente
                         </option>
-                        <option {{ $userAnswer->efficiency_work_activities == "Deficiente" ? "selected" : "" }}
+                        <option {{ $userData->efficiency_work_activities == "Deficiente" ? "selected" : "" }}
                             value="Deficiente">
                             Deficiente
                         </option>
@@ -56,19 +55,19 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{$userAnswer->academic_training == "Excelente" ? "selected" : "" }} value="Excelente">
+                        <option {{ $userData->academic_training == "Excelente" ? "selected" : "" }} value="Excelente">
                             Excelente
                         </option>
-                        <option {{$userAnswer->academic_training == "Bueno" ? "selected" : "" }} value="Bueno">
+                        <option {{ $userData->academic_training == "Bueno" ? "selected" : "" }} value="Bueno">
                             Bueno
                         </option>
-                        <option {{$userAnswer->academic_training == "Regular" ? "selected" : "" }} value="Regular">
+                        <option {{ $userData->academic_training == "Regular" ? "selected" : "" }} value="Regular">
                             Regular
                         </option>
-                        <option {{$userAnswer->academic_training == "Malo" ? "selected" : "" }} value="Malo">
+                        <option {{ $userData->academic_training == "Malo" ? "selected" : "" }} value="Malo">
                             Malo
                         </option>
-                        <option {{$userAnswer->academic_training == "Pesimo" ? "selected" : "" }} value="Pesimo">
+                        <option {{ $userData->academic_training == "Pesimo" ? "selected" : "" }} value="Pesimo">
                             Pésimo
                         </option>
                     </select>
@@ -88,23 +87,23 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{$userAnswer->usefulness_professional_residence == "Excelente" ? "selected" : "" }}
+                        <option {{ $userData->usefulness_professional_residence == "Excelente" ? "selected" : "" }}
                             value="Excelente">
                             Excelente
                         </option>
-                        <option {{$userAnswer->usefulness_professional_residence == "Bueno" ? "selected" : "" }}
+                        <option {{ $userData->usefulness_professional_residence == "Bueno" ? "selected" : "" }}
                             value="Bueno">
                             Bueno
                         </option>
-                        <option {{$userAnswer->usefulness_professional_residence == "Regular" ? "selected" : "" }}
+                        <option {{ $userData->usefulness_professional_residence == "Regular" ? "selected" : "" }}
                             value="Regular">
                             Regular
                         </option>
-                        <option {{$userAnswer->usefulness_professional_residence == "Malo" ? "selected" : "" }}
+                        <option {{ $userData->usefulness_professional_residence == "Malo" ? "selected" : "" }}
                             value="Malo">
                             Malo
                         </option>
-                        <option {{$userAnswer->usefulness_professional_residence=="Pesimo" ? "selected" : "" }}
+                        <option {{ $userData->usefulness_professional_residence=="Pesimo" ? "selected" : "" }}
                             value="Pesimo">
                             Pésimo
                         </option>
@@ -130,11 +129,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->study_area == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->study_area == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->study_area == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->study_area == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->study_area == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->study_area == $i ? "selected"
+                            : "" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -148,11 +147,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->title == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->title == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->title == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->title == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->title == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->title == $i ? "selected" : ""
+                            }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -166,11 +165,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->experience == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->experience == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->experience == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->experience == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->experience == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->experience == $i ? "selected"
+                            : "" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -185,11 +184,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->job_competence == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->job_competence == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->job_competence == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->job_competence == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->job_competence == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->job_competence == $i ?
+                            "selected" : "" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -203,11 +202,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->positioning == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->positioning == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->positioning == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->positioning == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->positioning == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->positioning == $i ?
+                            "selected" : "" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -221,11 +220,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->languages == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->languages == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->languages == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->languages == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->languages == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->languages == $i ? "selected"
+                            :"" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -239,11 +238,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->recommendations == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->recommendations == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->recommendations == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->recommendations == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->recommendations == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->recommendations == $i ?
+                            "selected" : "" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -257,11 +256,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->personality == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->personality == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->personality == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->personality == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->personality == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->personality == $i ?
+                            "selected" : "" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -275,11 +274,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->leadership == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->leadership == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->leadership == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->leadership == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->leadership == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->leadership == $i ? "selected"
+                            : "" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -293,11 +292,11 @@ $userAnswer = $userData['0'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option {{$userAnswer->others == "1" ? "selected" : "" }} value="1">1</option>
-                        <option {{$userAnswer->others == "2" ? "selected" : "" }} value="2">2</option>
-                        <option {{$userAnswer->others == "3" ? "selected" : "" }} value="3">3</option>
-                        <option {{$userAnswer->others == "4" ? "selected" : "" }} value="4">4</option>
-                        <option {{$userAnswer->others == "5" ? "selected" : "" }} value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}" {{ $userData->others == $i ? "selected" :
+                            "" }}>
+                            {{ $i }}
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>

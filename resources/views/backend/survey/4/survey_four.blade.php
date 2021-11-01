@@ -1,17 +1,17 @@
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @extends('student.student_master')
 
 @section('TopTitle')Desempeño Profesional @endsection
 
 @section('title_section')Desempeño profesional de los egresados @endsection
 
+@php
+$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
+@endphp
+
 @section('student_content')
-<form method="post" action=" {{route('survey.four.store')}} ">
+<form method="post" action=" {{ route('survey.four.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -55,7 +55,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-4">
             <div class="form-group">
                 <label for="usefulness_professional_residence">
-                    Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y profesional
+                    Utilidad de las residencias profesionales o prácticas profesionales para su desarrollo laboral y
+                    profesional
                 </label>
                 <div class="controls">
                     <select name="usefulness_professional_residence" id="usefulness_professional_residence"
@@ -91,11 +92,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -109,11 +107,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -127,11 +122,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -146,11 +138,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -164,11 +153,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -182,11 +168,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -200,11 +183,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -218,11 +198,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -236,11 +213,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -254,11 +228,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una calificación</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @for ($i = 1; $i < 6; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                     </select>
                 </div>
             </div>

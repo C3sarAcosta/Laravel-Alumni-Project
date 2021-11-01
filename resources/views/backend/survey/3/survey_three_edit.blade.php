@@ -6,39 +6,37 @@
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-$userAnswer = $userData['0'];
+$management_level = $consts['ManagementLevel'];
+$do_for_living = $consts['DoForLiving'];
+$speciality = $consts['Speciality'];
+$long_take_job = $consts['LongTakeJob'];
+$hear_about = $consts['HearAbout'];
+$language_most_spoken = $consts['LanguageMostSpoken'];
+$seniority = $consts['Seniority'];
+$salary = $consts['Salary'];
+$job_condition = $consts['JobCondition'];
+$business_structure = $consts['BusinessStructure'];
+$company_size = $consts['CompanySize'];
 @endphp
 
 @section('student_content')
-<form method="post" action=" {{route('survey.three.update')}} ">
+<form method="post" action=" {{ route('survey.three.update') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
                 <label for="do_for_living">Actividad a la que se dedica actualmente</label>
                 <div class="controls">
-                    <select name="do_for_living" id="do_for_living" onchange="changeActivity()" 
-                        class="form-control" title="Por favor seleccione una actividad" required=""
+                    <select name="do_for_living" id="do_for_living" onchange="changeActivity()" class="form-control"
+                        title="Por favor seleccione una actividad" required=""
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{$userAnswer->do_for_living == "Trabaja" ? "selected" : ""}}
-                            value="Trabaja">
-                            Trabaja
-                        </option>
-                        <option {{$userAnswer->do_for_living == "Estudia" ? "selected" : ""}}
-                            value="Estudia">
-                            Estudia
-                        </option>
-                        <option {{$userAnswer->do_for_living == "Estudia y trabaja" ? "selected" : ""}}
-                            value="Estudia y trabaja">
-                            Estudia y trabaja
-                        </option>
-                        <option {{$userAnswer->do_for_living == "No estudia ni trabaja" ? "selected" : ""}}
-                            value="No estudia ni trabaja">
-                            No estudia ni trabaja
-                        </option>
+                        @foreach ($do_for_living as $option)
+                        <option value="{{ $option }}" {{ $userData->do_for_living == $option ? "selected" : "" }}>
+                            {{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -51,41 +49,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="speciality">Indique que es lo que está estudiando</label>
                 <div class="controls">
-                    <select name="speciality" id="speciality" class="form-control">
+                    <select name="speciality" id="speciality" class="form-control"
+                        title="Indique lo que está estudiando">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->speciality != null)
-                            ? ($userAnswer->speciality == "Especialidad" ? "selected" : "")
-                            : ""}}
-                            value="Especialidad">
-                            Especialidad
+                        @foreach ($speciality as $option)
+                        <option value="{{ $option }}" {{ ($userData->speciality != null)
+                            ? ($userData->speciality == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->speciality != null)
-                            ? ($userAnswer->speciality == "Maestria" ? "selected" : "")
-                            : ""}}
-                            value="Maestria">
-                            Maestría
-                        </option>
-
-                        <option {{($userAnswer->speciality != null)
-                            ? ($userAnswer->speciality == "Doctorado" ? "selected" : "")
-                            : ""}}
-                            value="Doctorado">
-                            Doctorado
-                        </option>
-
-                        <option {{($userAnswer->speciality != null)
-                            ? ($userAnswer->speciality == "Idiomas" ? "selected" : "")
-                            : ""}}
-                            value="Idiomas">
-                            Idiomas
-                        </option>
-
-                        <option {{($userAnswer->speciality != null)
-                            ? ($userAnswer->speciality == "Otro" ? "selected" : "")
-                            : ""}}
-                            value="Otro">
-                            Otro
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -94,7 +67,8 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="school">Especialidad e Institución</label>
                 <input type="text" id="school" name="school" class="form-control"
-                    value='{{($userAnswer->school != null) ? $userAnswer->school: ""}}'
+                    title="Indique la institución donde estudia"
+                    value='{{ ($userData->school != null) ? $userData->school: "" }}'
                     placeholder="Ejemplo: Mecatrónica, Tecnológico de Chihuahua" />
             </div>
         </div>
@@ -106,34 +80,18 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="long_take_job">Tiempo transcurrido para obtener el primer empleo</label>
                 <div class="controls">
-                    <select class="form-control" id="long_take_job" name="long_take_job">
+                    <select class="form-control" id="long_take_job" name="long_take_job"
+                        title="Indique el tiempo en conseguir su empleo">
                         <option value="" selected="" disabled="">
                             Selecciona una opción
                         </option>
-                        <option {{($userAnswer->long_take_job != null)
-                            ? ($userAnswer->long_take_job == "Antes de egresar" ? "selected" : "")
-                            : ""}}
-                            value="Antes de egresar">
-                            Antes de egresar
+                        @foreach ($long_take_job as $option)
+                        <option value="{{ $option }}" {{ ($userData->long_take_job != null)
+                            ? ($userData->long_take_job == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->long_take_job != null)
-                            ? ($userAnswer->long_take_job == "Menos de 6 meses" ? "selected" : "")
-                            : ""}}
-                            value="Menos de 6 meses">
-                            Menos de 6 meses
-                        </option>
-                        <option {{($userAnswer->long_take_job != null)
-                            ? ($userAnswer->long_take_job == "6 meses a 1 año" ? "selected" : "")
-                            : ""}}
-                            value="6 meses a 1 año">
-                            6 meses a 1 año
-                        </option>
-                        <option {{($userAnswer->long_take_job != null)
-                            ? ($userAnswer->long_take_job == "Mas de un año" ? "selected" : "")
-                            : ""}}
-                            value="Mas de un año">
-                            Más de un año
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -142,32 +100,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="hear_about">Medio para obtener el empleo</label>
                 <div class="controls">
-                    <select class="form-control" id="hear_about" name="hear_about">
+                    <select class="form-control" id="hear_about" name="hear_about"
+                        title="Indique el medio para obtener el empleo">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->hear_about != null)
-                            ? ($userAnswer->hear_about == "Bolsa de trabajo del plantel" ? "selected" : "")
-                            : ""}}
-                            value="Bolsa de trabajo del plantel">
-                            Bolsa de trabajo del plantel
+                        @foreach ($hear_about as $option)
+                        <option value="{{ $option }}" {{ ($userData->hear_about != null)
+                            ? ($userData->hear_about == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->hear_about != null)
-                            ? ($userAnswer->hear_about == "Contacto personal" ? "selected" : "")
-                            : ""}}
-                            value="Contacto personal">
-                            Contacto personal
-                        </option>
-                        <option {{($userAnswer->hear_about != null)
-                            ? ($userAnswer->hear_about == "Residencia profesional" ? "selected" : "")
-                            : ""}}
-                            value="Residencia profesional">
-                            Residencia profesional
-                        </option>
-                        <option {{($userAnswer->hear_about != null)
-                            ? ($userAnswer->hear_about == "Medios masivos de comunicacion" ? "selected" : "")
-                            : ""}}
-                            value="Medios masivos de comunicacion">
-                            Medios masivos de comunicación
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -178,33 +120,33 @@ $userAnswer = $userData['0'];
                 <div class="d-flex">
                     <div class="form-check mr-3">
                         <input class="form-check-input" id="competence1" name="competence1" type="checkbox"
-                            {{$userAnswer->competence1 == 1 ? "checked" : ""}}>
+                            title="Competencia #1" {{ $userData->competence1 == 1 ? "checked" : "" }}>
                         <label class="form-check-label">Competencias laborales</label>
                     </div>
                     <div class="form-check mr-3">
                         <input class="form-check-input" id="competence2" name="competence2" type="checkbox"
-                            {{$userAnswer->competence2 == 1 ? "checked" : ""}}>
+                            title="Competencia #2" {{ $userData->competence2 == 1 ? "checked" : "" }}>
                         <label class="form-check-label">Título Profesional</label>
                     </div>
                     <div class="form-check mr-3">
                         <input class="form-check-input" id="competence3" name="competence3" type="checkbox"
-                            {{$userAnswer->competence3 == 1 ? "checked" : ""}}>
+                            title="Competencia #3" {{ $userData->competence3 == 1 ? "checked" : "" }}>
                         <label class="form-check-label">Examen de selección</label>
                     </div>
                     <div class="form-check mr-3">
                         <input class="form-check-input" id="competence4" name="competence4" type="checkbox"
-                            {{$userAnswer->competence4 == 1 ? "checked" : ""}}>
+                            title="Competencia #4" {{ $userData->competence4 == 1 ? "checked" : "" }}>
                         <label class="form-check-label">Idioma Extranjero</label>
                     </div>
                     <div class="form-check mr-3">
                         <input class="form-check-input" id="competence5" name="competence5" type="checkbox"
-                            {{$userAnswer->competence5 == 1 ? "checked" : ""}}>
+                            title="Competencia #5" {{ $userData->competence5 == 1 ? "checked" : "" }}>
                         <label class="form-check-label">Actitudes y habilidades socio-comunicativas (principios y
                             valores)</label>
                     </div>
                     <div class="form-check mr-3">
                         <input class="form-check-input" id="competence6" name="competence6" type="checkbox"
-                            {{$userAnswer->competence6 == 1 ? "checked" : ""}}>
+                            title="Competencia #6" {{ $userData->competence6 == 1 ? "checked" : "" }}>
                         <label class="form-check-label">Ninguno</label>
                     </div>
                 </div>
@@ -215,68 +157,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="language_most_spoken">Idioma que utiliza en su trabajo actual</label>
                 <div class="controls">
-                    <select name="language_most_spoken" id="language_most_spoken" class="form-control">
+                    <select name="language_most_spoken" id="language_most_spoken" class="form-control"
+                        title="Idioma que es más utilizado en su trabajo">
                         <option value="" selected="" disabled="">Selecciona una lengua</option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Español" ? "selected" : "")
-                            : ""}}
-                            value="Español">
-                            Español
+                        @foreach ($language_most_spoken as $option)
+                        <option value="{{ $option }}" {{ ($userData->language_most_spoken != null)
+                            ? ($userData->language_most_spoken == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Ingles" ? "selected" : "")
-                            : ""}}
-                            value="Ingles">
-                            Inglés
-                        </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Chino Mandarin" ? "selected" : "")
-                            : ""}}
-                            value="Chino Mandarin">
-                            Chino mandarín
-                        </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Frances" ? "selected" : "")
-                            : ""}}
-                            value="Frances">
-                            Francés
-                        </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Arabe" ? "selected" : "")
-                            : ""}}
-                            value="Arabe">
-                            Árabe
-                        </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Bengali" ? "selected" : "")
-                            : ""}}
-                            value="Bengali">
-                            Bengalí
-                        </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Ruso" ? "selected" : "")
-                            : ""}}
-                            value="Ruso">
-                            Ruso
-                        </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Portugues" ? "selected" : "")
-                            : ""}}
-                            value="Portugues">
-                            Portugués
-                        </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Aleman" ? "selected" : "")
-                            : ""}}
-                            value="Aleman">
-                            Alemán
-                        </option>
-                        <option {{($userAnswer->language_most_spoken != null)
-                            ? ($userAnswer->language_most_spoken == "Japones" ? "selected" : "")
-                            : ""}}
-                            value="Japones">
-                            Japonés
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -292,8 +182,8 @@ $userAnswer = $userData['0'];
                         </button>
                     </span>
                     <input type="text" class="form-control" id="speak_percent" name="speak_percent" max="100"
-                        value='{{($userAnswer->speak_percent != null) ? $userAnswer->speak_percent : "0"}}' min="0"
-                        readonly />
+                        value='{{ ($userData->speak_percent != null) ? $userData->speak_percent : "0" }}' min="0"
+                        readonly title="Porcentaje del habla" />
                     <span class="input-group-append plus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
                             <span class="fa fa-plus"></span>
@@ -312,8 +202,8 @@ $userAnswer = $userData['0'];
                         </button>
                     </span>
                     <input type="text" class="form-control" id="write_percent" name="write_percent" max="100"
-                        value='{{($userAnswer->write_percent != null) ? $userAnswer->write_percent : "0"}}' min="0"
-                        readonly />
+                        value='{{ ($userData->write_percent != null) ? $userData->write_percent : "0" }}' min="0"
+                        readonly title="Porcentaje de escritura" />
                     <span class="input-group-append plus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
                             <span class="fa fa-plus"></span>
@@ -332,8 +222,8 @@ $userAnswer = $userData['0'];
                         </button>
                     </span>
                     <input type="text" class="form-control" id="read_percent" name="read_percent" max="100"
-                        value='{{($userAnswer->read_percent != null) ? $userAnswer->read_percent : "0"}}' min="0"
-                        readonly />
+                        value='{{ ($userData->read_percent != null) ? $userData->read_percent : "0" }}' min="0" readonly
+                        title="Porcentaje de lectura" />
                     <span class="input-group-append plus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
                             <span class="fa fa-plus"></span>
@@ -352,8 +242,8 @@ $userAnswer = $userData['0'];
                         </button>
                     </span>
                     <input type="text" class="form-control" id="listen_percent" name="listen_percent"
-                        value='{{($userAnswer->listen_percent != null) ? $userAnswer->listen_percent : "0"}}' max="100"
-                        min="0" readonly />
+                        value='{{ ($userData->listen_percent != null) ? $userData->listen_percent : "0" }}' max="100"
+                        min="0" readonly title="Porcentaje de escucha" />
                     <span class="input-group-append plus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
                             <span class="fa fa-plus"></span>
@@ -367,32 +257,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="seniority">Antigüedad en el empleo actual</label>
                 <div class="controls">
-                    <select name="seniority" id="seniority" class="form-control">
+                    <select name="seniority" id="seniority" class="form-control"
+                        title="Indique la antigüedad en el empleo actual">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->seniority != null)
-                            ? ($userAnswer->seniority == "Menos de un año" ? "selected" : "")
-                            : ""}}
-                            value="Menos de un año">
-                            Menos de un año
+                        @foreach ($seniority as $option)
+                        <option value="{{ $option }}" {{ ($userData->seniority != null)
+                            ? ($userData->seniority == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->seniority != null)
-                            ? ($userAnswer->seniority == "Un año" ? "selected" : "")
-                            : ""}}
-                            value="Un año">
-                            Un año
-                        </option>
-                        <option {{($userAnswer->seniority != null)
-                            ? ($userAnswer->seniority == "Tres años" ? "selected" : "")
-                            : ""}}
-                            value="Tres años">
-                            Tres años
-                        </option>
-                        <option {{($userAnswer->seniority != null)
-                            ? ($userAnswer->seniority == "Mas de tres años" ? "selected" : "")
-                            : ""}}
-                            value="Mas de tres años">
-                            Más de tres años
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -403,85 +277,40 @@ $userAnswer = $userData['0'];
                 <input pattern="[0-9]{4}" title="Por favor ingrese un año correcto de 4 dígitos" type="text" id="year"
                     name="year" class="form-control" maxlength="4" required="" onkeypress="ValidateNumbers(event);"
                     oninvalid="this.setCustomValidity('Por favor ingrese un año correcto')"
-                    oninput="setCustomValidity('')" value="{{$userAnswer->year}}" />
+                    oninput="setCustomValidity('')" value="{{ $userData->year }}" />
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="salary">Ingreso (Salario minimo diario)</label>
                 <div class="controls">
-                    <select name="salary" id="salary" class="form-control">
+                    <select name="salary" id="salary" class="form-control" title="Indique su salario">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->salary != null)
-                            ? ($userAnswer->salary == "Menos de cinco" ? "selected" : "")
-                            : ""}}
-                            value="Menos de cinco">
-                            Menos de cinco
+                        @foreach ($salary as $option)
+                        <option value="{{ $option }}" {{ ($userData->salary != null)
+                            ? ($userData->salary == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->salary != null)
-                            ? ($userAnswer->salary == "Entre cinco y siete" ? "selected" : "")
-                            : ""}}
-                            value="Entre cinco y siete">
-                            Entre cinco y siete
-                        </option>
-                        <option {{($userAnswer->salary != null)
-                            ? ($userAnswer->salary == "Entre ocho y diez" ? "selected" : "")
-                            : ""}}
-                            value="Entre ocho y diez">
-                            Entre ocho y diez
-                        </option>
-                        <option {{($userAnswer->salary != null)
-                            ? ($userAnswer->salary == "Mas de diez" ? "selected" : "")
-                            : ""}}
-                            value="Mas de diez">
-                            Más de diez
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="management_level">Nivel jerárgico en el trabajo</label>
+                <label for="management_level">Nivel jerárquico en el trabajo</label>
                 <div class="controls">
-                    <select name="management_level" id="management_level" class="form-control">
+                    <select name="management_level" id="management_level" class="form-control"
+                        title="Indique el nivel jerárquico">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->management_level != null)
-                            ? ($userAnswer->management_level == "Tecnico" ? "selected" : "")
-                            : ""}}
-                            value="Tecnico">
-                            Técnico
+                        @foreach ($management_level as $option)
+                        <option value="{{ $option }}" {{ ($userData->management_level != null)
+                            ? ($userData->management_level == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->management_level != null)
-                            ? ($userAnswer->management_level == "Supervisor" ? "selected" : "")
-                            : ""}}
-                            value="Supervisor">
-                            Supervisor
-                        </option>
-                        <option {{($userAnswer->management_level != null)
-                            ? ($userAnswer->management_level == "Jefe de area" ? "selected" : "")
-                            : ""}}
-                            value="Jefe de area">
-                            Jefe de área
-                        </option>
-                        <option {{($userAnswer->management_level != null)
-                            ? ($userAnswer->management_level == "Funcionario" ? "selected" : "")
-                            : ""}}
-                            value="Funcionario">
-                            Funcionario
-                        </option>
-                        <option {{($userAnswer->management_level != null)
-                            ? ($userAnswer->management_level == "Directivo" ? "selected" : "")
-                            : ""}}
-                            value="Directivo">
-                            Directivo
-                        </option>
-                        <option {{($userAnswer->management_level != null)
-                            ? ($userAnswer->management_level == "Empresario" ? "selected" : "")
-                            : ""}}
-                            value="Empresario">
-                            Empresario
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -490,26 +319,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="job_condition">Condición de trabajo</label>
                 <div class="controls">
-                    <select name="job_condition" id="job_condition" class="form-control">
+                    <select name="job_condition" id="job_condition" class="form-control"
+                        title="Indique la condición de su trabajo">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->job_condition != null)
-                            ? ($userAnswer->job_condition == "Base" ? "selected" : "")
-                            : ""}}
-                            value="Base">
-                            Base
+                        @foreach ($job_condition as $option)
+                        <option value="{{ $option }}" {{ ($userData->job_condition != null)
+                            ? ($userData->job_condition == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->job_condition != null)
-                            ? ($userAnswer->job_condition == "Eventual" ? "selected" : "")
-                            : ""}}
-                            value="Eventual">
-                            Eventual
-                        </option>
-                        <option {{($userAnswer->job_condition != null)
-                            ? ($userAnswer->job_condition == "Contrato" ? "selected" : "")
-                            : ""}}
-                            value="Contrato">
-                            Contrato
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -518,44 +337,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="job_relationship">Relación del trabajo con su área de formación</label>
                 <div class="controls">
-                    <select name="job_relationship" id="job_relationship" class="form-control">
+                    <select name="job_relationship" id="job_relationship" class="form-control"
+                        title="Indique la relación con su área de formación">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->job_relationship != null)
-                            ? ($userAnswer->job_relationship == "0" ? "selected" : "")
-                            : ""}}
-                            value="0">
-                            0%
-                        </option>
-                        <option {{($userAnswer->job_relationship != null)
-                            ? ($userAnswer->job_relationship == "20" ? "selected" : "")
-                            : ""}}
-                            value="20">
-                            20%
-                        </option>
-                        <option {{($userAnswer->job_relationship != null)
-                            ? ($userAnswer->job_relationship == "40" ? "selected" : "")
-                            : ""}}
-                            value="40">
-                            40%
-                        </option>
-                        <option {{($userAnswer->job_relationship != null)
-                            ? ($userAnswer->job_relationship == "60" ? "selected" : "")
-                            : ""}}
-                            value="60">
-                            60%
-                        </option>
-                        <option {{($userAnswer->job_relationship != null)
-                            ? ($userAnswer->job_relationship == "80" ? "selected" : "")
-                            : ""}}
-                            value="80">
-                            80%
-                        </option>
-                        <option {{($userAnswer->job_relationship != null)
-                            ? ($userAnswer->job_relationship == "100" ? "selected" : "")
-                            : ""}}
-                            value="100">
-                            100%
-                        </option>
+                        @for ($i = 0; $i < 101; $i+=20) <option value="{{ $i }}" {{ ($userData->job_relationship !=
+                            null)
+                            ? ($userData->job_relationship == $i ? "selected" : "")
+                            : "" }}>
+                            {{ $i }}%
+                            </option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -565,15 +356,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="business_name">Razón Social</label>
                 <input type="text" class="form-control" id="business_name" name="business_name"
-                    value='{{($userAnswer->business_name != null) ? $userAnswer->business_name : ""}}'
-                    placeholder="Razón Social" />
+                    value='{{ ($userData->business_name != null) ? $userData->business_name : "" }}'
+                    title="Indique el nombre de la empresa" placeholder="Razón Social" />
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="business_activity">Giro o actividad principal de la empresa u organismo</label>
                 <input type="text" class="form-control" id="business_activity" name="business_activity"
-                    value='{{($userAnswer->business_activity != null) ? $userAnswer->business_activity : ""}}'
+                    value='{{ ($userData->business_activity != null) ? $userData->business_activity : "" }}'
+                    title="Indique el giro de la empresa"
                     placeholder="Giro o actividad principal de la empresa u organismo. Ejemplo: Industrial, Comercial, etc." />
             </div>
         </div>
@@ -582,15 +374,17 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="address">Domicilio</label>
                 <input type="text" class="form-control" id="address" name="address"
-                    value='{{($userAnswer->address != null) ? $userAnswer->address : ""}}' placeholder="Calle #Número">
+                    value='{{ ($userData->address != null) ? $userData->address : "" }}' placeholder="Calle #Número"
+                    title="Indique el domicilio de la empresa">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="zip">Código Postal</label>
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()"
-                    onkeypress="ValidateNumbers(event);" value='{{($userAnswer->zip != null) ? $userAnswer->zip : ""}}'
-                    placeholder="Código Postal" />
+                    onkeypress="ValidateNumbers(event);" value='{{ ($userData->zip != null) ? $userData->zip : "" }}'
+                    placeholder="Código Postal"
+                    title="Indique el código postal, si espera se rellanará si es que existe información con ese código" />
             </div>
         </div>
         <div class="col-4">
@@ -598,7 +392,8 @@ $userAnswer = $userData['0'];
                 <label for="suburb">Colonia</label>
                 <div class="controls">
                     <input type="text" class="form-control" id="suburb" name="suburb" placeholder="Colonia"
-                        value='{{($userAnswer->suburb != null) ? $userAnswer->suburb : ""}}' />
+                        value='{{ ($userData->suburb != null) ? $userData->suburb : "" }}'
+                        title="Indique la colonia donde está la empresa" />
                     <select name="suburb_selector" id="suburb_selector" class="form-control" style="display: none"
                         onchange="onChangeSuburb()">
                         <option value="" selected="" disabled="">
@@ -612,22 +407,24 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="state">Estado</label>
                 <input type="text" class="form-control" id="state" name="state"
-                    value='{{($userAnswer->state != null) ? $userAnswer->state : ""}}' placeholder="Estado" />
+                    value='{{ ($userData->state != null) ? $userData->state : "" }}' placeholder="Estado"
+                    title="Indique el estado donde está la empresa" />
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="city">Ciudad</label>
                 <input type="text" class="form-control" id="city" name="city"
-                    value='{{($userAnswer->city != null) ? $userAnswer->city : ""}}' placeholder="Ciudad" />
+                    value='{{ ($userData->city != null) ? $userData->city : "" }}' placeholder="Ciudad"
+                    title="Indique la ciudad donde está la empresa" />
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="municipality">Municipio</label>
                 <input type="text" class="form-control" id="municipality" name="municipality"
-                    value='{{($userAnswer->municipality != null) ? $userAnswer->municipality : ""}}'
-                    placeholder="Municipio" />
+                    value='{{ ($userData->municipality != null) ? $userData->municipality : "" }}'
+                    placeholder="Municipio" title="Indique el municipio donde está la empresa" />
             </div>
         </div>
 
@@ -636,21 +433,23 @@ $userAnswer = $userData['0'];
                 <label for="phone">Teléfono</label>
                 <input type="tel" maxlength="10" pattern="[0-9]{10}" class="form-control" id="phone" name="phone"
                     onkeypress="ValidateNumbers(event);" placeholder="Teléfono" title="Por favor escribe tu teléfono"
-                    value='{{($userAnswer->phone != null) ? $userAnswer->phone : ""}}' />
+                    value='{{ ($userData->phone != null) ? $userData->phone : "" }}' />
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="fax">Fax</label>
                 <input type="text" class="form-control" id="fax" name="fax"
-                    value='{{($userAnswer->fax != null) ? $userAnswer->fax : ""}}' placeholder="Fax">
+                    value='{{ ($userData->fax != null) ? $userData->fax : "" }}' placeholder="Fax"
+                    title="Indique el fax de la empresa">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="web_page">Página Web</label>
                 <input type="text" class="form-control" id="web_page" name="web_page"
-                    value='{{($userAnswer->web_page != null) ? $userAnswer->web_page : ""}}' placeholder="Página Web">
+                    value='{{ ($userData->web_page != null) ? $userData->web_page : "" }}' placeholder="Página Web"
+                    title="Indique la página web de la empresa">
             </div>
         </div>
         <div class="col-12">
@@ -658,8 +457,8 @@ $userAnswer = $userData['0'];
                 <label for="boss_email">Jefe inmediato</label>
                 <input type="text" class="form-control" id="boss_email" name="boss_email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    value='{{($userAnswer->boss_email != null) ? $userAnswer->boss_email : ""}}'
-                    placeholder="Correo electrónico del jefe" />
+                    value='{{ ($userData->boss_email != null) ? $userData->boss_email : "" }}'
+                    placeholder="Correo electrónico del jefe" title="Indique el correo del jefe inmediato" />
             </div>
         </div>
 
@@ -667,26 +466,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="business_structure">Su empresa u organismo es</label>
                 <div class="controls">
-                    <select name="business_structure" id="business_structure" class="form-control">
+                    <select name="business_structure" id="business_structure" class="form-control"
+                        title="Indique la estructura de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->business_structure != null)
-                            ? ($userAnswer->business_structure == "Publica" ? "selected" : "")
-                            : ""}}
-                            value="Publica">
-                            Pública
+                        @foreach ($business_structure as $option)
+                        <option value="{{ $option }}" {{ ($userData->business_structure != null)
+                            ? ($userData->business_structure == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->business_structure != null)
-                            ? ($userAnswer->business_structure == "Privada" ? "selected" : "")
-                            : ""}}
-                            value="Privada">
-                            Privada
-                        </option>
-                        <option {{($userAnswer->business_structure != null)
-                            ? ($userAnswer->business_structure == "Social" ? "selected" : "")
-                            : ""}}
-                            value="Social">
-                            Social
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -696,32 +485,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="company_size">Tamaño de la empresa u organismo</label>
                 <div class="controls">
-                    <select name="company_size" id="company_size" class="form-control">
+                    <select name="company_size" id="company_size" class="form-control"
+                        title="Indique el tamaño de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->company_size != null)
-                            ? ($userAnswer->company_size == "Micro" ? "selected" : "")
-                            : ""}}
-                            value="Micro">
-                            Microempresa (de 1 a 30)
+                        @foreach ($company_size as $option)
+                        <option value="{{ $option }}" {{ ($userData->company_size != null)
+                            ? ($userData->company_size == $option ? "selected" : "")
+                            : "" }}>
+                            {{ $option }}
                         </option>
-                        <option {{($userAnswer->company_size != null)
-                            ? ($userAnswer->company_size == "Pequena" ? "selected" : "")
-                            : ""}}
-                            value="Pequena">
-                            Pequeña (De 31 a 100)
-                        </option>
-                        <option {{($userAnswer->company_size != null)
-                            ? ($userAnswer->company_size == "Mediana" ? "selected" : "")
-                            : ""}}
-                            value="Mediana">
-                            Mediana (De 101 a 500)
-                        </option>
-                        <option {{($userAnswer->company_size != null)
-                            ? ($userAnswer->company_size == "Grande" ? "selected" : "")
-                            : ""}}
-                            value="Grande">
-                            Grande (Más de 500)
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -731,130 +504,16 @@ $userAnswer = $userData['0'];
             <div class="form-group">
                 <label for="business_activity_selector">Actividad económica de la empresa u organismo</label>
                 <div class="controls">
-                    <select name="business_activity_selector" id="business_activity_selector" class="form-control">
+                    <select name="business_activity_selector" id="business_activity_selector" class="form-control"
+                        title="Indique la actividad de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Agro-industrial" ? "selected" : "")
-                            : ""}}
-                            value="Agro-industrial">
-                            Agro-industrial
+                        @foreach ($business_activity as $activity)
+                        <option value="{{ $option }}" {{ ($userData->business_activity_selector != null)
+                            ? ($userData->business_activity_selector == $activity ? "selected" : "")
+                            : "" }}>
+                            {{$option}}
                         </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Pesca y acuacultura" ? "selected" : "")
-                            : ""}}
-                            value="Pesca y acuacultura">
-                            Pesca y acuacultura
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Mineria" ? "selected" : "")
-                            : ""}}
-                            value="Mineria">
-                            Minería
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Alimentos, bebidas y tabaco" ? "selected" :
-                            "")
-                            : ""}}
-                            value="Alimentos, bebidas y tabaco">
-                            Alimentos, bebidas y tabaco
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Textiles, vestido y cuero" ? "selected" : "")
-                            : ""}}
-                            value="Textiles, vestido y cuero">
-                            Textiles, vestido y cuero
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Madera y sus productos" ? "selected" : "")
-                            : ""}}
-                            value="Madera y sus productos">
-                            Madera y sus productos
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Papel, imprenta y editoriales" ? "selected" :
-                            "")
-                            : ""}}
-                            value="Papel, imprenta y editoriales">
-                            Papel, imprenta y editoriales
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Quimica" ? "selected" : "")
-                            : ""}}
-                            value="Quimica">
-                            Química
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Caucho y Plastico" ? "selected" : "")
-                            : ""}}
-                            value="Caucho y Plastico">
-                            Caucho y Plástico
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Minerales no metalicos" ? "selected" : "")
-                            : ""}}
-                            value="Minerales no metalicos">
-                            Minerales no metálicos
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Industrias metalicas basicas" ? "selected" :
-                            "")
-                            : ""}}
-                            value="Industrias metalicas basicas">
-                            Industrias metálicas básicas
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Productos metalicos, maquinaria y equipo" ?
-                            "selected" : "")
-                            : ""}}
-                            value="Productos metalicos, maquinaria y equipo">
-                            Productos metálicos, maquinaria y equipo
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Construccion" ? "selected" : "")
-                            : ""}}
-                            value="Construccion">
-                            Construcción
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Electricidad, gas y agua" ? "selected" : "")
-                            : ""}}
-                            value="Electricidad, gas y agua">
-                            Electricidad, gas y agua
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Comercio y turismo" ? "selected" : "")
-                            : ""}}
-                            value="Comercio y turismo">
-                            Comercio y turismo
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Transporte, almacenaje y comunicaciones" ?
-                            "selected" : "")
-                            : ""}}
-                            value="Transporte, almacenaje y comunicaciones">
-                            Transporte, almacenaje y comunicaciones
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Servicios financieros, seguros, actividades
-                            inmobiliarias y de alquiler"
-                            ? "selected"
-                            : "")
-                            : ""}}
-                            value="Servicios financieros, seguros, actividades inmobiliarias y de alquiler">
-                            Servicios financieros, seguros, actividades inmobiliarias y de alquiler
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Educacion" ? "selected" : "")
-                            : ""}}
-                            value="Educacion">
-                            Educación
-                        </option>
-                        <option {{($userAnswer->business_activity_selector != null)
-                            ? ($userAnswer->business_activity_selector == "Otra" ? "selected" : "")
-                            : ""}}
-                            value="Otra">
-                            Otra
-                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -876,7 +535,7 @@ $userAnswer = $userData['0'];
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
 
 <script type="text/javascript">
-    WorkAndStudy('{{$userAnswer->do_for_living}}');
+    WorkAndStudy('{{$userData->do_for_living}}');
 </script>
 
 @endsection

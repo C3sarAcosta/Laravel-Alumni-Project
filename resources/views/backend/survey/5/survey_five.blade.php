@@ -1,17 +1,17 @@
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @extends('student.student_master')
 
 @section('TopTitle')Expéctativas y Actualización @endsection
 
 @section('title_section')Expéctativas de desarrollo, superación profesional y de actualización @endsection
 
+@php
+$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
+@endphp
+
 @section('student_content')
-<form method="post" action=" {{route('survey.five.store')}} ">
+<form method="post" action=" {{ route('survey.five.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -22,8 +22,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Si">Sí</option>
-                        <option value="No">No</option>
+                        @foreach ($yes_no as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -48,8 +49,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Si">Sí</option>
-                        <option value="No">No</option>
+                        @foreach ($yes_no as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

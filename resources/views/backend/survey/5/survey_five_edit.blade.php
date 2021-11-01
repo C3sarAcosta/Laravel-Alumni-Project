@@ -6,13 +6,12 @@
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-$userAnswer = $userData['0'];
 @endphp
 
 @section('student_content')
-<form method="post" action=" {{route('survey.five.update')}} ">
+<form method="post" action=" {{ route('survey.five.update') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -22,9 +21,12 @@ $userAnswer = $userData['0'];
                         title="¿Le interesa tomar cursos?" required=""
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
-                        <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{ $userAnswer->courses_yes_no == "Si" ? "selected" : "" }} value="Si">Sí</option>
-                        <option {{ $userAnswer->courses_yes_no == "No" ? "selected" : "" }} value="No">No</option>
+                        <option value="" disabled="">Selecciona una opción</option>
+                        @foreach ($yes_no as $option)
+                        <option value="{{ $option }}" {{ $userData->courses_yes_no == $option ? "selected" : "" }}>
+                            {{ $option }}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -32,8 +34,8 @@ $userAnswer = $userData['0'];
         <div class="col-6">
             <div class="form-group">
                 <label for="courses">Mencionar cursos</label>
-                <input id="courses" name="courses" type="text" class="form-control" {{$userAnswer->courses_yes_no== "Si"
-                ? "value=$userAnswer->courses" : "disabled" }}
+                <input id="courses" name="courses" type="text" class="form-control" {{ $userData->courses_yes_no == "Si"
+                ? "value=$userData->courses" : "disabled" }}
                 title="Mencionar los cursos, como cursos de marketing"
                 placeholder="Mencione cuáles serían de su agrado">
             </div>
@@ -49,9 +51,12 @@ $userAnswer = $userData['0'];
                         title="¿Le interesa tomar algún postgrado?" required=""
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
-                        <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{ $userAnswer->master_yes_no == "Si" ? "selected" : "" }} value="Si">Sí</option>
-                        <option {{ $userAnswer->master_yes_no == "No" ? "selected" : "" }} value="No">No</option>
+                        <option value="" disabled="">Selecciona una opción</option>
+                        @foreach ($yes_no as $option)
+                        <option value="{{ $option }}" {{ $userData->master_yes_no == $option ? "selected" : "" }}>
+                            {{ $option }}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -59,8 +64,8 @@ $userAnswer = $userData['0'];
         <div class="col-6">
             <div class="form-group">
                 <label for="master">Postgrado</label>
-                <input id="master" name="master" type="text" class="form-control" {{$userAnswer->master_yes_no== "Si" ?
-                "value=$userAnswer->master" : "disabled" }}
+                <input id="master" name="master" type="text" class="form-control" {{ $userData->master_yes_no== "Si" ?
+                "value=$userData->master" : "disabled" }}
                 title="Mencionar los postgrados, como ejemplo en mecatrónica"
                 placeholder="Mencione cuál sería de su agrado">
             </div>

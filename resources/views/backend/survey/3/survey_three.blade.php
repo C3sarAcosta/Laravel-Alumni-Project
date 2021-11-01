@@ -1,17 +1,29 @@
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @extends('student.student_master')
 
 @section('TopTitle')Ubicación Laboral @endsection
 
 @section('title_section')Ubicación laboral de los egresados @endsection
 
+@php
+$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
+
+$management_level = $consts['ManagementLevel'];
+$do_for_living = $consts['DoForLiving'];
+$speciality = $consts['Speciality'];
+$long_take_job = $consts['LongTakeJob'];
+$hear_about = $consts['HearAbout'];
+$language_most_spoken = $consts['LanguageMostSpoken'];
+$seniority = $consts['Seniority'];
+$salary = $consts['Salary'];
+$job_condition = $consts['JobCondition'];
+$business_structure = $consts['BusinessStructure'];
+$company_size = $consts['CompanySize'];
+@endphp
+
 @section('student_content')
 <form method="post" action="{{ route('survey.three.store') }}">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -22,10 +34,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Trabaja">Trabaja</option>
-                        <option value="Estudia">Estudia</option>
-                        <option value="Estudia y trabaja">Estudia y trabaja</option>
-                        <option value="No estudia ni trabaja">No estudia ni trabaja</option>
+                        @foreach ($do_for_living as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -38,13 +49,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="speciality">Indique que es lo que está estudiando</label>
                 <div class="controls">
-                    <select name="speciality" id="speciality" class="form-control">
+                    <select name="speciality" id="speciality" class="form-control"
+                        title="Indique lo que está estudiando">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Especialidad">Especialidad</option>
-                        <option value="Maestria">Maestría</option>
-                        <option value="Doctorado">Doctorado</option>
-                        <option value="Idiomas">Idiomas</option>
-                        <option value="Otro">Otro</option>
+                        @foreach ($speciality as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -53,6 +63,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="school">Especialidad e Institución</label>
                 <input type="text" id="school" name="school" class="form-control" id="email"
+                    title="Indique la institución donde estudia"
                     placeholder="Ejemplo: Mecatrónica, Tecnológico de Chihuahua" />
             </div>
         </div>
@@ -64,14 +75,14 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="long_take_job">Tiempo transcurrido para obtener el primer empleo</label>
                 <div class="controls">
-                    <select class="form-control" id="long_take_job" name="long_take_job">
+                    <select class="form-control" id="long_take_job" name="long_take_job"
+                        title="Indique el tiempo en conseguir su empleo">
                         <option value="" selected="" disabled="">
                             Selecciona una opción
                         </option>
-                        <option value="Antes de egresar">Antes de egresar</option>
-                        <option value="Menos de 6 meses">Menos de 6 meses</option>
-                        <option value="6 meses a 1 año">6 meses a 1 año</option>
-                        <option value="Mas de un año">Más de un año</option>
+                        @foreach ($long_take_job as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -80,12 +91,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="hear_about">Medio para obtener el empleo</label>
                 <div class="controls">
-                    <select class="form-control" id="hear_about" name="hear_about">
+                    <select class="form-control" id="hear_about" name="hear_about"
+                        title="Indique el medio para obtener el empleo">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Bolsa de trabajo del plantel">Bolsa de trabajo del plantel</option>
-                        <option value="Contacto personal">Contacto personal</option>
-                        <option value="Residencia profesional">Residencia profesional</option>
-                        <option value="Medios masivos de comunicacion">Medios masivos de comunicación</option>
+                        @foreach ($hear_about as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -95,28 +106,34 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                 <label>Requisito de contratación</label>
                 <div class="d-flex">
                     <div class="form-check mr-3">
-                        <input class="form-check-input" id="competence1" name="competence1" type="checkbox">
+                        <input class="form-check-input" id="competence1" name="competence1" type="checkbox"
+                            title="Competencia #1">
                         <label class="form-check-label">Competencias laborales</label>
                     </div>
                     <div class="form-check mr-3">
-                        <input class="form-check-input" id="competence2" name="competence2" type="checkbox">
+                        <input class="form-check-input" id="competence2" name="competence2" type="checkbox"
+                            title="Competencia #2">
                         <label class="form-check-label">Título Profesional</label>
                     </div>
                     <div class="form-check mr-3">
-                        <input class="form-check-input" id="competence3" name="competence3" type="checkbox">
+                        <input class="form-check-input" id="competence3" name="competence3" type="checkbox"
+                            title="Competencia #3">
                         <label class="form-check-label">Examen de selección</label>
                     </div>
                     <div class="form-check mr-3">
-                        <input class="form-check-input" id="competence4" name="competence4" type="checkbox">
+                        <input class="form-check-input" id="competence4" name="competence4" type="checkbox"
+                            title="Competencia #4">
                         <label class="form-check-label">Idioma Extranjero</label>
                     </div>
                     <div class="form-check mr-3">
-                        <input class="form-check-input" id="competence5" name="competence5" type="checkbox">
+                        <input class="form-check-input" id="competence5" name="competence5" type="checkbox"
+                            title="Competencia #5">
                         <label class="form-check-label">Actitudes y habilidades socio-comunicativas (principios y
                             valores)</label>
                     </div>
                     <div class="form-check mr-3">
-                        <input class="form-check-input" id="competence6" name="competence6" type="checkbox">
+                        <input class="form-check-input" id="competence6" name="competence6" type="checkbox"
+                            title="Competencia #6">
                         <label class="form-check-label">Ninguno</label>
                     </div>
                 </div>
@@ -127,18 +144,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="language_most_spoken">Idioma que utiliza en su trabajo actual</label>
                 <div class="controls">
-                    <select name="language_most_spoken" id="language_most_spoken" class="form-control">
+                    <select name="language_most_spoken" id="language_most_spoken" class="form-control"
+                        title="Idioma que es más utilizado en su trabajo">
                         <option value="" selected="" disabled="">Selecciona una lengua</option>
-                        <option value="Español">Español</option>
-                        <option value="Ingles">Inglés</option>
-                        <option value="Chino Mandarin">Chino mandarín</option>
-                        <option value="Frances">Francés</option>
-                        <option value="Arabe">Árabe</option>
-                        <option value="Bengali">Bengalí</option>
-                        <option value="Ruso">Ruso</option>
-                        <option value="Portugues">Portugués</option>
-                        <option value="Aleman">Alemán</option>
-                        <option value="Japones">Japonés</option>
+                        @foreach ($language_most_spoken as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -154,7 +165,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         </button>
                     </span>
                     <input type="text" class="form-control" id="speak_percent" name="speak_percent" value="0" max="100"
-                        min="0" readonly />
+                        min="0" readonly title="Porcentaje del habla" />
                     <span class="input-group-append plus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
                             <span class="fa fa-plus"></span>
@@ -173,7 +184,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         </button>
                     </span>
                     <input type="text" class="form-control" id="write_percent" name="write_percent" value="0" max="100"
-                        min="0" readonly />
+                        min="0" readonly title="Porcentaje de escritura" />
                     <span class="input-group-append plus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
                             <span class="fa fa-plus"></span>
@@ -192,7 +203,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         </button>
                     </span>
                     <input type="text" class="form-control" id="read_percent" name="read_percent" value="0" max="100"
-                        min="0" readonly />
+                        min="0" readonly title="Porcentaje de lectura" />
                     <span class="input-group-append plus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
                             <span class="fa fa-plus"></span>
@@ -211,7 +222,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         </button>
                     </span>
                     <input type="text" class="form-control" id="listen_percent" name="listen_percent" value="0"
-                        max="100" min="0" readonly />
+                        max="100" min="0" readonly title="Porcentaje de escucha" />
                     <span class="input-group-append plus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
                             <span class="fa fa-plus"></span>
@@ -225,12 +236,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="seniority">Antigüedad en el empleo actual</label>
                 <div class="controls">
-                    <select name="seniority" id="seniority" class="form-control">
+                    <select name="seniority" id="seniority" class="form-control"
+                        title="Indique la antigüedad en el empleo actual">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Menos de un año">Menos de un año</option>
-                        <option value="Un año">Un año</option>
-                        <option value="Tres años">Tres años</option>
-                        <option value="Mas de tres años">Más de tres años</option>
+                        @foreach ($seniority as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -246,28 +257,25 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="salary">Ingreso (Salario minimo diario)</label>
                 <div class="controls">
-                    <select name="salary" id="salary" class="form-control">
+                    <select name="salary" id="salary" class="form-control" title="Indique su salario">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Menos de cinco">Menos de cinco</option>
-                        <option value="Entre cinco y siete">Entre cinco y siete</option>
-                        <option value="Entre ocho y diez">Entre ocho y diez</option>
-                        <option value="Mas de diez">Más de diez</option>
+                        @foreach ($salary as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="management_level">Nivel jerárgico en el trabajo</label>
+                <label for="management_level">Nivel jerárquico en el trabajo</label>
                 <div class="controls">
-                    <select name="management_level" id="management_level" class="form-control">
+                    <select name="management_level" id="management_level" class="form-control"
+                        title="Indique el nivel jerárquico">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Tecnico">Técnico</option>
-                        <option value="Supervisor">Supervisor</option>
-                        <option value="Jefe de area">Jefe de área</option>
-                        <option value="Funcionario">Funcionario</option>
-                        <option value="Directivo">Directivo</option>
-                        <option value="Empresario">Empresario</option>
+                        @foreach ($management_level as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -276,11 +284,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="job_condition">Condición de trabajo</label>
                 <div class="controls">
-                    <select name="job_condition" id="job_condition" class="form-control">
+                    <select name="job_condition" id="job_condition" class="form-control"
+                        title="Indique la condición de su trabajo">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Base">Base</option>
-                        <option value="Eventual">Eventual</option>
-                        <option value="Contrato">Contrato</option>
+                        @foreach ($job_condition as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -289,14 +298,11 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="job_relationship">Relación del trabajo con su área de formación</label>
                 <div class="controls">
-                    <select name="job_relationship" id="job_relationship" class="form-control">
+                    <select name="job_relationship" id="job_relationship" class="form-control"
+                        title="Indique la relación con su área de formación">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="0">0%</option>
-                        <option value="20">20%</option>
-                        <option value="40">40%</option>
-                        <option value="60">60%</option>
-                        <option value="80">80%</option>
-                        <option value="100">100%</option>
+                        @for ($i = 0; $i < 101; $i+=20) <option value="{{ $i }}">{{ $i }}%</option>
+                            @endfor
                     </select>
                 </div>
             </div>
@@ -306,13 +312,14 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="business_name">Razón Social</label>
                 <input type="text" class="form-control" id="business_name" name="business_name"
-                    placeholder="Razón Social" />
+                    title="Indique el nombre de la empresa" placeholder="Razón Social" />
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="business_activity">Giro o actividad principal de la empresa u organismo</label>
                 <input type="text" class="form-control" id="business_activity" name="business_activity"
+                    title="Indique el giro de la empresa"
                     placeholder="Giro o actividad principal de la empresa u organismo. Ejemplo: Industrial, Comercial, etc." />
             </div>
         </div>
@@ -320,21 +327,24 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-4">
             <div class="form-group">
                 <label for="address">Domicilio</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Calle #Número">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Calle #Número"
+                    title="Indique el domicilio de la empresa">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="zip">Código Postal</label>
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()"
-                    onkeypress="ValidateNumbers(event);" placeholder="Código Postal" />
+                    onkeypress="ValidateNumbers(event);" placeholder="Código Postal"
+                    title="Indique el código postal, si espera se rellanará si es que existe información con ese código" />
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="suburb">Colonia</label>
                 <div class="controls">
-                    <input type="text" class="form-control" id="suburb" name="suburb" placeholder="Colonia" />
+                    <input type="text" class="form-control" id="suburb" name="suburb" placeholder="Colonia"
+                        title="Indique la colonia donde está la empresa" />
                     <select name="suburb_selector" id="suburb_selector" class="form-control" style="display: none"
                         onchange="onChangeSuburb()">
                         <option value="" selected="" disabled="">
@@ -347,19 +357,22 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-4">
             <div class="form-group">
                 <label for="state">Estado</label>
-                <input type="text" class="form-control" id="state" name="state" placeholder="Estado" />
+                <input type="text" class="form-control" id="state" name="state" placeholder="Estado"
+                    title="Indique el estado donde está la empresa" />
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="city">Ciudad</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder="Ciudad" />
+                <input type="text" class="form-control" id="city" name="city" placeholder="Ciudad"
+                    title="Indique la ciudad donde está la empresa" />
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="municipality">Municipio</label>
-                <input type="text" class="form-control" id="municipality" name="municipality" placeholder="Municipio" />
+                <input type="text" class="form-control" id="municipality" name="municipality" placeholder="Municipio"
+                    title="Indique el municipio donde está la empresa" />
             </div>
         </div>
 
@@ -373,20 +386,23 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-4">
             <div class="form-group">
                 <label for="fax">Fax</label>
-                <input type="text" class="form-control" id="fax" name="fax" placeholder="Fax">
+                <input type="text" class="form-control" id="fax" name="fax" placeholder="Fax"
+                    title="Indique el fax de la empresa">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="web_page">Página Web</label>
-                <input type="text" class="form-control" id="web_page" name="web_page" placeholder="Página Web">
+                <input type="text" class="form-control" id="web_page" name="web_page" placeholder="Página Web"
+                    title="Indique la página web de la empresa">
             </div>
         </div>
         <div class="col-12">
             <div class="form-group">
                 <label for="boss_email">Jefe inmediato</label>
                 <input type="text" class="form-control" id="boss_email" name="boss_email"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Correo electrónico del jefe" />
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Correo electrónico del jefe"
+                    title="Indique el correo del jefe inmediato" />
             </div>
         </div>
 
@@ -394,11 +410,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="business_structure">Su empresa u organismo es</label>
                 <div class="controls">
-                    <select name="business_structure" id="business_structure" class="form-control">
+                    <select name="business_structure" id="business_structure" class="form-control"
+                        title="Indique la estructura de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Publica">Pública</option>
-                        <option value="Privada">Privada</option>
-                        <option value="Social">Social</option>
+                        @foreach ($business_structure as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -408,12 +425,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="company_size">Tamaño de la empresa u organismo</label>
                 <div class="controls">
-                    <select name="company_size" id="company_size" class="form-control">
+                    <select name="company_size" id="company_size" class="form-control"
+                        title="Indique el tamaño de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Micro">Microempresa (de 1 a 30)</option>
-                        <option value="Pequena">Pequeña (De 31 a 100) </option>
-                        <option value="Mediana"> Mediana (De 101 a 500) </option>
-                        <option value="Grande">Grande (Más de 500) </option>
+                        @foreach ($company_size as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -423,32 +440,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="business_activity_selector">Actividad económica de la empresa u organismo</label>
                 <div class="controls">
-                    <select name="business_activity_selector" id="business_activity_selector" class="form-control">
+                    <select name="business_activity_selector" id="business_activity_selector" class="form-control"
+                        title="Indique la actividad de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Agro-industrial">Agro-industrial</option>
-                        <option value="Pesca y acuacultura">Pesca y acuacultura</option>
-                        <option value="Mineria">Minería</option>
-                        <option value="Alimentos, bebidas y tabaco">Alimentos, bebidas y tabaco</option>
-                        <option value="Textiles, vestido y cuero">Textiles, vestido y cuero</option>
-                        <option value="Madera y sus productos">Madera y sus productos</option>
-                        <option value="Papel, imprenta y editoriales">Papel, imprenta y editoriales</option>
-                        <option value="Quimica">Química</option>
-                        <option value="Caucho y Plastico">Caucho y Plástico</option>
-                        <option value="Minerales no metalicos">Minerales no metálicos</option>
-                        <option value="Industrias metalicas basicas">Industrias metálicas básicas</option>
-                        <option value="Productos metalicos, maquinaria y equipo">
-                            Productos metálicos, maquinaria y equipo
-                        </option>
-                        <option value="Construccion">Construcción</option>
-                        <option value="Electricidad, gas y agua">Electricidad, gas y agua</option>
-                        <option value="Comercio y turismo">Comercio y turismo</option>
-                        <option value="Transporte, almacenaje y comunicaciones">Transporte, almacenaje y comunicaciones
-                        </option>
-                        <option value="Servicios financieros, seguros, actividades inmobiliarias y de alquiler">
-                            Servicios financieros, seguros, actividades inmobiliarias y de alquiler
-                        </option>
-                        <option value="Educacion">Educación</option>
-                        <option value="Otra">Otra</option>
+                        @foreach ($business_activity as $activity)
+                        <option value="{{ $activity }}">{{ $activity }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

@@ -8,13 +8,17 @@ use App\Models\StudentSurvey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+//Enums
+use App\Enums\Status;
+use App\Enums\GoodBadQuestion;
 
 
 class SurveyTwoController extends Controller
 {
     public function SurveyTwoView()
     {
-        return view('backend.survey.2.survey_two');
+        $data["good_bad_question"] = GoodBadQuestion::getValues();
+        return view('backend.survey.2.survey_two', $data);
     }
 
     public function SurveyTwoStore(Request $request)
@@ -32,8 +36,8 @@ class SurveyTwoController extends Controller
         $data->participate_projects = $request->participate_projects;
         $data->save();
 
-        $user_update = StudentSurvey::where('user_id', $request->user_id)->firstOrFail();
-        $user_update->survey_two_done = 1;
+        $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
+        $user_update->survey_two_done = Status::Active;
         $user_update->save();
 
         $notification = array(
@@ -47,7 +51,8 @@ class SurveyTwoController extends Controller
     public function SurveyTwoEdit($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userData'] = SurveyTwo::where('user_id', $id)->get();
+        $data['userData'] = SurveyTwo::where('user_id', $id)->first();
+        $data["good_bad_question"] = GoodBadQuestion::getValues();
         return view('backend.survey.2.survey_two_edit', $data);
     }
 
@@ -76,9 +81,9 @@ class SurveyTwoController extends Controller
     public function SurveyTwoVerifiedRoute($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+        $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['userSurvey']['0']['survey_two_done'] == 1) {
+        if ($data['survey_two_done'] == Status::Active) {
             return redirect()->route('survey.two.edit', $user_id);
         } else {
             return redirect()->route('survey.two.index');

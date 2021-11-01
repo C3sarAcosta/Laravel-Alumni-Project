@@ -18,7 +18,7 @@ function onRequestHandler() {
         $("#suburb_selector")
             .empty()
             .append(`<option value="" selected="" disabled="">Selecciona una colonia</option>`);
-        
+
         if (data["data"]["estado"] != undefined) {
             $("#suburb").val("");
             state.value = data["data"]["estado"];
@@ -69,18 +69,18 @@ $(".yearpicker").yearpicker({
 });
 
 
- //Survey Three functions
+//Survey Three functions
 function changeActivity() {
     var value = $("#do_for_living").val();
 
-    if (value == "Estudia" || value == "Estudia y trabaja") {
+    if (value == "ESTUDIA" || value == "ESTUDIA Y TRABAJA") {
         $("#study_row").css("display", "flex");
         $("#hr1").css("display", "flex");
     } else {
         $("#study_row").css("display", "none");
         $("#hr1").css("display", "none");
     }
-    if (value == "Trabaja" || value == "Estudia y trabaja") {
+    if (value == "TRABAJA" || value == "ESTUDIA Y TRABAJA") {
         $("#work_row").css("display", "flex");
         $("#hr2").css("display", "flex");
     } else {
@@ -88,7 +88,7 @@ function changeActivity() {
         $("#hr2").css("display", "none");
     }
 
-    if (value == "Estudia" || value == "Trabaja" || value == "Estudia y trabaja") {
+    if (value == "ESTUDIA" || value == "TRABAJA" || value == "ESTUDIA Y TRABAJA") {
         $("#saveRow").addClass("d-flex justify-content-sm-center");
         $("#cancelRow").addClass("d-flex justify-content-sm-center");
     }
@@ -106,32 +106,32 @@ function changeSelect() {
     var value_agency = $("#agency_selector").val();
     var value_association = $("#association_selector").val();
 
-    if (value == "Si") {
+    if (value == "SI") {
         $("#courses").removeAttr("disabled");
     } else {
         $("#courses").attr("disabled", "");
     }
 
-    if (value_master == "Si") {
+    if (value_master == "SI") {
         $("#master").removeAttr("disabled");
     } else {
         $("#master").attr("disabled", "");
     }
 
 
-    if (value_organization == "Si") {
+    if (value_organization == "SI") {
         $("#organization").removeAttr("disabled");
     } else {
         $("#organization").attr("disabled", "");
     }
 
-    if (value_agency == "Si") {
+    if (value_agency == "SI") {
         $("#agency").removeAttr("disabled");
     } else {
         $("#agency").attr("disabled", "");
     }
 
-    if (value_association == "Si") {
+    if (value_association == "SI") {
         $("#association").removeAttr("disabled");
     } else {
         $("#association").attr("disabled", "");
@@ -147,24 +147,24 @@ function ValidateNumbers(e) {
 
 
 function WorkAndStudy(val) {
-    if (val == "Estudia y trabaja" || val == "Estudia" || val == "Trabaja") {
+    if (val == "ESTUDIA Y TRABAJA" || val == "ESTUDIA" || val == "TRABAJA") {
         $("#saveRow").addClass("d-flex justify-content-sm-center");
         $("#cancelRow").addClass("d-flex justify-content-sm-center");
 
         switch (val) {
-            case "Estudia y trabaja":
+            case "ESTUDIA Y TRABAJA":
                 $("#hr1").css("display", "flex");
                 $("#study_row").css("display", "flex");
                 $("#hr2").css("display", "flex");
                 $("#work_row").css("display", "flex");
                 break;
-            case "Estudia":
+            case "ESTUDIA":
                 $("#study_row").css("display", "flex");
                 $("#work_row").css("display", "none");
                 $("#hr1").css("display", "flex");
                 $("#hr2").css("display", "none");
                 break;
-            case "Trabaja":
+            case "TRABAJA":
                 $("#study_row").css("display", "none");
                 $("#work_row").css("display", "flex");
                 $("#hr1").css("display", "none");

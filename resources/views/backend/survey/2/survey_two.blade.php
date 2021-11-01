@@ -1,7 +1,3 @@
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @extends('student.student_master')
 
 @section('TopTitle')Pertenencia y Disponibilidad @endsection
@@ -10,11 +6,14 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 Pertinencia y disponibilidad de medio y recursos para el aprendizaje
 @endsection
 
-@section('student_content')
+@php
+$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
+@endphp
 
-<form method="post" action=" {{route('survey.two.store')}} ">
+@section('student_content')
+<form method="post" action=" {{ route('survey.two.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value="{{Auth::user()->id}}" style="display: none">
+    <input id="user_id" name="user_id" value="{{ Auth::user()->id }}" style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -25,10 +24,9 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Muy buena">Muy buena</option>
-                        <option value="Buena">Buena</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Mala">Mala</option>
+                        @foreach ($good_bad_question as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -38,14 +36,13 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                 <label for="syllabus">Plan de estudios</label>
                 <div class="controls">
                     <select name="syllabus" id="syllabus" required="" class="form-control"
-                        title="Por favor selecciona la calidad de plan de estudios"    
+                        title="Por favor selecciona la calidad de plan de estudios"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Muy buena">Muy buena</option>
-                        <option value="Buena">Buena</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Mala">Mala</option>
+                        @foreach ($good_bad_question as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -55,14 +52,13 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                 <label for="study_condition">Satisfacción condiciones de estudio (infraestructura)</label>
                 <div class="controls">
                     <select name="study_condition" id="study_condition" required="" class="form-control"
-                        title="Por favor selecciona la calidad de condiciones de estudio"    
+                        title="Por favor selecciona la calidad de condiciones de estudio"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Muy buena">Muy buena</option>
-                        <option value="Buena">Buena</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Mala">Mala</option>
+                        @foreach ($good_bad_question as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -79,10 +75,9 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Muy buena">Muy buena</option>
-                        <option value="Buena">Buena</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Mala">Mala</option>
+                        @foreach ($good_bad_question as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -97,10 +92,9 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Muy buena">Muy buena</option>
-                        <option value="Buena">Buena</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Mala">Mala</option>
+                        @foreach ($good_bad_question as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -115,10 +109,9 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Muy buena">Muy buena</option>
-                        <option value="Buena">Buena</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Mala">Mala</option>
+                        @foreach ($good_bad_question as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

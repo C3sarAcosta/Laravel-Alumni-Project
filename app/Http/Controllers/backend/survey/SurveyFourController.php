@@ -8,6 +8,7 @@ use App\Models\SurveyFour;
 use App\Models\StudentSurvey;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Enums\Status;
 
 class SurveyFourController extends Controller
 {
@@ -38,8 +39,8 @@ class SurveyFourController extends Controller
         $data->others = $request->others;
         $data->save();
 
-        $user_update = StudentSurvey::where('user_id', $request->user_id)->firstOrFail();
-        $user_update->survey_four_done = 1;
+        $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
+        $user_update->survey_four_done = Status::Active;
         $user_update->save();
 
         $notification = array(
@@ -55,7 +56,7 @@ class SurveyFourController extends Controller
     public function SurveyFourEdit($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userData'] = SurveyFour::where('user_id', $id)->get();
+        $data['userData'] = SurveyFour::where('user_id', $id)->first();
         return view('backend.survey.4.survey_four_edit', $data);
     }
 
@@ -91,9 +92,9 @@ class SurveyFourController extends Controller
     public function SurveyFourVerifiedRoute($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+        $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['userSurvey']['0']['survey_four_done'] == 1) {
+        if ($data['survey_four_done'] == Status::Active) {
             return redirect()->route('survey.four.edit', $user_id);
         } else {
             return redirect()->route('survey.four.index');

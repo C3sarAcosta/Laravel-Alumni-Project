@@ -21,12 +21,12 @@ class CreateSurveyThreesTable extends Migration
             $table->string('school')->nullable();
             $table->string('long_take_job')->nullable();
             $table->string('hear_about')->nullable();         
-            $table->smallInteger('competence1')->nullable();
-            $table->smallInteger('competence2')->nullable();
-            $table->smallInteger('competence3')->nullable();
-            $table->smallInteger('competence4')->nullable();
-            $table->smallInteger('competence5')->nullable();
-            $table->smallInteger('competence6')->nullable();
+            $table->tinyInteger('competence1')->nullable();
+            $table->tinyInteger('competence2')->nullable();
+            $table->tinyInteger('competence3')->nullable();
+            $table->tinyInteger('competence4')->nullable();
+            $table->tinyInteger('competence5')->nullable();
+            $table->tinyInteger('competence6')->nullable();
             $table->string('language_most_spoken')->nullable();
             $table->string('speak_percent')->nullable();
             $table->string('write_percent')->nullable();

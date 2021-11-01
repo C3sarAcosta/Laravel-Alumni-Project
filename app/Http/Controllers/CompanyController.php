@@ -4,31 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
-use App\Models\StudentSurvey;
-
+use App\Models\CompanySurvey;
+use App\Enums\Status;
 
 class CompanyController extends Controller
 {
     public function CompanyIndexView($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+        $data['companySurvey'] = CompanySurvey::where('user_id', $id)->first();
 
-        if ($data['userSurvey']->isEmpty()) {
-            $user_survey = new StudentSurvey();
+        if (empty($data['companySurvey'])) {
+            $user_survey = new CompanySurvey();
             $user_survey->user_id = $id;
-            $user_survey->survey_one_done = 2;
-            $user_survey->survey_two_done = 2;
-            $user_survey->survey_three_done = 2;
-            $user_survey->survey_four_done = 2;
-            $user_survey->survey_five_done = 2;
-            $user_survey->survey_six_done = 2;
-            $user_survey->survey_seven_done = 2;
-            $user_survey->survey_eight_done = 2;
+            $user_survey->survey_one_company_done = Status::Inactive;
+            $user_survey->survey_two_company_done = Status::Inactive;
+            $user_survey->survey_three_company_done = Status::Inactive;
             $user_survey->save();
 
-            $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+            $data['companySurvey'] = CompanySurvey::where('user_id', $id)->first();
         }
+
+        $data['survey_done'] = empty(CompanySurvey::where([['user_id', $id],
+            ['survey_one_company_done', 1],
+            ['survey_two_company_done', 1],
+            ['survey_three_company_done', 1],
+        ])->get()->first()) ? true : false;
 
         return view('company.index', $data);
     }
@@ -42,5 +43,15 @@ class CompanyController extends Controller
     {
         Auth::logout();
         return Redirect()->route('login');
+    }
+
+    public function CompanyRegister()
+    {
+        return view('auth.company_register');
+    }
+
+    public function CompanyLogin()
+    {
+        return view('auth.login');
     }
 }

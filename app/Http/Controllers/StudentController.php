@@ -5,28 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\StudentSurvey;
+use App\Enums\Status;
 
 class StudentController extends Controller
 {
     public function StudentIndexView($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+        $data['studentSurvey'] = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['userSurvey']->isEmpty()) {
+        if (empty($data['studentSurvey'])) {
             $user_survey = new StudentSurvey();
             $user_survey->user_id = $id;
-            $user_survey->survey_one_done = 2;
-            $user_survey->survey_two_done = 2;
-            $user_survey->survey_three_done = 2;
-            $user_survey->survey_four_done = 2;
-            $user_survey->survey_five_done = 2;
-            $user_survey->survey_six_done = 2;
-            $user_survey->survey_seven_done = 2;
-            $user_survey->survey_eight_done = 2;
+            $user_survey->survey_one_done = Status::Inactive;
+            $user_survey->survey_two_done = Status::Inactive;
+            $user_survey->survey_three_done = Status::Inactive;
+            $user_survey->survey_four_done = Status::Inactive;
+            $user_survey->survey_five_done = Status::Inactive;
+            $user_survey->survey_six_done = Status::Inactive;
+            $user_survey->survey_seven_done = Status::Inactive;
+            $user_survey->survey_eight_done = Status::Inactive;
             $user_survey->save();
 
-            $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+            $data['studentSurvey'] = StudentSurvey::where('user_id', $id)->first();
         }
 
         return view('student.index', $data);
@@ -37,7 +38,6 @@ class StudentController extends Controller
         //Api example
         // $usuarios = Http::get(env('API_ENDPOINT'));
         // $data['usuarios'] = $usuarios->json();
-        // dd($data['usuarios']);
         return view('student.show');
     }
 

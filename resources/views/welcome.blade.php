@@ -42,15 +42,43 @@
                         </li>
 
                         @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="nav-link dropdown-toggle">Egresados</a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
+                                style="left: 0px; right: inherit;">
+                                <li>
+                                    <a href="{{ route('register') }}" class="dropdown-item">
+                                        Registro
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('login') }}" class="dropdown-item">
+                                        Iniciar Sesión
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="nav-link dropdown-toggle">Empresas</a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
+                                style="left: 0px; right: inherit;">
+                                <li>
+                                    <a href="{{ route('company.register') }}" class="dropdown-item">
+                                        Registro
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('company.login') }}" class="dropdown-item">
+                                        Iniciar Sesión
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        @endif
+
+
                         @endauth
                         @endif
                     </ul>
@@ -168,11 +196,7 @@
     <footer id="footer">
         <div class="container">
             <div class="row d-flex flex-column align-items-center">
-                <div class="footer-logo">
-                    <a href="{{route('welcome')}}"><img style="width: 100px; height:50px;"
-                            src="{{asset('backend/img/school/SSE2.png')}}" alt=""></a>
-                </div>
-                <div class="social-icons">
+                <div class="social-icons text-light">
                     <a href="https://www.facebook.com/tecnologico.delicias/"><i
                             class="lni lni-facebook-original"></i></a>
                     <a href="https://www.delicias.tecnm.mx/"><i class="lni lni-website"></i></a>
@@ -190,4 +214,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="{{asset('backend/js/custom.js')}}"></script>
 </body>
+
 </html>

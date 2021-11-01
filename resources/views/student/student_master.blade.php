@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
@@ -7,6 +7,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>S.S.E | @yield('TopTitle')</title>
     <link rel="icon" href=" {{ asset ('backend/img/school/favicon.ico') }} ">

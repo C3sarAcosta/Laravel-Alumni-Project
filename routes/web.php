@@ -16,6 +16,10 @@ use App\Http\Controllers\backend\survey\SurveyFourController;
 use App\Http\Controllers\backend\survey\SurveyFiveController;
 use App\Http\Controllers\backend\survey\SurveySixController;
 use App\Http\Controllers\backend\survey\SurveySevenController;
+//Company Survey
+use App\Http\Controllers\backend\survey\CompanySurveyOneController;
+use App\Http\Controllers\backend\survey\CompanySurveyTwoController;
+use App\Http\Controllers\backend\survey\CompanySurveyThreeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,7 +108,32 @@ Route::prefix('egresado')->group(function () {
 });
 
 Route::prefix('empresas')->group(function () {
+    Route::get('/ingresar', [CompanyController::class, 'CompanyLogin'])->name('company.login');
+    Route::get('/registrar', [CompanyController::class, 'CompanyRegister'])->name('company.register');
     Route::get('/index/{user_id}', [CompanyController::class, 'CompanyIndexView'])->name('company.index');
     Route::get('/perfil', [CompanyController::class, 'CompanyProfileView'])->name('company.view');
     Route::get('/salir', [CompanyController::class, 'CompanyLogout'])->name('company.logout');
+
+    //Survey
+
+    //Survey One
+    Route::get('/encuesta/datos', [CompanySurveyOneController::class, 'CompanySurveyOneView'])->name('survey.one.company.index');
+    Route::post('/encuesta/datos/guardar', [CompanySurveyOneController::class, 'CompanySurveyOneStore'])->name('survey.one.company.store');
+    Route::get('/encuesta/datos/editar/{user_id}', [CompanySurveyOneController::class, 'CompanySurveyOneEdit'])->name('survey.one.company.edit');
+    Route::post('/encuesta/datos/actualizar', [CompanySurveyOneController::class, 'CompanySurveyOneUpdate'])->name('survey.one.company.update');
+    Route::get('/encuesta/datos/{user_id}', [CompanySurveyOneController::class, 'CompanySurveyOneVerifiedRoute'])->name('survey.one.company.verified');
+
+    //Survey Two
+    Route::get('/encuesta/ubicacion', [CompanySurveyTwoController::class, 'CompanySurveyTwoView'])->name('survey.two.company.index');
+    Route::post('/encuesta/ubicacion/guardar', [CompanySurveyTwoController::class, 'CompanySurveyTwoStore'])->name('survey.two.company.store');
+    Route::get('/encuesta/ubicacion/editar/{user_id}', [CompanySurveyTwoController::class, 'CompanySurveyTwoEdit'])->name('survey.two.company.edit');
+    Route::post('/encuesta/ubicacion/actualizar', [CompanySurveyTwoController::class, 'CompanySurveyTwoUpdate'])->name('survey.two.company.update');
+    Route::get('/encuesta/ubicacion/{user_id}', [CompanySurveyTwoController::class, 'CompanySurveyTwoVerifiedRoute'])->name('survey.two.company.verified');
+
+    //Survey three
+    Route::get('/encuesta/competencias', [CompanySurveyThreeController::class, 'CompanySurveyThreeView'])->name('survey.three.company.index');
+    Route::post('/encuesta/competencias/guardar', [CompanySurveyThreeController::class, 'CompanySurveyThreeStore'])->name('survey.three.company.store');
+    Route::get('/encuesta/competencias/editar/{user_id}', [CompanySurveyThreeController::class, 'CompanySurveyThreeEdit'])->name('survey.three.company.edit');
+    Route::post('/encuesta/competencias/actualizar', [CompanySurveyThreeController::class, 'CompanySurveyThreeUpdate'])->name('survey.three.company.update');
+    Route::get('/encuesta/competencias/{user_id}', [CompanySurveyThreeController::class, 'CompanySurveyThreeVerifiedRoute'])->name('survey.three.company.verified');
 });

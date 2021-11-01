@@ -1,17 +1,17 @@
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @extends('student.student_master')
 
 @section('TopTitle')Perfil del Egresado @endsection
 
 @section('title_section')Perfil del Egresado @endsection
 
+@php
+$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
+@endphp
+
 @section('student_content')
-<form method="post" action=" {{route('survey.one.store')}} ">
+<form method="post" action=" {{ route('survey.one.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{Auth::user()->id}} " style="display: none">
+    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -46,7 +46,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                     pattern="[0-9]{8}" maxlength="8" onkeypress="ValidateNumbers(event);"
                     oninvalid="this.setCustomValidity('Por favor ingrese su número de control')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu número de control"
-                    placeholder="Número de Control" value="{{Auth::user()->control_number}}" />
+                    placeholder="Número de Control" value="{{ Auth::user()->control_number }}" />
             </div>
         </div>
 
@@ -98,11 +98,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona un estado civil
                         </option>
-                        <option value="Soltero">Soltera(o)</option>
-                        <option value="Casado">Casada(o)</option>
-                        <option value="Divorciado">Divorciada(o)</option>
-                        <option value="Viudo">Viuda(o)</option>
-                        <option value="Concubinato">Concubinato</option>
+                        @foreach ($marital_status as $status)
+                        <option value="{{ $status }}">{{ $status }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -214,17 +212,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona tu carrera
                         </option>
-                        <option value="Industrial">Ing. Industrial</option>
-                        <option value="Electromecanica">Ing. Electromcánica</option>
-                        <option value="Sistemas">
-                            Ing. en Sistemas Computacionales
-                        </option>
-                        <option value="Gestion">Ing. Gestión Empresarial</option>
-                        <option value="Tics">Ing. en TICs</option>
-                        <option value="Renovables">
-                            Ing. en Energías Renovables
-                        </option>
-                        <option value="Informatica">Lic. Informática</option>
+                        @foreach ($careers as $career)
+                        <option value="{{ $career }}">{{ $career }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -239,17 +229,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona tu especialidad
                         </option>
-                        <option value="Industrial">Ing. Industrial</option>
-                        <option value="Electromecanica">Ing. Electromcánica</option>
-                        <option value="Sistemas">
-                            Ing. en Sistemas Computacionales
-                        </option>
-                        <option value="Gestion">Ing. Gestión Empresarial</option>
-                        <option value="Tics">Ing. en TICs</option>
-                        <option value="Renovables">
-                            Ing. en Energías Renovables
-                        </option>
-                        <option value="Informatica">Lic. Informática</option>
+                        @foreach ($specialties as $specialty)
+                        <option value="{{ $specialty }}">{{ $specialty }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -264,8 +246,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona una opción
                         </option>
-                        <option value="Si">Sí</option>
-                        <option value="No">No</option>
+                        @foreach ($yes_no as $option)
+                        <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -280,18 +263,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona un mes
                         </option>
-                        <option value="Enero">Enero</option>
-                        <option value="Febrero">Febrero</option>
-                        <option value="Marzo">Marzo</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Mayo">Mayo</option>
-                        <option value="Junio">Junio</option>
-                        <option value="Julio">Julio</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Septiembre">Septiembre</option>
-                        <option value="Octubre">Octubre</option>
-                        <option value="Noviembre">Noviembre</option>
-                        <option value="Diciembre">Diciembre</option>
+                        @foreach ($months as $month)
+                        <option value="{{ $month }}">{{ $month }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -306,6 +280,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             </div>
         </div>
     </div>
+
+    <hr />
 
     <div class="row">
         <div class="col-4">
@@ -338,24 +314,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona una lengua
                         </option>
-                        <option value="Ninguno">Ninguno</option>
-                        <option value="Chino Mandarin">Chino mandarín</option>
-                        <option value="Hindi">Hindi</option>
-                        <option value="Frances">Francés</option>
-                        <option value="Arabe">Árabe</option>
-                        <option value="Bengali">Bengalí</option>
-                        <option value="Ruso">Ruso</option>
-                        <option value="Portugues">Portugués</option>
-                        <option value="Indones">Indonés</option>
-                        <option value="Urdu">Urdu</option>
-                        <option value="Aleman">Alemán</option>
-                        <option value="Japones">Japonés</option>
-                        <option value="Suajili">Suajili</option>
-                        <option value="Marathi">Marathí</option>
-                        <option value="Telugu">Telugu</option>
-                        <option value="Chino Wu">Chino Wu</option>
-                        <option value="Tamil">Tamil</option>
-                        <option value="Turco">Turco</option>
+                        @foreach ($languages as $language)
+                        <option value="{{ $language }}">{{ $language }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

@@ -8,12 +8,15 @@ use App\Models\SurveyFive;
 use App\Models\StudentSurvey;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Enums\Status;
+use App\Enums\YesNoQuestion;
 
 class SurveyFiveController extends Controller
 {
     public function SurveyFiveView()
     {
-        return view('backend.survey.5.survey_five');
+        $data['yes_no'] = YesNoQuestion::getValues();
+        return view('backend.survey.5.survey_five', $data);
     }
 
     public function SurveyFiveStore(Request $request)
@@ -24,14 +27,14 @@ class SurveyFiveController extends Controller
         $data = new SurveyFive();
         $data->user_id = $request->user_id;
         $data->courses_yes_no = $request->courses_selector;
-        $data->courses = $request->courses_selector == "Si" ? $request->courses : null;
+        $data->courses = $request->courses_selector == YesNoQuestion::Yes ? strtr($request->courses, config('global.accented_chars')) : null;
 
         $data->master_yes_no = $request->master_selector;
-        $data->master = $request->master_selector == "Si" ? $request->master : null;
+        $data->master = $request->master_selector == YesNoQuestion::Yes ? strtr($request->master, config('global.accented_chars')) : null;
         $data->save();
 
-        $user_update = StudentSurvey::where('user_id', $request->user_id)->firstOrFail();
-        $user_update->survey_five_done = 1;
+        $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
+        $user_update->survey_five_done = Status::Active;
         $user_update->save();
 
         $notification = array(
@@ -45,7 +48,8 @@ class SurveyFiveController extends Controller
     public function SurveyFiveEdit($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userData'] = SurveyFive::where('user_id', $id)->get();
+        $data['userData'] = SurveyFive::where('user_id', $id)->first();
+        $data['yes_no'] = YesNoQuestion::getValues();
         return view('backend.survey.5.survey_five_edit', $data);
     }
 
@@ -56,9 +60,9 @@ class SurveyFiveController extends Controller
         $validateData = $request->validate(['user_id' => 'required']);
 
         $editData->courses_yes_no = $request->courses_selector;
-        $editData->courses = $request->courses_selector == "Si" ? $request->courses : null;
+        $editData->courses = $request->courses_selector == YesNoQuestion::Yes ? strtr($request->courses, config('global.accented_chars')) : null;
         $editData->master_yes_no = $request->master_selector;
-        $editData->master = $request->master_selector == "Si" ? $request->master : null;
+        $editData->master = $request->master_selector == YesNoQuestion::Yes ? strtr($request->master, config('global.accented_chars')) : null;
         $editData->save();
 
         $notification = array(
@@ -72,9 +76,9 @@ class SurveyFiveController extends Controller
     public function SurveyFiveVerifiedRoute($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data['userSurvey'] = StudentSurvey::where('user_id', $id)->get();
+        $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['userSurvey']['0']['survey_five_done'] == 1) {
+        if ($data['survey_five_done'] == Status::Active) {
             return redirect()->route('survey.five.edit', $user_id);
         } else {
             return redirect()->route('survey.five.index');

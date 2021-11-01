@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Enums\Role;
 
 class UserController extends Controller
 {
@@ -14,11 +15,14 @@ class UserController extends Controller
         $user_id = Crypt::encrypt(Auth::user()->id);
 
         switch ($role) {
-            case "admin":
+            case Role::Administrator:
                 return  redirect()->route('admin.index');
                 break;
-            case "student":
+            case Role::Student:
                 return redirect()->route('student.index', $user_id);
+                break;
+            case Role::Company:
+                return redirect()->route('company.index', $user_id);
                 break;
         }
     }

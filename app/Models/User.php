@@ -30,7 +30,8 @@ class User extends Authenticatable
         'control_number',
         'year_graduated',
         'id_career',
-        'role'
+        'role',
+        'rfc'
     ];
 
     /**

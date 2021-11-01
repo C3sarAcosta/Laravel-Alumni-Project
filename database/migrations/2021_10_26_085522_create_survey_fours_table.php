@@ -19,16 +19,16 @@ class CreateSurveyFoursTable extends Migration
             $table->string('efficiency_work_activities');
             $table->string('academic_training');
             $table->string('usefulness_professional_residence');
-            $table->smallInteger('study_area');
-            $table->smallInteger('title');
-            $table->smallInteger('experience');
-            $table->smallInteger('job_competence');
-            $table->smallInteger('positioning');
-            $table->smallInteger('languages');
-            $table->smallInteger('recommendations');
-            $table->smallInteger('personality');
-            $table->smallInteger('leadership');
-            $table->smallInteger('others');            
+            $table->tinyInteger('study_area');
+            $table->tinyInteger('title');
+            $table->tinyInteger('experience');
+            $table->tinyInteger('job_competence');
+            $table->tinyInteger('positioning');
+            $table->tinyInteger('languages');
+            $table->tinyInteger('recommendations');
+            $table->tinyInteger('personality');
+            $table->tinyInteger('leadership');
+            $table->tinyInteger('others');            
             $table->timestamps();
         });
     }
