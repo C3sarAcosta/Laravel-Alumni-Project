@@ -36,17 +36,21 @@ class CompanySurveyTwoController extends Controller
         $data->save();
 
         $id = $data->id;
-        $countCareer = count($request->career);
-        if($countCareer != null){
-            for ($i = 0; $i < $countCareer; $i++) {
-                $dataStudent = new CompanyGraduatesWorking();
-                $dataStudent->company_survey_id = $id;
-                $dataStudent->career = $request->career[$i];
-                $dataStudent->level =  $request->level[$i];
-                $dataStudent->amount =  $request->amount[$i];
-                $dataStudent->save();
+
+        if ($request->career != null) {
+            $countCareer = count($request->career);
+            if ($countCareer != null) {
+                for ($i = 0; $i < $countCareer; $i++) {
+                    $dataStudent = new CompanyGraduatesWorking();
+                    $dataStudent->company_survey_id = $id;
+                    $dataStudent->career = $request->career[$i];
+                    $dataStudent->level =  $request->level[$i];
+                    $dataStudent->amount =  $request->amount[$i];
+                    $dataStudent->save();
+                }
             }
         }
+
 
         $user_update = CompanySurvey::where('user_id', $request->user_id)->first();
         $user_update->survey_two_company_done = Status::Active;
@@ -75,9 +79,37 @@ class CompanySurveyTwoController extends Controller
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         $editData = CompanySurveyTwo::all()->where('user_id', $request->user_id)->first();
         $validateData = $request->validate(['user_id' => 'required']);
+        $id = $editData->id;
 
+        $editData->number_graduates = $request->number_graduates;
+        $editData->congruence = $request->congruence;
+        $editData->requirements = $request->requirements;
+        $editData->most_demanded_career = $request->most_demanded_career;
         $editData->save();
 
+
+
+        $validateGraduates = CompanyGraduatesWorking::where('company_survey_id', $id)->get()->isEmpty();
+        if ($request->career == null && !$validateGraduates) {
+            $notification = array(
+                'message' => 'Con un alumno ingresado no puedes dejar vacío el registro',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        } else {
+            if ($request->career != null) {
+                $countCareer = count($request->career);
+                CompanyGraduatesWorking::where('company_survey_id', $id)->delete();
+                for ($i = 0; $i < $countCareer; $i++) {
+                    $dataStudent = new CompanyGraduatesWorking();
+                    $dataStudent->company_survey_id = $id;
+                    $dataStudent->career = $request->career[$i];
+                    $dataStudent->level =  $request->level[$i];
+                    $dataStudent->amount =  $request->amount[$i];
+                    $dataStudent->save();
+                }
+            }
+        }
         $notification = array(
             'message' => 'Encuesta *Ubicación Laboral de los Egresados* actualizada con éxito',
             'alert-type' => 'success'

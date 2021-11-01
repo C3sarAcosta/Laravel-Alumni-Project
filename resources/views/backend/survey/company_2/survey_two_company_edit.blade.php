@@ -38,9 +38,55 @@ $levels = $consts['Level'];
     </div>
 
     <hr>
+   
     <label class="mb-4">Número de egresados del Instituto Tecnológico y nivel jerárquico que ocupan en su
         organización.</label>
     <div class="add_item">
+        @if($userDataGraduates->isEmpty())
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Carreras</label>
+                    <div class="controls">
+                        <select name="career[]" class="form-control">
+                            <option value="" selected="" disabled="">
+                                Seleccione la carrera
+                            </option>
+                            @foreach ($careers as $career)
+                            <option value="{{ $career }}">{{ $career }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Nivel jerárquico</label>
+                    <div class="controls">
+                        <select name="level[]" class="form-control">
+                            <option value="" selected="" disabled="">
+                                Seleccione el nivel jerárquico
+                            </option>
+                            @foreach ($levels as $level)
+                            <option value="{{ $level }}">{{ $level }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Cantidad</label>
+                    <div class="controls">
+                        <input type="text" name="amount[]" class="form-control" placeholder="Cantidad">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" style="padding-top: 30px">
+                <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> </span>
+            </div>
+        </div>
+        @else
         @foreach ($userDataGraduates as $graduates)
         <div id="delete_whole_extra_item_add" class="delete_whole_extra_item_add">
             <div class="form-row">
@@ -94,6 +140,7 @@ $levels = $consts['Level'];
             </div>
         </div>
         @endforeach
+        @endif
     </div>
     <hr>
 
@@ -160,7 +207,7 @@ $levels = $consts['Level'];
     </div>
     <div class="row mt-2 d-flex justify-content-sm-center">
         <div class="col-4">
-            <input type="submit" class="btn btn-block bg-gradient-primary" value="Guardar Encuesta">
+            <input type="submit" class="btn btn-block bg-gradient-primary" value="Actualizar Encuesta">
         </div>
     </div>
 </form>

@@ -44,7 +44,7 @@ $levels = $consts['Level'];
                 <div class="form-group">
                     <label>Carreras</label>
                     <div class="controls">
-                        <select name="career[]" required="" class="form-control">
+                        <select name="career[]" class="form-control">
                             <option value="" selected="" disabled="">
                                 Seleccione la carrera
                             </option>
@@ -59,7 +59,7 @@ $levels = $consts['Level'];
                 <div class="form-group">
                     <label>Nivel jerárquico</label>
                     <div class="controls">
-                        <select name="level[]" required="" class="form-control">
+                        <select name="level[]" class="form-control">
                             <option value="" selected="" disabled="">
                                 Seleccione el nivel jerárquico
                             </option>
@@ -160,7 +160,7 @@ $levels = $consts['Level'];
                     <div class="form-group">
                         <label>Carreras</label>
                         <div class="controls">
-                            <select name="career[]" required="" class="form-control">
+                            <select name="career[]" class="form-control">
                                 <option value="" selected="" disabled="">
                                     Seleccione la carrera
                                 </option>
@@ -175,7 +175,7 @@ $levels = $consts['Level'];
                     <div class="form-group">
                         <label>Nivel jerárquico</label>
                         <div class="controls">
-                            <select name="level[]" required="" class="form-control">
+                            <select name="level[]" class="form-control">
                                 <option value="" selected="" disabled="">
                                     Seleccione el nivel jerárquico
                                 </option>
