@@ -20,7 +20,11 @@ use App\Http\Controllers\backend\survey\SurveySevenController;
 use App\Http\Controllers\backend\survey\CompanySurveyOneController;
 use App\Http\Controllers\backend\survey\CompanySurveyTwoController;
 use App\Http\Controllers\backend\survey\CompanySurveyThreeController;
-
+//Setup
+use App\Http\Controllers\backend\configuration\CareerController;
+use App\Http\Controllers\backend\configuration\SpecialtyController;
+use App\Http\Controllers\backend\configuration\GraduateController;
+use App\Http\Controllers\backend\configuration\CompanyConfigurationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,18 +42,49 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\UserController@index')->name('dashboard');
 
+//Admin routes
 Route::prefix('admin')->group(function () {
     Route::get('/index', [AdminController::class, 'AdminIndexView'])->name('admin.index');
     Route::get('/perfil', [AdminController::class, 'AdminProfileView'])->name('admin.view');
     Route::get('/salir', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+
+    //Setup
+
+    ////Career
+    Route::get('/carrera', [CareerController::class, 'CareerView'])->name('career.view');
+    Route::get('/carrera/agregar', [CareerController::class, 'CareerAdd'])->name('career.add');
+    Route::post('/carrera/guardar', [CareerController::class, 'CareerStore'])->name('career.store');
+    Route::get('/carrera/editar/{id}', [CareerController::class, 'CareerEdit'])->name('career.edit');
+    Route::post('/carrera/actualizar/{id}', [CareerController::class, 'CareerUpdate'])->name('career.update');
+
+    ////Specialty
+    Route::get('/especialidad', [SpecialtyController::class, 'SpecialtyView'])->name('specialty.view');
+    Route::get('/especialidad/agregar', [SpecialtyController::class, 'SpecialtyAdd'])->name('specialty.add');
+    Route::post('/especialidad/guardar', [SpecialtyController::class, 'SpecialtyStore'])->name('specialty.store');
+    Route::get('/especialidad/editar/{id}', [SpecialtyController::class, 'SpecialtyEdit'])->name('specialty.edit');
+    Route::post('/especialidad/actualizar/{id}', [SpecialtyController::class, 'SpecialtyUpdate'])->name('specialty.update');
+
+    ////Student
+    Route::get('/egresado', [GraduateController::class, 'GraduateView'])->name('graduate.view');
+    Route::get('/egresado/agregar', [GraduateController::class, 'GraduateAdd'])->name('graduate.add');
+    Route::post('/egresado/guardar', [GraduateController::class, 'GraduateStore'])->name('graduate.store');
+    Route::get('/egresado/editar/{id}', [GraduateController::class, 'GraduateEdit'])->name('graduate.edit');
+    Route::post('/egresado/actualizar/{id}', [GraduateController::class, 'GraduateUpdate'])->name('graduate.update');
+
+    ////Company
+    Route::get('/empresa', [CompanyConfigurationController::class, 'CompanyView'])->name('company.config.view');
+    Route::get('/empresa/agregar', [CompanyConfigurationController::class, 'CompanyAdd'])->name('company.config.add');
+    Route::post('/empresa/guardar', [CompanyConfigurationController::class, 'CompanyStore'])->name('company.config.store');
+    Route::get('/empresa/editar/{id}', [CompanyConfigurationController::class, 'CompanyEdit'])->name('company.config.edit');
+    Route::post('/empresa/actualizar/{id}', [CompanyConfigurationController::class, 'CompanyUpdate'])->name('company.config.update');
 });
 
+
+//Student Routes
 Route::prefix('egresado')->group(function () {
     Route::get('/index/{user_id}', [StudentController::class, 'StudentIndexView'])->name('student.index');
     Route::get('/perfil', [StudentController::class, 'StudentProfileView'])->name('student.view');
     Route::get('/salir', [StudentController::class, 'StudentLogout'])->name('student.logout');
-
-    //// Survey Start////
 
     //Survey One
     Route::get('/encuesta/perfil', [SurveyOneController::class, 'SurveyOneView'])->name('survey.one.index');
@@ -100,21 +135,18 @@ Route::prefix('egresado')->group(function () {
     Route::post('/encuesta/comentarios/actualizar', [SurveySevenController::class, 'SurveySevenUpdate'])->name('survey.seven.update');
     Route::get('/encuesta/comentarios/{user_id}', [SurveySevenController::class, 'SurveySevenVerifiedRoute'])->name('survey.seven.verified');
 
-    //Verified Survey Route
-    //// Survey End////
-
     //Jobs
     Route::get('/trabajos/ofertas', [StudentController::class, 'JobsView'])->name('jobs.view');
 });
 
+
+//Company routes
 Route::prefix('empresas')->group(function () {
     Route::get('/ingresar', [CompanyController::class, 'CompanyLogin'])->name('company.login');
     Route::get('/registrar', [CompanyController::class, 'CompanyRegister'])->name('company.register');
     Route::get('/index/{user_id}', [CompanyController::class, 'CompanyIndexView'])->name('company.index');
     Route::get('/perfil', [CompanyController::class, 'CompanyProfileView'])->name('company.view');
     Route::get('/salir', [CompanyController::class, 'CompanyLogout'])->name('company.logout');
-
-    //Survey
 
     //Survey One
     Route::get('/encuesta/datos', [CompanySurveyOneController::class, 'CompanySurveyOneView'])->name('survey.one.company.index');

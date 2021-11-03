@@ -38,3 +38,5 @@ INSERT INTO `specialties` (`name`, `id_career`, `created_at`, `updated_at`) VALU
 SELECT @renovables := `id` FROM careers WHERE name = 'INGENIERIA ENERGIAS RENOVABLES';
 INSERT INTO `specialties` (`name`, `id_career`, `created_at`, `updated_at`) VALUES ('MODELADO SOLAR Y EOLICO', @renovables, NOW(), NOW());
 INSERT INTO `specialties` (`name`, `id_career`, `created_at`, `updated_at`) VALUES ('DISEÑO SOLAR Y EOLICO', @renovables, NOW(), NOW());
+
+INSERT INTO users (`name`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES('ADMINISTRADOR', 'gestiontec@delicias.tecnm.mx','$2y$10$uGUk4iGo7qpmJ9a2r4dot.5M9NKutGdfMb9F6tGDUwoG1mJyBFTii', 'admin', NOW(), NOW());

@@ -51,7 +51,6 @@ class CompanySurveyTwoController extends Controller
             }
         }
 
-
         $user_update = CompanySurvey::where('user_id', $request->user_id)->first();
         $user_update->survey_two_company_done = Status::Active;
         $user_update->save();
@@ -86,8 +85,6 @@ class CompanySurveyTwoController extends Controller
         $editData->requirements = $request->requirements;
         $editData->most_demanded_career = $request->most_demanded_career;
         $editData->save();
-
-
 
         $validateGraduates = CompanyGraduatesWorking::where('company_survey_id', $id)->get()->isEmpty();
         if ($request->career == null && !$validateGraduates) {

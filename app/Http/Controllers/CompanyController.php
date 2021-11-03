@@ -26,9 +26,9 @@ class CompanyController extends Controller
         }
 
         $data['survey_done'] = empty(CompanySurvey::where([['user_id', $id],
-            ['survey_one_company_done', 1],
-            ['survey_two_company_done', 1],
-            ['survey_three_company_done', 1],
+            ['survey_one_company_done', Status::Active],
+            ['survey_two_company_done', Status::Active],
+            ['survey_three_company_done', Status::Active],
         ])->get()->first()) ? true : false;
 
         return view('company.index', $data);

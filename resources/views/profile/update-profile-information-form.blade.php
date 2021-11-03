@@ -9,16 +9,17 @@
 
     <x-slot name="form">
         <!-- Profile Photo -->
+        @if (Auth::user()->role != 'admin')
         <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
             <!-- Profile Photo File Input -->
             <input type="file" class="hidden" wire:model="photo" x-ref="photo" x-on:change="
-                                    photoName = $refs.photo.files[0].name;
-                                    const reader = new FileReader();
-                                    reader.onload = (e) => {
-                                        photoPreview = e.target.result;
-                                    };
-                                    reader.readAsDataURL($refs.photo.files[0]);
-                            " />
+                                                        photoName = $refs.photo.files[0].name;
+                                                        const reader = new FileReader();
+                                                        reader.onload = (e) => {
+                                                            photoPreview = e.target.result;
+                                                        };
+                                                        reader.readAsDataURL($refs.photo.files[0]);
+                                                " />
 
             <x-jet-label for="photo" value="{{ __('Fotografía') }}" />
 
@@ -39,7 +40,8 @@
                 {{ __('Seleccionar nueva fotografía') }}
             </x-jet-secondary-button>
 
-            <x-jet-label class="mt-2 mr-2" value="{{ __('(Opcional) De preferencia una imagen con dimensiones 512x512, en caso de contactar con empleadores ver bien tu fotografía.') }}" />
+            <x-jet-label class="mt-2 mr-2"
+                value="{{ __('(Opcional) De preferencia una imagen con dimensiones 512x512, en caso de contactar con empleadores ver bien tu fotografía.') }}" />
 
             {{-- <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
                 {{ __('Remover foto') }}
@@ -47,7 +49,7 @@
 
             <x-jet-input-error for="photo" class="mt-2" />
         </div>
-
+        @endif
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">

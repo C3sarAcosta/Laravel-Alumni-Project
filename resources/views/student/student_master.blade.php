@@ -46,7 +46,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <!-- Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    
+
     {{-- Own libraries --}}
     @yield('head')
 
@@ -119,6 +119,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <!-- AdminLTE App -->
     <script src="{{ asset('backend/lib/adminlte/js/adminlte.js') }}"></script>
 
+    <!-- SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         @if(Session::has('message'))
     		var type = "{{ Session::get('alert-type', 'info') }}";

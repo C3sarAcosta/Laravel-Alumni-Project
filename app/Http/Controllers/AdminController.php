@@ -2,15 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
+use App\Models\StudentSurvey;
+use App\Enums\Role;
+use App\Enums\Status;
 
 class AdminController extends Controller
 {
   public function AdminIndexView()
   {
-    return view('admin.index');
+    $data['gradute'] = User::where('role', Role::Student)->get()->count();
+    $data['company'] = User::where('role', Role::Company)->get()->count();
+    $data['survey'] = StudentSurvey::where([
+      ['survey_one_done', Status::Active],
+      ['survey_two_done', Status::Active],
+      ['survey_three_done', Status::Active],
+      ['survey_four_done', Status::Active],
+      ['survey_five_done', Status::Active],
+      ['survey_six_done', Status::Active],
+      ['survey_seven_done', Status::Active],
+      ['survey_eight_done', Status::Active],
+    ])
+      ->get()
+      ->count();
+
+    $data['percent'] = round($data['survey'] / $data['gradute'], 2) * 100;
+    return view('admin.index', $data);
   }
 
   public function AdminProfileView()

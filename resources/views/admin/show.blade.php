@@ -1,4 +1,4 @@
-@extends('student.student_master')
+@extends('admin.admin_master')
 
 @section('TopTitle')Perfil @endsection
 
