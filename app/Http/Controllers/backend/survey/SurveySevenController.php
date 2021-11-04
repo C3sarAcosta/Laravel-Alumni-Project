@@ -25,7 +25,8 @@ class SurveySevenController extends Controller
         $data = new SurveySeven();
         $data->user_id = $request->user_id;
 
-        $data->comments = strtr($request->comments, config('global.accented_chars'));
+        // $data->comments = strtr($request->comments, config('global.accented_chars'));
+        $data->comments = $request->comments;
         $data->save();
 
         $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
@@ -54,7 +55,8 @@ class SurveySevenController extends Controller
         $validateData = $request->validate(['user_id' => 'required']);
 
         if ($request->comments != null || $request->comments != "") {
-            $editData->comments = strtr($request->comments, config('global.accented_chars'));
+            // $editData->comments = strtr($request->comments, config('global.accented_chars'));
+            $editData->comments = $request->comments;
             $editData->save();
         }
 

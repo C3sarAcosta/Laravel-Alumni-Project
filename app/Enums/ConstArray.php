@@ -30,34 +30,34 @@ final class ConstArray extends Enum
         0 => "ANTES DE EGRESAR",
         1 => "MENOS DE 6 MESES",
         2 => "6 MESES A 1 AÑO",
-        3 => "MAS DE UN AÑO",
+        3 => "MÁS DE UN AÑO",
     ];
 
     const HearAbout = [
         0 => "BOLSA DE TRABAJO DEL PLANTEL",
         1 => "CONTACTO PERSONAL",
         2 => "RESIDENCIA PROFESIONAL",
-        3 => "MEDIOS MASIVOS DE COMUNICACION",
+        3 => "MEDIOS MASIVOS DE COMUNICACIÓN",
     ];
 
     const LanguageMostSpoken = [
         0 => "ESPAÑOL",
-        1 => "INGLES",
-        2 => "CHINO MANDARIN",
-        3 => "FRANCES",
-        4 => "ARABE",
+        1 => "INGLÉS",
+        2 => "CHINO MANDARÍN",
+        3 => "FRANCÉS",
+        4 => "ÁRABE",
         5 => "BENGALI",
         6 => "RUSO",
-        7 => "PORTUGUES",
-        8 => "ALEMAN",
-        9 => "JAPONES",
+        7 => "PORTUGUÉS",
+        8 => "ALEMÉN",
+        9 => "JAPONÉS",
     ];
 
     const Seniority = [
         0 => "MENOS DE UN AÑO",
         1 => "UN AÑO",
         2 => "TRES AÑOS",
-        3 => "MAS DE TRES AÑOS",
+        3 => "MÁS DE TRES AÑOS",
     ];
 
 
@@ -65,13 +65,13 @@ final class ConstArray extends Enum
         0 => "MENOS DE CINCO",
         1 => "ENTRE CINCO Y SIETE",
         2 => "ENTRE OCHO Y DIEZ",
-        3 => "MAS DE DIEZ",
+        3 => "MÁS DE DIEZ",
     ];
 
     const ManagementLevel = [
-        0 => "TECNICO",
+        0 => "TÉCNICO",
         1 => "SUPERVISOR",
-        2 => "JEFE DE AREA",
+        2 => "JEFE DE ÁREA",
         3 => "FUNCIONARIO",
         4 => "DIRECTIVO",
         5 => "EMPRESARIO"
@@ -84,14 +84,14 @@ final class ConstArray extends Enum
     ];
 
     const BusinessStructure = [
-        0 => "PUBLICA",
+        0 => "PÚBLICA",
         1 => "PRIVADA",
         2 => "SOCIAL",
     ];
 
     const CompanySize = [
         0 => "MICRO",
-        1 => "PEQUENA",
+        1 => "PEQUEÑA",
         2 => "MEDIANA",
         3 => "GRANDE",
     ];
@@ -102,21 +102,21 @@ final class ConstArray extends Enum
         2 => "DE 2 A 5",
         3 => "DE 6 A 8",
         4 => "DE 9 A 10",
-        5 => "MAS DE 10",
+        5 => "MÁS DE 10",
     ];
 
     const Congruence = [
         0 => "COMPLETAMENTE",
         1 => "MEDIANAMENTE",
         2 => "LIGERAMENTE",
-        3 => "NINGUNA RELACION",
+        3 => "NINGUNA RELACIÓN",
     ];
 
     const Requirements = [
-        0 => "AREA O CAMPO DE ESTUDIO",
-        1 => "TITULACION",
-        2 => "EXPERIENCIA LABORAL/PRACTICA (ANTES DE EGRESAR)",
-        3 => "POSICIONAMIENTO DE LA INSTITUCION DE EGRESO",
+        0 => "ÁREA O CAMPO DE ESTUDIO",
+        1 => "TITULACIÓN",
+        2 => "EXPERIENCIA LABORAL/PRÁCTICA (ANTES DE EGRESAR)",
+        3 => "POSICIONAMIENTO DE LA INSTITUCIÓN DE EGRESO",
         4 => "CONOCIMIENTO DE IDIOMAS EXTRANJEROS",
         5 => "RECOMENDACIONES/REFERENCIAS",
         6 => "PERSONALIDAD/ACTITUDES",
@@ -127,7 +127,7 @@ final class ConstArray extends Enum
         0 => "MANDO SUPERIOR",
         1 => "MANDO INTERMEDIO",
         2 => "SUPERVISOR O EQUIVALENTE",
-        3 => "TECNICO O AUXILIAR",
+        3 => "TÉCNICO O AUXILIAR",
         4 => "DIRECTOR DE DEPARTAMENTO",
         5 => "GERENTE",
         6 => "SUPERVISOR",

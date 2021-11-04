@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 use App\Models\User;
 use App\Models\StudentSurvey;
+use App\Models\SurveyThree;
+use App\Models\SurveyTwo;
+
+
 use App\Enums\Role;
 use App\Enums\Status;
 
@@ -28,6 +33,21 @@ class AdminController extends Controller
       ->count();
 
     $data['percent'] = round($data['survey'] / $data['gradute'], 2) * 100;
+
+    $data['survey_three'] = SurveyThree::groupBy('do_for_living')
+      ->selectRaw('count(*) as total, do_for_living')
+      ->get();
+
+    $data['careers'] = User::groupBy('careers.name')
+      ->selectRaw('count(*) as total, careers.name')
+      ->join('careers', 'careers.id', '=', 'users.id_career')
+      ->where('users.role', 'student')
+      ->orderBy('total')
+      ->get();
+
+    $data['survey_three'] = SurveyTwo::groupBy('do_for_living')
+    ->selectRaw('count(*) as total, do_for_living')
+    ->get();     
     return view('admin.index', $data);
   }
 

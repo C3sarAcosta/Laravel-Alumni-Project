@@ -17,7 +17,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="comments">Comentarios</label>
                 <textarea id="comments" name="comments" class="form-control" rows="8"
-                    placeholder="Escriba aquí sus comentarios"> {{ userData->comments }} </textarea>
+                    placeholder="Escriba aquí sus comentarios">{{ $userData->comments }}</textarea>
             </div>
         </div>
     </div>

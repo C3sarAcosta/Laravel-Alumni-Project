@@ -6,7 +6,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 @endphp
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>S.S.E | @yield('TopTitle')</title>
     <link rel="icon" href=" {{ asset ('backend/img/school/favicon.ico') }} ">

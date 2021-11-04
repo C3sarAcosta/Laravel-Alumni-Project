@@ -27,13 +27,13 @@ class SurveySixController extends Controller
         $data = new SurveySix();
         $data->user_id = $request->user_id;
         $data->organization_yes_no = $request->organization_selector;
-        $data->organization = $request->organization_selector == YesNoQuestion::Yes ? strtr($request->organization, config('global.accented_chars')) : null;
+        $data->organization = $request->organization_selector == YesNoQuestion::Yes ? $request->organization : null;
 
         $data->agency_yes_no = $request->agency_selector;
-        $data->agency = $request->agency_selector == YesNoQuestion::Yes ? strtr($request->agency, config('global.accented_chars')) : null;
+        $data->agency = $request->agency_selector == YesNoQuestion::Yes ? $request->agency : null;
 
         $data->association_yes_no = $request->association_selector;
-        $data->association = $request->association_selector == YesNoQuestion::Yes ? strtr($request->association, config('global.accented_chars')) : null;
+        $data->association = $request->association_selector == YesNoQuestion::Yes ? $request->association : null;
         $data->save();
 
         $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
@@ -63,13 +63,13 @@ class SurveySixController extends Controller
         $validateData = $request->validate(['user_id' => 'required']);
 
         $editData->organization_yes_no = $request->organization_selector;
-        $editData->organization = $request->organization_selector == YesNoQuestion::Yes ? strtr($request->organization, config('global.accented_chars')) : null;
+        $editData->organization = $request->organization_selector == YesNoQuestion::Yes ? $request->organization : null;
 
         $editData->agency_yes_no = $request->agency_selector;
-        $editData->agency = $request->agency_selector == YesNoQuestion::Yes ? strtr($request->agency, config('global.accented_chars')) : null;
+        $editData->agency = $request->agency_selector == YesNoQuestion::Yes ? $request->agency : null;
 
         $editData->association_yes_no = $request->association_selector;
-        $editData->association = $request->association_selector == YesNoQuestion::Yes ? strtr($request->association, config('global.accented_chars')) : null;
+        $editData->association = $request->association_selector == YesNoQuestion::Yes ? $request->association : null;
         $editData->save();
 
         $notification = array(

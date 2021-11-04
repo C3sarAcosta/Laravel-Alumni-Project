@@ -29,11 +29,9 @@ class SurveyThreeController extends Controller
         $data = new SurveyThree();
         $data->user_id = $request->user_id;
         $data->do_for_living = $request->do_for_living;
+        if($request->do_for_living == ConstArray::DoForLiving[0] || $request->do_for_living == ConstArray::DoForLiving[1] || $request->do_for_living == ConstArray::DoForLiving[2]){
 
-        switch ($request->do_for_living) {
-            case "ESTUDIA Y TRABAJA":
-                $data->speciality = $request->speciality;
-                $data->school = strtr($request->school, config('global.accented_chars'));
+            if(str_contains($request->do_for_living, ConstArray::DoForLiving[0])){
                 $data->long_take_job = $request->long_take_job;
                 $data->hear_about = $request->hear_about;
                 $data->competence1 = $request->competence1 == true ? Status::Active : Status::Inactive;
@@ -53,14 +51,14 @@ class SurveyThreeController extends Controller
                 $data->management_level = $request->management_level;
                 $data->job_condition = $request->job_condition;
                 $data->job_relationship = $request->job_relationship;
-                $data->business_name = strtr($request->business_name, config('global.accented_chars'));
-                $data->business_activity = strtr($request->business_activity, config('global.accented_chars'));
-                $data->address = strtr($request->address, config('global.accented_chars'));
+                $data->business_name = $request->business_name;
+                $data->business_activity = $request->business_activity;
+                $data->address = $request->address;
                 $data->zip = $request->zip;
-                $data->suburb = strtr($request->suburb, config('global.accented_chars'));
-                $data->state = strtr($request->state, config('global.accented_chars'));
-                $data->city = strtr($request->city, config('global.accented_chars'));
-                $data->municipality = strtr($request->municipality, config('global.accented_chars'));
+                $data->suburb = $request->suburb;
+                $data->state = $request->state;
+                $data->city = $request->city;
+                $data->municipality = $request->municipality;
                 $data->phone = $request->phone;
                 $data->fax = $request->fax;
                 $data->web_page = $request->web_page;
@@ -68,49 +66,12 @@ class SurveyThreeController extends Controller
                 $data->business_structure = $request->business_structure;
                 $data->company_size = $request->company_size;
                 $data->business_activity_selector = $request->business_activity_selector;
-                break;
+            }
 
-            case "ESTUDIA":
+            if (str_contains($request->do_for_living, ConstArray::DoForLiving[1])) {
                 $data->speciality = $request->speciality;
-                $data->school = strtr($request->school, config('global.accented_chars'));
-                break;
-
-            case "TRABAJA":
-                $data->long_take_job = $request->long_take_job;
-                $data->hear_about = $request->hear_about;
-                $data->competence1 = $request->competence1 == true ? Status::Active : Status::Inactive;
-                $data->competence2 = $request->competence2 == true ? Status::Active : Status::Inactive;
-                $data->competence3 = $request->competence3 == true ? Status::Active : Status::Inactive;
-                $data->competence4 = $request->competence4 == true ? Status::Active : Status::Inactive;
-                $data->competence5 = $request->competence5 == true ? Status::Active : Status::Inactive;
-                $data->competence6 = $request->competence6 == true ? Status::Active : Status::Inactive;
-                $data->language_most_spoken = $request->language_most_spoken;
-                $data->speak_percent = $request->speak_percent;
-                $data->write_percent = $request->write_percent;
-                $data->read_percent = $request->read_percent;
-                $data->listen_percent = $request->listen_percent;
-                $data->seniority = $request->seniority;
-                $data->year = $request->year;
-                $data->salary = $request->salary;
-                $data->management_level = $request->management_level;
-                $data->job_condition = $request->job_condition;
-                $data->job_relationship = $request->job_relationship;
-                $data->business_name = strtr($request->business_name, config('global.accented_chars'));
-                $data->business_activity = strtr($request->business_activity, config('global.accented_chars'));
-                $data->address = strtr($request->address, config('global.accented_chars'));
-                $data->zip = $request->zip;
-                $data->suburb = strtr($request->suburb, config('global.accented_chars'));
-                $data->state = strtr($request->state, config('global.accented_chars'));
-                $data->city = strtr($request->city, config('global.accented_chars'));
-                $data->municipality = strtr($request->municipality, config('global.accented_chars'));
-                $data->phone = $request->phone;
-                $data->fax = $request->fax;
-                $data->web_page = $request->web_page;
-                $data->boss_email = $request->boss_email;
-                $data->business_structure = $request->business_structure;
-                $data->company_size = $request->company_size;
-                $data->business_activity_selector = $request->business_activity_selector;
-                break;
+                $data->school = $request->school;
+            }
         }
 
         $data->save();
@@ -143,9 +104,9 @@ class SurveyThreeController extends Controller
         $validateData = $request->validate(['user_id' => 'required']);
 
         $editData->do_for_living = $request->do_for_living;
-
+        
         switch ($request->do_for_living) {
-            case "NO ESTUDIA NI TRABAJA":
+            case ConstArray::DoForLiving[3]:
                 $editData->speciality = null;
                 $editData->school = null;
                 $editData->long_take_job = null;
@@ -184,9 +145,9 @@ class SurveyThreeController extends Controller
                 $editData->business_activity_selector = null;
                 break;
 
-            case "ESTUDIA Y TRABAJA":
+            case ConstArray::DoForLiving[2]:
                 $editData->speciality = $request->speciality;
-                $editData->school = strtr($request->school, config('global.accented_chars'));
+                $editData->school = $request->school;
                 $editData->long_take_job = $request->long_take_job;
                 $editData->hear_about = $request->hear_about;
                 $editData->competence1 = $request->competence1 == true ? Status::Active : Status::Inactive;
@@ -206,14 +167,14 @@ class SurveyThreeController extends Controller
                 $editData->management_level = $request->management_level;
                 $editData->job_condition = $request->job_condition;
                 $editData->job_relationship = $request->job_relationship;
-                $editData->business_name = strtr($request->business_name, config('global.accented_chars'));
-                $editData->business_activity = strtr($request->business_activity, config('global.accented_chars'));
-                $editData->address = strtr($request->address, config('global.accented_chars'));
+                $editData->business_name = $request->business_name;
+                $editData->business_activity = $request->business_activity;
+                $editData->address = $request->address;
                 $editData->zip = $request->zip;
-                $editData->suburb = strtr($request->suburb, config('global.accented_chars'));
-                $editData->state = strtr($request->state, config('global.accented_chars'));
-                $editData->city = strtr($request->city, config('global.accented_chars'));
-                $editData->municipality = strtr($request->municipality, config('global.accented_chars'));
+                $editData->suburb = $request->suburb;
+                $editData->state = $request->state;
+                $editData->city = $request->city;
+                $editData->municipality = $request->municipality;
                 $editData->phone = $request->phone;
                 $editData->fax = $request->fax;
                 $editData->web_page = $request->web_page;
@@ -223,9 +184,9 @@ class SurveyThreeController extends Controller
                 $editData->business_activity_selector = $request->business_activity_selector;
                 break;
 
-            case "ESTUDIA":
+            case ConstArray::DoForLiving[1]:
                 $editData->speciality = $request->speciality;
-                $editData->school = strtr($request->school, config('global.accented_chars'));
+                $editData->school = $request->school;
                 $editData->long_take_job = null;
                 $editData->hear_about = null;
                 $editData->competence1 = Status::Inactive;
@@ -262,7 +223,7 @@ class SurveyThreeController extends Controller
                 $editData->business_activity_selector = null;
                 break;
 
-            case "TRABAJA":
+            case ConstArray::DoForLiving[0]:
                 $editData->speciality = null;
                 $editData->school = null;
                 $editData->long_take_job = $request->long_take_job;
@@ -284,14 +245,14 @@ class SurveyThreeController extends Controller
                 $editData->management_level = $request->management_level;
                 $editData->job_condition = $request->job_condition;
                 $editData->job_relationship = $request->job_relationship;
-                $editData->business_name = strtr($request->business_name, config('global.accented_chars'));
-                $editData->business_activity = strtr($request->business_activity, config('global.accented_chars'));
-                $editData->address = strtr($request->address, config('global.accented_chars'));
+                $editData->business_name = $request->business_name;
+                $editData->business_activity = $request->business_activity;
+                $editData->address = $request->addresses;
                 $editData->zip = $request->zip;
-                $editData->suburb = strtr($request->suburb, config('global.accented_chars'));
-                $editData->state = strtr($request->state, config('global.accented_chars'));
-                $editData->city = strtr($request->city, config('global.accented_chars'));
-                $editData->municipality = strtr($request->municipality, config('global.accented_chars'));
+                $editData->suburb = $request->suburb;
+                $editData->state = $request->state;
+                $editData->city = $request->city;
+                $editData->municipality = $request->municipality;
                 $editData->phone = $request->phone;
                 $editData->fax = $request->fax;
                 $editData->web_page = $request->web_page;

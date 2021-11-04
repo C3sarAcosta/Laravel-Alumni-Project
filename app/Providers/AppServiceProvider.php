@@ -23,6 +23,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \Illuminate\Support\Facades\Blade::setEchoFormat('e(utf8_encode(%s))');
     }
 }

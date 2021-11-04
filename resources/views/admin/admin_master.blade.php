@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 @endphp
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>S.S.E | @yield('TopTitle')</title>
     <link rel="icon" href=" {{ asset ('backend/img/school/favicon.ico') }} ">
@@ -68,12 +68,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
     {{-- Own libraries --}}
     @yield('head')
-    <style>
-        .TecColor {
-            color: #1b396a;
-        }
-    </style>
-    @yield('style_custom')
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -196,15 +191,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
           "responsive": true, "lengthChange": false, "autoWidth": false,
           "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false,
-          "responsive": true,
-        });
       });
     </script>
 

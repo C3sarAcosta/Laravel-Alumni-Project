@@ -122,12 +122,6 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-briefcase"></i>
-                        <p>Ofertas de Trabajo</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('admin.view') }}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Perfil</p>

@@ -20,7 +20,7 @@
             <!-- /.card-header -->
             <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
-                    <thead>
+                    <thead class="bg-gray-dark">
                         <tr>
                             <th>Número de carrera</th>
                             <th>Nombre de la carrera</th>

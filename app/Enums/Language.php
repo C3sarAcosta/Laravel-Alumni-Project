@@ -12,17 +12,17 @@ use BenSampo\Enum\Enum;
 final class Language extends Enum
 {
     const None = "NINGUNO";
-    const Mandarin_Chinese = "CHINO MANDARIN";
+    const Mandarin_Chinese = "CHINO MANDARÍN";
     const Hindi = "HINDI";
-    const French = "FRANCES";
-    const Arab = "ARABE";
+    const French = "FRANCÉS";
+    const Arab = "ÁRABE";
     const Bengali = "BENGALI";
     const Russian = "RUSO";
-    const Portuguese = "PORTUGUES";
+    const Portuguese = "PORTUGUÉS";
     const Indones = "INDONES";
     const Urdu = "URDU";
-    const German = "ALEMAN";
-    const Japanese = "JAPONES";
+    const German = "ALEMÉN";
+    const Japanese = "JAPONÉS";
     const Swahili = "SUAJILI";
     const Marathi = "MARATHI";
     const Telugu = "TELUGU";
