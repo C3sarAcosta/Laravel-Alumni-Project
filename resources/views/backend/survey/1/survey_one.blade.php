@@ -4,10 +4,6 @@
 
 @section('title_section')Perfil del Egresado @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @section('student_content')
 <form method="post" action=" {{ route('survey.one.store') }} ">
     @csrf
@@ -81,8 +77,8 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona un sexo
                         </option>
-                        <option value="Femenino">Femenino</option>
-                        <option value="Masculino">Masculino</option>
+                        <option value="FEMENINO">FEMENINO</option>
+                        <option value="MASCULINO">MASCULINO</option>
                     </select>
                 </div>
             </div>
@@ -98,7 +94,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona un estado civil
                         </option>
-                        @foreach ($marital_status as $status)
+                        @foreach ($consts['MaritalStatus'] as $status)
                         <option value="{{ $status }}">{{ $status }}</option>
                         @endforeach
                     </select>
@@ -246,7 +242,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona una opción
                         </option>
-                        @foreach ($yes_no as $option)
+                        @foreach ($consts['YesNoQuestion'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -263,7 +259,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona un mes
                         </option>
-                        @foreach ($months as $month)
+                        @foreach ($consts['Month'] as $month)
                         <option value="{{ $month }}">{{ $month }}</option>
                         @endforeach
                     </select>
@@ -364,7 +360,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('student.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 

@@ -4,10 +4,6 @@
 
 @section('title_section')Perfil del Egresado @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @section('student_content')
 <form method="post" action=" {{ route('survey.one.update') }} ">
     @csrf
@@ -82,9 +78,11 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona un sexo
                         </option>
-                        <option {{ ($userData->sex == "Femenino") ? "selected" : "" }} value="Femenino">Femenino
+                        <option {{ ($userData->sex == "FEMENINO") ? "selected" : "" }} value="FEMENINO">
+                            FEMENINO
                         </option>
-                        <option {{ ($userData->sex == "Masculino") ? "selected" : "" }} value="Masculino">Masculino
+                        <option {{ ($userData->sex == "MASCULINO") ? "selected" : "" }} value="MASCULINO">
+                            MASCULINO
                         </option>
                     </select>
                 </div>
@@ -101,7 +99,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona un estado civil
                         </option>
-                        @foreach ($marital_status as $status)
+                        @foreach ($consts['MaritalStatus'] as $status)
                         <option value="{{ $status }}" {{ ($userData->marital_status == $status) ? "selected" : "" }}>
                             {{ $status }}
                         </option>
@@ -259,7 +257,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona una opción
                         </option>
-                        @foreach ($yes_no as $option)
+                        @foreach ($consts['YesNoQuestion'] as $option)
                         <option value="{{ $option }}" {{ ($userData->qualified == $option) ? "selected" : "" }}>
                             {{ $option }}
                         </option>
@@ -278,7 +276,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         <option value="" selected="" disabled="">
                             Selecciona un mes
                         </option>
-                        @foreach ($months as $month)
+                        @foreach ($consts['Month'] as $month)
                         <option value="{{ $month }}" {{ ($userData->month == $month) ? "selected" : "" }}>
                             {{ $month }}
                         </option>
@@ -370,9 +368,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                 <textarea class="form-control" id="software" name="software" rows="3" required
                     oninvalid="this.setCustomValidity('Por favor mencione al menos un software')"
                     oninput="setCustomValidity('')"
-                    placeholder="Ejemplo: Microsoft Office (Excel, PowerPoint, Word), PowerBI, Wordpress, Adobe Photoshop, Google(Gmail, Docs, Hangouts), Canva, Jira, etc.">
-                    {{ $userData->software }}
-                </textarea>
+                    placeholder="Ejemplo: Microsoft Office (Excel, PowerPoint, Word), PowerBI, Wordpress, Adobe Photoshop, Google(Gmail, Docs, Hangouts), Canva, Jira, etc.">{{ $userData->software }}</textarea>
             </div>
         </div>
     </div>
@@ -386,7 +382,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('student.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 

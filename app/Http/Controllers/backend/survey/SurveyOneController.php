@@ -11,22 +11,18 @@ use App\Models\Specialty;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 //Enums
+use App\Enums\ConstArray;
 use App\Enums\Status;
-use App\Enums\Month;
 use App\Enums\Language;
-use App\Enums\MaritalStatus;
-use App\Enums\YesNoQuestion;
 
 class SurveyOneController extends Controller
 {
     public function SurveyOneView()
     {
-        $data['months'] = Month::getValues();
         $data['languages'] = Language::getValues();
-        $data['marital_status'] = MaritalStatus::getValues();
-        $data['yes_no'] = YesNoQuestion::getValues();
         $data['careers'] = Career::pluck('name', 'id');
         $data['specialties'] = Specialty::pluck('name', 'id');
+        $data['consts'] = ConstArray::asArray();
         return view('backend.survey.1.survey_one', $data);
     }
 
@@ -81,12 +77,10 @@ class SurveyOneController extends Controller
     {
         $id = Crypt::decrypt($user_id);
         $data['userData'] = SurveyOne::where('user_id', $id)->first();
-        $data['months'] = Month::getValues();
         $data['languages'] = Language::getValues();
-        $data['marital_status'] = MaritalStatus::getValues();
-        $data['yes_no'] = YesNoQuestion::getValues();
         $data['careers'] = Career::pluck('name', 'id');
         $data['specialties'] = Specialty::pluck('name', 'id');
+        $data['consts'] = ConstArray::asArray();
         return view('backend.survey.1.survey_one_edit', $data);
     }
 

@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href=" {{ route('student.index', $user_id_encrypt) }} " class="brand-link">
         <img src="{{asset('backend/img/school/schoolicon.png')}}" alt="SSE Logo"
@@ -41,46 +41,50 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('survey.one.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">1.- Perfil del Egresado</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>1. Perfil del Egresado</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.two.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">2.- Pertinencia y</p><br>
-                                <p class="ml-3">Disponibilidad</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>2. Pertinencia y Disponibilidad</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.three.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">3.- Ubicación Laboral</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>3. Ubicación Laboral</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.four.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">4.- Desempeño</p><br>
-                                <p class="ml-3">Profesional</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>4. Desempeño Profesional</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.five.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">5.- Expéctativas y</p><br>
-                                <p class="ml-3">actualización</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>5. Expéctativas y actualización</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.six.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">6.- Participación social</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>6. Participación social</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.seven.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">7.- Comentarios y</p> <br>
-                                <p class="ml-3">sugerencias</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>7. Comentarios y sugerencias</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.seven.index') }}" class="nav-link">
-                                <p class="ml-3">8.- Ocho</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>8. Ocho</p>
                             </a>
                         </li>
                     </ul>
@@ -102,4 +106,9 @@
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+
+    <div class="sidebar-custom">
+        <a href="#" class="btn btn-link"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
+    </div>
 </aside>

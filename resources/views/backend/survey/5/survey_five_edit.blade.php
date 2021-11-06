@@ -4,10 +4,6 @@
 
 @section('title_section')Expéctativas de desarrollo, superación profesional y de actualización @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @section('student_content')
 <form method="post" action=" {{ route('survey.five.update') }} ">
     @csrf
@@ -22,7 +18,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" disabled="">Selecciona una opción</option>
-                        @foreach ($yes_no as $option)
+                        @foreach ($consts['YesNoQuestion'] as $option)
                         <option value="{{ $option }}" {{ $userData->courses_yes_no == $option ? "selected" : "" }}>
                             {{ $option }}
                         </option>
@@ -34,7 +30,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-6">
             <div class="form-group">
                 <label for="courses">Mencionar cursos</label>
-                <input id="courses" name="courses" type="text" class="form-control" {{ $userData->courses_yes_no == "Si"
+                <input id="courses" name="courses" type="text" class="form-control" {{ $userData->courses_yes_no == "SÍ"
                 ? "value=$userData->courses" : "disabled" }}
                 title="Mencionar los cursos, como cursos de marketing"
                 placeholder="Mencione cuáles serían de su agrado">
@@ -52,7 +48,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" disabled="">Selecciona una opción</option>
-                        @foreach ($yes_no as $option)
+                        @foreach ($consts['YesNoQuestion'] as $option)
                         <option value="{{ $option }}" {{ $userData->master_yes_no == $option ? "selected" : "" }}>
                             {{ $option }}
                         </option>
@@ -64,7 +60,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-6">
             <div class="form-group">
                 <label for="master">Postgrado</label>
-                <input id="master" name="master" type="text" class="form-control" {{ $userData->master_yes_no== "Si" ?
+                <input id="master" name="master" type="text" class="form-control" {{ $userData->master_yes_no== "SÍ" ?
                 "value=$userData->master" : "disabled" }}
                 title="Mencionar los postgrados, como ejemplo en mecatrónica"
                 placeholder="Mencione cuál sería de su agrado">
@@ -80,7 +76,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('student.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 

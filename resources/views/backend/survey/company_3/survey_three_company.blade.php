@@ -274,7 +274,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($good_bad_question as $option)
+                        @foreach ($consts['GoodBadQuestion'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>

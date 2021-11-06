@@ -10,17 +10,18 @@
         <div class="card">
             <div class="card-header">
                 <div class="col-12">
-                    <h3 class="card-title"><label>Especialidades en el Instituto</label></h3>
+                    <h3 class="card-title">Especialidades en el Instituto</h3>
                     <div class="col-10 d-flex justify-content-center">
-                        <a href="{{ route('specialty.add') }}" class="btn btn-rounded btn-success">Agregar
-                            especialidad</a>
+                        <a href="{{ route('specialty.add') }}" class="btn btn-rounded btn-success">
+                            Agregar especialidad</a>
                     </div>
                 </div>
             </div>
 
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="table-filter" class="table table-responsive table-bordered table-striped"
+                    style="width: 100%;">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>Número</th>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);

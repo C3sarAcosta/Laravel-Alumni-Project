@@ -6,10 +6,6 @@
 Pertinencia y disponibilidad de medio y recursos para el aprendizaje
 @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @section('student_content')
 <form method="post" action=" {{ route('survey.two.store') }} ">
     @csrf
@@ -24,7 +20,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($good_bad_question as $option)
+                        @foreach ($consts['GoodBadQuestion'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -40,7 +36,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($good_bad_question as $option)
+                        @foreach ($consts['GoodBadQuestion'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -56,7 +52,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($good_bad_question as $option)
+                        @foreach ($consts['GoodBadQuestion'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -75,7 +71,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($good_bad_question as $option)
+                        @foreach ($consts['GoodBadQuestion'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -92,7 +88,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($good_bad_question as $option)
+                        @foreach ($consts['GoodBadQuestion'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -109,7 +105,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($good_bad_question as $option)
+                        @foreach ($consts['GoodBadQuestion'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -126,7 +122,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('student.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 @endsection

@@ -10,16 +10,19 @@
         <div class="card">
             <div class="card-header">
                 <div class="col-12">
-                    <h3 class="card-title"><label>Egresados del Instituto</label></h3>
+                    <h3 class="card-title">Egresados del Instituto</h3>
                     <div class="col-10 d-flex justify-content-center">
-                        <a href="{{ route('graduate.add') }}" class="btn btn-rounded btn-success">Agregar egresado</a>
+                        <a href="{{ route('graduate.add') }}" class="btn btn-rounded btn-success">
+                            Agregar egresado
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="table-filter" class="table table-responsive table-bordered table-striped"
+                    style="width: 100%;">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>Número</th>
@@ -46,16 +49,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    {{-- <tfoot>
-                        <tr>
-                            <th>Número</th>
-                            <th>Nombre</th>
-                            <th>Carrera</th>
-                            <th>Año de egreso</th>
-                            <th>Creada:</th>
-                            <th>Actualización:</th>
-                        </tr>
-                    </tfoot> --}}
                 </table>
             </div>
             <!-- /.card-body -->

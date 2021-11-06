@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 //Enums
 use App\Enums\Status;
-use App\Enums\GoodBadQuestion;
-
+use App\Enums\ConstArray;
 
 class SurveyTwoController extends Controller
 {
     public function SurveyTwoView()
     {
-        $data["good_bad_question"] = GoodBadQuestion::getValues();
+        $data['consts'] = ConstArray::asArray();
         return view('backend.survey.2.survey_two', $data);
     }
 
@@ -52,7 +51,7 @@ class SurveyTwoController extends Controller
     {
         $id = Crypt::decrypt($user_id);
         $data['userData'] = SurveyTwo::where('user_id', $id)->first();
-        $data["good_bad_question"] = GoodBadQuestion::getValues();
+        $data['consts'] = ConstArray::asArray();
         return view('backend.survey.2.survey_two_edit', $data);
     }
 

@@ -44,7 +44,7 @@ class StudentController extends Controller
     public function StudentLogout()
     {
         Auth::logout();
-        return Redirect()->route('login');
+        return Redirect()->route('welcome');
     }
 
     public function JobsView()

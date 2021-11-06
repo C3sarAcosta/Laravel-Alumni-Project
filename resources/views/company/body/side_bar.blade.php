@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href=" {{ route('company.index', $user_id_encrypt) }} " class="brand-link">
         <img src="{{asset('backend/img/school/schoolicon.png')}}" alt="SSE Logo"
@@ -44,20 +44,20 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('survey.one.company.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">1.- Datos generales de la</p> <br>
-                                <p class="ml-3">empresa u organismo</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>1. Datos generales de la empresa</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.two.company.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">2.- Ubicación Laboral</p><br>
-                                <p class="ml-3">del Egresado</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>2. Ubicación Laboral del Egresado</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('survey.three.company.verified', $user_id_encrypt) }}" class="nav-link">
-                                <p class="ml-3">3.- Competencias</p><br>
-                                <p class="ml-3">Laborales</p>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>3. Competencias Laborales</p>
                             </a>
                         </li>
                     </ul>
@@ -73,25 +73,29 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="" class="nav-link">
-                                <p class="ml-3">Dar alta empleo</p> <br>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Dar alta empleo</p> <br>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
-                                <p class="ml-3">Dar baja empleo</p><br>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Dar baja empleo</p><br>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
-                                <p class="ml-3">Ver postulados</p><br>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Ver postulados</p><br>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
-                                <p class="ml-3">Ver tablero</p><br>
-                                <p class="ml-3">de alumnos</p><br>
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Tablero alumnos</p>
                             </a>
                         </li>
+
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -105,4 +109,9 @@
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+
+    <div class="sidebar-custom">
+        <a href="#" class="btn btn-link"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
+    </div>
 </aside>

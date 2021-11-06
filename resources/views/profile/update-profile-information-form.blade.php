@@ -9,7 +9,7 @@
 
     <x-slot name="form">
         <!-- Profile Photo -->
-        @if (Auth::user()->role != 'admin')
+        
         <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
             <!-- Profile Photo File Input -->
             <input type="file" class="hidden" wire:model="photo" x-ref="photo" x-on:change="
@@ -41,7 +41,7 @@
             </x-jet-secondary-button>
 
             <x-jet-label class="mt-2 mr-2"
-                value="{{ __('(Opcional) De preferencia una imagen con dimensiones 512x512, en caso de contactar con empleadores ver bien tu fotografía.') }}" />
+                value="{{ __('De preferencia una fotografía con dimensiones 512x512.') }}" />
 
             {{-- <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
                 {{ __('Remover foto') }}
@@ -49,7 +49,7 @@
 
             <x-jet-input-error for="photo" class="mt-2" />
         </div>
-        @endif
+    
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">

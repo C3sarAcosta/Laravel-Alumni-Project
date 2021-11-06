@@ -4,10 +4,6 @@
 
 @section('title_section')Participación social de los egresados @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @section('student_content')
 <form method="post" action=" {{ route('survey.six.update') }} ">
     @csrf
@@ -22,7 +18,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($yes_no as $option)
+                        @foreach ($consts['YesNoQuestion'] as $option)
                         <option value="{{ $option }}" {{ $userData->organization_yes_no == $option ? "selected" : "" }}>
                             {{ $option }}
                         </option>
@@ -35,7 +31,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="organization">Mencionar organizaciones</label>
                 <input id="organization" name="organization" type="text" class="form-control" {{
-                    $userData->organization_yes_no == "Si" ? "value=$userData->organization" : "disabled" }}
+                    $userData->organization_yes_no == "SÍ" ? "value=$userData->organization" : "disabled" }}
                 title="Mencione esas organizaciones"
                 placeholder="Mencione cuáles organizaciones pertenece">
             </div>
@@ -49,7 +45,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($yes_no as $option)
+                        @foreach ($consts['YesNoQuestion'] as $option)
                         <option value="{{ $option }}" {{ $userData->agency_yes_no == $option ? "selected" : "" }}>
                             {{ $option }}
                         </option>
@@ -61,7 +57,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-6">
             <div class="form-group">
                 <label for="agency">Mencionar organismos</label>
-                <input id="agency" name="agency" type="text" class="form-control" {{ $userData->agency_yes_no == "Si" ?
+                <input id="agency" name="agency" type="text" class="form-control" {{ $userData->agency_yes_no == "SÍ" ?
                 "value=$userData->agency" : "disabled" }}
                 title="Mencione esos organismos"
                 placeholder="Mencione cuáles organismos pertenece">
@@ -76,7 +72,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($yes_no as $option)
+                        @foreach ($consts['YesNoQuestion'] as $option)
                         <option value="{{ $option }}" {{ $userData->association_yes_no == $option ? "selected" : "" }}>
                             {{ $option }}
                         </option>
@@ -89,7 +85,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="association">Mencionar asosiación</label>
                 <input id="association" name="association" type="text" class="form-control" {{
-                    $userData->association_yes_no == "Si" ? "value=$userData->association" : "disabled" }}
+                    $userData->association_yes_no == "SÍ" ? "value=$userData->association" : "disabled" }}
                 title="Mencione esas asosiaciones"
                 placeholder="Mencione cuáles asociaciones pertenece">
             </div>
@@ -104,7 +100,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('student.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 

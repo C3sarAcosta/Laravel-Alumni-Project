@@ -21,7 +21,7 @@ final class Language extends Enum
     const Portuguese = "PORTUGUÉS";
     const Indones = "INDONES";
     const Urdu = "URDU";
-    const German = "ALEMÉN";
+    const German = "ALEMÁN";
     const Japanese = "JAPONÉS";
     const Swahili = "SUAJILI";
     const Marathi = "MARATHI";

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
@@ -61,10 +61,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/css/adminlte.min.css') }}">
-
-    <!-- Own Css -->
-    {{--
-    <link rel="stylesheet" href="{{asset ('backend/css/style.css')}}"> --}}
 
     {{-- Own libraries --}}
     @yield('head')
@@ -161,7 +157,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-
+    <script src="{{ asset('backend/js/datatable_filter.js') }}"></script>
+    
+    <!-- Random Color  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.js"></script>
+    
     <script>
         @if(Session::has('message'))
     		var type = "{{ Session::get('alert-type', 'info') }}";
@@ -183,15 +184,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     			break;								
     		}
     		@endif
-    </script>
-
-    <script>
-        $(function () {
-        $("#example1").DataTable({
-          "responsive": true, "lengthChange": false, "autoWidth": false,
-          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      });
     </script>
 
     {{-- Own scripts --}}

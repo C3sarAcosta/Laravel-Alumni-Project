@@ -11,6 +11,42 @@ use BenSampo\Enum\Enum;
  */
 final class ConstArray extends Enum
 {
+
+    const MaritalStatus = [
+        0 => "SOLTERO",
+        1 => "CASADO",
+        2 => "DIVORCIADO",
+        3 => "VIUDO",
+        4 => "CONCUBINATO",
+    ];
+
+    const Month = [
+        0 => "ENERO",
+        1 => "FEBRERO",
+        2 => "MARZO",
+        3 => "ABRIL",
+        4 => "MAYO",
+        5 => "JUNIO",
+        6 => "JULIO",
+        7 => "AGOSTO",
+        8 => "SEPTIEMBRE",
+        9 => "OCTUBRE",
+        10 => "NOVIEMBRE",
+        11 => "DICIEMBRE",
+    ];
+
+    const YesNoQuestion = [
+        0 => "SÍ",
+        1 => "NO",
+    ];
+
+    const GoodBadQuestion = [
+        0 => "MUY BUENA",
+        1 => "BUENA",
+        2 => "REGULAR",
+        3 => "MALA",
+    ];
+
     const DoForLiving = [
         0 => "TRABAJA",
         1 => "ESTUDIA",
@@ -49,7 +85,7 @@ final class ConstArray extends Enum
         5 => "BENGALI",
         6 => "RUSO",
         7 => "PORTUGUÉS",
-        8 => "ALEMÉN",
+        8 => "ALEMÁN",
         9 => "JAPONÉS",
     ];
 
@@ -59,7 +95,6 @@ final class ConstArray extends Enum
         2 => "TRES AÑOS",
         3 => "MÁS DE TRES AÑOS",
     ];
-
 
     const Salary = [
         0 => "MENOS DE CINCO",
@@ -132,5 +167,4 @@ final class ConstArray extends Enum
         5 => "GERENTE",
         6 => "SUPERVISOR",
     ];
-
 }

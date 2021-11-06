@@ -48,7 +48,6 @@ class SurveyFourController extends Controller
             'alert-type' => 'success'
         );
 
-
         return redirect()->route('student.index', $user_id_encrypt)->with($notification);
     }
 

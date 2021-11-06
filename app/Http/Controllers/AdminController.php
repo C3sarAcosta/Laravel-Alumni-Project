@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\StudentSurvey;
 use App\Models\SurveyThree;
 use App\Models\SurveyTwo;
+use App\Models\SurveyOne;
 
 
 use App\Enums\Role;
@@ -20,34 +21,40 @@ class AdminController extends Controller
     $data['gradute'] = User::where('role', Role::Student)->get()->count();
     $data['company'] = User::where('role', Role::Company)->get()->count();
     $data['survey'] = StudentSurvey::where([
-      ['survey_one_done', Status::Active],
-      ['survey_two_done', Status::Active],
-      ['survey_three_done', Status::Active],
-      ['survey_four_done', Status::Active],
-      ['survey_five_done', Status::Active],
-      ['survey_six_done', Status::Active],
-      ['survey_seven_done', Status::Active],
-      ['survey_eight_done', Status::Active],
-    ])
+        ['survey_one_done', Status::Active],
+        ['survey_two_done', Status::Active],
+        ['survey_three_done', Status::Active],
+        ['survey_four_done', Status::Active],
+        ['survey_five_done', Status::Active],
+        ['survey_six_done', Status::Active],
+        ['survey_seven_done', Status::Active],
+        ['survey_eight_done', Status::Active],
+      ])
       ->get()
       ->count();
 
     $data['percent'] = round($data['survey'] / $data['gradute'], 2) * 100;
 
-    $data['survey_three'] = SurveyThree::groupBy('do_for_living')
-      ->selectRaw('count(*) as total, do_for_living')
-      ->get();
-
     $data['careers'] = User::groupBy('careers.name')
-      ->selectRaw('count(*) as total, careers.name')
-      ->join('careers', 'careers.id', '=', 'users.id_career')
-      ->where('users.role', 'student')
-      ->orderBy('total')
+    ->selectRaw('count(*) as total, careers.name')
+    ->join('careers', 'careers.id', '=', 'users.id_career')
+    ->where('users.role', 'student')
+    ->orderBy('total')
+    ->get();
+
+    $data['survey_one'] = SurveyOne::groupBy('sex')
+    ->selectRaw('count(*) as total, sex')
+    ->get();
+
+    $data['survey_two'] = SurveyTwo::groupBy('quality_teachers')
+      ->selectRaw('count(*) as total, quality_teachers')
       ->get();
 
-    $data['survey_three'] = SurveyTwo::groupBy('do_for_living')
+    $data['survey_three'] = SurveyThree::groupBy('do_for_living')
     ->selectRaw('count(*) as total, do_for_living')
-    ->get();     
+    ->get();
+
+   
     return view('admin.index', $data);
   }
 

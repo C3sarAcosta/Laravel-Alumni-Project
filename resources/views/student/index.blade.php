@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{asset ('backend/css/project/style.css')}}">
 @endsection
 
-@section('title_section') Encuestas por contestar @endsection
+@section('title_section')Encuestas por contestar @endsection
 
 @section('student_content')
 

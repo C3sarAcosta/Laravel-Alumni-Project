@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use App\Enums\Status;
 use App\Enums\GoodBadQuestion;
-
+use App\Enums\ConstArray;
 
 class CompanySurveyThreeController extends Controller
 {
     public function CompanySurveyThreeView()
     {
-        $data["good_bad_question"] = GoodBadQuestion::getValues();
+        $data['consts'] = ConstArray::asArray();
         return view('backend.survey.company_3.survey_three_company', $data);
     }
 
@@ -64,8 +64,8 @@ class CompanySurveyThreeController extends Controller
     public function CompanySurveyThreeEdit($user_id)
     {
         $id = Crypt::decrypt($user_id);
-        $data["good_bad_question"] = GoodBadQuestion::getValues();
         $data['userData'] = CompanySurveyThree::where('user_id', $id)->first();
+        $data['consts'] = ConstArray::asArray();
         return view('backend.survey.company_3.survey_three_company_edit', $data);
     }
 

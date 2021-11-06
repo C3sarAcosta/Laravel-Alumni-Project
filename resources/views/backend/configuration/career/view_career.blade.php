@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="col-12">
-                    <h3 class="card-title"><label>Carreras en el Instituto</label></h3>
+                    <h3 class="card-title">Carreras en el Instituto</h3>
                     <div class="col-10 d-flex justify-content-center">
                         <a href="{{ route('career.add') }}" class="btn btn-rounded btn-success">Agregar carrera</a>
                     </div>
@@ -19,7 +19,8 @@
 
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="table-filter" class="table table-responsive table-bordered table-striped"
+                    style="width: 100%;">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>Número de carrera</th>
@@ -42,15 +43,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    {{-- <tfoot>
-                        <tr>
-                            <th>Número de carrera</th>
-                            <th>Nombre de la carrera</th>
-                            <th>Creada el día</th>
-                            <th>Última actualización</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </tfoot> --}}
                 </table>
             </div>
             <!-- /.card-body -->
