@@ -100,7 +100,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/estadistica/egresados/desempeno', [GraduateStadisticController::class, 'SurveyFourStadistic'])->name('survey.four.stadistic.view');
     Route::get('/estadistica/egresados/expectativas', [GraduateStadisticController::class, 'SurveyFiveStadistic'])->name('survey.five.stadistic.view');
     Route::get('/estadistica/egresados/participacion', [GraduateStadisticController::class, 'SurveySixStadistic'])->name('survey.six.stadistic.view');
-    Route::get('/estadistica/egresados/comentarios', [GraduateStadisticController::class, 'SurveySevenStadistic'])->name('survey.seven.stadistic.view');
     Route::get('/estadistica/egresados/ocho', [GraduateStadisticController::class, 'SurveyEightStadistic'])->name('survey.eight.stadistic.view');
 
     /*
