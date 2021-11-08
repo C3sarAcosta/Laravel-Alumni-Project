@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\StudentSurvey;
 use App\Enums\Status;
 
 class StudentController extends Controller
 {
+
     public function StudentIndexView($user_id)
     {
         $id = Crypt::decrypt($user_id);
@@ -44,6 +46,7 @@ class StudentController extends Controller
     public function StudentLogout()
     {
         Auth::logout();
+        Session::flush();
         return Redirect()->route('welcome');
     }
 

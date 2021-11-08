@@ -1,55 +1,77 @@
-function array_data(array, color_array) {
-    var data_array = array.map(a => a.total);
-    for (let i = 0; i < data_array.length; i++) {
-        var color = randomColor();
-        color_array.push(color);
-    }
-    return data_array;
-}
-
 function charts_one(array_sex, array_marital_status, array_state,
-    array_career, array_specialty, array_qualified, array_month, array_year, array_percent_english, array_another_language) {
+    array_career, array_specialty, array_qualified, array_month, array_year,
+    array_percent_english, array_another_language) {
+    
     var labels_sex = array_sex.map(a => a.sex);
-    var colors_sex = [];
-    var data_sex = array_data(array_sex, colors_sex);
+    var data_sex = array_sex.map(a => a.total);
+    var colors_sex = randomColor({
+        luminosity: 'light',
+        count: data_sex.length
+    });
 
     var labels_marital_status = array_marital_status.map(a => a.marital_status);
-    var colors_marital_status = [];
-    var data_marital_status = array_data(array_marital_status, colors_marital_status);
+    var data_marital_status = array_marital_status.map(a => a.total);
+    var colors_marital_status = randomColor({
+        luminosity: 'light',
+        count: data_marital_status.length
+    });
 
     var labels_state = array_state.map(a => a.state);
-    var colors_state = [];
-    var data_state = array_data(array_state, colors_state);
+    var data_state = array_state.map(a => a.total);
+    var colors_state = randomColor({
+        luminosity: 'light',
+        count: data_state.length
+    });
 
-    var data_career = array_career.map(a => a.total);
     var labels_career = array_career.map(a => a.career);
-    var colors_career = [];
-    var data_career = array_data(array_career, colors_career);
+    var data_career = array_career.map(a => a.total);
+    var colors_career = randomColor({
+        luminosity: 'light',
+        count: data_career.length
+    });
 
     var labels_specialty = array_specialty.map(a => a.specialty);
-    var colors_specialty = [];
-    var data_specialty = array_data(array_specialty, colors_specialty);
+    var data_specialty = array_specialty.map(a => a.total);
+    var colors_specialty = randomColor({
+        luminosity: 'light',
+        count: data_specialty.length
+    });
 
     var labels_qualified = array_qualified.map(a => a.qualified);
-    var colors_qualified = [];
-    var data_qualified = array_data(array_qualified, colors_qualified);
+    var data_qualified = array_qualified.map(a => a.total);
+    var colors_qualified = randomColor({
+        luminosity: 'light',
+        count: data_qualified.length
+    });
 
     var labels_month = array_month.map(a => a.month);
-    var colors_month = [];
-    var data_month = array_data(array_month, colors_month);
+    var data_month = array_month.map(a => a.total);
+    var colors_month = randomColor({
+        luminosity: 'light',
+        count: data_month.length
+    });
 
     var labels_year = array_year.map(a => a.year);
-    var colors_year = [];
-    var data_year = array_data(array_year, colors_year);
+    var data_year = array_year.map(a => a.total);
+    var colors_year = randomColor({
+        luminosity: 'light',
+        count: data_year.length
+    });
 
     var labels_percent_english = array_percent_english.map(a => a.percent_english);
-    var colors_percent_english = [];
-    var data_percent_english = array_data(array_percent_english, colors_percent_english);
-
+    var data_percent_english = array_percent_english.map(a => a.total);
+    var colors_percent_english = randomColor({
+        luminosity: 'light',
+        count: data_percent_english.length
+    });
+    
     var labels_another_language = array_another_language.map(a => a.another_language);
-    var colors_another_language = [];
-    var data_another_language = array_data(array_another_language, colors_another_language);
-
+    var data_another_language = array_another_language.map(a => a.total);
+    var colors_another_language = randomColor({
+        luminosity: 'light',
+        count: data_another_language.length
+    });
+    
     //-------------
     //- PIE CHART -
     //-------------

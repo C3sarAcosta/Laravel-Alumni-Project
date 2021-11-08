@@ -4,6 +4,12 @@
 
 @section('title_section')Reporte Ubicación Laboral @endsection
 
+@section('head')
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/base/jquery-ui.css" rel="stylesheet"
+    type="text/css" />
+<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js' type='text/javascript'></script>
+@endsection
+
 @section('admin_content')
 <div class="row">
     <div class="col-12">
@@ -11,8 +17,26 @@
             <div class="card-header">
                 <h3 class="card-title">Ubicación laboral de los egresadosW</h3>
             </div>
-
             <!-- /.card-header -->
+
+            <div class="row mt-4">
+                <div class="col-5 ml-5">
+                    <div class="form-group">
+                        <label>Fecha de inicio:</label>
+                        <input type="text" class="form-control" name="min" id="min" placeholder="Fecha inicio de contestación" />
+                    </div>
+                </div>
+
+
+                <div class="col-5 mr-5">
+                    <div class="form-group">
+                        <label>Fecha fin:</label>
+                        <input type="text" class="form-control" name="max" id="max" placeholder="Fecha fin de contestación" />
+                    </div>
+                </div>
+            </div>
+            <!-- /.date-filter -->
+
             <div class="card-body">
                 <table id="table-filter" class="table table-responsive table-bordered table-striped"
                     style="width: 100%;">
@@ -28,8 +52,7 @@
                             <th>Título Profesional</th>
                             <th>Examen de selección</th>
                             <th>Idioma Extranjero</th>
-                            <th>Actitudes y habilidades socio-comunicativas (principios y
-                                valores)</th>
+                            <th>Actitudes y habilidades socio-comunicativas (principios y valores)</th>
                             <th>Ninguno</th>
                             <th>Idioma que utiliza en su trabajo actual</th>
                             <th>% Hablar</th>
@@ -155,4 +178,53 @@
     </div>
     <!-- /.col -->
 </div>
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function () {
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $('#min').datepicker("getDate");
+            var max = $('#max').datepicker("getDate");
+            var startDate = new Date(data[38]);
+            if (min == null && max == null) {
+                return true;
+            }
+            if (min == null && startDate <= max) {
+                return true;
+            }
+            if (max == null && startDate >= min) {
+                return true;
+            }
+            if (startDate <= max && startDate >= min) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+    $("#min").datepicker({
+        onSelect: function () {
+            table.draw();
+        },
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#max").datepicker({
+        onSelect: function () {
+            table.draw();
+        },
+        changeMonth: true,
+        changeYear: true
+    });
+    var table = $('#table-filter').DataTable();
+
+    // Event listener to the two range filtering inputs to redraw on input
+    $('#min, #max').change(function () {
+        table.draw();
+    });
+});
+</script>
+@endsection
+
 @endsection

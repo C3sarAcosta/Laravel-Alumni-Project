@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\CompanySurvey;
 use App\Enums\Status;
 
 class CompanyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function CompanyIndexView($user_id)
     {
         $id = Crypt::decrypt($user_id);
@@ -42,6 +48,7 @@ class CompanyController extends Controller
     public function CompanyLogout()
     {
         Auth::logout();
+        Session::flush();
         return Redirect()->route('login');
     }
 

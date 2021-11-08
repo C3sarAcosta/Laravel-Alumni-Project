@@ -75,6 +75,7 @@ Route::prefix('admin')->group(function () {
 
     //--------Gradute
     Route::get('/egresado', [GraduateController::class, 'GraduateView'])->name('graduate.view');
+    Route::get('/egresado/encuesta', [GraduateController::class, 'GraduateSurveyView'])->name('graduate.survey.view');
     Route::get('/egresado/agregar', [GraduateController::class, 'GraduateAdd'])->name('graduate.add');
     Route::post('/egresado/guardar', [GraduateController::class, 'GraduateStore'])->name('graduate.store');
     Route::get('/egresado/editar/{id}', [GraduateController::class, 'GraduateEdit'])->name('graduate.edit');
@@ -100,7 +101,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/estadistica/egresados/desempeno', [GraduateStadisticController::class, 'SurveyFourStadistic'])->name('survey.four.stadistic.view');
     Route::get('/estadistica/egresados/expectativas', [GraduateStadisticController::class, 'SurveyFiveStadistic'])->name('survey.five.stadistic.view');
     Route::get('/estadistica/egresados/participacion', [GraduateStadisticController::class, 'SurveySixStadistic'])->name('survey.six.stadistic.view');
-    Route::get('/estadistica/egresados/comentarios', [GraduateStadisticController::class, 'SurveySevenStadistic'])->name('survey.seven.stadistic.view');
     Route::get('/estadistica/egresados/ocho', [GraduateStadisticController::class, 'SurveyEightStadistic'])->name('survey.eight.stadistic.view');
 
     /*

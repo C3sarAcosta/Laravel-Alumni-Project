@@ -60,6 +60,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('graduate.survey.view') }}" class="nav-link">
+                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <p>Egresados encuestas</p>
+                            </a>
+                        </li>                        
+                        <li class="nav-item">
                             <a href="{{ route('company.config.view') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
                                 <p>Empresas</p>
@@ -94,31 +100,31 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('survey.two.stadistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>2. Pertinencia</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('survey.three.stadistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>3. Ubicación laboral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('survey.four.stadistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>4. Desempeño</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('survey.five.stadistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>5. Expéctativas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('survey.six.stadistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>6. Participación</p>
                                     </a>
@@ -275,7 +281,7 @@
     </div>
     <!-- /.sidebar -->
     <div class="sidebar-custom">
-        <a href="#" class="btn btn-link"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="{{ route('admin.logout') }}" class="btn btn-link text-light"><i class="fas fa-sign-out-alt"></i></a>
         <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
     </div>
 </aside>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Career;
+use App\Models\StudentSurvey;
 use App\Enums\Role;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,6 +16,12 @@ class GraduateController extends Controller
     {
         $data['allData'] = User::where('role', Role::Student)->get();
         return view('backend.configuration.graduate.view_graduate', $data);
+    }
+
+    public function GraduateSurveyView()
+    {
+        $data['allData'] = StudentSurvey::get();
+        return view('backend.configuration.graduate.view_survey', $data);
     }
 
     public function GraduateAdd()
