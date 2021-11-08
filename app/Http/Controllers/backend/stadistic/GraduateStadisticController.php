@@ -43,12 +43,54 @@ class GraduateStadisticController extends Controller
 
     public function SurveyThreeStadistic()
     {
-        $data['quality_teachers'] = SurveyTwo::groupBy('quality_teachers')->selectRaw('count(*) as total, quality_teachers')->get();
-        $data['syllabus'] = SurveyTwo::groupBy('syllabus')->selectRaw('count(*) as total, syllabus')->get();
-        $data['study_condition'] = SurveyTwo::groupBy('study_condition')->selectRaw('count(*) as total, study_condition')->get();
-        $data['experience'] = SurveyTwo::groupBy('experience')->selectRaw('count(*) as total, experience')->get();
-        $data['study_emphasis'] = SurveyTwo::groupBy('study_emphasis')->selectRaw('count(*) as total, study_emphasis')->get();
-        $data['participate_projects'] = SurveyTwo::groupBy('participate_projects')->selectRaw('count(*) as total, participate_projects')->get();
+        $data['do_for_living'] = SurveyThree::groupBy('do_for_living')->selectRaw('count(*) as total, do_for_living')->get();
+        $data['speciality'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+            ->orWhere('do_for_living', '=', 'ESTUDIA')
+            ->groupBy('speciality')->selectRaw('count(*) as total, speciality')->get();
+        $data['long_take_job'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+            ->orWhere('do_for_living', '=', 'TRABAJA')
+            ->groupBy('long_take_job')->selectRaw('count(*) as total, long_take_job')->get();
+        $data['counts'] = SurveyThree::selectRaw(
+            'SUM(competence1) as \'Competencias laborales\', 
+            SUM(competence2) as \'Título Profesional\',
+            SUM(competence3) as \'Examen de selección\',
+            SUM(competence4) as \'Idioma Extranjero\',
+            SUM(competence5) as \'Actitudes y habilidades\',
+            SUM(competence6) as Ninguno'
+        )->where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+            ->orWhere('do_for_living', '=', 'TRABAJA')
+            ->get()->toArray()[0];
+        $data['language_most_spoken'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+            ->orWhere('do_for_living', '=', 'TRABAJA')
+            ->groupBy('language_most_spoken')->selectRaw('count(*) as total, language_most_spoken')->get();
+        $data['seniority'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('seniority')->selectRaw('count(*) as total, seniority')->get();
+        $data['year'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('year')->selectRaw('count(*) as total, year')->get();
+        $data['salary'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('salary')->selectRaw('count(*) as total, salary')->get();
+        $data['management_level'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('management_level')->selectRaw('count(*) as total, management_level')->get();
+        $data['job_condition'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('job_condition')->selectRaw('count(*) as total, job_condition')->get();
+        $data['job_relationship'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('job_relationship')->selectRaw('count(*) as total, job_relationship')->get();
+        $data['business_structure'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('business_structure')->selectRaw('count(*) as total, business_structure')->get();
+        $data['company_size'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('company_size')->selectRaw('count(*) as total, company_size')->get();
+        $data['business_activity_selector'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
+        ->orWhere('do_for_living', '=', 'TRABAJA')
+        ->groupBy('business_activity_selector')->selectRaw('count(*) as total, business_activity_selector')->get();
+
         return view('backend.stadistics.graduate.survey_three', $data);
     }
 
@@ -67,7 +109,8 @@ class GraduateStadisticController extends Controller
             ROUND(avg(recommendations),2) as Recomendaciones,
             ROUND(avg(personality),2) as Personalidad,
             ROUND(avg(leadership),2) as \'Capacidad de liderazgo\',
-            ROUND(avg(others),2) as Otros')
+            ROUND(avg(others),2) as Otros'
+        )
             ->get()->toArray()[0];
         $data['study_area'] = SurveyFour::groupBy('study_area')->selectRaw('count(*) as total, study_area')->get();
         $data['title'] = SurveyFour::groupBy('title')->selectRaw('count(*) as total, title')->get();

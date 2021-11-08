@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentSurvey extends Model
 {
-    use HasFactory;
+    public function graduate()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

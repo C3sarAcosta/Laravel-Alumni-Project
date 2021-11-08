@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
+@if (!Auth::check())
+@php
+header("Location: " . URL::to('/'), true, 302);
+exit();
+@endphp
+@endif
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 @endphp
+
 
 <head>
     <meta charset="UTF-8">
@@ -31,9 +39,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <link rel="stylesheet"
         href="{{ asset('backend/lib/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/plugins/daterangepicker/daterangepicker.css') }}">
-
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet"
@@ -58,6 +63,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         href="{{ asset('backend/lib/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/plugins/daterangepicker/daterangepicker.css') }}">
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/css/adminlte.min.css') }}">
@@ -158,11 +166,11 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('backend/js/datatable_filter.js') }}"></script>
-    
+
     <!-- Random Color  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.js"></script>
-    
+
     <script>
         @if(Session::has('message'))
     		var type = "{{ Session::get('alert-type', 'info') }}";

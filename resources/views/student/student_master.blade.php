@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
+@if (!Auth::check())
+@php
+header("Location: " . URL::to('/'), true, 302);
+exit();
+@endphp
+@endif
 
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);

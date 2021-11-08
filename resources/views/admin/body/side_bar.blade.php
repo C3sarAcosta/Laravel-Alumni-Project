@@ -60,6 +60,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('graduate.survey.view') }}" class="nav-link">
+                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <p>Egresados encuestas</p>
+                            </a>
+                        </li>                        
+                        <li class="nav-item">
                             <a href="{{ route('company.config.view') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
                                 <p>Empresas</p>
