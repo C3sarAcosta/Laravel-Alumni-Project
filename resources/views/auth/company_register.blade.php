@@ -17,7 +17,7 @@
     <x-jet-authentication-card>
 
         <x-slot name="logo">
-            <a href=" {{route('welcome')}} "><img style="width: 200px; height:100px;"
+            <a href=" {{route('welcome')}} "><img style="width: 300px; height:150px;"
                     src="{{asset('backend/img/school/SSECompany.png')}}" alt=""></a>
         </x-slot>
 

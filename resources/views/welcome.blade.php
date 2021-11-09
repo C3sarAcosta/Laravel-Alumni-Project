@@ -71,13 +71,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('company.login') }}" class="dropdown-item">
+                                    <a href="{{ route('login') }}" class="dropdown-item">
                                         Iniciar Sesión
                                     </a>
                                 </li>
                             </ul>
                         </li>
-
 
                         @endauth
                         @endif

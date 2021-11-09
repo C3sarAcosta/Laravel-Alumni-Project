@@ -14,7 +14,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <a href=" {{route('welcome')}} "><img style="width: 100px; height:70px;"
+            <a href=" {{route('welcome')}} "><img style="width: 200px; height:120px;"
                     src="{{asset('backend/img/school/SSE2.png')}}" alt=""></a>
         </x-slot>
 

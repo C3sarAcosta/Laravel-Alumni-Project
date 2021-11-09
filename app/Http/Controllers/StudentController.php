@@ -37,9 +37,6 @@ class StudentController extends Controller
 
     public function StudentProfileView()
     {
-        //Api example
-        // $usuarios = Http::get(env('API_ENDPOINT'));
-        // $data['usuarios'] = $usuarios->json();
         return view('student.show');
     }
 
@@ -47,7 +44,7 @@ class StudentController extends Controller
     {
         Auth::logout();
         Session::flush();
-        return Redirect()->route('welcome');
+        return Redirect()->route('login');
     }
 
     public function JobsView()

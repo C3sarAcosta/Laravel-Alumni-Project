@@ -33,7 +33,7 @@
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('jobs.view') }}" class="nav-link">Empleos</a>
+            <a href="{{ route('company.jobs.view') }}" class="nav-link">Empleos</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('company.view') }}" class="nav-link">Perfil</a>

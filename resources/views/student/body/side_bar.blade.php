@@ -108,7 +108,7 @@
     <!-- /.sidebar -->
 
     <div class="sidebar-custom">
-        <a href="#" class="btn btn-link"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="{{ route('student.logout') }}" class="btn btn-link text-light"><i class="fas fa-sign-out-alt"></i></a>
         <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
     </div>
 </aside>

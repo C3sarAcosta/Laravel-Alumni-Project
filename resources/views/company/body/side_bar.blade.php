@@ -72,15 +72,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('company.jobs.view') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Dar alta empleo</p> <br>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Dar baja empleo</p><br>
+                                <p>Lista Empleos</p><br>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -89,13 +83,6 @@
                                 <p>Ver postulados</p><br>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Tablero alumnos</p>
-                            </a>
-                        </li>
-
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -111,7 +98,7 @@
     <!-- /.sidebar -->
 
     <div class="sidebar-custom">
-        <a href="#" class="btn btn-link"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="{{ route('company.logout') }}" class="btn btn-link text-light"><i class="fas fa-sign-out-alt"></i></a>
         <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
     </div>
 </aside>

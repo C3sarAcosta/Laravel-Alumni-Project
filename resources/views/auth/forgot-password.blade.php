@@ -5,8 +5,8 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <a href="{{route('welcome')}}"><img style="width: 150px; height:100px;"
-                    src="{{asset('backend/img/school/SSE2.png')}}" alt=""></a>
+            <a href="{{route('welcome')}}"><img style="width:325px; height:150px;"
+                    src="{{asset('backend/img/school/logonew.png')}}" alt=""></a>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">

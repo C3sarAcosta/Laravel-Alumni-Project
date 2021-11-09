@@ -15,6 +15,10 @@ use App\Enums\Status;
 
 class AdminController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
 
   public function AdminIndexView()
   {
@@ -33,7 +37,12 @@ class AdminController extends Controller
       ->get()
       ->count();
 
-    $data['percent'] = round($data['survey'] / $data['gradute'], 2) * 100;
+
+    if ($data['gradute'] == 0) {
+      $data['percent'] = 0;
+    } else {
+      $data['percent'] = round($data['survey'] / $data['gradute'], 2) * 100;
+    }
 
     $data['careers'] = User::groupBy('careers.name')
       ->selectRaw('count(*) as total, careers.name')
