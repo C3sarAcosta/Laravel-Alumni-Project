@@ -7,10 +7,6 @@
 <link rel="stylesheet" href="{{asset ('backend/css/project/style.css')}}">
 @endsection
 
-@section('title_section')Encuestas por contestar @endsection
-
-@section('student_content')
-
 @php
 
 function CheckSurvey($userSurveyCheck){
@@ -32,6 +28,58 @@ return $route;
 
 @endphp
 
+@section('title_section')Tablero Egresado @endsection
+
+@section('student_content')
+
+@if (Auth::user()->is_new_user == null)
+<div class="row d-flex justify-content-sm-center">
+    <div class="col-md-6">
+        <!-- Box Comment -->
+        <div class="card card-widget">
+            <div class="card-header">
+                <div class="user-block">
+                    <img class="img-circle" src="{{asset('backend/img/school/itdelicias.png')}}" alt="User Image">
+                    <span class="username">Bienvenido</span>
+                    <span class="description">Comunicado oficial</span>
+                </div>
+                <!-- /.user-block -->
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <!-- post text -->
+                <p class="text-justify">Bienvenido egresado al sistema de seguimiento, aquí es donde podrás evaluar todo el
+                    lo aprendido en el tecnológico aplicado a tu vida laboral y otros aspectos.
+                </p>
+
+                <p class="text-justify">Podrás encontrar en la parte inferior el listado de las encuestas a contestar, si es complicado para
+                    ti el moverte con este nuevo menú podrás encontrarlas tanto en el menú lateral como superior. Podrás
+                    ingresar tu CV y buscar empleos que las empresas de la región hayan publicado de igual manera en el
+                    menú lateral y superior.
+                </p>
+
+                <!-- Attachment -->
+            </div>
+            <!-- /.card-body -->
+
+            <!-- /.card-footer -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+@endif
 <!-- Swiper -->
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
@@ -53,7 +101,8 @@ return $route;
                 <div class="container-loader">
                     {!! CheckSurvey($studentSurvey['survey_two_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($studentSurvey['survey_two_done'], 'two') }}" title="Pertinencia y disponibilidad">
+                <a href="{{ ReturnRoute($studentSurvey['survey_two_done'], 'two') }}"
+                    title="Pertinencia y disponibilidad">
                     <img src="{{ asset('backend/img/school/sn2.png') }}" />
                 </a>
                 <div class="container-text">
@@ -94,7 +143,8 @@ return $route;
                 <div class="container-loader">
                     {!! CheckSurvey($studentSurvey['survey_five_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($studentSurvey['survey_five_done'], 'five') }}" title="Expéctativas de desarrollo">
+                <a href="{{ ReturnRoute($studentSurvey['survey_five_done'], 'five') }}"
+                    title="Expéctativas de desarrollo">
                     <img src="{{ asset('backend/img/school/sn5.png') }}" />
                 </a>
                 <div class="container-text">
@@ -107,7 +157,8 @@ return $route;
                 <div class="container-loader">
                     {!! CheckSurvey($studentSurvey['survey_six_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($studentSurvey['survey_six_done'], 'six') }}" title="Participación social de los egresados">
+                <a href="{{ ReturnRoute($studentSurvey['survey_six_done'], 'six') }}"
+                    title="Participación social de los egresados">
                     <img src="{{ asset('backend/img/school/sn6.png') }}" />
                 </a>
                 <div class="container-text">
@@ -120,7 +171,8 @@ return $route;
                 <div class="container-loader">
                     {!! CheckSurvey($studentSurvey['survey_seven_done']) !!}
                 </div>
-                <a href="{{ ReturnRoute($studentSurvey['survey_seven_done'], 'seven') }}" title="Comentarios y sugerencias">
+                <a href="{{ ReturnRoute($studentSurvey['survey_seven_done'], 'seven') }}"
+                    title="Comentarios y sugerencias">
                     <img src="{{ asset('backend/img/school/sn7.png') }}" />
                 </a>
                 <div class="container-text">

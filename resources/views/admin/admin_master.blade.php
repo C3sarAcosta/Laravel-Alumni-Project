@@ -194,6 +194,26 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     		@endif
     </script>
 
+<script type="text/javascript">
+        $(document).on('click', '#help_admin', function(e){
+            Swal.fire({
+            title: '<strong>Asistente S.S.E</strong>',
+            icon: 'info',
+            html:
+            '<p style="text-align:justify;">Hola administrador este es el asistente para apoyarte en este sistema. ' +
+            'En los apartados de configuración podrás encontrar los datos para que los manipules, como son son los egresados '+
+            'empresas, carreras, etc. En el apartado de reportes podrás revisar las respuestas de las encuestas tanto de empleadores como de egresados, '+
+            'en el apartado de estadístcias podrás revisar todas las respuestas graficadas con forma de pastel.</p>',
+            showCloseButton: true,
+            showCancelButton: false,
+            focusConfirm: false,
+            confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Me sirve la información!',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            })
+        });
+    </script>
+
     {{-- Own scripts --}}
     @yield('scripts')
 </body>

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\CompanySurvey;
+use App\Models\Postulate;
+use App\Models\CompanyJobs;
 use App\Enums\Status;
 use App\Models\SurveyThree;
 
@@ -14,6 +16,10 @@ class CompanyController extends Controller
     public function CompanyIndexView($user_id)
     {
         $id = Crypt::decrypt($user_id);
+        $data['jobs'] = CompanyJobs::where('id_user', $id)->get()->count();
+        $data['postulates'] = Postulate::join('company_jobs', 'company_jobs.id', '=', 'postulates.job_id')
+            ->where('company_jobs.id_user', $id)
+            ->get()->count();
         $data['companySurvey'] = CompanySurvey::where('user_id', $id)->first();
         
         if (empty($data['companySurvey'])) {

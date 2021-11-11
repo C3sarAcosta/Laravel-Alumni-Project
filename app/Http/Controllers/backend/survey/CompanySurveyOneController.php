@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend\survey;
 use App\Http\Controllers\Controller;
 use App\Models\CompanySurveyOne;
 use App\Models\CompanySurvey;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -23,6 +24,10 @@ class CompanySurveyOneController extends Controller
 
     public function CompanySurveyOneStore(Request $request)
     {
+        $user = User::find(Auth::user()->id);
+        $user->is_new_user = Status::Active;
+        $user->save();
+        
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         $validateData = $request->validate(['user_id' => 'required|unique:company_survey_ones,user_id']);
 

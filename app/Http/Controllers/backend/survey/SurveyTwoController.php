@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SurveyTwo;
 use App\Models\StudentSurvey;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 //Enums
@@ -22,6 +23,10 @@ class SurveyTwoController extends Controller
 
     public function SurveyTwoStore(Request $request)
     {
+        $user = User::find(Auth::user()->id);
+        $user->is_new_user = Status::Active;
+        $user->save();
+
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         $validateData = $request->validate(['user_id' => 'required|unique:survey_twos,user_id']);
 

@@ -61,6 +61,9 @@
             <a href="{{ route('jobs.view') }}" class="nav-link">Ofertas de Trabajo</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ route('student.pdf') }}" class="nav-link">Currículum</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('student.view') }}" class="nav-link">Perfil</a>
         </li>
     </ul>

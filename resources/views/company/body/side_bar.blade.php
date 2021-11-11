@@ -28,7 +28,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href=" {{ route('company.index', $user_id_encrypt) }} " class="nav-link">
+                    <a href="{{ route('company.index', $user_id_encrypt) }}" class="nav-link">
                         <i class="nav-icon fas fa-th-large"></i>
                         <p>Tablero</p>
                     </a>
@@ -78,7 +78,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('company.jobs.postulate') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Ver postulados</p><br>
                             </a>
@@ -99,6 +99,6 @@
 
     <div class="sidebar-custom">
         <a href="{{ route('company.logout') }}" class="btn btn-link text-light"><i class="fas fa-sign-out-alt"></i></a>
-        <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
+        <a id="help_company" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
     </div>
 </aside>

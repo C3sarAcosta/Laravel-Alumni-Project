@@ -30,6 +30,7 @@
                             <th>Salario</th>
                             <th>Publicado</th>
                             <th>Actualización</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,11 @@
                             <td>{{ $data->salary }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>
+                            <td>
+                                <a href="{{route('company.jobs.edit',$data->id)}}" class="btn btn-info">Editar</a>
+                                <a href="{{route('company.jobs.delete', $data->id)}}" class="btn btn-danger"
+                                    id="delete">Eliminar</a>
+                            </td>
                         </tr>
                         @endforeach
 
@@ -57,4 +63,36 @@
     </div>
     <!-- /.col -->
 </div>
+
+
+@section('scripts')
+<script type="text/javascript">
+$(function(){
+    $(document).on('click', '#delete', function(e){
+    	e.preventDefault();
+    	var link = $(this).attr("href");
+    	Swal.fire({
+    	title: '¿Estás seguro?',
+    	text: "Se eliminará este empleo y sus postulados",
+    	icon: 'warning',
+    	showCancelButton: true,
+    	confirmButtonColor: '#3085d6',
+    	cancelButtonColor: '#d33',
+    	confirmButtonText: 'Sí'
+    	}).then((result) => {
+    	if (result.isConfirmed) {
+    		window.location.href = link;
+    	Swal.fire(
+    	'Eliminado!',
+    	'Empleo eliminado correctamente.',
+    	'success'
+    	)
+    	}
+    	})
+    });	
+});
+</script>
+@endsection
+
+
 @endsection

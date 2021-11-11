@@ -9,6 +9,140 @@
             <a href="{{ route('admin.index') }}" class="nav-link">Tablero</a>
         </li>
 
+        <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                class="nav-link dropdown-toggle">Configuración</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
+                style="left: 0px; right: inherit;">
+                <li>
+                    <a href="{{ route('career.view') }}" class="dropdown-item">
+                        Carreras
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('specialty.view') }}" class="dropdown-item">
+                        Especialidad
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('graduate.view') }}" class="dropdown-item">
+                        Egresados
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('graduate.survey.view') }}" class="dropdown-item">
+                        Egresados encuestas
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('company.config.view') }}" class="dropdown-item">
+                        Empresas
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                class="nav-link dropdown-toggle">Estadísticas</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
+                style="left: 0px; right: inherit;">
+
+                <!-- Level two dropdown-->
+                <li class="dropdown-submenu dropdown-hover">
+                    <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" class="dropdown-item dropdown-toggle">Egresados</a>
+                    <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                        <li>
+                            <a tabindex="-1" href="{{ route('survey.one.stadistic.view') }}" class="dropdown-item">1.
+                                Perfil</a>
+                        </li>
+
+                        <li><a href="{{ route('survey.two.stadistic.view') }}" class="dropdown-item">2. Pertinencia</a>
+                        </li>
+                        <li><a href="{{ route('survey.three.stadistic.view') }}" class="dropdown-item">3. Ubicación
+                                laboral</a></li>
+                        <li><a href="{{ route('survey.four.stadistic.view') }}" class="dropdown-item">4. Desempeño</a>
+                        </li>
+                        <li><a href="{{ route('survey.five.stadistic.view') }}" class="dropdown-item">5.
+                                Expéctativas</a></li>
+                        <li><a href="{{ route('survey.six.stadistic.view') }}" class="dropdown-item">6.
+                                Participación</a></li>
+                    </ul>
+                </li>
+                <!-- End Level two -->
+
+                <li class="dropdown-divider"></li>
+
+                <!-- Level two dropdown-->
+                <li class="dropdown-submenu dropdown-hover">
+                    <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" class="dropdown-item dropdown-toggle">Empresas</a>
+                    <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                        <li>
+                            <a tabindex="-1" href="#" class="dropdown-item">1. Datos generales</a>
+                        </li>
+
+                        <li><a href="#" class="dropdown-item">2. Ubicación laboral</a></li>
+                        <li><a href="#" class="dropdown-item">3. Competencias</a></li>
+                    </ul>
+                </li>
+                <!-- End Level two -->
+            </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                class="nav-link dropdown-toggle">Reportes</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
+                style="left: 0px; right: inherit;">
+
+                <!-- Level two dropdown-->
+                <li class="dropdown-submenu dropdown-hover">
+                    <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" class="dropdown-item dropdown-toggle">Egresados</a>
+                    <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                        <li>
+                            <a tabindex="-1" href="{{ route('survey.one.report.view') }}" class="dropdown-item">1.
+                                Perfil</a>
+                        </li>
+
+                        <li><a href="{{ route('survey.two.report.view') }}" class="dropdown-item">2. Pertinencia</a>
+                        </li>
+                        <li><a href="{{ route('survey.three.report.view') }}" class="dropdown-item">3. Ubicación
+                                laboral</a>
+                        </li>
+                        <li><a href="{{ route('survey.four.report.view') }}" class="dropdown-item">4. Desempeño</a></li>
+                        <li><a href="{{ route('survey.five.report.view') }}" class="dropdown-item">5. Expéctativas</a>
+                        </li>
+                        <li><a href="{{ route('survey.six.report.view') }}" class="dropdown-item">6. Participación</a>
+                        </li>
+                        <li><a href="{{ route('survey.seven.report.view') }}" class="dropdown-item">7. Comentarios</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End Level two -->
+
+                <li class="dropdown-divider"></li>
+
+                <!-- Level two dropdown-->
+                <li class="dropdown-submenu dropdown-hover">
+                    <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" class="dropdown-item dropdown-toggle">Empresas</a>
+                    <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                        <li>
+                            <a tabindex="-1" href="#" class="dropdown-item">1. Datos generales</a>
+                        </li>
+
+                        <li><a href="#" class="dropdown-item">2. Ubicación laboral</a></li>
+                        <li><a href="#" class="dropdown-item">3. Competencias</a></li>
+                    </ul>
+                </li>
+                <!-- End Level two -->
+            </ul>
+        </li>
+
+
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('admin.view') }}" class="nav-link">Perfil</a>
         </li>

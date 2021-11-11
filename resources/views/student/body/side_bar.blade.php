@@ -96,6 +96,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('student.pdf') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file-pdf"></i>
+                        <p>Currículum</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('student.view') }}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Perfil</p>
@@ -109,6 +115,6 @@
 
     <div class="sidebar-custom">
         <a href="{{ route('student.logout') }}" class="btn btn-link text-light"><i class="fas fa-sign-out-alt"></i></a>
-        <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
+        <a id="help_student" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
     </div>
 </aside>

@@ -8,6 +8,7 @@ use App\Models\SurveyOne;
 use App\Models\StudentSurvey;
 use App\Models\Career;
 use App\Models\Specialty;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 //Enums
@@ -28,6 +29,10 @@ class SurveyOneController extends Controller
 
     public function SurveyOneStore(Request $request)
     {
+        $user = User::find(Auth::user()->id);
+        $user->is_new_user = Status::Active;
+        $user->save();
+
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         $validateData = $request->validate(['user_id' => 'required|unique:survey_ones,user_id']);
 

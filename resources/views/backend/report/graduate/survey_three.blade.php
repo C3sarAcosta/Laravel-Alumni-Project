@@ -15,7 +15,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Ubicación laboral de los egresadosW</h3>
+                <h3 class="card-title">Ubicación laboral de los egresados</h3>
             </div>
             <!-- /.card-header -->
 

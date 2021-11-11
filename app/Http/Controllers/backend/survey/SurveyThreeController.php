@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SurveyThree;
 use App\Models\StudentSurvey;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use App\Enums\Status;
@@ -23,6 +24,10 @@ class SurveyThreeController extends Controller
 
     public function SurveyThreeStore(Request $request)
     {
+        $user = User::find(Auth::user()->id);
+        $user->is_new_user = Status::Active;
+        $user->save();
+
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         $validateData = $request->validate(['user_id' => 'required|unique:survey_threes,user_id']);
 

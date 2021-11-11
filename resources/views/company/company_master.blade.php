@@ -26,10 +26,10 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/plugins/fontawesome-free/css/all.min.css') }}">
-    
+
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    
+
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet"
         href="{{ asset('backend/lib/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
@@ -60,7 +60,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <!-- Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    
+
     <!-- DataTables -->
     <link rel="stylesheet"
         href="{{ asset('backend/lib/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -150,7 +150,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
     <!-- AdminLTE App -->
     <script src="{{ asset('backend/lib/adminlte/js/adminlte.js') }}"></script>
-    
+
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -170,7 +170,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
     <!-- SweetAlert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <script>
         @if(Session::has('message'))
     		var type = "{{ Session::get('alert-type', 'info') }}";
@@ -194,6 +194,29 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     		@endif
     </script>
 
+    <script type="text/javascript">
+        $(document).on('click', '#help_company', function(e){
+        Swal.fire({
+        title: '<strong>Asistente S.S.E</strong>',
+        icon: 'info',
+        html:
+        '<p style="text-align:justify;">Hola empleador este es el asistente para apoyarte en este sistema. ' +
+        'Comencemos con lo importante, lo que para el tecnológico es conocer los datos de la empresa,'+ 
+        'conocer las necesidades de las empresas a la hora de formar profesionista y conocer el rendimiento de'+ 
+        'los egresados en el campo laboral. Para comenzar con este puedes dirigirte a este enlace: <a href="{{ route('company.index', $user_id_encrypt) }}">Tablero</a>.</p>'+
+        '<p style="text-align:justify;">Una vez que se haya cumplido con las encuestas se puede ir al apartardo de perfil para poder subir una fotografía empresarial'+
+        'para los empleos que sean publicados los egresados puedan observar bien el logo de la empresa en el siguiente enlace: <a href="{{ route('company.view') }}">Perfil</a>.</p>'+
+        '<p style="text-align:justify;">Con estos pasos cumplidos puedes buscar a los egresados publicando vacantes de empleo en el siguiente enlace: <a href="{{ route('company.jobs.view') }}">Empleos</a>.</p>' +
+        '<p style="text-align:justify;">Cuando los egresados se hayan postulado, podrás ver una lista de postulados con su correo y currículum para que puedan estar en contacto contigo, en esto en el siguente enlace: <a href="{{ route('company.jobs.postulate') }}">Postulados</a>.</p>',
+        showCloseButton: true,
+        showCancelButton: false,
+        focusConfirm: false,
+        confirmButtonText:
+        '<i class="fa fa-thumbs-up"></i> Me sirve la información!',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        })
+    });
+    </script>
     {{-- Own scripts --}}
     @yield('scripts')
 </body>

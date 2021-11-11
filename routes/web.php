@@ -132,8 +132,10 @@ Route::prefix('admin')->group(function () {
 Route::prefix('egresado')->group(function () {
     Route::get('/index/{user_id}', [StudentController::class, 'StudentIndexView'])->name('student.index');
     Route::get('/perfil', [StudentController::class, 'StudentProfileView'])->name('student.view');
+    Route::get('/pdf', [StudentController::class, 'StudentProfilePdf'])->name('student.pdf');
+    Route::post('/pdf/guardar', [StudentController::class, 'StudentProfilePdfStore'])->name('student.pdf.store');
     Route::get('/salir', [StudentController::class, 'StudentLogout'])->name('student.logout');
-
+    
     /*
     |--------------------------------------------------------------------------
     | Survey
@@ -196,7 +198,8 @@ Route::prefix('egresado')->group(function () {
     */
 
     //--------Job view
-    Route::get('/trabajos/ofertas', [StudentController::class, 'JobsView'])->name('jobs.view');
+    Route::get('/trabajos/ofertas', [JobController::class, 'JobsList'])->name('jobs.view');
+    Route::get('/trabajos/ofertas/postular/{id}', [JobController::class, 'JobPostulate'])->name('jobs.postulate');
 });
 
 
@@ -245,4 +248,8 @@ Route::prefix('empresas')->group(function () {
     Route::get('/trabajos', [JobController::class, 'JobsView'])->name('company.jobs.view');
     Route::get('/trabajos/agregar', [JobController::class, 'JobsAdd'])->name('company.jobs.add');
     Route::post('/trabajos/guardar', [JobController::class, 'JobsStore'])->name('company.jobs.store');
+    Route::get('/trabajos/editar/{id}', [JobController::class, 'JobsEdit'])->name('company.jobs.edit');
+    Route::post('/trabajos/actualizar/{id}', [JobController::class, 'JobsUpdate'])->name('company.jobs.update');
+    Route::get('/trabajos/eliminar/{id}', [JobController::class, 'JobDelete'])->name('company.jobs.delete');
+    Route::get('/trabajos/postulados', [JobController::class, 'PostulateView'])->name('company.jobs.postulate');
 });

@@ -64,7 +64,7 @@
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
                                 <p>Egresados encuestas</p>
                             </a>
-                        </li>                        
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('company.config.view') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
@@ -282,6 +282,6 @@
     <!-- /.sidebar -->
     <div class="sidebar-custom">
         <a href="{{ route('admin.logout') }}" class="btn btn-link text-light"><i class="fas fa-sign-out-alt"></i></a>
-        <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
+        <a id="help_admin" class="btn btn-secondary hide-on-collapse pos-right">Ayuda</a>
     </div>
 </aside>

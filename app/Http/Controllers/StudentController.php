@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\StudentSurvey;
 use App\Enums\Status;
 
@@ -47,8 +50,46 @@ class StudentController extends Controller
         return Redirect()->route('login');
     }
 
-    public function JobsView()
+    public function StudentProfilePdf()
     {
-        return view('backend.jobs.view_jobs');
+        $data['user'] = User::find(Auth::user()->id);
+        return view('student.cv', $data);
+    }
+
+    public function StudentProfilePdfStore(Request $request)
+    {
+        if (!$request->hasFile('exampleInputFile')) {
+            $notification = array(
+                'message' => 'Currículum vacío o se subió el mismo',
+                'alert-type' => 'warning'
+            );
+            return redirect()->route('student.pdf')->with($notification);
+        }
+
+        $editData = User::find($request->user_id);
+
+        if ($editData->cv != null || $editData->cv != '') {
+            $destinationPath = public_path();
+            File::delete($destinationPath . '/storage/pdf/' . $editData->cv);
+        }
+
+        if ($request->exampleInputFile->getClientOriginalExtension() == 'pdf') {
+            $filename =  implode('_', explode(" ", Auth::user()->name)) . '_' . 'cv' . '_' . time()  . '.' . $request->exampleInputFile->getClientOriginalExtension();
+            $request->exampleInputFile->move('storage/pdf', $filename);
+            $editData->cv = $filename;
+            $editData->save();
+
+            $notification = array(
+                'message' => 'Currículum agregado con éxito',
+                'alert-type' => 'success'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Debe ser un archivo pdf',
+                'alert-type' => 'error'
+            );
+        }
+
+        return redirect()->route('student.pdf')->with($notification);
     }
 }

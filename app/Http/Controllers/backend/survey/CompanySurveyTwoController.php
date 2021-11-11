@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\CompanySurveyTwo;
 use App\Models\CompanySurvey;
 use App\Models\Career;
+use App\Models\User;
 use App\Models\CompanyGraduatesWorking;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -24,6 +25,10 @@ class CompanySurveyTwoController extends Controller
 
     public function CompanySurveyTwoStore(Request $request)
     {
+        $user = User::find(Auth::user()->id);
+        $user->is_new_user = Status::Active;
+        $user->save();
+
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         $validateData = $request->validate(['user_id' => 'required|unique:company_survey_twos,user_id']);
 

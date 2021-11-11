@@ -150,6 +150,30 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     		@endif
     </script>
 
+    <script type="text/javascript">
+        $(document).on('click', '#help_student', function(e){
+            Swal.fire({
+            title: '<strong>Asistente S.S.E</strong>',
+            icon: 'info',
+            html:
+            '<p style="text-align:justify;">Hola egresado este es el asistente para apoyarte en este sistema. ' +
+            'Comencemos con lo importante, lo que para el tecnológico es conocer los datos del egresado,'+ 
+            'conocer las necesidades de los egresados al momento de buscar un empleo con lo aprendido en la institución. '+ 
+            'Para comenzar con este puedes dirigirte a este enlace: <a href="{{ route('student.index', $user_id_encrypt) }}">Tablero</a>.</p>'+
+            '<p style="text-align:justify;">Una vez que se haya cumplido con las encuestas se puede ir al apartardo de perfil para que puedas '+
+            'modificar datos de tu tu perfil como puede ser el cambiar tu contraseña o fotografía en el siguiente enlace: <a href="{{ route('student.view') }}">Perfil</a>.</p>'+
+            '<p style="text-align:justify;">Ya que sientas que hayas cumplido con estas opciones puedes subir tu currículum para postularte, no puedes postularte si no tienes un currículum, lo podrás ver en el siguiente enlace: <a href="{{ route('student.pdf') }}">Currículum</a>.</p>' +
+            '<p style="text-align:justify;">Una vez finalizado con esto puedes ver los empleos disponibles en el siguente enlace: <a href="{{ route('jobs.view') }}">Empleos</a>.</p>',
+            showCloseButton: true,
+            showCancelButton: false,
+            focusConfirm: false,
+            confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Me sirve la información!',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            })
+        });
+    </script>
+
     {{-- Own scripts --}}
     @yield('scripts')
 </body>
