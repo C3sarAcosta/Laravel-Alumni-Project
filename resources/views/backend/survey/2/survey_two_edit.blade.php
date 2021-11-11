@@ -38,7 +38,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['GoodBadQuestion']$consts['GoodBadQuestion'] as $option)
+                        @foreach ($consts['GoodBadQuestion'] as $option)
                         <option value="{{ $option }}" {{ $userData->syllabus == $option ? "selected" : ""}}>
                             {{$option}}
                         </option>

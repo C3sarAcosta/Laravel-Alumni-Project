@@ -9,6 +9,12 @@ use App\Enums\Role;
 
 class UserController extends Controller
 {
+
+    public function password()
+    {
+        return view('auth.forgot-password');
+    }
+
     public function index()
     {
         $role = Auth::user()->role;

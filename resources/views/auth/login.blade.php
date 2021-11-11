@@ -1,6 +1,3 @@
-@php
-     $route = Request()->route()->getPrefix();
-@endphp
 <head>
     <title>Iniciar Sesión</title>
     <link rel="icon" href="{{asset ('backend/img/school/favicon.ico')}}">
@@ -8,9 +5,8 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <a href="{{route('welcome')}}"><img style="width: {{(strval($route)== '/empresas')?200 : 150}}px; height:100px;"
-                    
-                    src="{{(strval($route)== '/empresas')?asset('backend/img/school/SSECompany.png') : asset('backend/img/school/SSE2.png')}}" alt=""></a>
+            <a href="{{route('welcome')}}"><img style="width:325px; height:150px;"
+                    src="{{asset('backend/img/school/logonew.png')}}" alt=""></a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -57,7 +53,3 @@
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
-
-<script>
-    // console.log({{$route}});
-</script>

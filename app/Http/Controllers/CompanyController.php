@@ -7,19 +7,15 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\CompanySurvey;
 use App\Enums\Status;
+use App\Models\SurveyThree;
 
 class CompanyController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function CompanyIndexView($user_id)
     {
         $id = Crypt::decrypt($user_id);
         $data['companySurvey'] = CompanySurvey::where('user_id', $id)->first();
-
+        
         if (empty($data['companySurvey'])) {
             $user_survey = new CompanySurvey();
             $user_survey->user_id = $id;
@@ -36,6 +32,11 @@ class CompanyController extends Controller
             ['survey_two_company_done', Status::Active],
             ['survey_three_company_done', Status::Active],
         ])->get()->first()) ? true : false;
+
+        $data['gradute'] = SurveyThree::where('do_for_living', '=', 'NO ESTUDIA NI TRABAJA')
+        ->orWhere('do_for_living', '=', 'ESTUDIA')
+        ->get()->count();
+
 
         return view('company.index', $data);
     }
@@ -55,10 +56,5 @@ class CompanyController extends Controller
     public function CompanyRegister()
     {
         return view('auth.company_register');
-    }
-
-    public function CompanyLogin()
-    {
-        return view('auth.login');
     }
 }

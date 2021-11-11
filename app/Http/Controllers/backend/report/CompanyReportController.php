@@ -12,19 +12,19 @@ class CompanyReportController extends Controller
 {
     public function SurveyOneReport()
     {
-        $data['survey_data'] = SurveyOne::all();
+        $data['survey_data'] = CompanySurveyOne::all();
         return view('backend.report.company.survey_one', $data);
     }
 
     public function SurveyTwoReport()
     {
-        $data['survey_data'] = SurveyTwo::all();
+        $data['survey_data'] = CompanySurveyTwo::all();
         return view('backend.report.company.survey_two', $data);
     }
 
     public function SurveyThreeReport()
     {
-        $data['survey_data'] = SurveyThree::all();
+        $data['survey_data'] = CompanySurveyThree::all();
         return view('backend.report.company.survey_three', $data);
     }
 }

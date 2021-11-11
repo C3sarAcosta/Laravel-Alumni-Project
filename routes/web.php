@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 /*****Controllers*****/
 //Actor
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CompanyController;
@@ -29,6 +30,8 @@ use App\Http\Controllers\backend\configuration\CompanyConfigurationController;
 use App\Http\Controllers\backend\stadistic\GraduateStadisticController;
 //Report
 use App\Http\Controllers\backend\report\GraduateReportController;
+//Jobs
+use App\Http\Controllers\backend\jobs\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +47,10 @@ use App\Http\Controllers\backend\report\GraduateReportController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+
+Route::get('/nuevo', [UserController::class, 'password'])->name('new.index');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\UserController@index')->name('dashboard');
 
@@ -195,7 +202,6 @@ Route::prefix('egresado')->group(function () {
 
 //Company routes
 Route::prefix('empresas')->group(function () {
-    Route::get('/ingresar', [CompanyController::class, 'CompanyLogin'])->name('company.login');
     Route::get('/registrar', [CompanyController::class, 'CompanyRegister'])->name('company.register');
     Route::get('/index/{user_id}', [CompanyController::class, 'CompanyIndexView'])->name('company.index');
     Route::get('/perfil', [CompanyController::class, 'CompanyProfileView'])->name('company.view');
@@ -227,4 +233,16 @@ Route::prefix('empresas')->group(function () {
     Route::get('/encuesta/competencias/editar/{user_id}', [CompanySurveyThreeController::class, 'CompanySurveyThreeEdit'])->name('survey.three.company.edit');
     Route::post('/encuesta/competencias/actualizar', [CompanySurveyThreeController::class, 'CompanySurveyThreeUpdate'])->name('survey.three.company.update');
     Route::get('/encuesta/competencias/{user_id}', [CompanySurveyThreeController::class, 'CompanySurveyThreeVerifiedRoute'])->name('survey.three.company.verified');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Job
+    |--------------------------------------------------------------------------
+    */
+
+    //--------Job view
+    Route::get('/trabajos', [JobController::class, 'JobsView'])->name('company.jobs.view');
+    Route::get('/trabajos/agregar', [JobController::class, 'JobsAdd'])->name('company.jobs.add');
+    Route::post('/trabajos/guardar', [JobController::class, 'JobsStore'])->name('company.jobs.store');
 });

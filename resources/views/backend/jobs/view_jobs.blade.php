@@ -1,27 +1,60 @@
-@extends('student.student_master')
+@extends('company.company_master')
 
-@section('TopTitle')Ofertas de Trabajo @endsection
+@section('TopTitle')Trabajo @endsection
 
+@section('title_section')Lista de trabajos disponibles @endsection
 
-@section('title_section')Ofertas de Trabajo @endsection
-@section('student_content')
-<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-    <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
-        <div class="flex items-center pt-8 sm:justify-start sm:pt-0">
-            <div class="px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider">
-                404 </div>
+@section('company_content')
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="col-12">
+                    <h3 class="card-title">Lista de empleos</h3>
+                    <div class="col-10 d-flex justify-content-center">
+                        <a href="{{ route('company.jobs.add') }}" class="btn btn-rounded btn-success">Agregar
+                            empleos</a>
+                    </div>
+                </div>
+            </div>
 
-            <div class="ml-4 text-lg text-gray-500 uppercase tracking-wider">
-                Not Found </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="table-filter" class="table table-responsive table-bordered table-striped"
+                    style="width: 100%;">
+                    <thead class="bg-gray-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Descripción</th>
+                            <th>Salario</th>
+                            <th>Publicado</th>
+                            <th>Actualización</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @empty(!$allData)
+                        @foreach ($allData as $data)
+                        <tr>
+                            <td class="text-center">
+                                {{ $data->id }}
+                            </td>
+                            <td>{{ $data->title }}</td>
+                            <td>{{ $data->description }}</td>
+                            <td>{{ $data->salary }}</td>
+                            <td>{{ $data->created_at }}</td>
+                            <td>{{ $data->updated_at }}</td>
+                        </tr>
+                        @endforeach
+
+                        @endempty
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
         </div>
+        <!-- /.card -->
     </div>
-    <div id="extwaiokist" style="display:none" v="gclhi" q="2c4bcc9d" c="26.55" i="33" u="3.027" s="10202106" d="1"
-        w="false" e="" m="BMe=" vn="3adyt">
-        <div id="extwaigglbit" style="display:none" v="gclhi" q="2c4bcc9d" c="26.55" i="33" u="3.027" s="10202106" d="1"
-            w="false" e="" m="BMe="></div>
-    </div>
+    <!-- /.col -->
 </div>
 @endsection
-
-
-

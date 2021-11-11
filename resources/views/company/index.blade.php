@@ -32,62 +32,51 @@ return $route;
 
 @section('company_content')
 <div class="row">
-    <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box">
-            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-briefcase"></i></span>
 
-            <div class="info-box-content">
-                <span class="info-box-text">Empleos Activos</span>
-                <span class="info-box-number">10</span>
+    <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>10</h3>
+                <p>Empleos disponibles</p>
             </div>
-            <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-    <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box mb-3">
-            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-file-pdf"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Postulados</span>
-                <span class="info-box-number">10</span>
+            <div class="icon">
+                <i class="ion ion-briefcase"></i>
             </div>
-            <!-- /.info-box-content -->
+            <a href="{{ route('graduate.view') }}" class="small-box-footer">Más información <i
+                    class="fas fa-arrow-circle-right"></i></a>
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
-
-    <!-- fix for small devices only -->
-    <div class="clearfix hidden-md-up"></div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box mb-3">
-            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-check"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Egresados disponibles</span>
-                <span class="info-box-number">10</span>
+    <!-- ./col -->
+    <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>10</h3>
+                <p>Postulados</p>
             </div>
-            <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-    <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box mb-3">
-            <span class="info-box-icon bg-{{$survey_done == false ? "success": "info" }} elevation-1"><i class="fas fa-poll-h"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">Encuestas completadas</span>
-                <span class="info-box-number">{{$survey_done == false ? "Completadas": "Sin completar" }}</span>
+            <div class="icon">
+                <i class="ion ion-document-text"></i>
             </div>
-            <!-- /.info-box-content -->
+            <a href="{{ route('company.config.view') }}" class="small-box-footer">Más información <i
+                    class="fas fa-arrow-circle-right"></i></a>
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
+    <!-- ./col -->
+    <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box {!!$survey_done == false ? "bg-success": "bg-danger" !!}">
+            <div class="inner">
+                <h3>{{$survey_done == false ? "Completadas": "Sin completar" }}</h3>
+                <p>Encuestas completadas</p>
+            </div>
+            <div class="icon">
+                <i class="ion {!!$survey_done == false ? "ion-checkmark": "ion-close-circled" !!} "></i>
+            </div>
+            <a href="#" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
 </div>
 
 <!-- Swiper -->
