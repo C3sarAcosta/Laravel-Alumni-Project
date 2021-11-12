@@ -46,7 +46,7 @@ class CompanySurveyThreeController extends Controller
         $data->bargaining = $request->bargaining;
         $data->abstraction = $request->abstraction;
         $data->leadership = $request->leadership;
-        $data->change = $request->change;
+        $data->changes = $request->changes;
         $data->job_performance = $request->job_performance;
         $data->requirement = $request->requirement;
         $data->comments = $request->comments;
@@ -94,7 +94,7 @@ class CompanySurveyThreeController extends Controller
         $editData->bargaining = $request->bargaining;
         $editData->abstraction = $request->abstraction;
         $editData->leadership = $request->leadership;
-        $editData->change = $request->change;
+        $editData->changes = $request->changes;
         $editData->job_performance = $request->job_performance;
         if (!($request->requirement == "" || $request->requirement == null)) {
             $editData->requirement = $request->requirement;

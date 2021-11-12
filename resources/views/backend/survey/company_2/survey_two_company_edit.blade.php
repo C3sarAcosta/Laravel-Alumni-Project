@@ -38,7 +38,7 @@ $levels = $consts['Level'];
     </div>
 
     <hr>
-   
+
     <label class="mb-4">Número de egresados del Instituto Tecnológico y nivel jerárquico que ocupan en su
         organización.</label>
     <div class="add_item">
@@ -168,21 +168,50 @@ $levels = $consts['Level'];
 
     <hr>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="form-group">
                 <label>Requisito que establece para la contratación de personal a nivel licenciatura.</label>
-                <div class="controls">
-                    <select name="requirements" id="requirements" required="" class="form-control">
-                        <option value="" selected="" disabled="">
-                            Seleccione el principal requisito
-                        </option>
-                        @foreach ($requirements as $requirement)
-                        <option value="{{ $requirement }}" {{ $userData->requirements == $requirement ? "selected" : ""
-                            }}>
-                            {{ $requirement }}
-                        </option>
-                        @endforeach
-                    </select>
+                <div class="d-flex">
+                    <div class="form-check mr-3">
+                        <input class="form-check-input" id="competence1" name="competence1" type="checkbox"
+                            title="Competencia #1" {{ $userData->competence1 == 1 ? "checked" : "" }}>
+                        <label class="form-check-label">Área o campo de estudio</label>
+                    </div>
+                    <div class="form-check mr-3">
+                        <input class="form-check-input" id="competence2" name="competence2" type="checkbox"
+                            title="Competencia #2" {{ $userData->competence2 == 1 ? "checked" : "" }}>
+                        <label class="form-check-label">Títulación</label>
+                    </div>
+                    <div class="form-check mr-3">
+                        <input class="form-check-input" id="competence3" name="competence3" type="checkbox"
+                            title="Competencia #3" {{ $userData->competence3 == 1 ? "checked" : "" }}>
+                        <label class="form-check-label">Experiencia Laboral/Práctica (Antes de egresar)</label>
+                    </div>
+                    <div class="form-check mr-3">
+                        <input class="form-check-input" id="competence4" name="competence4" type="checkbox"
+                            title="Competencia #4" {{ $userData->competence4 == 1 ? "checked" : "" }}>
+                        <label class="form-check-label">Posicionamiento de la institución de egreso</label>
+                    </div>
+                    <div class="form-check mr-3">
+                        <input class="form-check-input" id="competence5" name="competence5" type="checkbox"
+                            title="Competencia #5" {{ $userData->competence5 == 1 ? "checked" : "" }}>
+                        <label class="form-check-label">Conocimiento de idiomas extranjeros</label>
+                    </div>
+                    <div class="form-check mr-3">
+                        <input class="form-check-input" id="competence6" name="competence6" type="checkbox"
+                            title="Competencia #6" {{ $userData->competence6 == 1 ? "checked" : "" }}>
+                        <label class="form-check-label">Recomendaciones / Referencias</label>
+                    </div>
+                    <div class="form-check mr-3">
+                        <input class="form-check-input" id="competence7" name="competence7" type="checkbox"
+                            title="Competencia #7" {{ $userData->competence7 == 1 ? "checked" : "" }}>
+                        <label class="form-check-label">Personalidad / Actitudes</label>
+                    </div>
+                    <div class="form-check mr-3">
+                        <input class="form-check-input" id="competence8" name="competence8" type="checkbox"
+                            title="Competencia #8" {{ $userData->competence8 == 1 ? "checked" : "" }}>
+                        <label class="form-check-label">Capacidad de liderazgo</label>
+                    </div>
                 </div>
             </div>
         </div>

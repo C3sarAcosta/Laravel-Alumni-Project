@@ -301,7 +301,7 @@
     <div class="row">
         <div class="col-4">
             <div class="form-group">
-                <label for="percent_english">Dominio de la lengua extranjera inglés</label>
+                <label for="percent_english">Porcentaje de dominio de la lengua extranjera inglés</label>
                 <div class="input-group">
                     <span class="input-group-prepend minus">
                         <button type="button" class="btn btn-outline-secondary btn-number">

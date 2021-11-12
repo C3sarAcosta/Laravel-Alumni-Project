@@ -4,6 +4,12 @@
 
 @section('title_section')Reporte Competencias Laborales @endsection
 
+@section('head')
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/base/jquery-ui.css" rel="stylesheet"
+    type="text/css" />
+<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js' type='text/javascript'></script>
+@endsection
+
 @section('admin_content')
 <div class="row">
     <div class="col-12">
@@ -11,13 +17,33 @@
             <div class="card-header">
                 <h3 class="card-title">Competencias Laborales</h3>
             </div>
-
             <!-- /.card-header -->
+
+            <div class="row mt-4">
+                <div class="col-5 ml-5">
+                    <div class="form-group">
+                        <label>Fecha de inicio:</label>
+                        <input type="text" class="form-control" name="min" id="min"
+                            placeholder="Fecha inicio de contestación" />
+                    </div>
+                </div>
+                <div class="col-5 mr-5">
+                    <div class="form-group">
+                        <label>Fecha fin:</label>
+                        <input type="text" class="form-control" name="max" id="max"
+                            placeholder="Fecha fin de contestación" />
+                    </div>
+                </div>
+            </div>
+            <!-- /.date-filter -->
+
             <div class="card-body">
                 <table id="table-filter" class="table table-responsive table-bordered table-striped"
                     style="width: 100%;">
                     <thead class="bg-gray-dark">
                         <tr>
+                            <th>ID</th>
+                            <th>Empresa</th>
                             <th>Habilidad para resolver conflictos</th>
                             <th>Ortografía y redacción de documentos</th>
                             <th>Mejora de procesos</th>
@@ -44,22 +70,24 @@
                     <tbody>
                         @foreach ($survey_data as $data)
                         <tr>
-                            <td>{{ $data->resolve_conflicts }}</td>
-                            <td>{{ $data->orthography }}</td>
-                            <td>{{ $data->process_improvement }}</td>
-                            <td>{{ $data->teamwork }}</td>
-                            <td>{{ $data->time_management }}</td>
-                            <td>{{ $data->security }}</td>
-                            <td>{{ $data->ease_speech }}</td>
-                            <td>{{ $data->project_management }}</td>
-                            <td>{{ $data->puntuality }}</td>
-                            <td>{{ $data->rules }}</td>
-                            <td>{{ $data->integration_work }}</td>
-                            <td>{{ $data->creativity }}</td>
-                            <td>{{ $data->bargaining }}</td>
-                            <td>{{ $data->abstraction }}</td>
-                            <td>{{ $data->leadership }}</td>
-                            <td>{{ $data->change }}</td>
+                            <td class="text-center">{{ $data->id }}</td>
+                            <td>{{ $data->company->name }}</td>
+                            <td class="text-center">{{ $data->resolve_conflicts }}</td>
+                            <td class="text-center">{{ $data->orthography }}</td>
+                            <td class="text-center">{{ $data->process_improvement }}</td>
+                            <td class="text-center">{{ $data->teamwork }}</td>
+                            <td class="text-center">{{ $data->time_management }}</td>
+                            <td class="text-center">{{ $data->security }}</td>
+                            <td class="text-center">{{ $data->ease_speech }}</td>
+                            <td class="text-center">{{ $data->project_management }}</td>
+                            <td class="text-center">{{ $data->puntuality }}</td>
+                            <td class="text-center">{{ $data->rules }}</td>
+                            <td class="text-center">{{ $data->integration_work }}</td>
+                            <td class="text-center">{{ $data->creativity }}</td>
+                            <td class="text-center">{{ $data->bargaining }}</td>
+                            <td class="text-center">{{ $data->abstraction }}</td>
+                            <td class="text-center">{{ $data->leadership }}</td>
+                            <td class="text-center">{{ $data->change }}</td>
                             <td>{{ $data->job_performance }}</td>
                             <td>{{ $data->requirement }}</td>
                             <td>{{ $data->comments }}</td>
@@ -68,7 +96,7 @@
                         </tr>
                         @endforeach
                     </tbody>
-                </table>  
+                </table>
             </div>
             <!-- /.card-body -->
         </div>
@@ -76,4 +104,53 @@
     </div>
     <!-- /.col -->
 </div>
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function () {
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $('#min').datepicker("getDate");
+            var max = $('#max').datepicker("getDate");
+            var startDate = new Date(data[20]);
+            if (min == null && max == null) {
+                return true;
+            }
+            if (min == null && startDate <= max) {
+                return true;
+            }
+            if (max == null && startDate >= min) {
+                return true;
+            }
+            if (startDate <= max && startDate >= min) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+    $("#min").datepicker({
+        onSelect: function () {
+            table.draw();
+        },
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#max").datepicker({
+        onSelect: function () {
+            table.draw();
+        },
+        changeMonth: true,
+        changeYear: true
+    });
+    var table = $('#table-filter').DataTable();
+
+    // Event listener to the two range filtering inputs to redraw on input
+    $('#min, #max').change(function () {
+        table.draw();
+    });
+});
+</script>
+@endsection
+
 @endsection

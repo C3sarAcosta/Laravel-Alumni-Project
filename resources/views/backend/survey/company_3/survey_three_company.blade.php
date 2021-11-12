@@ -246,9 +246,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="change">Adaptar al cambio</label>
+                <label for="changes">Adaptar al cambio</label>
                 <div class="controls">
-                    <select name="change" id="change" class="form-control" required=""
+                    <select name="changes" id="changes" class="form-control" required=""
                         title="Por favor califique el liderazgo"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">

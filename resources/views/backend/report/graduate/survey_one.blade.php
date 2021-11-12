@@ -27,8 +27,6 @@
                         <input type="text" class="form-control" name="min" id="min" placeholder="Fecha inicio de contestación" />
                     </div>
                 </div>
-
-
                 <div class="col-5 mr-5">
                     <div class="form-group">
                         <label>Fecha fin:</label>
@@ -77,7 +75,7 @@
                     <tbody>
                         @foreach ($survey_data as $data)
                         <tr>
-                            <td>{{ $data->id }}</td>
+                            <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->first_name }}</td>
                             <td>{{ $data->fathers_surname }}</td>
                             <td>{{ $data->mothers_surname }}</td>

@@ -1,4 +1,4 @@
-//Reports and stadistics
+//Reports and statistics
 $("#print_button").click(function () {
     window.print();
 });

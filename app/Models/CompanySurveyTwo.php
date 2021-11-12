@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompanySurveyTwo extends Model
 {
+    public function company()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
     use HasFactory;
 }

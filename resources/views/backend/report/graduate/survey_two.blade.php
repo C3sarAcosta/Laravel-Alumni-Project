@@ -25,15 +25,15 @@
                 <div class="col-5 ml-5">
                     <div class="form-group">
                         <label>Fecha de inicio:</label>
-                        <input type="text" class="form-control" name="min" id="min" placeholder="Fecha inicio de contestación" />
+                        <input type="text" class="form-control" name="min" id="min"
+                            placeholder="Fecha inicio de contestación" />
                     </div>
                 </div>
-
-
                 <div class="col-5 mr-5">
                     <div class="form-group">
                         <label>Fecha fin:</label>
-                        <input type="text" class="form-control" name="max" id="max" placeholder="Fecha fin de contestación" />
+                        <input type="text" class="form-control" name="max" id="max"
+                            placeholder="Fecha fin de contestación" />
                     </div>
                 </div>
             </div>
@@ -45,6 +45,7 @@
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>ID</th>
+                            <th>Usuario</th>
                             <th>Calidad de docentes</th>
                             <th>Plan de estudios</th>
                             <th>Satisfacción condiciones de estudio (infraestructura)</th>
@@ -60,7 +61,8 @@
                     <tbody>
                         @foreach ($survey_data as $data)
                         <tr>
-                            <td>{{ $data->id }}</td>
+                            <td class="text-center">{{ $data->id }}</td>
+                            <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->quality_teachers }}</td>
                             <td>{{ $data->syllabus }}</td>
                             <td>{{ $data->study_condition }}</td>
@@ -83,7 +85,7 @@
 
 @section('scripts')
 <script type="text/javascript">
-$(document).ready(function () {
+    $(document).ready(function () {
     $.fn.dataTable.ext.search.push(
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");

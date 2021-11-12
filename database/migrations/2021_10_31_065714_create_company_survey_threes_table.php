@@ -31,7 +31,7 @@ class CreateCompanySurveyThreesTable extends Migration
             $table->tinyInteger('bargaining');
             $table->tinyInteger('abstraction');
             $table->tinyInteger('leadership');
-            $table->tinyInteger('change');
+            $table->tinyInteger('changes');
             $table->string('job_performance');
             $table->longText('requirement');
             $table->longText('comments')->nullable();

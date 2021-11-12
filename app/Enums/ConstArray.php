@@ -87,6 +87,7 @@ final class ConstArray extends Enum
         7 => "PORTUGUÉS",
         8 => "ALEMÁN",
         9 => "JAPONÉS",
+        10 => "COREANO",
     ];
 
     const Seniority = [
@@ -125,10 +126,10 @@ final class ConstArray extends Enum
     ];
 
     const CompanySize = [
-        0 => "MICRO",
-        1 => "PEQUEÑA",
-        2 => "MEDIANA",
-        3 => "GRANDE",
+        0 => "MICROEMPRESA (DE 1 A 30)",
+        1 => "PEQUEÑA (DE 31 A 100)",
+        2 => "MEDIANA (DE 101 A 500)",
+        3 => "GRANDE (MÁS DE 500) ",
     ];
 
     const NumberGraduates = [

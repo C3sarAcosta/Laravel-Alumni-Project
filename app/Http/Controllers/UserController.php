@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Models\Career;
 use App\Enums\Role;
 
 class UserController extends Controller
@@ -13,6 +14,12 @@ class UserController extends Controller
     public function password()
     {
         return view('auth.forgot-password');
+    }
+
+    public function GradutateRegister()
+    {
+        $data['careers'] = Career::all();
+        return view('auth.register', $data);
     }
 
     public function index()

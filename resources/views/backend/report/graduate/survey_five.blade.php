@@ -29,8 +29,6 @@
                             placeholder="Fecha inicio de contestación" />
                     </div>
                 </div>
-
-
                 <div class="col-5 mr-5">
                     <div class="form-group">
                         <label>Fecha fin:</label>
@@ -47,6 +45,7 @@
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>ID</th>
+                            <th>Usuario</th>
                             <th>¿Le gustaria tomar cursos de actualización?</th>
                             <th>Mencionar cursos</th>
                             <th>¿Le gustaria tomar algún postgrado?</th>
@@ -58,7 +57,8 @@
                     <tbody>
                         @foreach ($survey_data as $data)
                         <tr>
-                            <td>{{ $data->id }}</td>
+                            <td class="text-center">{{ $data->id }}</td>
+                            <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->courses_yes_no }}</td>
                             <td>{{ $data->courses }}</td>
                             <td>{{ $data->master_yes_no }}</td>

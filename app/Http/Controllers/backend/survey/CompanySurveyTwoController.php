@@ -36,7 +36,14 @@ class CompanySurveyTwoController extends Controller
         $data->user_id = $request->user_id;
         $data->number_graduates = $request->number_graduates;
         $data->congruence = $request->congruence;
-        $data->requirements = $request->requirements;
+        $data->competence1 = $request->competence1 == true ? Status::Active : 0;
+        $data->competence2 = $request->competence2 == true ? Status::Active : 0;
+        $data->competence3 = $request->competence3 == true ? Status::Active : 0;
+        $data->competence4 = $request->competence4 == true ? Status::Active : 0;
+        $data->competence5 = $request->competence5 == true ? Status::Active : 0;
+        $data->competence6 = $request->competence6 == true ? Status::Active : 0;
+        $data->competence7 = $request->competence7 == true ? Status::Active : 0;
+        $data->competence8 = $request->competence8 == true ? Status::Active : 0;
         $data->most_demanded_career = $request->most_demanded_career;
         $data->save();
 
@@ -87,7 +94,14 @@ class CompanySurveyTwoController extends Controller
 
         $editData->number_graduates = $request->number_graduates;
         $editData->congruence = $request->congruence;
-        $editData->requirements = $request->requirements;
+        $editData->competence1 = $request->competence1 == true ? Status::Active : 0;
+        $editData->competence2 = $request->competence2 == true ? Status::Active : 0;
+        $editData->competence3 = $request->competence3 == true ? Status::Active : 0;
+        $editData->competence4 = $request->competence4 == true ? Status::Active : 0;
+        $editData->competence5 = $request->competence5 == true ? Status::Active : 0;
+        $editData->competence6 = $request->competence6 == true ? Status::Active : 0;
+        $editData->competence7 = $request->competence7 == true ? Status::Active : 0;
+        $editData->competence8 = $request->competence8 == true ? Status::Active : 0;
         $editData->most_demanded_career = $request->most_demanded_career;
         $editData->save();
 

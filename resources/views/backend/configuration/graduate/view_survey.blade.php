@@ -22,6 +22,7 @@
                         <tr>
                             <th>Número</th>
                             <th>Nombre</th>
+                            <th>Número de control</th>
                             <th>Encuesta 1 completada</th>
                             <th>Encuesta 2 completada</th>
                             <th>Encuesta 3 completada</th>
@@ -42,6 +43,7 @@
                                 </a>
                             </td>
                             <td>{{ $data->graduate->name }}</td>
+                            <td>{{ $data->graduate->control_number }}</td>
                             <td>{!! ($data->survey_one_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
                             <td>{!! ($data->survey_two_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
                             <td>{!! ($data->survey_three_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>

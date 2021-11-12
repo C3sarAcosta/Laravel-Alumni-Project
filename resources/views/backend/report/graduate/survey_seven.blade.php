@@ -27,8 +27,6 @@
                             placeholder="Fecha inicio de contestación" />
                     </div>
                 </div>
-
-
                 <div class="col-5 mr-5">
                     <div class="form-group">
                         <label>Fecha fin:</label>
@@ -45,6 +43,7 @@
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>ID</th>
+                            <th>Usuario</th>
                             <th>Comentarios</th>
                             <th>Contestada</th>
                             <th>Actualizada</th>
@@ -53,7 +52,8 @@
                     <tbody>
                         @foreach ($survey_data as $data)
                         <tr>
-                            <td>{{ $data->id }}</td>
+                            <td class="text-center">{{ $data->id }}</td>
+                            <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->comments }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>

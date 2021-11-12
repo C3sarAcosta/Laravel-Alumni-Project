@@ -63,11 +63,12 @@
                     title="Por favor escribe tu carrera"
                     class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block mt-1 w-full"
                     :value="old('id_career')" required>
-                    <option value="1">Ingeniería Industrial</option>
-                    <option value="2">Ingeniería Electromecánica</option>
-                    <option value="3">Ingeniería Sistemas Computacionales</option>
-                    <option value="4">Ingeniería Gestión Empresarial</option>
-                    <option value="5">Ingeniería Energías Renovables</option>
+                    <option value="" selected="" disabled="">
+                        Selecciona tu carrera
+                    </option>
+                    @foreach ($careers as $career)
+                    <option value="{{ $career->id }}">{{ $career->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -86,7 +87,7 @@
                     oninput="setCustomValidity('')" title="Por favor repite esa contraseña" name="password_confirmation"
                     required autocomplete="new-password" />
             </div>
-            
+
             <input id="role" name="role" style="display: none" value="student" />
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

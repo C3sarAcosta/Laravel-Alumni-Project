@@ -54,19 +54,19 @@
                         aria-expanded="false" class="dropdown-item dropdown-toggle">Egresados</a>
                     <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
                         <li>
-                            <a tabindex="-1" href="{{ route('survey.one.stadistic.view') }}" class="dropdown-item">1.
+                            <a tabindex="-1" href="{{ route('survey.one.statistic.view') }}" class="dropdown-item">1.
                                 Perfil</a>
                         </li>
 
-                        <li><a href="{{ route('survey.two.stadistic.view') }}" class="dropdown-item">2. Pertinencia</a>
+                        <li><a href="{{ route('survey.two.statistic.view') }}" class="dropdown-item">2. Pertinencia</a>
                         </li>
-                        <li><a href="{{ route('survey.three.stadistic.view') }}" class="dropdown-item">3. Ubicación
+                        <li><a href="{{ route('survey.three.statistic.view') }}" class="dropdown-item">3. Ubicación
                                 laboral</a></li>
-                        <li><a href="{{ route('survey.four.stadistic.view') }}" class="dropdown-item">4. Desempeño</a>
+                        <li><a href="{{ route('survey.four.statistic.view') }}" class="dropdown-item">4. Desempeño</a>
                         </li>
-                        <li><a href="{{ route('survey.five.stadistic.view') }}" class="dropdown-item">5.
+                        <li><a href="{{ route('survey.five.statistic.view') }}" class="dropdown-item">5.
                                 Expéctativas</a></li>
-                        <li><a href="{{ route('survey.six.stadistic.view') }}" class="dropdown-item">6.
+                        <li><a href="{{ route('survey.six.statistic.view') }}" class="dropdown-item">6.
                                 Participación</a></li>
                     </ul>
                 </li>
@@ -80,11 +80,14 @@
                         aria-expanded="false" class="dropdown-item dropdown-toggle">Empresas</a>
                     <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
                         <li>
-                            <a tabindex="-1" href="#" class="dropdown-item">1. Datos generales</a>
+                            <a tabindex="-1" href="{{ route('company.survey.one.statistic.view') }}"
+                                class="dropdown-item">1. Datos generales</a>
                         </li>
 
-                        <li><a href="#" class="dropdown-item">2. Ubicación laboral</a></li>
-                        <li><a href="#" class="dropdown-item">3. Competencias</a></li>
+                        <li><a href="{{ route('company.survey.two.statistic.view') }}" class="dropdown-item">2.
+                                Ubicación laboral</a></li>
+                        <li><a href="{{ route('company.survey.three.statistic.view') }}" class="dropdown-item">3.
+                                Competencias</a></li>
                     </ul>
                 </li>
                 <!-- End Level two -->
@@ -131,11 +134,14 @@
                         aria-expanded="false" class="dropdown-item dropdown-toggle">Empresas</a>
                     <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
                         <li>
-                            <a tabindex="-1" href="#" class="dropdown-item">1. Datos generales</a>
+                            <a tabindex="-1" href="{{ route('company.survey.one.report.view') }}"
+                                class="dropdown-item">1. Datos generales</a>
                         </li>
 
-                        <li><a href="#" class="dropdown-item">2. Ubicación laboral</a></li>
-                        <li><a href="#" class="dropdown-item">3. Competencias</a></li>
+                        <li><a href="{{ route('company.survey.two.report.view') }}" class="dropdown-item">2. Ubicación
+                                laboral</a></li>
+                        <li><a href="{{ route('company.survey.three.report.view') }}" class="dropdown-item">3.
+                                Competencias</a></li>
                     </ul>
                 </li>
                 <!-- End Level two -->

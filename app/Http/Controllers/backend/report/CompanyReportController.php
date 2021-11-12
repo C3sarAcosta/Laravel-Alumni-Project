@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\CompanySurveyOne;
 use App\Models\CompanySurveyTwo;
 use App\Models\CompanySurveyThree;
+use App\Models\CompanyGraduatesWorking;
 
 class CompanyReportController extends Controller
 {
@@ -19,6 +20,7 @@ class CompanyReportController extends Controller
     public function SurveyTwoReport()
     {
         $data['survey_data'] = CompanySurveyTwo::all();
+        $data['graduates'] = CompanyGraduatesWorking::all();
         return view('backend.report.company.survey_two', $data);
     }
 

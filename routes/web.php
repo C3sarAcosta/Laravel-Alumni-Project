@@ -26,10 +26,12 @@ use App\Http\Controllers\backend\configuration\CareerController;
 use App\Http\Controllers\backend\configuration\SpecialtyController;
 use App\Http\Controllers\backend\configuration\GraduateController;
 use App\Http\Controllers\backend\configuration\CompanyConfigurationController;
-//Stadistic
-use App\Http\Controllers\backend\stadistic\GraduateStadisticController;
+//Statistic
+use App\Http\Controllers\backend\statistic\GraduateStatisticController;
+use App\Http\Controllers\backend\statistic\CompanyStatisticController;
 //Report
 use App\Http\Controllers\backend\report\GraduateReportController;
+use App\Http\Controllers\backend\report\CompanyReportController;
 //Jobs
 use App\Http\Controllers\backend\jobs\JobController;
 
@@ -50,7 +52,6 @@ Route::get('/', function () {
 
 
 Route::get('/nuevo', [UserController::class, 'password'])->name('new.index');
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'App\Http\Controllers\UserController@index')->name('dashboard');
 
@@ -97,18 +98,23 @@ Route::prefix('admin')->group(function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Stadistics
+    | Statistics
     |--------------------------------------------------------------------------
     */
 
     //--------Graduate
-    Route::get('/estadistica/egresados/perfil', [GraduateStadisticController::class, 'SurveyOneStadistic'])->name('survey.one.stadistic.view');
-    Route::get('/estadistica/egresados/pertinencia', [GraduateStadisticController::class, 'SurveyTwoStadistic'])->name('survey.two.stadistic.view');
-    Route::get('/estadistica/egresados/ubicacion', [GraduateStadisticController::class, 'SurveyThreeStadistic'])->name('survey.three.stadistic.view');
-    Route::get('/estadistica/egresados/desempeno', [GraduateStadisticController::class, 'SurveyFourStadistic'])->name('survey.four.stadistic.view');
-    Route::get('/estadistica/egresados/expectativas', [GraduateStadisticController::class, 'SurveyFiveStadistic'])->name('survey.five.stadistic.view');
-    Route::get('/estadistica/egresados/participacion', [GraduateStadisticController::class, 'SurveySixStadistic'])->name('survey.six.stadistic.view');
-    Route::get('/estadistica/egresados/ocho', [GraduateStadisticController::class, 'SurveyEightStadistic'])->name('survey.eight.stadistic.view');
+    Route::get('/estadistica/egresados/perfil', [GraduateStatisticController::class, 'SurveyOneStatistic'])->name('survey.one.statistic.view');
+    Route::get('/estadistica/egresados/pertinencia', [GraduateStatisticController::class, 'SurveyTwoStatistic'])->name('survey.two.statistic.view');
+    Route::get('/estadistica/egresados/ubicacion', [GraduateStatisticController::class, 'SurveyThreeStatistic'])->name('survey.three.statistic.view');
+    Route::get('/estadistica/egresados/desempeno', [GraduateStatisticController::class, 'SurveyFourStatistic'])->name('survey.four.statistic.view');
+    Route::get('/estadistica/egresados/expectativas', [GraduateStatisticController::class, 'SurveyFiveStatistic'])->name('survey.five.statistic.view');
+    Route::get('/estadistica/egresados/participacion', [GraduateStatisticController::class, 'SurveySixStatistic'])->name('survey.six.statistic.view');
+    Route::get('/estadistica/egresados/ocho', [GraduateStatisticController::class, 'SurveyEightStatistic'])->name('survey.eight.statistic.view');
+
+    //--------Company
+    Route::get('/estadistica/empresa/datos', [CompanyStatisticController::class, 'CompanySurveyOneStatistic'])->name('company.survey.one.statistic.view');
+    Route::get('/estadistica/empresa/ubicacion', [CompanyStatisticController::class, 'CompanySurveyTwoStatistic'])->name('company.survey.two.statistic.view');
+    Route::get('/estadistica/empresa/competencias', [CompanyStatisticController::class, 'CompanySurveyThreeStatistic'])->name('company.survey.three.statistic.view');
 
     /*
     |--------------------------------------------------------------------------
@@ -125,17 +131,23 @@ Route::prefix('admin')->group(function () {
     Route::get('/reporte/egresados/participacion', [GraduateReportController::class, 'SurveySixReport'])->name('survey.six.report.view');
     Route::get('/reporte/egresados/comentarios', [GraduateReportController::class, 'SurveySevenReport'])->name('survey.seven.report.view');
     Route::get('/reporte/egresados/ocho', [GraduateReportController::class, 'SurveyEightReport'])->name('survey.eight.report.view');
+
+    //--------Company
+    Route::get('/reporte/empresa/datos', [CompanyReportController::class, 'SurveyOneReport'])->name('company.survey.one.report.view');
+    Route::get('/reporte/empresa/ubicacion', [CompanyReportController::class, 'SurveyTwoReport'])->name('company.survey.two.report.view');
+    Route::get('/reporte/empresa/competencias', [CompanyReportController::class, 'SurveyThreeReport'])->name('company.survey.three.report.view');
 });
 
 
 //Student Routes
 Route::prefix('egresado')->group(function () {
+    Route::get('/registrar', [UserController::class, 'GradutateRegister'])->name('graduate.register');
     Route::get('/index/{user_id}', [StudentController::class, 'StudentIndexView'])->name('student.index');
     Route::get('/perfil', [StudentController::class, 'StudentProfileView'])->name('student.view');
     Route::get('/pdf', [StudentController::class, 'StudentProfilePdf'])->name('student.pdf');
     Route::post('/pdf/guardar', [StudentController::class, 'StudentProfilePdfStore'])->name('student.pdf.store');
     Route::get('/salir', [StudentController::class, 'StudentLogout'])->name('student.logout');
-    
+
     /*
     |--------------------------------------------------------------------------
     | Survey

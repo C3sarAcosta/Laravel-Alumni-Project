@@ -94,37 +94,37 @@
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="{{ route('survey.one.stadistic.view') }}" class="nav-link">
+                                    <a href="{{ route('survey.one.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>1. Perfil</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('survey.two.stadistic.view') }}" class="nav-link">
+                                    <a href="{{ route('survey.two.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>2. Pertinencia</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('survey.three.stadistic.view') }}" class="nav-link">
+                                    <a href="{{ route('survey.three.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>3. Ubicación laboral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('survey.four.stadistic.view') }}" class="nav-link">
+                                    <a href="{{ route('survey.four.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>4. Desempeño</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('survey.five.stadistic.view') }}" class="nav-link">
+                                    <a href="{{ route('survey.five.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>5. Expéctativas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('survey.six.stadistic.view') }}" class="nav-link">
+                                    <a href="{{ route('survey.six.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>6. Participación</p>
                                     </a>
@@ -144,19 +144,19 @@
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('company.survey.one.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>1. Datos generales</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('company.survey.two.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>2. Ubicación laboral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('company.survey.three.statistic.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>3. Competencias</p>
                                     </a>
@@ -247,19 +247,19 @@
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('company.survey.one.report.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>1. Datos generales</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('company.survey.two.report.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>2. Ubicación laboral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('company.survey.three.report.view') }}" class="nav-link">
                                         <i class="far fa-dot-circle nav-icon ml-3"></i>
                                         <p>3. Competencias</p>
                                     </a>

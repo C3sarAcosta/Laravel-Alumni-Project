@@ -18,7 +18,14 @@ class CreateCompanySurveyTwosTable extends Migration
             $table->foreignId('user_id');
             $table->string('number_graduates');
             $table->string('congruence');
-            $table->string('requirements');
+            $table->tinyInteger('competence1');
+            $table->tinyInteger('competence2');
+            $table->tinyInteger('competence3');
+            $table->tinyInteger('competence4');
+            $table->tinyInteger('competence5');
+            $table->tinyInteger('competence6');
+            $table->tinyInteger('competence7');
+            $table->tinyInteger('competence8');
             $table->string('most_demanded_career');
             $table->timestamps();
         });

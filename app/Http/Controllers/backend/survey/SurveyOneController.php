@@ -21,9 +21,10 @@ class SurveyOneController extends Controller
     public function SurveyOneView()
     {
         $data['languages'] = Language::getValues();
-        $data['careers'] = Career::pluck('name', 'id');
+        $data['careers'] = Career::all();
         $data['specialties'] = Specialty::pluck('name', 'id');
         $data['consts'] = ConstArray::asArray();
+
         return view('backend.survey.1.survey_one', $data);
     }
 

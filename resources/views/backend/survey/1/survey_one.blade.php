@@ -190,7 +190,8 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required=""
                     oninvalid="this.setCustomValidity('Por favor ingrese su correo electrónico')"
-                    oninput="setCustomValidity('')" title="Por favor escribe tu correo electrónico" />
+                    oninput="setCustomValidity('')" title="Por favor escribe tu correo electrónico"
+                    value="{{ Auth::user()->email }}" />
             </div>
         </div>
     </div>
@@ -209,7 +210,9 @@
                             Selecciona tu carrera
                         </option>
                         @foreach ($careers as $career)
-                        <option value="{{ $career }}">{{ $career }}</option>
+                        <option value="{{ $career->name }}" {{ Auth::user()->id_career == $career->id ? "selected" : "" }}>
+                            {{ $career->name }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -282,7 +285,7 @@
     <div class="row">
         <div class="col-4">
             <div class="form-group">
-                <label for="percent_english">Dominio de la lengua extranjera inglés</label>
+                <label for="percent_english">Porcentaje de dominio de la lengua extranjera inglés</label>
                 <div class="input-group">
                     <span class="input-group-prepend minus">
                         <button type="button" class="btn btn-outline-secondary btn-number">
