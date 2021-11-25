@@ -23,7 +23,6 @@ class CreateStudentSurveysTable extends Migration
             $table->smallInteger('survey_five_done');
             $table->smallInteger('survey_six_done');
             $table->smallInteger('survey_seven_done');
-            $table->smallInteger('survey_eight_done');
             $table->timestamps();
         });
     }

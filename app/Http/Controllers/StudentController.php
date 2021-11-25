@@ -29,7 +29,6 @@ class StudentController extends Controller
             $user_survey->survey_five_done = Status::Inactive;
             $user_survey->survey_six_done = Status::Inactive;
             $user_survey->survey_seven_done = Status::Inactive;
-            $user_survey->survey_eight_done = Status::Inactive;
             $user_survey->save();
 
             $data['studentSurvey'] = StudentSurvey::where('user_id', $id)->first();

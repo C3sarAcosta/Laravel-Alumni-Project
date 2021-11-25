@@ -22,8 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('role');
             $table->string('control_number')->nullable();
             $table->string('year_graduated')->nullable();
-            $table->foreignId('id_career')->nullable();
-            $table->string('rfc')->nullable();            
+            $table->foreignId('id_career')->nullable();          
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

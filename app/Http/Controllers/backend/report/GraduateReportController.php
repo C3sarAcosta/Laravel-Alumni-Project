@@ -55,11 +55,5 @@ class GraduateReportController extends Controller
         $data['survey_data'] = SurveySeven::all();
         return view('backend.report.graduate.survey_seven', $data);
     }
-
-    public function SurveyEightReport()
-    {
-        $data['survey_data'] = SurveyThree::all();
-        return view('backend.report.graduate.survey_three', $data);
-    }
   
 }

@@ -49,11 +49,6 @@
                         7.- Comentarios y sugerencias
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('survey.seven.verified', $user_id_encrypt) }}" class="dropdown-item">
-                        8.- Ocho
-                    </a>
-                </li>
             </ul>
         </li>
 

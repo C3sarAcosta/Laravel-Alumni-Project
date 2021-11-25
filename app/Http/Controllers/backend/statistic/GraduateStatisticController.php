@@ -145,10 +145,4 @@ class GraduateStatisticController extends Controller
         $data['association'] = SurveySix::selectRaw('id, association')->get();
         return view('backend.statistics.graduate.survey_six', $data);
     }
-
-    public function SurveyEightStatistic()
-    {
-        $data['survey_data'] = SurveyThree::all();
-        return view('backend.report.graduate.survey_three', $data);
-    }
 }

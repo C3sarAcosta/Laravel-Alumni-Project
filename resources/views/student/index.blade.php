@@ -180,19 +180,6 @@ return $route;
                 </div>
             </div>
         </div>
-        <div class="swiper-slide">
-            <div class="container-image">
-                <div class="container-loader">
-                    {!! CheckSurvey($studentSurvey['survey_eight_done']) !!}
-                </div>
-                <a href="" title="Ocho">
-                    <img src="{{ asset('backend/img/school/sn8.png') }}" />
-                </a>
-                <div class="container-text">
-                    <h5>Ocho</h5>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="swiper-pagination"></div>
 </div>

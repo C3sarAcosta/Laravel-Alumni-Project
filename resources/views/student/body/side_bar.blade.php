@@ -81,12 +81,6 @@
                                 <p>7. Comentarios y sugerencias</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('survey.seven.index') }}" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>8. Ocho</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

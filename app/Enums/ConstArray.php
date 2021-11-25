@@ -18,6 +18,7 @@ final class ConstArray extends Enum
         2 => "DIVORCIADO",
         3 => "VIUDO",
         4 => "CONCUBINATO",
+        5 => "OTRO",
     ];
 
     const Month = [
@@ -88,6 +89,7 @@ final class ConstArray extends Enum
         8 => "ALEMÁN",
         9 => "JAPONÉS",
         10 => "COREANO",
+        11 => "ITALIANO",
     ];
 
     const Seniority = [

@@ -51,7 +51,6 @@
                             <td>{!! ($data->survey_five_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
                             <td>{!! ($data->survey_six_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
                             <td>{!! ($data->survey_seven_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
-                            <td>{!! ($data->survey_eight_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
                             <td>{{  $data->updated_at  }}</td>
                         </tr>
                         @endforeach

@@ -32,7 +32,6 @@ class AdminController extends Controller
       ['survey_five_done', Status::Active],
       ['survey_six_done', Status::Active],
       ['survey_seven_done', Status::Active],
-      ['survey_eight_done', Status::Active],
     ])
       ->get()
       ->count();

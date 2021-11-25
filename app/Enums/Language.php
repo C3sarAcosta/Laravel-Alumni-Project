@@ -29,4 +29,8 @@ final class Language extends Enum
     const Chinese_Wu = "CHINO WU";
     const Tamil = "TAMIL";
     const Turkish = "TURCO";
+    const italian = "ITALIANO";
+    const korean = "COREANO";
+    const tarahumara = "TARAHUMARA";
+    
 }

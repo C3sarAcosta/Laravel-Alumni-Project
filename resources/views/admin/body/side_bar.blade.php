@@ -226,12 +226,6 @@
                                         <p>7. Comentarios</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('survey.seven.report.view') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                        <p>8. Ocho</p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                     </ul>

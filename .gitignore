@@ -1,5 +1,11 @@
 /node_modules
 /public/hot
+/public/backend/database/2_survey.sql
+/public/backend/database/4_survey.sql
+/public/backend/database/5_survey.sql
+/public/backend/database/6_survey.sql
+/public/backend/database/7_survey.sql
+/public/backend/database/users.sql
 /public/storage
 /storage/*.key
 /vendor
@@ -13,3 +19,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+

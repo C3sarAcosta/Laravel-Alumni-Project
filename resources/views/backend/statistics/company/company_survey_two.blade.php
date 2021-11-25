@@ -233,9 +233,7 @@
 
 @section('scripts')
 <script src="{{ asset('backend/js/chart/company_2.js') }}" type="text/javascript"> </script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script type="text/javascript">
     charts_two(
@@ -252,6 +250,13 @@
         var colors_count = randomColor({luminosity: 'light',count: data_count.length});
 
         var options = {
+tooltips: {
+        callbacks: {
+            label: function(tooltipItem) {
+                return "$" + Number(tooltipItem.yLabel) + " and so worth it !";
+            }
+        }
+    },   
           scales: {
             yAxes: [{
               ticks: {
@@ -259,7 +264,7 @@
                 min: 0
               }    
             }]
-          }
+          },
         };
 
         const data2 = {
@@ -278,7 +283,10 @@
             data: data2,
             options: options
         });
+
+
     });
+
 
 </script>
 
