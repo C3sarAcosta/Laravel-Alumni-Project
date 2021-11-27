@@ -16,9 +16,9 @@ class CreateCompanyGraduatesWorkingsTable extends Migration
         Schema::create('company_graduates_workings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_survey_id');
-            $table->String('career');
-            $table->String('level');
-            $table->String('amount');
+            $table->String('career',50);
+            $table->String('level', 30);
+            $table->String('total');
             $table->timestamps();
         });
     }

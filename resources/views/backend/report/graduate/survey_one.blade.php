@@ -101,7 +101,7 @@
                             <td>{{ $data->percent_english }}</td>
                             <td>{{ $data->another_language }}</td>
                             <td>{{ $data->percent_another_language }}</td>
-                            <td>{{ $data->software }}</td>
+                            <td>{{ $data->software == NULL ? "" : $data->software}}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>
                         </tr>

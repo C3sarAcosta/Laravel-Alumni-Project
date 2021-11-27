@@ -39,10 +39,10 @@
             <div class="form-group">
                 <label for="control_number">Número de Control</label>
                 <input type="text" class="form-control" id="control_number" name="control_number" required=""
-                    pattern="[0-9]{8}" maxlength="8" onkeypress="ValidateNumbers(event);"
+                    pattern="[0-9]{8,10}" maxlength="10" onkeypress="ValidateNumbers(event);"
                     oninvalid="this.setCustomValidity('Por favor ingrese su número de control')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu número de control"
-                    placeholder="Número de Control" value="{{ Auth::user()->control_number }}" />
+                    placeholder="Número de Control" value="{{ Auth::user()->control_number }}" disabled />
             </div>
         </div>
 
@@ -116,7 +116,7 @@
         </div>
         <div class="col-4">
             <div class="form-group">
-                <label for="zip">Código Postal</label>
+                <label for="zip">Código Postal <a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a> </label>
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()" required=""
                     onkeypress="ValidateNumbers(event);"
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"
@@ -170,8 +170,7 @@
             <div class="form-group">
                 <label for="phone">Teléfono</label>
                 <input type="tel" maxlength="10" pattern="[0-9]{10}" class="form-control" id="phone" name="phone"
-                    onkeypress="ValidateNumbers(event);" required=""
-                    oninvalid="this.setCustomValidity('Por favor ingrese su teléfono')" oninput="setCustomValidity('')"
+                    onkeypress="ValidateNumbers(event);"
                     placeholder="Teléfono" title="Por favor escribe tu teléfono" />
             </div>
         </div>
@@ -205,12 +204,13 @@
                 <div class="controls">
                     <select name="career" id="career" required="" class="form-control" title="Selecciona tu carrera"
                         required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
-                        oninput="setCustomValidity('')">
+                        oninput="setCustomValidity('')"
+                        onchange="onChangeCareer()">
                         <option value="" selected="" disabled="">
                             Selecciona tu carrera
                         </option>
                         @foreach ($careers as $career)
-                        <option value="{{ $career->name }}" {{ Auth::user()->id_career == $career->id ? "selected" : "" }}>
+                        <option value="{{ $career->name }}">
                             {{ $career->name }}
                         </option>
                         @endforeach
@@ -228,9 +228,6 @@
                         <option value="" selected="" disabled="">
                             Selecciona tu especialidad
                         </option>
-                        @foreach ($specialties as $specialty)
-                        <option value="{{ $specialty }}">{{ $specialty }}</option>
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -368,5 +365,22 @@
 </div>
 
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
+
+<script type="text/javascript">
+function onChangeCareer() {
+    $("#specialty")
+            .empty()
+            .append(`<option value="" selected="" disabled="">Selecciona tu especialidad</option>`);
+    var specialties = <?php echo $specialties;?>;
+    var career = $("#career").val();
+
+    const filter_specialties = specialties.filter(v => v.name === career);
+
+    filter_specialties.forEach(function (data) {
+        var option = new Option(data["specialty"], data["specialty"]);
+        $("#specialty").append(option);
+    });
+}
+</script>
 
 @endsection

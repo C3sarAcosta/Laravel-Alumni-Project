@@ -38,22 +38,6 @@
                     width="685" height="312" class="chartjs-render-monitor"></canvas>
             </div>
             <!-- /.card-body -->
-
-            <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <span class="nav-link text-decoration-none">
-                            Cursos que interesan a los egresados:&nbsp;
-                            <span class="float-right text-primary font-weight-bold">
-                                @foreach ($courses as $option)
-                                <u>{{ $option->courses }}</u>&nbsp;
-                                @endforeach
-                            </span>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.card-footer -->
         </div>
         <!-- /.card -->
     </div>
@@ -87,24 +71,51 @@
                     width="685" height="312" class="chartjs-render-monitor"></canvas>
             </div>
             <!-- /.card-body -->
-
-            <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <span class="nav-link text-decoration-none">
-                            Cursos que interesan a los egresados:&nbsp;
-                            <span class="float-right text-primary font-weight-bold">
-                                @foreach ($master as $option)
-                                <u>{{ $option->master }}</u>&nbsp;
-                                @endforeach
-                            </span>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.card-footer -->
         </div>
         <!-- /.card -->
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-10">
+        <div id="accordion" class="pb-5">
+            <div class="row d-flex justify-content-center">
+                <div class="card w-50 text-dark">
+                    <div class="card-header bg-gray-dark">
+                        <a class="card-link text-light" data-toggle="collapse" href="#collapseOne">
+                            Cursos que interesan a los egresados
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse" data-parent="#accordion">
+                        <div class="card-body text-justify">
+                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                                @foreach ($courses as $option)
+                                <li>{{ $option->courses }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="card w-50 text-dark">
+                    <div class="card-header bg-gray-dark">
+                        <a class="collapsed card-link text-light" data-toggle="collapse" href="#collapseTwo">
+                            Postgrados que interesan a los egresados
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                        <div class="card-body text-justify">
+                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                                @foreach ($master as $option)
+                                <li>{{ $option->master }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

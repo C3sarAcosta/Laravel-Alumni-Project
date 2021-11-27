@@ -24,7 +24,7 @@ class SpecialtyController extends Controller
     public function SpecialtyStore(Request $request)
     {
         $data = new Specialty();
-        $data->name = strtoupper($request->specialty);
+        $data->name = trim(strtoupper($request->specialty));
         $data->id_career = $request->career_selector;
         $data->save();
 
@@ -46,7 +46,7 @@ class SpecialtyController extends Controller
     public function SpecialtyUpdate(Request $request, $id)
     {
         $data = Specialty::find($id);
-        $data->name = strtoupper($request->specialty);
+        $data->name = trim(strtoupper($request->specialty));
         $data->id_career = $request->career_selector;
         $data->save();
 

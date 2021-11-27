@@ -16,10 +16,10 @@ class CreateSurveyFivesTable extends Migration
         Schema::create('survey_fives', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->tinyText('courses_yes_no');
-            $table->string('courses')->nullable();
-            $table->tinyText('master_yes_no');
-            $table->string('master')->nullable();
+            $table->string('courses_yes_no', 2);
+            $table->string('courses', 100)->nullable();
+            $table->string('master_yes_no', 2);
+            $table->string('master', 100)->nullable();
             $table->timestamps();
         });
     }

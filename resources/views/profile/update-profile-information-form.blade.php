@@ -41,7 +41,7 @@
             </x-jet-secondary-button>
 
             <x-jet-label class="mt-2 mr-2"
-                value="{{ __('De preferencia una fotografía con dimensiones 512x512.') }}" />
+                value="{{ __('Debe ser una fotografía con dimensiones 512x512.') }}" />
 
             {{-- <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
                 {{ __('Remover foto') }}

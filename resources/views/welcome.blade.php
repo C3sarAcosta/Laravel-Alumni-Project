@@ -42,42 +42,12 @@
                         </li>
 
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" class="nav-link dropdown-toggle">Egresados</a>
-                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
-                                style="left: 0px; right: inherit;">
-                                <li>
-                                    <a href="{{ route('graduate.register') }}" class="dropdown-item">
-                                        Registro
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('login') }}" class="dropdown-item">
-                                        Iniciar Sesión
-                                    </a>
-                                </li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('graduate.register') }}">Registro Egresado</a>
                         </li>
-
-                        <li class="nav-item dropdown">
-                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" class="nav-link dropdown-toggle">Empresas</a>
-                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
-                                style="left: 0px; right: inherit;">
-                                <li>
-                                    <a href="{{ route('company.register') }}" class="dropdown-item">
-                                        Registro
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('login') }}" class="dropdown-item">
-                                        Iniciar Sesión
-                                    </a>
-                                </li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
                         </li>
-
                         @endauth
                         @endif
                     </ul>
@@ -148,20 +118,17 @@
                     <div class="feature-block">
                         <i class="lni lni-graduation"></i>
                         <h3 class="text-center">Pefil de Egreso</h3>
-                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum
-                            asperiores deleniti.
-                            Facere, possimus
-                            architecto necessitatibus alias veritatis aperiam eius quibusdam vel ducimus fuga
-                            delectus, velit, temporibus consequatur voluptatibus a.</p>
+                        <p class="text-justify">El perfil del egresado incluye un componente estable, es decir, la información demográfica básica de cada individuo como
+                        es, género, lugar de nacimiento, fecha de nacimiento, formación, antecedentes académicos, estado civil, lugar de
+                        residencia, etc. Y un componente dinámico, que es susceptible de cambiar a lo largo del tiempo (lugar de residencia,
+                        nivel de ingresos, estado civil, puestos de trabajo, otros estudios, etc.).</p>
                     </div>
                     <div class="feature-block mt-5">
                         <i class="lni lni-apartment"></i>
                         <h3 class="text-center">Datos de empresas</h3>
-                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum
-                            asperiores deleniti.
-                            Facere, possimus
-                            architecto necessitatibus alias veritatis aperiam eius quibusdam vel ducimus fuga
-                            delectus, velit, temporibus consequatur voluptatibus a.</p>
+                        <p class="text-justify">Los empleadores y las organizaciones a las que representan, son una parte importante al que sirven las instituciones de
+                        educación superior tecnológica y, en consecuencia, la información que se deriva de estos debe ser analizada y utilizada
+                        para emprender acciones de mejora de los planes y programas de estudio y de la calidad académica en general.</p>
                     </div>
                 </div>
                 <div class="col-md-4 device" style="display:flex; justify-content:center; align-items:center;">
@@ -171,11 +138,10 @@
                     <div class="feature-block">
                         <i class="lni lni-handshake"></i>
                         <h3 class="text-center">Desempeño del egresado</h3>
-                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum
-                            asperiores deleniti.
-                            Facere, possimus
-                            architecto necessitatibus alias veritatis aperiam eius quibusdam vel ducimus fuga
-                            delectus, velit, temporibus consequatur voluptatibus a.</p>
+                        <p class="text-justify">Las encuestas de egresados son útiles para recopilar datos sobre la situación laboral de los egresados más recientes,
+                        con el fin de obtener indicadores del desempeño profesional. Las encuestas también están diseñadas para contribuir a las
+                        explicaciones causales de la pertinencia de las condiciones de estudio y los servicios proporcionados por las
+                        instituciones de educación superior, así como del desempeño de los egresados en el mercado laboral.</p>
                     </div>
                     <div class="feature-block mt-5">
                         <i class="lni lni-thumbs-up"></i> <i class="lni lni-thumbs-down"></i>

@@ -44,7 +44,7 @@ $company_size = $consts['CompanySize'];
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="zip">Código Postal</label>
+                <label for="zip">Código Postal <a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a></label>
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()"
                     onkeypress="ValidateNumbers(event);" title="Por favor escriba su código postal" required=""
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"

@@ -30,7 +30,6 @@
                             <th>Encuesta 5 completada</th>
                             <th>Encuesta 6 completada</th>
                             <th>Encuesta 7 completada</th>
-                            <th>Encuesta 8 completada</th>
                             <th>Actualización</th>
                         </tr>
                     </thead>

@@ -74,7 +74,7 @@ $levels = $consts['Level'];
                 <div class="form-group">
                     <label>Cantidad</label>
                     <div class="controls">
-                        <input type="text" name="amount[]" class="form-control" placeholder="Cantidad">
+                        <input type="text" name="total[]" class="form-control" placeholder="Cantidad">
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@ $levels = $consts['Level'];
                     <div class="form-group">
                         <label>Cantidad</label>
                         <div class="controls">
-                            <input type="text" name="amount[]" class="form-control" placeholder="Cantidad">
+                            <input type="text" name="total[]" class="form-control" placeholder="Cantidad">
                         </div>
                     </div>
                 </div>

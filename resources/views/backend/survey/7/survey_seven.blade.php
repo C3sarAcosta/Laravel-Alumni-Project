@@ -5,7 +5,7 @@
 @section('title_section')Comentarios y sugerencias @endsection
 
 @section('student_content')
-<form method="post" action=" {{ route('survey.seven.store') }} ">
+<form method="post" action=" {{ route('survey.seven.store') }} " onsubmit="return validateSubmit();">
     @csrf
     <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
@@ -32,4 +32,17 @@
         <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
+
+@section('scripts')
+<script type="text/javascript">
+    function validateSubmit(){
+      if($("#comments").val() == null || $("#comments").val().trim() == ''){
+          toastr.error('Por favor mencione los cursos, es obligatorio si selecciona sí.');
+          return false;
+       }
+    return true;  
+}
+</script>
+@endsection
+
 @endsection

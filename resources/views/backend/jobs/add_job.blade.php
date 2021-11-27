@@ -61,4 +61,5 @@
         <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
+
 @endsection

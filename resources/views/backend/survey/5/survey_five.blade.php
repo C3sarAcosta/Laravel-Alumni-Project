@@ -5,7 +5,7 @@
 @section('title_section')Expéctativas de desarrollo, superación profesional y de actualización @endsection
 
 @section('student_content')
-<form method="post" action=" {{ route('survey.five.store') }} ">
+<form method="post" action=" {{ route('survey.five.store') }} " onsubmit="return validateSubmit();">
     @csrf
     <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
@@ -75,5 +75,26 @@
 </div>
 
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
+
+@section('scripts')
+<script type="text/javascript">
+
+function validateSubmit(){
+    if($("#courses_selector").val() == "SÍ"){
+      if($("#courses").val() == null || $("#courses").val().trim() == ''){
+          toastr.error('Por favor mencione los cursos, es obligatorio si selecciona sí.');
+          return false;
+       }
+    }
+    if($("#master_selector").val() == "SÍ"){
+      if($("#master").val() == null || $("#master").val().trim() == ''){
+          toastr.error('Por favor mencione los postgrados, es obligatorio si selecciona sí.');
+          return false;
+       }
+    }
+    return true;  
+}
+</script>
+@endsection
 
 @endsection

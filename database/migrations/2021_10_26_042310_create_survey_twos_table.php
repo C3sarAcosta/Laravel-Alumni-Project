@@ -16,12 +16,12 @@ class CreateSurveyTwosTable extends Migration
         Schema::create('survey_twos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('quality_teachers');
-            $table->string('syllabus');
-            $table->string('study_condition');
-            $table->string('experience');
-            $table->string('study_emphasis');
-            $table->string('participate_projects');
+            $table->string('quality_teachers', 10);
+            $table->string('syllabus', 10);
+            $table->string('study_condition', 10);
+            $table->string('experience', 10);
+            $table->string('study_emphasis', 10);
+            $table->string('participate_projects', 10);
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@
 @section('title_section')Participación social de los egresados @endsection
 
 @section('student_content')
-<form method="post" action=" {{ route('survey.six.store') }} ">
+<form method="post" action=" {{ route('survey.six.store') }} " onsubmit="return validateSubmit();">
     @csrf
     <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
@@ -93,5 +93,31 @@
 </div>
 
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
+
+@section('scripts')
+<script type="text/javascript">
+    function validateSubmit(){
+    if($("#organization_selector").val() == "SÍ"){
+      if($("#organization").val() == null || $("#organization").val().trim() == ''){
+          toastr.error('Por favor mencione los organizaciones, es obligatorio si selecciona sí.');
+          return false;
+       }
+    }
+    if($("#agency_selector").val() == "SÍ"){
+      if($("#agency").val() == null || $("#agency").val().trim() == ''){
+          toastr.error('Por favor mencione los organismos, es obligatorio si selecciona sí.');
+          return false;
+       }
+    }
+    if($("#association_selector").val() == "SÍ"){
+      if($("#association").val() == null || $("#association").val().trim() == ''){
+          toastr.error('Por favor mencione las asociaciones, es obligatorio si selecciona sí.');
+          return false;
+       }
+    }    
+    return true;  
+}
+</script>
+@endsection
 
 @endsection

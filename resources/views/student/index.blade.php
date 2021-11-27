@@ -10,7 +10,7 @@
 @php
 
 function CheckSurvey($userSurveyCheck){
-$check = '<i class="fas fa-check-circle TecColor" style="font-size: 25px;"></i>';
+$check = '<i class="fas fa-check-circle text-success" style="font-size: 25px;"></i>';
 $loader = '<div class="loaderSquare"> <span></span><span></span><span></span> </div>';
 $value = $userSurveyCheck == 1 ? $check : $loader;
 return $value;
@@ -57,24 +57,18 @@ return $route;
             <!-- /.card-header -->
             <div class="card-body">
                 <!-- post text -->
-                <p class="text-justify">Bienvenido egresado al sistema de seguimiento, aquí es donde podrás evaluar todo el
-                    lo aprendido en el tecnológico aplicado a tu vida laboral y otros aspectos.
+                <p class="text-justify">Estimado Egresado:<br />
+                    Los servicios educativos de este Instituto Tecnológico deben estar en mejora continua para asegurar la pertinencia de
+                    los conocimientos adquiridos y mejorar sistemáticamente, para colaborar en la formación integral de nuestros alumnos. <br />
+                    Para esto es indispensable tomarte en cuenta como factor de cambios y reformas, por lo que por este medio solicitamos tu
+                    valiosa participación y cooperación en esta investigación del Seguimiento de Egresados, que nos permitirá obtener
+                    información valiosa para analizar la problemática del mercado laboral y sus características, así como las competencias
+                    laborales de nuestros egresados.<br/>
+                    Las respuestas del cuestionario anexo serán tratadas con absoluta confidencialidad y con fines meramente estadísticos.
                 </p>
-
-                <p class="text-justify">Podrás encontrar en la parte inferior el listado de las encuestas a contestar, si es complicado para
-                    ti el moverte con este nuevo menú podrás encontrarlas tanto en el menú lateral como superior. Podrás
-                    ingresar tu CV y buscar empleos que las empresas de la región hayan publicado de igual manera en el
-                    menú lateral y superior.
-                </p>
-
                 <!-- Attachment -->
             </div>
             <!-- /.card-body -->
-
-            <!-- /.card-footer -->
-            <div class="card-footer">
-            </div>
-            <!-- /.card-footer -->
         </div>
         <!-- /.card -->
     </div>

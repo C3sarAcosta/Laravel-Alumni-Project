@@ -48,8 +48,8 @@ class CompanySurveyThreeController extends Controller
         $data->leadership = $request->leadership;
         $data->changes = $request->changes;
         $data->job_performance = $request->job_performance;
-        $data->requirement = $request->requirement;
-        $data->comments = $request->comments;
+        $data->requirement = trim($request->requirement);
+        $data->comments = trim($request->comments);
 
         $data->save();
 
@@ -96,10 +96,10 @@ class CompanySurveyThreeController extends Controller
         $editData->leadership = $request->leadership;
         $editData->changes = $request->changes;
         $editData->job_performance = $request->job_performance;
-        if (!($request->requirement == "" || $request->requirement == null)) {
-            $editData->requirement = $request->requirement;
+        if (!(trim($request->requirement) == "" || $request->requirement == null)) {
+            $editData->requirement = trim($request->requirement);
         }
-        $editData->comments = $request->comments;
+        $editData->comments = trim($request->comments);
 
         $editData->save();
 
@@ -116,10 +116,9 @@ class CompanySurveyThreeController extends Controller
         $id = Crypt::decrypt($user_id);
         $data = CompanySurvey::where('user_id', $id)->first();
 
-        if ($data['survey_three_company_done'] == Status::Active) {
+        if ($data['survey_three_company_done'] == Status::Active)
             return redirect()->route('survey.three.company.edit', $user_id);
-        } else {
+        else
             return redirect()->route('survey.three.company.index');
-        }
     }
 }

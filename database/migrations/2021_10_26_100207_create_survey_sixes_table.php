@@ -16,12 +16,12 @@ class CreateSurveySixesTable extends Migration
         Schema::create('survey_sixes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->tinyText('organization_yes_no');
-            $table->string('organization')->nullable();
-            $table->tinyText('agency_yes_no');
-            $table->string('agency')->nullable();
-            $table->tinyText('association_yes_no');
-            $table->string('association')->nullable();            
+            $table->string('organization_yes_no', 2);
+            $table->string('organization', 100)->nullable();
+            $table->string('agency_yes_no', 2);
+            $table->string('agency', 100)->nullable();
+            $table->string('association_yes_no', 2);
+            $table->string('association', 100)->nullable();            
             $table->timestamps();
         });
     }

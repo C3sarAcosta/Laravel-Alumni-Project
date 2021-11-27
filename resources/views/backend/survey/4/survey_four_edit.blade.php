@@ -20,21 +20,21 @@
                         required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{ $userData->efficiency_work_activities == "Muy eficiente" ? "selected" : "" }}
-                            value="Muy eficiente">
-                            Muy eficiente
+                        <option {{ $userData->efficiency_work_activities == "MUY EFICIENTE" ? "selected" : "" }}
+                            value="MUY EFICIENTE">
+                            MUY EFICIENTE
                         </option>
-                        <option {{ $userData->efficiency_work_activities == "Eficiente" ? "selected" : "" }}
-                            value="Eficiente">
-                            Eficiente
+                        <option {{ $userData->efficiency_work_activities == "EFICIENTE" ? "selected" : "" }}
+                            value="EFICIENTE">
+                            EFICIENTE
                         </option>
-                        <option {{ $userData->efficiency_work_activities == "Poco eficiente" ? "selected" : "" }}
-                            value="Poco eficiente">
-                            Poco eficiente
+                        <option {{ $userData->efficiency_work_activities == "POCO EFICIENTE" ? "selected" : "" }}
+                            value="POCO EFICIENTE">
+                            POCO EFICIENTE
                         </option>
-                        <option {{ $userData->efficiency_work_activities == "Deficiente" ? "selected" : "" }}
-                            value="Deficiente">
-                            Deficiente
+                        <option {{ $userData->efficiency_work_activities == "DEFICIENTE" ? "selected" : "" }}
+                            value="DEFICIENTE">
+                            DEFICIENTE
                         </option>
                     </select>
                 </div>
@@ -51,20 +51,20 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{ $userData->academic_training == "Excelente" ? "selected" : "" }} value="Excelente">
-                            Excelente
+                        <option {{ $userData->academic_training == "EXCELENTE" ? "selected" : "" }} value="EXCELENTE">
+                            EXCELENTE
                         </option>
-                        <option {{ $userData->academic_training == "Bueno" ? "selected" : "" }} value="Bueno">
-                            Bueno
+                        <option {{ $userData->academic_training == "BUENO" ? "selected" : "" }} value="BUENO">
+                            BUENO
                         </option>
-                        <option {{ $userData->academic_training == "Regular" ? "selected" : "" }} value="Regular">
-                            Regular
+                        <option {{ $userData->academic_training == "REGULAR" ? "selected" : "" }} value="REGULAR">
+                            REGULAR
                         </option>
-                        <option {{ $userData->academic_training == "Malo" ? "selected" : "" }} value="Malo">
-                            Malo
+                        <option {{ $userData->academic_training == "MALO" ? "selected" : "" }} value="MALO">
+                            MALO
                         </option>
-                        <option {{ $userData->academic_training == "Pesimo" ? "selected" : "" }} value="Pesimo">
-                            Pésimo
+                        <option {{ $userData->academic_training == "PÉSIMO" ? "selected" : "" }} value="PÉSIMO">
+                            PÉSIMO
                         </option>
                     </select>
                 </div>
@@ -83,25 +83,25 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option {{ $userData->usefulness_professional_residence == "Excelente" ? "selected" : "" }}
-                            value="Excelente">
-                            Excelente
+                        <option {{ $userData->usefulness_professional_residence == "EXCELENTE" ? "selected" : "" }}
+                            value="EXCELENTE">
+                            EXCELENTE
                         </option>
-                        <option {{ $userData->usefulness_professional_residence == "Bueno" ? "selected" : "" }}
-                            value="Bueno">
-                            Bueno
+                        <option {{ $userData->usefulness_professional_residence == "BUENO" ? "selected" : "" }}
+                            value="BUENO">
+                            BUENO
                         </option>
-                        <option {{ $userData->usefulness_professional_residence == "Regular" ? "selected" : "" }}
-                            value="Regular">
-                            Regular
+                        <option {{ $userData->usefulness_professional_residence == "REGULAR" ? "selected" : "" }}
+                            value="REGULAR">
+                            REGULAR
                         </option>
-                        <option {{ $userData->usefulness_professional_residence == "Malo" ? "selected" : "" }}
-                            value="Malo">
-                            Malo
+                        <option {{ $userData->usefulness_professional_residence == "MALO" ? "selected" : "" }}
+                            value="MALO">
+                            MALO
                         </option>
-                        <option {{ $userData->usefulness_professional_residence=="Pesimo" ? "selected" : "" }}
-                            value="Pesimo">
-                            Pésimo
+                        <option {{ $userData->usefulness_professional_residence=="PÉSIMO" ? "selected" : "" }}
+                            value="PÉSIMO">
+                            PÉSIMO
                         </option>
                     </select>
                 </div>
@@ -110,9 +110,10 @@
     </div>
     <hr>
     <div class="row mb-3 mt-4 ml-1 d-flex justify-content-sm-center">
-        <label><u>Aspectos que valora la empresa u organismo para la contratación de egresados. Llena el formulario
-                donde 1 es
-                poco y 5 es mucho.</u></label>
+        <label>
+            <h5>Aspectos que valora la empresa u organismo para la contratación de egresados. Llena el formulario
+                donde 1 es poco y 5 es mucho.</h5>
+        </label>
     </div>
     <hr>
     <div class="row">

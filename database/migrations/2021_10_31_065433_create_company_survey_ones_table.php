@@ -23,7 +23,7 @@ class CreateCompanySurveyOnesTable extends Migration
             $table->string('state');
             $table->string('city');
             $table->string('municipality');
-            $table->string('phone');
+            $table->string('phone', 10);
             $table->string('email');
             $table->string('business_structure');
             $table->string('company_size');

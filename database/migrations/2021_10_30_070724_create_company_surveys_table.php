@@ -16,9 +16,9 @@ class CreateCompanySurveysTable extends Migration
         Schema::create('company_surveys', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->smallInteger('survey_one_company_done');
-            $table->smallInteger('survey_two_company_done');
-            $table->smallInteger('survey_three_company_done');
+            $table->boolean('survey_one_company_done');
+            $table->boolean('survey_two_company_done');
+            $table->boolean('survey_three_company_done');
             $table->timestamps();
         });
     }

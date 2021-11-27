@@ -67,6 +67,14 @@ class StudentController extends Controller
 
         $editData = User::find($request->user_id);
 
+        if ($request->exampleInputFile->getClientOriginalExtension() != 'pdf') {
+            $notification = array(
+                'message' => 'Solamente se permiten archivos pdf.',
+                'alert-type' => 'error'
+            );
+            return redirect()->route('student.pdf')->with($notification);
+        }
+
         if ($editData->cv != null || $editData->cv != '') {
             $destinationPath = public_path();
             File::delete($destinationPath . '/storage/pdf/' . $editData->cv);
@@ -81,11 +89,6 @@ class StudentController extends Controller
             $notification = array(
                 'message' => 'Currículum agregado con éxito',
                 'alert-type' => 'success'
-            );
-        } else {
-            $notification = array(
-                'message' => 'Debe ser un archivo pdf',
-                'alert-type' => 'error'
             );
         }
 

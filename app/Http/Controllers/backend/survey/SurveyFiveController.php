@@ -30,11 +30,13 @@ class SurveyFiveController extends Controller
 
         $data = new SurveyFive();
         $data->user_id = $request->user_id;
+
         $data->courses_yes_no = $request->courses_selector;
-        $data->courses = $request->courses_selector == "SÍ" ? $request->courses : null;
+        $data->courses = $request->courses_selector == "SÍ" ? trim($request->courses) : null;
 
         $data->master_yes_no = $request->master_selector;
-        $data->master = $request->master_selector == "SÍ" ? $request->master : null;
+        $data->master = $request->master_selector == "SÍ" ? trim($request->master) : null;
+
         $data->save();
 
         $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
@@ -64,9 +66,10 @@ class SurveyFiveController extends Controller
         $validateData = $request->validate(['user_id' => 'required']);
 
         $editData->courses_yes_no = $request->courses_selector;
-        $editData->courses = $request->courses_selector == "SÍ" ? $request->courses : null;
+        $editData->courses = $request->courses_selector == "SÍ" ? trim($request->courses) : null;
+
         $editData->master_yes_no = $request->master_selector;
-        $editData->master = $request->master_selector == "SÍ" ? $request->master : null;
+        $editData->master = $request->master_selector == "SÍ" ? trim($request->master) : null;
         $editData->save();
 
         $notification = array(
@@ -82,10 +85,9 @@ class SurveyFiveController extends Controller
         $id = Crypt::decrypt($user_id);
         $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['survey_five_done'] == Status::Active) {
+        if ($data['survey_five_done'] == Status::Active)
             return redirect()->route('survey.five.edit', $user_id);
-        } else {
+        else
             return redirect()->route('survey.five.index');
-        }
     }
 }

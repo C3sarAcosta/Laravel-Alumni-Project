@@ -19,9 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role');
-            $table->string('control_number')->nullable();
-            $table->string('year_graduated')->nullable();
+            $table->string('role', 10);
+            $table->string('control_number', 10)->nullable();
+            $table->string('year_graduated', 4)->nullable();
             $table->foreignId('id_career')->nullable();          
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();

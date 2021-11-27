@@ -16,9 +16,9 @@ class CreateSurveyFoursTable extends Migration
         Schema::create('survey_fours', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('efficiency_work_activities');
-            $table->string('academic_training');
-            $table->string('usefulness_professional_residence');
+            $table->string('efficiency_work_activities', 15);
+            $table->string('academic_training', 15);
+            $table->string('usefulness_professional_residence', 15);
             $table->tinyInteger('study_area');
             $table->tinyInteger('title');
             $table->tinyInteger('experience');

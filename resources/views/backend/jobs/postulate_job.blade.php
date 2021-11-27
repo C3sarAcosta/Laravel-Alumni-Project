@@ -5,6 +5,7 @@
 @section('title_section')Lista de postulados @endsection
 
 @section('company_content')
+@if(!$postulates->isEmpty())
 @foreach ($groups as $group)
 <div class="row">
     <div class="col-md-12">
@@ -23,7 +24,14 @@
                 @foreach ($postulates as $postulate)
                 @if ($postulate->job->id == $group->job_id)
                 <ul>
-                    <li><b>{{ $postulate->graduate->name }}</b> &nbsp;&nbsp;
+                    <li>
+                        <img src="{{ empty($postulate->graduate->profile_photo_path) 
+                                    ? $postulate->graduate->profile_photo_url 
+                                    : url("storage/".$postulate->graduate->profile_photo_path) }}"
+                        class="img-circle elevation-2" alt="User Image">
+                        &nbsp;&nbsp;
+                        <b>{{ $postulate->graduate->name }}</b>
+                        &nbsp;&nbsp;
                         Correo para contactarse:
                         <a class="text-decoration-none" href="mailto:{{ $postulate->graduate->email}}">
                             {{ $postulate->graduate->email}}
@@ -42,4 +50,7 @@
     </div>
 </div>
 @endforeach
+@else
+<h2>Todavía no se ha postulado nadie a los empleos. Puedes volver más tarde.</h2>
+@endif
 @endsection

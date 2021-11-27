@@ -36,14 +36,14 @@ class CompanySurveyTwoController extends Controller
         $data->user_id = $request->user_id;
         $data->number_graduates = $request->number_graduates;
         $data->congruence = $request->congruence;
-        $data->competence1 = $request->competence1 == true ? Status::Active : 0;
-        $data->competence2 = $request->competence2 == true ? Status::Active : 0;
-        $data->competence3 = $request->competence3 == true ? Status::Active : 0;
-        $data->competence4 = $request->competence4 == true ? Status::Active : 0;
-        $data->competence5 = $request->competence5 == true ? Status::Active : 0;
-        $data->competence6 = $request->competence6 == true ? Status::Active : 0;
-        $data->competence7 = $request->competence7 == true ? Status::Active : 0;
-        $data->competence8 = $request->competence8 == true ? Status::Active : 0;
+        $data->competence1 = $request->competence1 == true ? Status::Active : Status::Inactive;
+        $data->competence2 = $request->competence2 == true ? Status::Active : Status::Inactive;
+        $data->competence3 = $request->competence3 == true ? Status::Active : Status::Inactive;
+        $data->competence4 = $request->competence4 == true ? Status::Active : Status::Inactive;
+        $data->competence5 = $request->competence5 == true ? Status::Active : Status::Inactive;
+        $data->competence6 = $request->competence6 == true ? Status::Active : Status::Inactive;
+        $data->competence7 = $request->competence7 == true ? Status::Active : Status::Inactive;
+        $data->competence8 = $request->competence8 == true ? Status::Active : Status::Inactive;
         $data->most_demanded_career = $request->most_demanded_career;
         $data->save();
 
@@ -57,7 +57,7 @@ class CompanySurveyTwoController extends Controller
                     $dataStudent->company_survey_id = $id;
                     $dataStudent->career = $request->career[$i];
                     $dataStudent->level =  $request->level[$i];
-                    $dataStudent->amount =  $request->amount[$i];
+                    $dataStudent->total =  trim($request->total[$i]);
                     $dataStudent->save();
                 }
             }
@@ -121,7 +121,7 @@ class CompanySurveyTwoController extends Controller
                     $dataStudent->company_survey_id = $id;
                     $dataStudent->career = $request->career[$i];
                     $dataStudent->level =  $request->level[$i];
-                    $dataStudent->amount =  $request->amount[$i];
+                    $dataStudent->total =  trim($request->total[$i]);
                     $dataStudent->save();
                 }
             }
@@ -139,10 +139,9 @@ class CompanySurveyTwoController extends Controller
         $id = Crypt::decrypt($user_id);
         $data = CompanySurvey::where('user_id', $id)->first();
 
-        if ($data['survey_two_company_done'] == Status::Active) {
+        if ($data['survey_two_company_done'] == Status::Active)
             return redirect()->route('survey.two.company.edit', $user_id);
-        } else {
+        else
             return redirect()->route('survey.two.company.index');
-        }
     }
 }

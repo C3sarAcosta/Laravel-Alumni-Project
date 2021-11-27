@@ -20,10 +20,10 @@
                         required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Muy eficiente">Muy eficiente</option>
-                        <option value="Eficiente">Eficiente</option>
-                        <option value="Poco eficiente">Poco eficiente</option>
-                        <option value="Deficiente">Deficiente</option>
+                        <option value="MUY EFICIENTE">MUY EFICIENTE</option>
+                        <option value="EFICIENTE">EFICIENTE</option>
+                        <option value="POCO EFICIENTE">POCO EFICIENTE</option>
+                        <option value="DEFICIENTE">DEFICIENTE</option>
                     </select>
                 </div>
             </div>
@@ -39,11 +39,11 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Excelente">Excelente</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Pesimo">Pésimo</option>
+                        <option value="EXCELENTE">EXCELENTE</option>
+                        <option value="BUENO">BUENO</option>
+                        <option value="REGULAR">REGULAR</option>
+                        <option value="MALO">MALO</option>
+                        <option value="PÉSIMO">PÉSIMO</option>
                     </select>
                 </div>
             </div>
@@ -61,11 +61,11 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        <option value="Excelente">Excelente</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Pesimo">Pésimo</option>
+                        <option value="EXCELENTE">EXCELENTE</option>
+                        <option value="BUENO">BUENO</option>
+                        <option value="REGULAR">REGULAR</option>
+                        <option value="MALO">MALO</option>
+                        <option value="PÉSIMO">PÉSIMO</option>
                     </select>
                 </div>
             </div>
@@ -73,9 +73,10 @@
     </div>
     <hr>
     <div class="row mb-3 mt-4 ml-1 d-flex justify-content-sm-center">
-        <label><u>Aspectos que valora la empresa u organismo para la contratación de egresados. Llena el formulario
-                donde 1 es
-                poco y 5 es mucho.</u></label>
+        <label>
+            <h5>Aspectos que valora la empresa u organismo para la contratación de egresados. Llena el formulario
+                donde 1 es poco y 5 es mucho.</h5>
+        </label>
     </div>
     <hr>
     <div class="row">

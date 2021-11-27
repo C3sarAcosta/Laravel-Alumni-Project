@@ -52,7 +52,7 @@ INSERT INTO `specialties` (`name`, `id_career`, `created_at`, `updated_at`) VALU
 ----Tics
 SELECT @tics := `id` FROM careers WHERE name = 'INGENIERÍA EN TECNOLOGÍAS DE LA INFORMACIÓN Y COMUNICACIONES';
 INSERT INTO `specialties` (`name`, `id_career`, `created_at`, `updated_at`) VALUES ('ADMINISTRACIÓN DE LA INFORMACIÓN DIGITAL', @tics, NOW(), NOW());
-INSERT INTO `specialties` (`name`, `id_career`, `created_at`, `updated_at`) VALUES ('INTERCONECTIVDAD DE REDES', @tics, NOW(), NOW());
+INSERT INTO `specialties` (`name`, `id_career`, `created_at`, `updated_at`) VALUES ('INTERCONECTIVIDAD DE REDES', @tics, NOW(), NOW());
 
 
 ----Info

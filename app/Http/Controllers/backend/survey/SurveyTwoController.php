@@ -87,10 +87,9 @@ class SurveyTwoController extends Controller
         $id = Crypt::decrypt($user_id);
         $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['survey_two_done'] == Status::Active) {
+        if ($data['survey_two_done'] == Status::Active)
             return redirect()->route('survey.two.edit', $user_id);
-        } else {
+        else
             return redirect()->route('survey.two.index');
-        }
     }
 }

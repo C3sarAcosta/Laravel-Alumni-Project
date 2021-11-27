@@ -38,22 +38,6 @@
                     width="685" height="312" class="chartjs-render-monitor"></canvas>
             </div>
             <!-- /.card-body -->
-
-            <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <span class="nav-link text-decoration-none">
-                            Organizaciones:&nbsp;
-                            <span class="float-right text-primary font-weight-bold">
-                                @foreach ($organization as $option)
-                                <u>{{ $option->organization }}</u>&nbsp;
-                                @endforeach
-                            </span>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.card-footer -->
         </div>
         <!-- /.card -->
     </div>
@@ -87,22 +71,6 @@
                     width="685" height="312" class="chartjs-render-monitor"></canvas>
             </div>
             <!-- /.card-body -->
-
-            <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <span class="nav-link text-decoration-none">
-                            Organismos profesionistas:&nbsp;
-                            <span class="float-right text-primary font-weight-bold">
-                                @foreach ($agency as $option)
-                                <u>{{ $option->agency }}</u>&nbsp;
-                                @endforeach
-                            </span>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.card-footer -->
         </div>
         <!-- /.card -->
     </div>
@@ -112,7 +80,7 @@
         <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">¿Pertenece a asociaciones de egresados?</h3>
-    
+
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -136,26 +104,72 @@
                     width="685" height="312" class="chartjs-render-monitor"></canvas>
             </div>
             <!-- /.card-body -->
-    
-            <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <span class="nav-link text-decoration-none">
-                            Asociaciones:&nbsp;
-                            <span class="float-right text-primary font-weight-bold">
-                                @foreach ($association as $option)
-                                <u>{{ $option->association }}</u>&nbsp;
-                                @endforeach
-                            </span>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.card-footer -->
         </div>
         <!-- /.card -->
-    </div>    
+    </div>
 </div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-10">
+        <div id="accordion" class="pb-5">
+            <div class="row d-flex justify-content-center">
+                <div class="card w-50 text-dark">
+                    <div class="card-header bg-gray-dark">
+                        <a class="card-link text-light" data-toggle="collapse" href="#collapseOne">
+                            Organizaciones
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse" data-parent="#accordion">
+                        <div class="card-body text-justify">
+                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                                @foreach ($organization as $option)
+                                <li>{{ $option->organization }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="card w-50 text-dark">
+                    <div class="card-header bg-gray-dark">
+                        <a class="collapsed card-link text-light" data-toggle="collapse" href="#collapseTwo">
+                            Organismos profesionales
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                        <div class="card-body text-justify">
+                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                                @foreach ($agency as $option)
+                                <li>{{ $option->agency }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="card w-50 text-dark">
+                    <div class="card-header bg-gray-dark">
+                        <a class="collapsed card-link text-light" data-toggle="collapse" href="#collapseThird">
+                            Asociaciones
+                        </a>
+                    </div>
+                    <div id="collapseThird" class="collapse" data-parent="#accordion">
+                        <div class="card-body text-justify">
+                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                                @foreach ($association as $option)
+                                <li>{{ $option->association }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section('scripts')
 <script src="{{ asset('backend/js/chart/graduate_6.js') }}" type="text/javascript"> </script>

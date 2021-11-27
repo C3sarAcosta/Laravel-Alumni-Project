@@ -28,8 +28,8 @@ class CompanyConfigurationController extends Controller
         );
 
         $data = new User();
-        $data->name = $request->name;
-        $data->email = $request->email;
+        $data->name = trim($request->name);
+        $data->email = trim($request->email);
         $data->password = Hash::make($request->password);
         $data->role = Role::Company;
         $data->save();
@@ -50,9 +50,12 @@ class CompanyConfigurationController extends Controller
 
     public function CompanyUpdate(Request $request, $id)
     {
+        $validateData = $request->validate(
+            ['email' => 'required|unique:users,email']
+        );        
         $data = User::find($id);
-        $data->name = $request->name;
-        $data->email = $request->email;
+        $data->name = trim($request->name);
+        $data->email = trim($request->email);
         $data->password = Hash::make($request->password);
 
         $data->save();

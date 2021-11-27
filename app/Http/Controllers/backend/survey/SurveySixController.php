@@ -32,13 +32,14 @@ class SurveySixController extends Controller
         $data = new SurveySix();
         $data->user_id = $request->user_id;
         $data->organization_yes_no = $request->organization_selector;
-        $data->organization = $request->organization_selector == "SÍ" ? $request->organization : null;
+        $data->organization = $request->organization_selector == "SÍ" ? trim($request->organization) : null;
 
         $data->agency_yes_no = $request->agency_selector;
-        $data->agency = $request->agency_selector == "SÍ" ? $request->agency : null;
+        $data->agency = $request->agency_selector == "SÍ" ? trim($request->agency) : null;
 
         $data->association_yes_no = $request->association_selector;
-        $data->association = $request->association_selector == "SÍ" ? $request->association : null;
+        $data->association = $request->association_selector == "SÍ" ? trim($request->association) : null;
+
         $data->save();
 
         $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
@@ -68,13 +69,14 @@ class SurveySixController extends Controller
         $validateData = $request->validate(['user_id' => 'required']);
 
         $editData->organization_yes_no = $request->organization_selector;
-        $editData->organization = $request->organization_selector == "SÍ" ? $request->organization : null;
+        $editData->organization = $request->organization_selector == "SÍ" ? trim($request->organization) : null;
 
-        $editData->agency_yes_no = $request->agency_selector;
-        $editData->agency = $request->agency_selector == "SÍ" ? $request->agency : null;
+        $editData->agency_yes_no = $request->agency_selector;      
+        $editData->agency = $request->agency_selector == "SÍ" ? trim($request->agency) : null;
 
-        $editData->association_yes_no = $request->association_selector;
-        $editData->association = $request->association_selector == "SÍ" ? $request->association : null;
+        $editData->association_yes_no = $request->association_selector;    
+        $editData->association = $request->association_selector == "SÍ" ? trim($request->association) : null;
+
         $editData->save();
 
         $notification = array(
@@ -90,10 +92,9 @@ class SurveySixController extends Controller
         $id = Crypt::decrypt($user_id);
         $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['survey_six_done'] == Status::Active) {
+        if ($data['survey_six_done'] == Status::Active)
             return redirect()->route('survey.six.edit', $user_id);
-        } else {
+        else
             return redirect()->route('survey.six.index');
-        }
     }
 }

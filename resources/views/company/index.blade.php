@@ -11,7 +11,7 @@
 
 @php
 function CheckSurvey($userSurveyCheck){
-$check = '<i class="fas fa-check-circle TecColor" style="font-size: 25px;"></i>';
+$check = '<i class="fas fa-check-circle text-success" style="font-size: 25px;"></i>';
 $loader = '<div class="loaderSquare"> <span></span><span></span><span></span> </div>';
 $value = $userSurveyCheck == 1 ? $check : $loader;
 return $value;
@@ -54,25 +54,19 @@ return $route;
             <!-- /.card-header -->
             <div class="card-body">
                 <!-- post text -->
-                <p class="text-justify">Bienvenido empleador al sistema de seguimiento, aquí es donde podrás evaluar el
-                    desempeño de los egresados del instituto tecnológico en su empresa.
-                </p>
-
-                <p class="text-justify">Podrás encontrar en la parte inferior el listado de las encuestas a contestar,
-                    si es complicado para
-                    ti el moverte con este nuevo menú podrás encontrarlas tanto en el menú lateral como superior. Podrás
-                    publicar empleos para que los egresados se contacten contigo, de igual manera en los menús lateral y
-                    superior.
+                <p class="text-justify">El Seguimiento de Egresados es "el conjunto de acciones realizadas” por la institución tendientes a mantener una
+                comunicación constante con los sectores de empleadores, con el propósito de conocer la pertinencia y la formación
+                obtenida por nuestros egresados en su formación académica y su competencia laboral, para que a partir de ello se
+                instrumenten las estrategias de mejora continua. Por lo antes expuesto agradecemos de antemano su valioso apoyo al
+                respecto y le solicitamos de la manera más atenta, tenga a bien contestar el cuestionario adjunto, lo que nos permitirá
+                retroalimentar la pertinencia de las carreras que se ofrecen y coadyuvar a constituir una estrategia que logre, con base
+                en la situación laboral de los egresados adecuar los planes y programas de estudio que ofertamos. La información que nos
+                proporcione será estrictamente confidencial y con fines únicamente estadísticos.
                 </p>
 
                 <!-- Attachment -->
             </div>
             <!-- /.card-body -->
-
-            <!-- /.card-footer -->
-            <div class="card-footer">
-            </div>
-            <!-- /.card-footer -->
         </div>
         <!-- /.card -->
     </div>

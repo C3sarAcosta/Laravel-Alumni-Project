@@ -29,4 +29,17 @@
         <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
+
+@section('scripts')
+<script type="text/javascript">
+    function validateSubmit(){
+      if($("#comments").val() == null || $("#comments").val().trim() == ''){
+          toastr.error('Por favor mencione los cursos, es obligatorio si selecciona sí.');
+          return false;
+       }
+    return true;  
+}
+</script>
+@endsection
+
 @endsection

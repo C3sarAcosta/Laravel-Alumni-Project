@@ -8,6 +8,13 @@ exit();
 @endphp
 @endif
 
+@if (Auth::user()->role != 'company')
+@php
+header("Location: " . URL::to('/'), true, 302);
+exit();
+@endphp
+@endif
+
 @php
 $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 @endphp
@@ -194,6 +201,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     		@endif
     </script>
 
+    <!-- General -->
+    <script src="{{ asset('backend/js/general.js') }}"></script>
+
     <script type="text/javascript">
         $(document).on('click', '#help_company', function(e){
         Swal.fire({
@@ -217,6 +227,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         })
     });
     </script>
+
     {{-- Own scripts --}}
     @yield('scripts')
 </body>

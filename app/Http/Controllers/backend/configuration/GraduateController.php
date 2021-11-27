@@ -33,7 +33,10 @@ class GraduateController extends Controller
     public function GraduateStore(Request $request)
     {
         $validateData = $request->validate(
-            ['email' => 'required|unique:users,email']
+            [
+                'email' => 'required|unique:users,email',
+                'control_number' => 'required|unique:users,control_number',
+            ]
         );
 
         $data = new User();
@@ -63,12 +66,18 @@ class GraduateController extends Controller
 
     public function GraduateUpdate(Request $request, $id)
     {
+        $validateData = $request->validate(
+            [
+                'email' => 'required|unique:users,email',
+                'control_number' => 'required|unique:users,control_number',
+            ]
+        );
         $data = User::find($id);
-        $data->name = $request->name;
-        $data->email = $request->email;
+        $data->name = trim($request->name);
+        $data->email = trim($request->email);
         $data->password = Hash::make($request->password);
-        $data->year_graduated = $request->year;
-        $data->control_number = $request->control_number;
+        $data->year_graduated = trim($request->year);
+        $data->control_number = trim($request->control_number);
         $data->id_career =  $request->career_selector;
 
         $data->save();

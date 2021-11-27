@@ -5,7 +5,7 @@
 @section('title_section')Expéctativas de desarrollo, superación profesional y de actualización @endsection
 
 @section('student_content')
-<form method="post" action=" {{ route('survey.five.update') }} ">
+<form method="post" action=" {{ route('survey.five.update') }} " onsubmit="return validateSubmit();">
     @csrf
     <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
@@ -30,10 +30,10 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="courses">Mencionar cursos</label>
-                <input id="courses" name="courses" type="text" class="form-control" {{ $userData->courses_yes_no == "SÍ"
-                ? "value=$userData->courses" : "disabled" }}
+                <textarea rows="1" id="courses" name="courses" type="text" class="form-control"
                 title="Mencionar los cursos, como cursos de marketing"
-                placeholder="Mencione cuáles serían de su agrado">
+                placeholder="Mencione cuáles serían de su agrado">{{ $userData->courses_yes_no == "SÍ"
+                ? $userData->courses : "disabled" }}</textarea>
             </div>
         </div>
     </div>
@@ -57,13 +57,14 @@
                 </div>
             </div>
         </div>
+
         <div class="col-6">
             <div class="form-group">
                 <label for="master">Postgrado</label>
-                <input id="master" name="master" type="text" class="form-control" {{ $userData->master_yes_no== "SÍ" ?
-                "value=$userData->master" : "disabled" }}
+                <textarea rows="1" id="master" name="master" type="text" class="form-control"
                 title="Mencionar los postgrados, como ejemplo en mecatrónica"
-                placeholder="Mencione cuál sería de su agrado">
+                placeholder="Mencione cuál sería de su agrado">{{ $userData->master_yes_no== "SÍ" ?
+                $userData->master : "disabled" }}</textarea>
             </div>
         </div>
     </div>
@@ -81,5 +82,25 @@
 </div>
 
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
+
+@section('scripts')
+<script type="text/javascript">
+    function validateSubmit(){
+    if($("#courses_selector").val() == "SÍ"){
+      if($("#courses").val() == null || $("#courses").val().trim() == ''){
+          toastr.error('Por favor mencione los cursos, es obligatorio si selecciona sí.');
+          return false;
+       }
+    }
+    if($("#master_selector").val() == "SÍ"){
+      if($("#master").val() == null || $("#master").val().trim() == ''){
+          toastr.error('Por favor mencione los postgrados, es obligatorio si selecciona sí.');
+          return false;
+       }
+    }
+    return true;  
+}
+</script>
+@endsection
 
 @endsection

@@ -41,9 +41,9 @@ class JobController extends Controller
     public function JobsStore(Request $request)
     {
         $data = new CompanyJobs();
-        $data->title = $request->title;
-        $data->description = $request->description;
-        $data->salary = $request->salary;
+        $data->title = trim($request->title);
+        $data->description = trim($request->description);
+        $data->salary = trim($request->salary);
         $data->id_career = $request->id_career;
         $data->id_user = $request->id_user;
         $data->save();
@@ -67,9 +67,9 @@ class JobController extends Controller
     public function JobsUpdate(Request $request, $id)
     {
         $editdata = CompanyJobs::find($id);
-        $editdata->title = $request->title;
-        $editdata->description = $request->description;
-        $editdata->salary = $request->salary;
+        $editdata->title = trim($request->title);
+        $editdata->description = trim($request->description);
+        $editdata->salary = trim($request->salary);
         $editdata->id_career = $request->id_career;
         $editdata->save();
 

@@ -39,9 +39,8 @@
 
             <div class="mt-4">
                 <x-jet-label for="control_number" value="{{ __('Número de Control') }}" />
-                <x-jet-input pattern="[0-9]{8}" autocomplete="off"
-                    title="Porfavor ingrese un número de control correcto de 8 dígitos" id="control_number"
-                    pattern="[0-9]{8}" maxlength="8" onkeypress="ValidateNumbers(event);"
+                <x-jet-input autocomplete="off" title="Porfavor ingrese un número de control correcto"
+                    id="control_number" pattern="[0-9]{8,10}" maxlength="10"
                     oninvalid="this.setCustomValidity('Por favor ingrese su número de control')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu número de control"
                     class="block mt-1 w-full" type="text" name="control_number" :value="old('control_number')"

@@ -27,22 +27,22 @@ class CompanySurveyOneController extends Controller
         $user = User::find(Auth::user()->id);
         $user->is_new_user = Status::Active;
         $user->save();
-        
+
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         $validateData = $request->validate(['user_id' => 'required|unique:company_survey_ones,user_id']);
 
         $data = new CompanySurveyOne();
         $data->user_id = $request->user_id;
 
-        $data->business_name = $request->business_name;
-        $data->address = $request->address;
-        $data->zip = $request->zip;
-        $data->suburb = $request->suburb;
-        $data->state = $request->state;
-        $data->city = $request->city;
-        $data->municipality = $request->municipality;
-        $data->phone = $request->phone;
-        $data->email = $request->email;
+        $data->business_name = trim(strtoupper($request->business_name));
+        $data->address = trim(ucfirst($request->address));
+        $data->zip = trim($request->zip);
+        $data->suburb = trim(ucwords($request->suburb));
+        $data->state = trim(ucwords($request->state));
+        $data->city = trim(ucwords($request->city));
+        $data->municipality = trim(ucwords($request->municipality));
+        $data->phone = trim($request->phone);
+        $data->email = trim($request->email);
         $data->business_structure = $request->business_structure;
         $data->company_size = $request->company_size;
         $data->business_activity_selector = $request->business_activity_selector;
@@ -76,15 +76,15 @@ class CompanySurveyOneController extends Controller
         $editData = CompanySurveyOne::all()->where('user_id', $request->user_id)->first();
         $validateData = $request->validate(['user_id' => 'required']);
 
-        $editData->business_name = $request->business_name;
-        $editData->address = $request->address;
-        $editData->zip = $request->zip;
-        $editData->suburb = $request->suburb;
-        $editData->state = $request->state;
-        $editData->city = $request->city;
-        $editData->municipality = $request->municipality;
-        $editData->phone = $request->phone;
-        $editData->email = $request->email;
+        $editData->business_name = trim(strtoupper($request->business_name));
+        $editData->address = trim(ucfirst($request->address));
+        $editData->zip = trim($request->zip);
+        $editData->suburb = trim(ucwords($request->suburb));
+        $editData->state = trim(ucwords($request->state));
+        $editData->city = trim(ucwords($request->city));
+        $editData->municipality = trim(ucwords($request->municipality));
+        $editData->phone = trim($request->phone);
+        $editData->email = trim($request->email);
         $editData->business_structure = $request->business_structure;
         $editData->company_size = $request->company_size;
         $editData->business_activity_selector = $request->business_activity_selector;
@@ -104,10 +104,9 @@ class CompanySurveyOneController extends Controller
         $id = Crypt::decrypt($user_id);
         $data = CompanySurvey::where('user_id', $id)->first();
 
-        if ($data['survey_one_company_done'] == Status::Active) {
+        if ($data['survey_one_company_done'] == Status::Active)
             return redirect()->route('survey.one.company.edit', $user_id);
-        } else {
+        else
             return redirect()->route('survey.one.company.index');
-        }
     }
 }

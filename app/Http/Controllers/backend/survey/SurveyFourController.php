@@ -97,10 +97,9 @@ class SurveyFourController extends Controller
         $id = Crypt::decrypt($user_id);
         $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['survey_four_done'] == Status::Active) {
+        if ($data['survey_four_done'] == Status::Active)
             return redirect()->route('survey.four.edit', $user_id);
-        } else {
+        else
             return redirect()->route('survey.four.index');
-        }
     }
 }

@@ -29,9 +29,7 @@ class SurveySevenController extends Controller
 
         $data = new SurveySeven();
         $data->user_id = $request->user_id;
-
-        // $data->comments = strtr($request->comments, config('global.accented_chars'));
-        $data->comments = $request->comments;
+        $data->comments = trim($request->comments);
         $data->save();
 
         $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
@@ -60,8 +58,7 @@ class SurveySevenController extends Controller
         $validateData = $request->validate(['user_id' => 'required']);
 
         if ($request->comments != null || $request->comments != "") {
-            // $editData->comments = strtr($request->comments, config('global.accented_chars'));
-            $editData->comments = $request->comments;
+            $editData->comments = trim($request->comments);
             $editData->save();
         }
 
@@ -78,10 +75,9 @@ class SurveySevenController extends Controller
         $id = Crypt::decrypt($user_id);
         $data = StudentSurvey::where('user_id', $id)->first();
 
-        if ($data['survey_seven_done'] == Status::Active) {
+        if ($data['survey_seven_done'] == Status::Active)
             return redirect()->route('survey.seven.edit', $user_id);
-        } else {
+        else
             return redirect()->route('survey.seven.index');
-        }
     }
 }
