@@ -35,7 +35,6 @@ class CreateNewUser implements CreatesNewUsers
             'role' => $input['role'],
             'control_number' => $input['role'] == "student" ? $input['control_number'] : null,
             'year_graduated' => $input['role'] == "student" ? $input['year'] : null,
-            'id_career' => $input['role'] == "student" ? $input['id_career'] : null,
         ]);
     }
 }

@@ -40,12 +40,12 @@ class GraduateController extends Controller
         );
 
         $data = new User();
-        $data->name = $request->name;
-        $data->email = $request->email;
+        $data->name = trim(strtoupper($request->name));
+        $data->email = trim($request->email);
         $data->password = Hash::make($request->password);
-        $data->year_graduated = $request->year;
-        $data->control_number = $request->control_number;
-        $data->id_career =  $request->career_selector;
+        $data->year_graduated = trim($request->year);
+        $data->control_number = trim($request->control_number);
+        // $data->id_career =  $request->career_selector;
         $data->role = Role::Student;
         $data->save();
 
@@ -73,12 +73,12 @@ class GraduateController extends Controller
             ]
         );
         $data = User::find($id);
-        $data->name = trim($request->name);
+        $data->name = trim(strtoupper($request->name));
         $data->email = trim($request->email);
         $data->password = Hash::make($request->password);
         $data->year_graduated = trim($request->year);
         $data->control_number = trim($request->control_number);
-        $data->id_career =  $request->career_selector;
+        // $data->id_career =  $request->career_selector;
 
         $data->save();
 

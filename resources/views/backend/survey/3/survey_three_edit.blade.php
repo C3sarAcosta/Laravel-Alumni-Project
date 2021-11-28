@@ -14,7 +14,7 @@
                 <label for="do_for_living">Actividad a la que se dedica actualmente</label>
                 <div class="controls">
                     <select name="do_for_living" id="do_for_living" onchange="changeActivity()" class="form-control"
-                        title="Por favor seleccione una actividad" required=""
+                        title="Por favor seleccione una actividad" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>

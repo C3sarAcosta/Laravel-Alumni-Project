@@ -21,7 +21,7 @@ $levels = $consts['Level'];
         <div class="col-4">
             <div class="form-group">
                 <div class="controls">
-                    <select name="number_graduates" id="number_graduates" required="" class="form-control"
+                    <select name="number_graduates" id="number_graduates" required class="form-control"
                         title="Por favor seleccione el número de profesionistas"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
@@ -94,7 +94,7 @@ $levels = $consts['Level'];
                     <div class="form-group">
                         <label>Carreras</label>
                         <div class="controls">
-                            <select name="career[]" required="" class="form-control">
+                            <select name="career[]" required class="form-control">
                                 <option value="" selected="" disabled="">
                                     Seleccione la carrera
                                 </option>
@@ -111,7 +111,7 @@ $levels = $consts['Level'];
                     <div class="form-group">
                         <label>Nivel jerárquico</label>
                         <div class="controls">
-                            <select name="level[]" required="" class="form-control">
+                            <select name="level[]" required class="form-control">
                                 <option value="" selected="" disabled="">
                                     Seleccione el nivel jerárquico
                                 </option>
@@ -150,7 +150,7 @@ $levels = $consts['Level'];
         <div class="col-4">
             <div class="form-group">
                 <div class="controls">
-                    <select name="congruence" id="congruence" required="" class="form-control"
+                    <select name="congruence" id="congruence" required class="form-control"
                         title="Por favor seleccione la congruencia entre el perfil y la función"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
@@ -219,7 +219,7 @@ $levels = $consts['Level'];
             <div class="form-group">
                 <label>Carrera que demanda preferentemente su empresa u organismo.</label>
                 <div class="controls">
-                    <select name="most_demanded_career" id="most_demanded_career" required="" class="form-control">
+                    <select name="most_demanded_career" id="most_demanded_career" required class="form-control">
                         <option value="" selected="" disabled="">
                             Seleccione la carrera
                         </option>
@@ -256,7 +256,7 @@ $levels = $consts['Level'];
                     <div class="form-group">
                         <label>Carreras</label>
                         <div class="controls">
-                            <select name="career[]" required="" class="form-control">
+                            <select name="career[]" required class="form-control">
                                 <option value="" selected="" disabled="">
                                     Seleccione la carrera
                                 </option>
@@ -271,7 +271,7 @@ $levels = $consts['Level'];
                     <div class="form-group">
                         <label>Nivel jerárquico</label>
                         <div class="controls">
-                            <select name="level[]" required="" class="form-control">
+                            <select name="level[]" required class="form-control">
                                 <option value="" selected="" disabled="">
                                     Seleccione el nivel jerárquico
                                 </option>

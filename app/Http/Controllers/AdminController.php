@@ -43,11 +43,8 @@ class AdminController extends Controller
       $data['percent'] = round($data['survey'] / $data['gradute'], 2) * 100;
     }
 
-    $data['careers'] = User::groupBy('careers.name')
-      ->selectRaw('count(*) as total, careers.name')
-      ->join('careers', 'careers.id', '=', 'users.id_career')
-      ->where('users.role', 'student')
-      ->orderBy('total')
+    $data['careers'] = SurveyOne::groupBy('career')
+      ->selectRaw('count(*) as total, career as name')
       ->get();
 
     $data['survey_one'] = SurveyOne::groupBy('sex')

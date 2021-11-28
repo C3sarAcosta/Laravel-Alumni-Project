@@ -117,7 +117,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="display: none;">
                 <div class="chartjs-size-monitor">
                     <div class="chartjs-size-monitor-expand">
                         <div class=""></div>
@@ -163,7 +163,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="display: none;">
                 <div class="chartjs-size-monitor">
                     <div class="chartjs-size-monitor-expand">
                         <div class=""></div>
@@ -209,7 +209,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="display: none;">
                 <div class="chartjs-size-monitor">
                     <div class="chartjs-size-monitor-expand">
                         <div class=""></div>
@@ -351,7 +351,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="display: none;">
                 <div class="chartjs-size-monitor">
                     <div class="chartjs-size-monitor-expand">
                         <div class=""></div>
@@ -397,7 +397,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="display: none;">
                 <div class="chartjs-size-monitor">
                     <div class="chartjs-size-monitor-expand">
                         <div class=""></div>
@@ -443,7 +443,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="display: none;">
                 <div class="chartjs-size-monitor">
                     <div class="chartjs-size-monitor-expand">
                         <div class=""></div>

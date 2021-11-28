@@ -21,7 +21,7 @@ $name = join(" ", $arr);
                 <label for="career_selector">Grado académico</label>
                 <div class="controls">
                     <select name="career_selector" id="career_selector" class="form-control"
-                        title="Mencione el grado académico" required=""
+                        title="Mencione el grado académico" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>

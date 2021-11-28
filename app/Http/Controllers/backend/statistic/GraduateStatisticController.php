@@ -129,20 +129,20 @@ class GraduateStatisticController extends Controller
     public function SurveyFiveStatistic()
     {
         $data['courses_yes_no'] = SurveyFive::groupBy('courses_yes_no')->selectRaw('count(*) as total, courses_yes_no')->get();
-        $data['courses'] = SurveyFive::selectRaw('id, courses')->get();
+        $data['courses'] = SurveyFive::selectRaw('id, courses')->where('courses_yes_no', '=', "SÍ")->get();
         $data['master_yes_no'] = SurveyFive::groupBy('master_yes_no')->selectRaw('count(*) as total, master_yes_no')->get();
-        $data['master'] = SurveyFive::selectRaw('id, master')->get();
+        $data['master'] = SurveyFive::selectRaw('id, master')->where('master_yes_no', '=', "SÍ")->get();
         return view('backend.statistics.graduate.survey_five', $data);
     }
 
     public function SurveySixStatistic()
     {
         $data['organization_yes_no'] = SurveySix::groupBy('organization_yes_no')->selectRaw('count(*) as total, organization_yes_no')->get();
-        $data['organization'] = SurveySix::selectRaw('id, organization')->get();
+        $data['organization'] = SurveySix::selectRaw('id, organization')->where('organization_yes_no', '=', "SÍ")->get();
         $data['agency_yes_no'] = SurveySix::groupBy('agency_yes_no')->selectRaw('count(*) as total, agency_yes_no')->get();
-        $data['agency'] = SurveySix::selectRaw('id, agency')->get();
+        $data['agency'] = SurveySix::selectRaw('id, agency')->where('agency_yes_no', '=', "SÍ")->get();
         $data['association_yes_no'] = SurveySix::groupBy('association_yes_no')->selectRaw('count(*) as total, association_yes_no')->get();
-        $data['association'] = SurveySix::selectRaw('id, association')->get();
+        $data['association'] = SurveySix::selectRaw('id, association')->where('association_yes_no', '=', "SÍ")->get();
         return view('backend.statistics.graduate.survey_six', $data);
     }
 }

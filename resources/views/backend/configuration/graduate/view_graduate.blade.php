@@ -27,7 +27,7 @@
                         <tr>
                             <th>Número</th>
                             <th>Nombre</th>
-                            <th>Carrera</th>
+                            <th>Correo electrónico</th>
                             <th>Año de egreso</th>
                             <th>Registrado</th>
                             <th>Actualización</th>
@@ -42,7 +42,7 @@
                                 </a>
                             </td>
                             <td>{{ $data->name }}</td>
-                            <td>{{ $data->career->name }}</td>
+                            <td>{{ $data->email }}</td>
                             <td>{{ $data->year_graduated }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>

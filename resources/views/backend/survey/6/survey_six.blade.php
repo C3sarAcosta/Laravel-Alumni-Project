@@ -14,7 +14,7 @@
                 <label for="organization_selector">¿Pertenece a organizaciones sociales?</label>
                 <div class="controls">
                     <select name="organization_selector" id="organization_selector" onchange="changeSelect()"
-                        title="¿Pertenece a alguna organización?" class="form-control" required=""
+                        title="¿Pertenece a alguna organización?" class="form-control" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -37,7 +37,7 @@
                 <label for="agency_selector">¿Pertenece a organismos de profesionistas?</label>
                 <div class="controls">
                     <select name="agency_selector" id="agency_selector" onchange="changeSelect()" class="form-control"
-                        title="¿Pertenece a algún organismo profesionista?" required=""
+                        title="¿Pertenece a algún organismo profesionista?" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -60,7 +60,7 @@
                 <label for="association_selector">¿Pertenece a asociaciones de egresados?</label>
                 <div class="controls">
                     <select name="association_selector" id="association_selector" onchange="changeSelect()"
-                        title="¿Pertenece a alguna asociaciones de egresados?" class="form-control" required=""
+                        title="¿Pertenece a alguna asociaciones de egresados?" class="form-control" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>

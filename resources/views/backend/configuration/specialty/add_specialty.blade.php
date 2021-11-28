@@ -13,7 +13,7 @@
                 <label for="career_selector">Carrera</label>
                 <div class="controls">
                     <select name="career_selector" id="career_selector" class="form-control"
-                        title="Seleccione la carrera" required=""
+                        title="Seleccione la carrera" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>

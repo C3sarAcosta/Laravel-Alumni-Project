@@ -28,7 +28,7 @@ class CompanyConfigurationController extends Controller
         );
 
         $data = new User();
-        $data->name = trim($request->name);
+        $data->name = trim(strtoupper($request->name));
         $data->email = trim($request->email);
         $data->password = Hash::make($request->password);
         $data->role = Role::Company;
@@ -54,7 +54,7 @@ class CompanyConfigurationController extends Controller
             ['email' => 'required|unique:users,email']
         );        
         $data = User::find($id);
-        $data->name = trim($request->name);
+        $data->name = trim(strtoupper($request->name));
         $data->email = trim($request->email);
         $data->password = Hash::make($request->password);
 

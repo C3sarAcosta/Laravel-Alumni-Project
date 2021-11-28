@@ -11,17 +11,17 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="name">Nombre de usuario</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required=""
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required
                     oninvalid="this.setCustomValidity('Por favor ingrese el nombre del usuario')"
                     oninput="setCustomValidity('')" title=" Por favor escribe el nombre del usuario" />
             </div>
         </div>
-        <div class="col-6">
+        {{-- <div class="col-6">
             <div class="form-group">
                 <label for="career_selector">Carrera</label>
                 <div class="controls">
                     <select name="career_selector" id="career_selector" class="form-control"
-                        title="Seleccione la carrera" required=""
+                        title="Seleccione la carrera" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -31,12 +31,12 @@
                     </select>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-6">
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required=""
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
                     oninvalid="this.setCustomValidity('Por favor ingrese el correo electrónico')"
                     oninput="setCustomValidity('')" title="Por favor escribe el correo electrónico" />
             </div>
@@ -53,7 +53,7 @@
             <div class="form-group">
                 <label for="year">Año de Egreso</label>
                 <input pattern="[0-9]{4}" title="Por favor ingrese un año correcto de 4 dígitos" type="text" id="year"
-                    name="year" readonly class="yearpicker form-control" required=""
+                    name="year" readonly class="yearpicker form-control" required
                     oninvalid="this.setCustomValidity('Por favor ingrese un año correcto')"
                     oninput="setCustomValidity('')" />
             </div>
@@ -61,7 +61,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="control_number">Número de Control</label>
-                <input type="text" class="form-control" id="control_number" name="control_number" required=""
+                <input type="text" class="form-control" id="control_number" name="control_number" required
                     pattern="[0-9]{8}" maxlength="8" onkeypress="ValidateNumbers(event);"
                     oninvalid="this.setCustomValidity('Por favor ingrese el número de control')"
                     oninput="setCustomValidity('')" title="Por favor escribe el número de control"

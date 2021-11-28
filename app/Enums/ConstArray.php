@@ -121,7 +121,7 @@ final class ConstArray extends Enum
         0 => "MICROEMPRESA (DE 1 A 30)",
         1 => "PEQUEÑA (DE 31 A 100)",
         2 => "MEDIANA (DE 101 A 500)",
-        3 => "GRANDE (MÁS DE 500) ",
+        3 => "GRANDE (MÁS DE 500)",
     ];
 
     const NumberGraduates = [

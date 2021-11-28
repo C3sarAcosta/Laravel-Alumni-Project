@@ -23,7 +23,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="resolve_conflicts">Habilidad para resolver conflictos</label>
                 <div class="controls">
-                    <select name="resolve_conflicts" id="resolve_conflicts" class="form-control" required=""
+                    <select name="resolve_conflicts" id="resolve_conflicts" class="form-control" required
                         title="Por favor califique la habilidad"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -41,7 +41,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="orthography">Ortografía y redacción de documentos</label>
                 <div class="controls">
-                    <select name="orthography" id="orthography" class="form-control" required=""
+                    <select name="orthography" id="orthography" class="form-control" required
                         title="Por favor califique la ortografía"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -59,7 +59,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="process_improvement">Mejora de procesos</label>
                 <div class="controls">
-                    <select name="process_improvement" id="process_improvement" class="form-control" required=""
+                    <select name="process_improvement" id="process_improvement" class="form-control" required
                         title="Por favor califique los procesos"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -77,7 +77,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="teamwork">Trabajo en equipo</label>
                 <div class="controls">
-                    <select name="teamwork" id="teamwork" class="form-control" required=""
+                    <select name="teamwork" id="teamwork" class="form-control" required
                         title="Por favor califique el trabajo en equipo"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -95,7 +95,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="time_management">Habilidad para administrar tiempo</label>
                 <div class="controls">
-                    <select name="time_management" id="time_management" class="form-control" required=""
+                    <select name="time_management" id="time_management" class="form-control" required
                         title="Por favor califique la habilidad para administación"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -113,7 +113,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="security">Seguridad personal</label>
                 <div class="controls">
-                    <select name="security" id="security" class="form-control" required=""
+                    <select name="security" id="security" class="form-control" required
                         title="Por favor califique la seguridad personal"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -131,7 +131,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="ease_speech">Facilidad de palabra</label>
                 <div class="controls">
-                    <select name="ease_speech" id="ease_speech" class="form-control" required=""
+                    <select name="ease_speech" id="ease_speech" class="form-control" required
                         title="Por favor califique la facilidad de palabra"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -149,7 +149,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="project_management">Gestión de proyectos</label>
                 <div class="controls">
-                    <select name="project_management" id="project_management" class="form-control" required=""
+                    <select name="project_management" id="project_management" class="form-control" required
                         title="Por favor califique la gestión de proyectos"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -167,7 +167,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="puntuality">Puntualidad y asistencia</label>
                 <div class="controls">
-                    <select name="puntuality" id="puntuality" class="form-control" required=""
+                    <select name="puntuality" id="puntuality" class="form-control" required
                         title="Por favor califique la puntualidad"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -185,7 +185,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="rules">Cumplimiento de las normas</label>
                 <div class="controls">
-                    <select name="rules" id="rules" class="form-control" required=""
+                    <select name="rules" id="rules" class="form-control" required
                         title="Por favor califique el cumplimiento de normas"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -203,7 +203,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="integration_work">Integración al trabajo</label>
                 <div class="controls">
-                    <select name="integration_work" id="integration_work" class="form-control" required=""
+                    <select name="integration_work" id="integration_work" class="form-control" required
                         title="Por favor califique la integración al trabajo"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -221,7 +221,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="creativity">Creatividad e innovación</label>
                 <div class="controls">
-                    <select name="creativity" id="creativity" class="form-control" required=""
+                    <select name="creativity" id="creativity" class="form-control" required
                         title="Por favor califique la creatividad"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -239,7 +239,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="bargaining">Capacidad de negociación</label>
                 <div class="controls">
-                    <select name="bargaining" id="bargaining" class="form-control" required=""
+                    <select name="bargaining" id="bargaining" class="form-control" required
                         title="Por favor califique la capacidad de negociación"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -257,7 +257,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="abstraction">Abstracción, análisis y síntesis</label>
                 <div class="controls">
-                    <select name="abstraction" id="abstraction" class="form-control" required=""
+                    <select name="abstraction" id="abstraction" class="form-control" required
                         title="Por favor califique la abstracción"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -275,7 +275,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="leadership">Liderazgo y toma de decisión</label>
                 <div class="controls">
-                    <select name="leadership" id="leadership" class="form-control" required=""
+                    <select name="leadership" id="leadership" class="form-control" required
                         title="Por favor califique el liderazgo"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -293,7 +293,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
             <div class="form-group">
                 <label for="changes">Adaptar al cambio</label>
                 <div class="controls">
-                    <select name="changes" id="changes" class="form-control" required=""
+                    <select name="changes" id="changes" class="form-control" required
                         title="Por favor califique el liderazgo"
                         oninvalid="this.setCustomValidity('Por favor seleccione una calificación correcta')"
                         oninput="setCustomValidity('')">
@@ -320,7 +320,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         <div class="col-4">
             <div class="form-group">
                 <div class="controls">
-                    <select name="job_performance" id="job_performance" required="" class="form-control"
+                    <select name="job_performance" id="job_performance" required class="form-control"
                         title="Por favor seleccione la calidad de sus docentes"
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">

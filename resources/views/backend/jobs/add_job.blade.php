@@ -37,7 +37,7 @@
                 <label for="id_career">Carrera preferente</label>
                 <div class="controls">
                     <select name="id_career" id="id_career" class="form-control" title="Seleccione la carrera"
-                        required="" oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
+                        required oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         @foreach ($careers as $career)

@@ -42,6 +42,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Usuario</th>
+                            <th>Número de Control</th>
                             <th>Eficiencia para realizar las actividades laborales, en relación con su formación
                                 académica</th>
                             <th>Cómo califica su formación académica con respecto a su desempeño laboral</th>
@@ -68,6 +69,7 @@
                         <tr>
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->graduate->name }}</td>
+                            <td>{{ $data->graduate->control_number }}</td>
                             <td>{{ $data->efficiency_work_activities }}</td>
                             <td>{{ $data->academic_training }}</td>
                             <td>{{ $data->usefulness_professional_residence }}</td>

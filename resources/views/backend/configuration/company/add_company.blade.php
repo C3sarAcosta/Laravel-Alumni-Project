@@ -11,7 +11,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="name">Razón social</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required=""
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required
                     oninvalid="this.setCustomValidity('Por favor ingrese el nombre del usuario')"
                     oninput="setCustomValidity('')" title=" Por favor escribe el nombre del usuario" />
             </div>
@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required=""
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
                     oninvalid="this.setCustomValidity('Por favor ingrese el correo electrónico')"
                     oninput="setCustomValidity('')" title="Por favor escribe el correo electrónico" />
             </div>

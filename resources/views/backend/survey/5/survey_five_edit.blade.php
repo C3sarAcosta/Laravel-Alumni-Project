@@ -14,7 +14,7 @@
                 <label for="courses_selector">¿Le gustaria tomar cursos de actualización?</label>
                 <div class="controls">
                     <select name="courses_selector" id="courses_selector" onchange="changeSelect()" class="form-control"
-                        title="¿Le interesa tomar cursos?" required=""
+                        title="¿Le interesa tomar cursos?" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" disabled="">Selecciona una opción</option>
@@ -44,7 +44,7 @@
                 <label for="master_selector">¿Le gustaria tomar algún postgrado?</label>
                 <div class="controls">
                     <select id="master_selector" name="master_selector" onchange="changeSelect()" class="form-control"
-                        title="¿Le interesa tomar algún postgrado?" required=""
+                        title="¿Le interesa tomar algún postgrado?" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" disabled="">Selecciona una opción</option>

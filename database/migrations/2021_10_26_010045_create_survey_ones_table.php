@@ -20,7 +20,7 @@ class CreateSurveyOnesTable extends Migration
             $table->string('fathers_surname', 100);
             $table->string('mothers_surname', 100);
             $table->string('control_number', 10);
-            $table->string('birthday', 12);
+            $table->string('birthday', 15);
             $table->string('curp', 18);
             $table->string('sex', 10);
             $table->string('marital_status', 15);
@@ -36,7 +36,7 @@ class CreateSurveyOnesTable extends Migration
             $table->string('career', 100);
             $table->string('specialty', 100);
             $table->string('qualified', 2);
-            $table->string('month', 10);
+            $table->string('month', 25);
             $table->string('year', 4);
             $table->string('percent_english', 3);
             $table->string('another_language', 30);

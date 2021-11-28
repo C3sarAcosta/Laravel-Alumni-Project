@@ -2,14 +2,16 @@ use new
 /*** Users ***/
 select
   CONCAT(
-    'INSERT INTO users(`name`, `email`, `password`, `role`, `control_number`, `is_new_user`, `created_at`, `updated_at`)',
+    'INSERT INTO users(`name`, `email`, `password`, `role`, `control_number`, `year_graduated`, `is_new_user`, `created_at`, `updated_at`)',
     'VALUES(\'',
     UPPER(CONVERT(CAST(CONVERT(exalumno.nombres USING latin1) AS BINARY) USING utf8)),
-    '\',\'',
-    login.email,
-    '\',\' \', \'student\', \'',
-    exalumno.nControl,
-    '\',1 ,NOW(), NOW());'
+    '\',',
+    CONCAT('\'',login.email, '\','),
+    '\' \',',
+    '\'student\',',
+    CONCAT('\'', exalumno.nControl, '\','),
+    CONCAT('\'', exalumno.egreso, '\','),
+    '1 ,NOW(), NOW());'
   )
 from
   login
@@ -23,27 +25,43 @@ order by
 /*** Survey 1 ***/
 select
   CONCAT(
-    'INSERT INTO survey_threes(`user_id`, `first_name`,`fathers_surname`,`mothers_surname`,`control_number` 
+    'INSERT INTO survey_ones(`user_id`, `first_name`,`fathers_surname`,`mothers_surname`,`control_number` 
     ,`birthday`,`curp`,`sex`,`marital_status`,`address`,`zip_code`,`suburb`,`state`,`city`
     ,`municipality`,`phone`,`cellphone`,`email`,`career`,`specialty`,`qualified`,`month`
     ,`year`,`percent_english`,`another_language`,`percent_another_language`,`software`
     ,`created_at`, `updated_at`)',
     'VALUES(',
     CONCAT('\'', users.id, '\','),
-    CONCAT('\'', TRIM(UPPER(perfilegresados.Nombre)), '\','),
-    CONCAT('\'', TRIM(UPPER(perfilegresados.ApellidoPaterno)), '\','),
-    CONCAT('\'', TRIM(UPPER(perfilegresados.ApellidoMaterno)), '\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.Nombre USING latin1) AS BINARY) USING utf8
+    ))), '\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.ApellidoPaterno USING latin1) AS BINARY) USING utf8
+    ))), '\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.ApellidoMaterno USING latin1) AS BINARY) USING utf8
+    ))), '\','),
     CONCAT('\'', TRIM(perfilegresados.NumeroControl), '\','),
     CONCAT('\'', TRIM(perfilegresados.FechaNacimiento), '\','),
     CONCAT('\'', TRIM(perfilegresados.Curp), '\','),
     CONCAT('\'', TRIM(perfilegresados.Sexo), '\','),
     CONCAT('\'', TRIM(perfilegresados.estadoCivil), '\','),
-    CONCAT('\'', TRIM(UPPER(perfilegresados.Calle)),' ',TRIM(perfilegresados.Numero) ,'\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.Calle USING latin1) AS BINARY) USING utf8
+    ))),' ',TRIM(perfilegresados.Numero) ,'\','),
     CONCAT('\'', TRIM(perfilegresados.CP), '\','),
-    CONCAT('\'', TRIM(UPPER(perfilegresados.Colonia)), '\','),
-    CONCAT('\'', TRIM(UPPER(perfilegresados.Estado)), '\','),
-    CONCAT('\'', TRIM(UPPER(perfilegresados.Ciudad)), '\','),
-    CONCAT('\'', TRIM(UPPER(perfilegresados.Municipio)), '\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.Colonia USING latin1) AS BINARY) USING utf8
+    ))), '\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.Estado USING latin1) AS BINARY) USING utf8
+    ))), '\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.Ciudad USING latin1) AS BINARY) USING utf8
+    ))), '\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.Municipio USING latin1) AS BINARY) USING utf8
+    ))), '\','),
     CONCAT('\'', TRIM(perfilegresados.TelCasaPat), '\','),
     CONCAT('\'', TRIM(perfilegresados.TelefonoCelular), '\','),
     CONCAT('\'', TRIM(perfilegresados.Email), '\','),
@@ -53,7 +71,9 @@ select
     CONCAT('\'', TRIM(UPPER(perfilegresados.MesEgreso)), '\','),
     CONCAT('\'', TRIM(perfilegresados.AnioEgreso), '\','),
     CONCAT('\'', TRIM(perfilegresados.DominioIdioma), '\','),
-    CONCAT('\'', TRIM(perfilegresados.OtroIdioma), '\','),
+    CONCAT('\'', TRIM(UPPER(CONVERT(
+      CAST(CONVERT(perfilegresados.OtroIdioma USING latin1) AS BINARY) USING utf8
+    ))), '\','),
     CONCAT('\'', TRIM(perfilegresados.PorcentajeOtroIdioma), '\','),
     if(perfilegresados.ManejoPaquetesComputacionales is NULL, 'NULL',  
       CONCAT('\'',UPPER(CONVERT(
@@ -101,22 +121,22 @@ select
     CONCAT('\'', users.id, '\','),
     CONCAT('\'', TRIM(UPPER(ubicacionlaboral.Dedicacion)), '\','),
 
-    if(ubicacionlaboral.Estudios is NULL, 'NULL',  
+    if(ubicacionlaboral.Estudios is NULL, 'NULL,',  
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Estudios USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.Institucion is NULL, 'NULL',  
+    if(ubicacionlaboral.Institucion is NULL, 'NULL,',  
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Institucion USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.Tiempo is NULL, 'NULL',
+    if(ubicacionlaboral.Tiempo is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Tiempo USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.Medio is NULL, 'NULL',
+    if(ubicacionlaboral.Medio is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Medio USING latin1) AS BINARY) USING utf8
     )),'\',')),
@@ -134,99 +154,99 @@ select
     if(ubicacionlaboral.competencia6 is NULL, 'NULL', ubicacionlaboral.competencia6),
     ',',
 
-    if(ubicacionlaboral.idioma is NULL, 'NULL',
+    if(ubicacionlaboral.idioma is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.idioma USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.PropHablar is NULL, 'NULL', CONCAT('\'',ubicacionlaboral.PropHablar,'\',')),
+    if(ubicacionlaboral.PropHablar is NULL, 'NULL,', CONCAT('\'',ubicacionlaboral.PropHablar,'\',')),
 
-    if(ubicacionlaboral.PropEscribir is NULL, 'NULL', CONCAT('\'',ubicacionlaboral.PropEscribir,'\',')),
+    if(ubicacionlaboral.PropEscribir is NULL, 'NULL,', CONCAT('\'',ubicacionlaboral.PropEscribir,'\',')),
 
-    if(ubicacionlaboral.PropLeer is NULL, 'NULL', CONCAT('\'',ubicacionlaboral.PropLeer,'\',')),
+    if(ubicacionlaboral.PropLeer is NULL, 'NULL,', CONCAT('\'',ubicacionlaboral.PropLeer,'\',')),
 
-    if(ubicacionlaboral.PropEscuchar is NULL, 'NULL', CONCAT('\'',ubicacionlaboral.PropEscuchar,'\',')),
+    if(ubicacionlaboral.PropEscuchar is NULL, 'NULL,', CONCAT('\'',ubicacionlaboral.PropEscuchar,'\',')),
 
-    if(ubicacionlaboral.Antiguedad is NULL, 'NULL',
+    if(ubicacionlaboral.Antiguedad is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Antiguedad USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.AnioIngreso is NULL, 'NULL', CONCAT('\'',ubicacionlaboral.AnioIngreso,'\',')),      
+    if(ubicacionlaboral.AnioIngreso is NULL, 'NULL,', CONCAT('\'',ubicacionlaboral.AnioIngreso,'\',')),      
 
-    if(ubicacionlaboral.IngresoEconomico is NULL, 'NULL',
+    if(ubicacionlaboral.IngresoEconomico is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.IngresoEconomico USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.Nivel is NULL, 'NULL',
+    if(ubicacionlaboral.Nivel is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Nivel USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.Condicion is NULL, 'NULL',
+    if(ubicacionlaboral.Condicion is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Condicion USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.RelTrab is NULL, 'NULL', CONCAT('\'',ubicacionlaboral.RelTrab,'\',')),
-
-    if(ubicacionlaboral.Giro is NULL, 'NULL',
-      CONCAT('\'',UPPER(CONVERT(
-      CAST(CONVERT(ubicacionlaboral.Giro USING latin1) AS BINARY) USING utf8
-    )),'\',')),
-
-    if(ubicacionlaboral.RazonSocial is NULL, 'NULL',
+    if(ubicacionlaboral.RelTrab is NULL, 'NULL,', CONCAT('\'',ubicacionlaboral.RelTrab,'\',')),
+    
+    if(ubicacionlaboral.RazonSocial is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.RazonSocial USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.DomicilioCalle is NULL, 'NULL',
+    if(ubicacionlaboral.Giro is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
-      CAST(CONVERT(ubicacionlaboral.DomicilioCalle USING latin1) AS BINARY) USING utf8
+      CAST(CONVERT(ubicacionlaboral.Giro USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.DomicilioCalle is NULL, 'NULL',
+    if(ubicacionlaboral.DomicilioCalle is NULL, 'NULL,',
       CONCAT('\'', UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.DomicilioCalle USING latin1) AS BINARY) USING utf8
-    )),' ', if(ubicacionlaboral.DomicilioNumero is NULL, '', CONCAT('\'',ubicacionlaboral.DomicilioNumero,'\'')),'\',')),
+    )),' ', if(ubicacionlaboral.DomicilioNumero is NULL, '', ubicacionlaboral.DomicilioNumero),'\',')),
 
-    if(ubicacionlaboral.DomicilioColonia is NULL, 'NULL',
+    if(ubicacionlaboral.DomicilioCP is NULL, 'NULL,', CONCAT('\'',ubicacionlaboral.DomicilioCP,'\',')),
+
+    if(ubicacionlaboral.DomicilioColonia is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.DomicilioColonia USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.DomicilioCP is NULL, 'NULL', CONCAT('\'',ubicacionlaboral.DomicilioCP,'\',')),
+    if(ubicacionlaboral.DomicilioEstado is NULL, 'NULL,',
+      CONCAT('\'',UPPER(CONVERT(
+      CAST(CONVERT(ubicacionlaboral.DomicilioEstado USING latin1) AS BINARY) USING utf8
+    )),'\',')),
 
-    if(ubicacionlaboral.DomicilioCiudad is NULL, 'NULL',
+    if(ubicacionlaboral.DomicilioCiudad is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.DomicilioCiudad USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.DomicilioMunicipio is NULL, 'NULL',
+    if(ubicacionlaboral.DomicilioMunicipio is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.DomicilioMunicipio USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.Telefonos is NULL, 'NULL', CONCAT('\'', ubicacionlaboral.Telefonos,'\',')),
+    if(ubicacionlaboral.Telefonos is NULL, 'NULL,', CONCAT('\'', ubicacionlaboral.Telefonos,'\',')),
 
-    if(ubicacionlaboral.Fax is NULL, 'NULL', CONCAT('\'', ubicacionlaboral.Fax,'\',')),
+    if(ubicacionlaboral.Fax is NULL, 'NULL,', CONCAT('\'', ubicacionlaboral.Fax,'\',')),
 
-    if(ubicacionlaboral.PaginaWeb is NULL, 'NULL', CONCAT('\'', ubicacionlaboral.PaginaWeb,'\',')),
+    if(ubicacionlaboral.PaginaWeb is NULL, 'NULL,', CONCAT('\'', ubicacionlaboral.PaginaWeb,'\',')),
     
-    if(ubicacionlaboral.CorreoJefe is NULL, 'NULL', CONCAT('\'', ubicacionlaboral.CorreoJefe,'\',')),
+    if(ubicacionlaboral.CorreoJefe is NULL, 'NULL,', CONCAT('\'', ubicacionlaboral.CorreoJefe,'\',')),
     
-    if(ubicacionlaboral.Sector is NULL, 'NULL',
+    if(ubicacionlaboral.Sector is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Sector USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.TamanoEmpresa is NULL, 'NULL',
+    if(ubicacionlaboral.TamanoEmpresa is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.TamanoEmpresa USING latin1) AS BINARY) USING utf8
     )),'\',')),
 
-    if(ubicacionlaboral.Economica is NULL, 'NULL',
+    if(ubicacionlaboral.Economica is NULL, 'NULL,',
       CONCAT('\'',UPPER(CONVERT(
       CAST(CONVERT(ubicacionlaboral.Economica USING latin1) AS BINARY) USING utf8
     )),'\',')),
@@ -250,7 +270,6 @@ select
     CONCAT('\'', TRIM(UPPER(CONVERT(CAST(CONVERT(desempenoprofesionalegresados.EficienciaLaboral USING latin1) AS BINARY) USING utf8))), '\','),
     CONCAT('\'', TRIM(UPPER(CONVERT(CAST(CONVERT(desempenoprofesionalegresados.FormacionAcademica USING latin1) AS BINARY) USING utf8))), '\','),
     CONCAT('\'', TRIM(UPPER(CONVERT(CAST(CONVERT(desempenoprofesionalegresados.UtilidadResidencia USING latin1) AS BINARY) USING utf8))), '\','),
-    TRIM(desempenoprofesionalegresados.UtilidadResidencia), ',',
     TRIM(desempenoprofesionalegresados.Area), ',',
     TRIM(desempenoprofesionalegresados.Titulacion), ',',
     TRIM(desempenoprofesionalegresados.ExperienciaLaboral), ',',

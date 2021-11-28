@@ -44,6 +44,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Usuario</th>
+                            <th>Número de Control</th>
                             <th>Comentarios</th>
                             <th>Contestada</th>
                             <th>Actualizada</th>
@@ -54,6 +55,7 @@
                         <tr>
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->graduate->name }}</td>
+                            <td>{{ $data->graduate->control_number }}</td>
                             <td>{{ $data->comments }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>

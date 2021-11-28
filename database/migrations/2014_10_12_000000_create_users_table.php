@@ -21,8 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role', 10);
             $table->string('control_number', 10)->nullable();
-            $table->string('year_graduated', 4)->nullable();
-            $table->foreignId('id_career')->nullable();          
+            $table->string('year_graduated', 4)->nullable();        
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

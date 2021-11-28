@@ -46,6 +46,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Usuario</th>
+                            <th>Número de Control</th>
                             <th>Calidad de docentes</th>
                             <th>Plan de estudios</th>
                             <th>Satisfacción condiciones de estudio (infraestructura)</th>
@@ -63,6 +64,7 @@
                         <tr>
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->graduate->name }}</td>
+                            <td>{{ $data->graduate->control_number }}</td>
                             <td>{{ $data->quality_teachers }}</td>
                             <td>{{ $data->syllabus }}</td>
                             <td>{{ $data->study_condition }}</td>

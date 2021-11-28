@@ -37,7 +37,7 @@
 <script type="text/javascript">
     function validateSubmit(){
       if($("#comments").val() == null || $("#comments").val().trim() == ''){
-          toastr.error('Por favor mencione los cursos, es obligatorio si selecciona sí.');
+            toastr.error('Por favor no puede dejar los comentarios con espacios en blanco.');
           return false;
        }
     return true;  

@@ -56,22 +56,6 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="year" value="{{ __('Carrera') }}" />
-                <select name="id_career" id="id_career" title="Por favor selecciona tu carrera"
-                    oninvalid="this.setCustomValidity('Por favor ingrese su carrera')" oninput="setCustomValidity('')"
-                    title="Por favor escribe tu carrera"
-                    class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block mt-1 w-full"
-                    :value="old('id_career')" required>
-                    <option value="" selected="" disabled="">
-                        Selecciona tu carrera
-                    </option>
-                    @foreach ($careers as $career)
-                    <option value="{{ $career->id }}">{{ $career->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Contraseña') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password"
                     oninvalid="this.setCustomValidity('Por favor ingrese una contraseña')"

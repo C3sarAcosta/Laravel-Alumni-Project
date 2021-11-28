@@ -46,6 +46,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Usuario</th>
+                            <th>Número de Control</th>
                             <th>¿Le gustaria tomar cursos de actualización?</th>
                             <th>Mencionar cursos</th>
                             <th>¿Le gustaria tomar algún postgrado?</th>
@@ -59,6 +60,7 @@
                         <tr>
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->graduate->name }}</td>
+                            <td>{{ $data->graduate->control_number }}</td>
                             <td>{{ $data->courses_yes_no }}</td>
                             <td>{{ $data->courses }}</td>
                             <td>{{ $data->master_yes_no }}</td>
