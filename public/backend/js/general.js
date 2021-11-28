@@ -1,6 +1,7 @@
       
 $('form').submit(function(){
-      $('input[type=submit]', this).attr('disabled', 'disabled');
+    $('input[type=submit]', this).attr('disabled', 'disabled');
+    setTimeout(() => { $('input[type=submit]', this).removeAttr('disabled'); }, 2000);
 });   
    
 $(document).on('click', '#help_zipcode', function(e){

@@ -32,8 +32,8 @@
                 <label for="courses">Mencionar cursos</label>
                 <textarea rows="1" id="courses" name="courses" type="text" class="form-control"
                 title="Mencionar los cursos, como cursos de marketing"
-                placeholder="Mencione cuáles serían de su agrado">{{ $userData->courses_yes_no == "SÍ"
-                ? $userData->courses : "disabled" }}</textarea>
+                placeholder="Mencione cuáles serían de su agrado" {{ $userData->courses_yes_no == "SÍ"
+                ? "" : "disabled" }}>{{ $userData->courses }}</textarea>
             </div>
         </div>
     </div>
@@ -63,8 +63,8 @@
                 <label for="master">Postgrado</label>
                 <textarea rows="1" id="master" name="master" type="text" class="form-control"
                 title="Mencionar los postgrados, como ejemplo en mecatrónica"
-                placeholder="Mencione cuál sería de su agrado">{{ $userData->master_yes_no== "SÍ" ?
-                $userData->master : "disabled" }}</textarea>
+                placeholder="Mencione cuál sería de su agrado" {{ $userData->master_yes_no== "SÍ" ?
+                "" : "disabled" }}>{{ $userData->master }}</textarea>
             </div>
         </div>
     </div>

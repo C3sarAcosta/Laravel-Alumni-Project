@@ -32,7 +32,7 @@
                 <label for="organization">Mencionar organizaciones</label>
                 <textarea rows="1" id="organization" name="organization" type="text" class="form-control"
                 title="Mencione esas organizaciones"
-                placeholder="Mencione cuáles organizaciones pertenece">{{$userData->organization_yes_no == "SÍ" ? $userData->organization : "disabled" }}</textarea>
+                placeholder="Mencione cuáles organizaciones pertenece" {{$userData->organization_yes_no == "SÍ" ? "" : "disabled" }}>{{$userData->organization}}</textarea>
             </div>
         </div>
         <div class="col-6">
@@ -58,8 +58,8 @@
                 <label for="agency">Mencionar organismos</label>
                 <textarea rows="1" id="agency" name="agency" type="text" class="form-control"
                 title="Mencione esos organismos"
-                placeholder="Mencione cuáles organismos pertenece">{{ $userData->agency_yes_no == "SÍ" ?
-                $userData->agency : "disabled" }}</textarea>
+                placeholder="Mencione cuáles organismos pertenece" {{ $userData->agency_yes_no == "SÍ" ?
+                "" : "disabled" }}>{{ $userData->agency }}</textarea>
             </div>
         </div>
         <div class="col-6">
@@ -85,7 +85,7 @@
                 <label for="association">Mencionar asosiación</label>
                 <textarea rows="1" id="association" name="association" type="text" class="form-control"
                 title="Mencione esas asosiaciones"
-                placeholder="Mencione cuáles asociaciones pertenece">{{ $userData->association_yes_no == "SÍ" ? $userData->association : "disabled" }}</textarea>
+                placeholder="Mencione cuáles asociaciones pertenece" {{ $userData->association_yes_no == "SÍ" ? "" : "disabled" }}>{{ $userData->association }}</textarea>
             </div>
         </div>
     </div>

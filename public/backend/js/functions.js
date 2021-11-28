@@ -111,6 +111,7 @@ function WorkAndStudy(val) {
         $("#saveRow").removeClass("d-flex justify-content-sm-center");
         $("#cancelRow").removeClass("d-flex justify-content-sm-center");
     }
+
 }
 
 //Survey Three functions

@@ -353,7 +353,7 @@
 
     <div class="row mt-2 d-flex justify-content-sm-center">
         <div class="col-4">
-            <input type="submit" class="btn btn-block bg-gradient-primary" value="Guardar Encuesta">
+            <input type="submit" id="buttonsubmit" class="btn btn-block bg-gradient-primary" value="Guardar Encuesta">
         </div>
     </div>
 </form>
@@ -389,6 +389,7 @@ function onChangeCareer() {
     function validateSubmit(){
       if($("#software").val() == null || $("#software").val().trim() == ''){
           toastr.error('Por favor no puede dejar paquetes computacionales con un valor vacío.');
+          $("#buttonsubmit").removeAttr("disabled")
           return false;
        }   
     return true;  
