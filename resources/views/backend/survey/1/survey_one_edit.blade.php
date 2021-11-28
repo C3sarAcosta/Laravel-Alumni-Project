@@ -14,7 +14,7 @@
                 <label for="name">Nombre(s)</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required
                     oninvalid="this.setCustomValidity('Por favor ingrese sus nombres o nombre')"
-                    oninput="setCustomValidity('')" title=" Por favor escribe tu nombre(s)"
+                    oninput="setCustomValidity('')" title="Por favor escribe tu nombre(s)"
                     value="{{ $userData->first_name }}" />
             </div>
         </div>
@@ -62,7 +62,7 @@
                 <label for="curp">CURP</label>
                 <input type="text" class="form-control" id="curp" name="curp" placeholder="CURP" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su curp')" oninput="setCustomValidity('')"
-                    title="Por favor escribe tu CURP" value="{{ $userData->curp }}"
+                    title="Por favor escribe tu CURP" value="{{ $userData->curp }}" disabled
                     pattern="^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$" />
             </div>
         </div>
@@ -201,7 +201,7 @@
                 <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su correo electrónico')"
-                    oninput="setCustomValidity('')" title="Por favor escribe tu correo electrónico"
+                    oninput="setCustomValidity('')" title="Por favor escribe tu correo electrónico" disabled
                     value="{{ $userData->email }}" />
             </div>
         </div>
@@ -412,7 +412,17 @@
       if($("#software").val() == null || $("#software").val().trim() == ''){
           toastr.error('Por favor no puede dejar paquetes computacionales con un valor vacío.');
           return false;
-       }   
+       }
+
+      if($("#year").val() == null || $("#year").val().trim() == ''){
+          toastr.error('Por favor ingrese su año de egreso.');
+          return false;
+       }
+
+      if($("#birthday").val() == null || $("#birthday").val().trim() == ''){
+          toastr.error('Por favor ingrese su fecha de nacimiento.');
+          return false;
+       }           
     return true;  
 }
 </script>

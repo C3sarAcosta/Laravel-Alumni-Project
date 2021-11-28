@@ -105,18 +105,12 @@ class SurveyOneController extends Controller
     public function SurveyOneUpdate(Request $request)
     {
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-        $editData = SurveyOne::find($request->user_id);
-        $validateData = $editData->validate([
-            'user_id' => 'unique:survey_ones,user_id',
-            'curp' => 'unique:survey_ones,curp',
-            'email' => 'unique:survey_ones,email',
-        ]);
-
+        $editData = SurveyOne::all()->where('user_id', $request->user_id)->first();
+        
         $editData->first_name = trim(strtoupper($request->name));
         $editData->fathers_surname = trim(strtoupper($request->fathers_surname));
         $editData->mothers_surname = trim(strtoupper($request->mothers_surname));
         $editData->birthday = $request->birthday;
-        $editData->curp = strtoupper($request->curp);
         $editData->sex = $request->sex;
         $editData->marital_status = $request->marital_status;
         $editData->address = trim(ucfirst($request->address));
@@ -127,7 +121,6 @@ class SurveyOneController extends Controller
         $editData->municipality = trim(strtoupper($request->municipality));
         $editData->phone = $request->phone == null ? $request->cellphone : $request->phone;
         $editData->cellphone = $request->cellphone;
-        $editData->email = $request->email;
         $editData->career = $request->career;
         $editData->specialty = $request->specialty;
         $editData->qualified = $request->qualified;

@@ -58,7 +58,7 @@
 
         <div class="col-4">
             <div class="form-group">
-                <label for="curp">CURP</label>
+                <label for="curp">CURP <a id="help_curp" style="cursor: pointer;" class="text-warning"><i class="fas fa-exclamation-triangle"></i></a></label>
                 <input type="text" class="form-control" id="curp" name="curp" placeholder="CURP" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su curp correctamente')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu CURP"
@@ -185,7 +185,7 @@
         </div>
         <div class="col-4">
             <div class="form-group">
-                <label for="email">Correo electrónico</label>
+                <label for="email">Correo electrónico <a id="help_email" style="cursor: pointer;" class="text-warning"><i class="fas fa-exclamation-triangle"></i></a></label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su correo electrónico')"
@@ -389,9 +389,18 @@ function onChangeCareer() {
     function validateSubmit(){
       if($("#software").val() == null || $("#software").val().trim() == ''){
           toastr.error('Por favor no puede dejar paquetes computacionales con un valor vacío.');
-          $("#buttonsubmit").removeAttr("disabled")
           return false;
-       }   
+       }
+
+      if($("#year").val() == null || $("#year").val().trim() == ''){
+          toastr.error('Por favor ingrese su año de egreso.');
+          return false;
+       }
+
+      if($("#birthday").val() == null || $("#birthday").val().trim() == ''){
+          toastr.error('Por favor ingrese su fecha de nacimiento.');
+          return false;
+       }       
     return true;  
 }
 </script>
