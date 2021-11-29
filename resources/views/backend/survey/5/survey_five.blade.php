@@ -38,10 +38,10 @@
     <div class="row mt-3">
         <div class="col-6">
             <div class="form-group">
-                <label for="master_selector">¿Le gustaria tomar algún postgrado?</label>
+                <label for="master_selector">¿Le gustaria tomar algún posgrado?</label>
                 <div class="controls">
                     <select id="master_selector" name="master_selector" onchange="changeSelect()" class="form-control"
-                        title="¿Le interesa tomar algún postgrado?" required
+                        title="¿Le interesa tomar algún posgrado?" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
@@ -54,9 +54,9 @@
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="master">Postgrado</label>
+                <label for="master">Posgrado</label>
                 <input id="master" name="master" type="text" class="form-control" disabled=""
-                    title="Mencionar los postgrados, como ejemplo en mecatrónica"
+                    title="Mencionar los posgrados, como ejemplo en mecatrónica"
                     placeholder="Mencione cuál sería de su agrado">
             </div>
         </div>
@@ -88,7 +88,7 @@ function validateSubmit(){
     }
     if($("#master_selector").val() == "SÍ"){
       if($("#master").val() == null || $("#master").val().trim() == ''){
-          toastr.error('Por favor mencione los postgrados, es obligatorio si selecciona sí.');
+          toastr.error('Por favor mencione los posgrados, es obligatorio si selecciona sí.');
           return false;
        }
     }

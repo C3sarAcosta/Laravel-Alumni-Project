@@ -24,6 +24,9 @@ class AdminController extends Controller
   {
     $data['gradute'] = User::where('role', Role::Student)->get()->count();
     $data['company'] = User::where('role', Role::Company)->get()->count();
+        $data['survey_one_count'] = StudentSurvey::where('survey_one_done', Status::Active)
+      ->get()
+      ->count();
     $data['survey'] = StudentSurvey::where([
       ['survey_one_done', Status::Active],
       ['survey_two_done', Status::Active],

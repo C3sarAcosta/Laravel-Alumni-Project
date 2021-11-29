@@ -49,7 +49,7 @@ $(document).on('click', '#help_curp', function (e) {
 
 $(document).on('click', '#help_curp', function (e) {
     Swal.fire({
-        title: '<strong>Código postal</strong>',
+        title: '<strong>CURP</strong>',
         icon: 'warning',
         html: `<p style="text-align:justify;">Alerta, una vez que ingreses tu curp ya no podrás actualizar esta información cuando desees revisitar y editar esta encuesta. Si deseas modificarlo tendrás que acudir con el administrador.</p>`,
         showCloseButton: true,
@@ -62,7 +62,7 @@ $(document).on('click', '#help_curp', function (e) {
 
 $(document).on('click', '#help_email', function (e) {
     Swal.fire({
-        title: '<strong>Código postal</strong>',
+        title: '<strong>Correo Electrónico</strong>',
         icon: 'warning',
         html: `<p style="text-align:justify;">Alerta, una vez que ingreses tu correo ya no podrás actualizar esta información cuando desees revisitar y editar esta encuesta. Si deseas modificarlo tendrás que acudir con el administrador.</p>`,
         showCloseButton: true,

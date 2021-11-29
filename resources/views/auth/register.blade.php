@@ -14,12 +14,16 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <a href=" {{route('welcome')}} "><img style="width: 200px; height:120px;"
+            <a href=" {{route('welcome')}} "><img style="width: 170px; height:100px;"
                     src="{{asset('backend/img/school/SSE2.png')}}" alt=""></a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
-
+        <div class="alert alert-info text-justify" role="alert">
+            El correo electrónico y el número de control son datos únicos que no se pueden repetir! Si llegas a tener
+            una alerta que estos datos ya han sido registrados cuando no es así, te invitamos a comunicarte con el
+            departamento de Vinculación para solucionar este detalle.
+        </div>
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div>
@@ -40,8 +44,8 @@
             <div class="mt-4">
                 <x-jet-label for="control_number" value="{{ __('Número de Control') }}" />
                 <x-jet-input autocomplete="off" title="Porfavor ingrese un número de control correcto"
-                    id="control_number" pattern="[0-9]{8,10}" maxlength="10"
-                    oninvalid="this.setCustomValidity('Por favor ingrese su número de control')"
+                    id="control_number" pattern="^[C]?[B]?[0-9]{8,10}" maxlength="10"
+                    oninvalid="this.setCustomValidity('Por favor ingrese su número de control y asegura que sea correcta la notación')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu número de control"
                     class="block mt-1 w-full" type="text" name="control_number" :value="old('control_number')"
                     required />

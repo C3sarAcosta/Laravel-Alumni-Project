@@ -46,7 +46,7 @@
         <!-- PIE CHART -->
         <div class="card card-success">
             <div class="card-header">
-                <h3 class="card-title">¿Le gustaria tomar algún postgrado?</h3>
+                <h3 class="card-title">¿Le gustaria tomar algún posgrado?</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -101,7 +101,7 @@
                 <div class="card w-50 text-dark">
                     <div class="card-header bg-gray-dark">
                         <a class="collapsed card-link text-light" data-toggle="collapse" href="#collapseTwo">
-                            Postgrados que interesan a los egresados
+                            Posgrado que interesan a los egresados
                         </a>
                     </div>
                     <div id="collapseTwo" class="collapse" data-parent="#accordion">

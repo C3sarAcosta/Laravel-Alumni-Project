@@ -34,13 +34,13 @@ class CompanySurveyOneController extends Controller
         $data = new CompanySurveyOne();
         $data->user_id = $request->user_id;
 
-        $data->business_name = trim(strtoupper($request->business_name));
-        $data->address = trim(ucfirst($request->address));
+        $data->business_name = trim(mb_strtoupper($request->business_name, 'UTF-8'));
+        $data->address = trim(mb_strtoupper($request->address, 'UTF-8'));
         $data->zip = trim($request->zip);
-        $data->suburb = trim(ucwords($request->suburb));
-        $data->state = trim(ucwords($request->state));
-        $data->city = trim(ucwords($request->city));
-        $data->municipality = trim(ucwords($request->municipality));
+        $data->suburb = trim(mb_strtoupper($request->suburb, 'UTF-8'));
+        $data->state = trim(mb_strtoupper($request->state, 'UTF-8'));
+        $data->city = trim(mb_strtoupper($request->city, 'UTF-8'));
+        $data->municipality = trim(mb_strtoupper($request->municipality, 'UTF-8'));
         $data->phone = trim($request->phone);
         $data->email = trim($request->email);
         $data->business_structure = $request->business_structure;
@@ -76,13 +76,13 @@ class CompanySurveyOneController extends Controller
         $editData = CompanySurveyOne::all()->where('user_id', $request->user_id)->first();
         $validateData = $request->validate(['user_id' => 'required']);
 
-        $editData->business_name = trim(strtoupper($request->business_name));
-        $editData->address = trim(ucfirst($request->address));
+        $editData->business_name = trim(mb_strtoupper($request->business_name, 'UTF-8'));
+        $editData->address = trim(mb_strtoupper($request->address, 'UTF-8'));
         $editData->zip = trim($request->zip);
-        $editData->suburb = trim(ucwords($request->suburb));
-        $editData->state = trim(ucwords($request->state));
-        $editData->city = trim(ucwords($request->city));
-        $editData->municipality = trim(ucwords($request->municipality));
+        $editData->suburb = trim(mb_strtoupper($request->suburb, 'UTF-8'));
+        $editData->state = trim(mb_strtoupper($request->state, 'UTF-8'));
+        $editData->city = trim(mb_strtoupper($request->city, 'UTF-8'));
+        $editData->municipality = trim(mb_strtoupper($request->municipality, 'UTF-8'));
         $editData->phone = trim($request->phone);
         $editData->email = trim($request->email);
         $editData->business_structure = $request->business_structure;

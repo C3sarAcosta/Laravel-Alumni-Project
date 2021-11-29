@@ -49,8 +49,8 @@
                             <th>Número de Control</th>
                             <th>¿Le gustaria tomar cursos de actualización?</th>
                             <th>Mencionar cursos</th>
-                            <th>¿Le gustaria tomar algún postgrado?</th>
-                            <th>Postgrado</th>
+                            <th>¿Le gustaria tomar algún posgrado?</th>
+                            <th>Posgrado</th>
                             <th>Contestada</th>
                             <th>Actualizada</th>
                         </tr>

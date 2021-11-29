@@ -39,8 +39,8 @@
         <!-- small box -->
         <div class="small-box bg-warning">
             <div class="inner">
-                <h3>{{ $survey }}</h3>
-                <p>Encuestas respondidas</p>
+                <h3>{{ $survey_one_count }}</h3>
+                <p>Encuestas Perfil del Egresado respondidas</p>
             </div>
             <div class="icon">
                 <i class="ion ion-document"></i>
@@ -54,7 +54,7 @@
         <div class="small-box bg-danger">
             <div class="inner">
                 <h3>{{ $percent }}<sup style="font-size: 20px">%</sup></h3>
-                <p>Porcentaje de repuesta</p>
+                <p>% personas con todas las encuestas respondidas</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>

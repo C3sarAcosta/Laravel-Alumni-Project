@@ -118,17 +118,23 @@
                     <div class="feature-block">
                         <i class="lni lni-graduation"></i>
                         <h3 class="text-center">Pefil de Egreso</h3>
-                        <p class="text-justify">El perfil del egresado incluye un componente estable, es decir, la información demográfica básica de cada individuo como
-                        es, género, lugar de nacimiento, fecha de nacimiento, formación, antecedentes académicos, estado civil, lugar de
-                        residencia, etc. Y un componente dinámico, que es susceptible de cambiar a lo largo del tiempo (lugar de residencia,
-                        nivel de ingresos, estado civil, puestos de trabajo, otros estudios, etc.).</p>
+                        <p class="text-justify">El perfil del egresado incluye un componente estable, es decir, la
+                            información demográfica básica de cada individuo como
+                            es, género, lugar de nacimiento, fecha de nacimiento, formación, antecedentes académicos,
+                            estado civil, lugar de
+                            residencia, etc. Y un componente dinámico, que es susceptible de cambiar a lo largo del
+                            tiempo (lugar de residencia,
+                            nivel de ingresos, estado civil, puestos de trabajo, otros estudios, etc.).</p>
                     </div>
                     <div class="feature-block mt-5">
                         <i class="lni lni-apartment"></i>
                         <h3 class="text-center">Datos de empresas</h3>
-                        <p class="text-justify">Los empleadores y las organizaciones a las que representan, son una parte importante al que sirven las instituciones de
-                        educación superior tecnológica y, en consecuencia, la información que se deriva de estos debe ser analizada y utilizada
-                        para emprender acciones de mejora de los planes y programas de estudio y de la calidad académica en general.</p>
+                        <p class="text-justify">Los empleadores y las organizaciones a las que representan, son una
+                            parte importante al que sirven las instituciones de
+                            educación superior tecnológica y, en consecuencia, la información que se deriva de estos
+                            debe ser analizada y utilizada
+                            para emprender acciones de mejora de los planes y programas de estudio y de la calidad
+                            académica en general.</p>
                     </div>
                 </div>
                 <div class="col-md-4 device" style="display:flex; justify-content:center; align-items:center;">
@@ -138,19 +144,22 @@
                     <div class="feature-block">
                         <i class="lni lni-handshake"></i>
                         <h3 class="text-center">Desempeño del egresado</h3>
-                        <p class="text-justify">Las encuestas de egresados son útiles para recopilar datos sobre la situación laboral de los egresados más recientes,
-                        con el fin de obtener indicadores del desempeño profesional. Las encuestas también están diseñadas para contribuir a las
-                        explicaciones causales de la pertinencia de las condiciones de estudio y los servicios proporcionados por las
-                        instituciones de educación superior, así como del desempeño de los egresados en el mercado laboral.</p>
+                        <p class="text-justify">Las encuestas de egresados son útiles para recopilar datos sobre la
+                            situación laboral de los egresados más recientes,
+                            con el fin de obtener indicadores del desempeño profesional. Las encuestas también están
+                            diseñadas para contribuir a las
+                            explicaciones causales de la pertinencia de las condiciones de estudio y los servicios
+                            proporcionados por las
+                            instituciones de educación superior, así como del desempeño de los egresados en el mercado
+                            laboral.</p>
                     </div>
                     <div class="feature-block mt-5">
                         <i class="lni lni-thumbs-up"></i> <i class="lni lni-thumbs-down"></i>
                         <h3 class="text-center">Expectativas del egresado</h3>
-                        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum
-                            asperiores deleniti.
-                            Facere, possimus
-                            architecto necessitatibus alias veritatis aperiam eius quibusdam vel ducimus fuga
-                            delectus, velit, temporibus consequatur voluptatibus a.</p>
+                        <p class="text-justify">Cumplido un determinado tiempo, esperamos que nuestros egresados vuelvan
+                            a completar encuestas específicas para conocer si los conocimientos adquiridos han cumplido
+                            sus expectativas en el mundo laboral, que les ayudó y que es lo que podría ayudar a las
+                            futuras generaciones.</p>
                     </div>
                 </div>
             </div>
@@ -168,7 +177,7 @@
                     <a href="https://www.linkedin.com/school/itdelicias/"><i class="lni lni-linkedin-original"></i></a>
                 </div>
                 <div class="copyright text-center">
-                    <p>Copyright 2021</p>
+                    <p>Sitios de interés para el ITD</p>
                 </div>
             </div>
         </div>

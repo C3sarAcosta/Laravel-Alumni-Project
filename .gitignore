@@ -10,6 +10,7 @@
 /public/backend/database/users.sql
 /public/backend/database/users_new.sql
 /public/backend/database/password.sql
+/public/backend/database/surveys.sql
 /public/storage
 /storage/*.key
 /vendor

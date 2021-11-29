@@ -44,20 +44,20 @@ class SurveyOneController extends Controller
 
         $data = new SurveyOne();
         $data->user_id = $request->user_id;
-        $data->first_name = trim(strtoupper($request->name));
-        $data->fathers_surname = trim(strtoupper($request->fathers_surname));
-        $data->mothers_surname = trim(strtoupper($request->mothers_surname));
+        $data->first_name = trim(mb_strtoupper($request->name, 'UTF-8'));
+        $data->fathers_surname = trim(mb_strtoupper($request->fathers_surname, 'UTF-8'));
+        $data->mothers_surname = trim(mb_strtoupper($request->mothers_surname, 'UTF-8'));
         $data->control_number = trim(Auth::user()->control_number);
         $data->birthday = $request->birthday;
         $data->curp = trim(strtoupper($request->curp));
         $data->sex = $request->sex;
         $data->marital_status = $request->marital_status;
-        $data->address = trim(strtoupper($request->address));
+        $data->address = trim(mb_strtoupper($request->address, 'UTF-8'));
         $data->zip_code = trim($request->zip);
-        $data->suburb = trim(strtoupper($request->suburb));
-        $data->state = trim(strtoupper($request->state));
-        $data->city = trim(strtoupper($request->city));
-        $data->municipality = trim(strtoupper($request->municipality));
+        $data->suburb = trim(mb_strtoupper($request->suburb, 'UTF-8'));
+        $data->state = trim(mb_strtoupper($request->state, 'UTF-8'));
+        $data->city = trim(mb_strtoupper($request->city, 'UTF-8'));
+        $data->municipality = trim(mb_strtoupper($request->municipality, 'UTF-8'));
         $data->phone = $request->phone == null ? $request->cellphone : $request->phone;
         $data->cellphone = $request->cellphone;
         $data->email = $request->email;
@@ -74,7 +74,7 @@ class SurveyOneController extends Controller
         else
             $data->percent_another_language = $request->percent_another_language;
 
-        $data->software = strtoupper(trim($request->software));
+        $data->software = trim(mb_strtoupper($request->software, 'UTF-8'));
         $data->save();
 
         $user_update = StudentSurvey::where('user_id', $request->user_id)->first();
@@ -106,19 +106,19 @@ class SurveyOneController extends Controller
     {
         $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         $editData = SurveyOne::all()->where('user_id', $request->user_id)->first();
-        
-        $editData->first_name = trim(strtoupper($request->name));
-        $editData->fathers_surname = trim(strtoupper($request->fathers_surname));
-        $editData->mothers_surname = trim(strtoupper($request->mothers_surname));
+
+        $editData->first_name = trim(mb_strtoupper($request->name, 'UTF-8'));
+        $editData->fathers_surname = trim(mb_strtoupper($request->fathers_surname, 'UTF-8'));
+        $editData->mothers_surname = trim(mb_strtoupper($request->mothers_surname, 'UTF-8'));
         $editData->birthday = $request->birthday;
         $editData->sex = $request->sex;
         $editData->marital_status = $request->marital_status;
-        $editData->address = trim(ucfirst($request->address));
+        $editData->address = trim(mb_strtoupper($request->address, 'UTF-8'));
         $editData->zip_code = $request->zip;
-        $editData->suburb = trim(strtoupper($request->suburb));
-        $editData->state = trim(strtoupper($request->state));
-        $editData->city = trim(strtoupper($request->city));
-        $editData->municipality = trim(strtoupper($request->municipality));
+        $editData->suburb = trim(mb_strtoupper($request->suburb, 'UTF-8'));
+        $editData->state =  trim(mb_strtoupper($request->state, 'UTF-8'));
+        $editData->city =  trim(mb_strtoupper($request->city, 'UTF-8'));
+        $editData->municipality =  trim(mb_strtoupper($request->municipality, 'UTF-8'));
         $editData->phone = $request->phone == null ? $request->cellphone : $request->phone;
         $editData->cellphone = $request->cellphone;
         $editData->career = $request->career;
@@ -134,7 +134,7 @@ class SurveyOneController extends Controller
         else
             $editData->percent_another_language = $request->percent_another_language;
 
-        $editData->software = strtoupper(trim($request->software));
+        $editData->software = trim(mb_strtoupper($request->software, 'UTF-8'));
         $editData->save();
 
         $notification = array(

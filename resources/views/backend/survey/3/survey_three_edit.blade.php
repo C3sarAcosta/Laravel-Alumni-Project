@@ -237,7 +237,7 @@
                 </div>
             </div>
         </div>
-
+        <hr>
         <div class="col-6 mt-3">
             <div class="form-group">
                 <label for="seniority">Antigüedad en el empleo actual</label>
@@ -437,9 +437,8 @@
         </div>
         <div class="col-12">
             <div class="form-group">
-                <label for="boss_email">Jefe inmediato</label>
-                <input type="text" class="form-control" id="boss_email" name="boss_email"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                <label for="boss_email">Correo electrónico del jefe inmediato</label>
+                <input type="email" class="form-control" id="boss_email" name="boss_email"
                     value='{{ ($userData->boss_email != null) ? $userData->boss_email : "" }}'
                     placeholder="Correo electrónico del jefe" title="Indique el correo del jefe inmediato" />
             </div>

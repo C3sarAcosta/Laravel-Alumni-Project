@@ -94,14 +94,14 @@ class CompanySurveyTwoController extends Controller
 
         $editData->number_graduates = $request->number_graduates;
         $editData->congruence = $request->congruence;
-        $editData->competence1 = $request->competence1 == true ? Status::Active : 0;
-        $editData->competence2 = $request->competence2 == true ? Status::Active : 0;
-        $editData->competence3 = $request->competence3 == true ? Status::Active : 0;
-        $editData->competence4 = $request->competence4 == true ? Status::Active : 0;
-        $editData->competence5 = $request->competence5 == true ? Status::Active : 0;
-        $editData->competence6 = $request->competence6 == true ? Status::Active : 0;
-        $editData->competence7 = $request->competence7 == true ? Status::Active : 0;
-        $editData->competence8 = $request->competence8 == true ? Status::Active : 0;
+        $editData->competence1 = $request->competence1 == true ? Status::Active : Status::Inactive;
+        $editData->competence2 = $request->competence2 == true ? Status::Active : Status::Inactive;
+        $editData->competence3 = $request->competence3 == true ? Status::Active : Status::Inactive;
+        $editData->competence4 = $request->competence4 == true ? Status::Active : Status::Inactive;
+        $editData->competence5 = $request->competence5 == true ? Status::Active : Status::Inactive;
+        $editData->competence6 = $request->competence6 == true ? Status::Active : Status::Inactive;
+        $editData->competence7 = $request->competence7 == true ? Status::Active : Status::Inactive;
+        $editData->competence8 = $request->competence8 == true ? Status::Active : Status::Inactive;
         $editData->most_demanded_career = $request->most_demanded_career;
         $editData->save();
 

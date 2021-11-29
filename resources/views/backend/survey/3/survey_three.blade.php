@@ -383,7 +383,7 @@
         </div>
         <div class="col-12">
             <div class="form-group">
-                <label for="boss_email">Jefe inmediato</label>
+                <label for="boss_email">Correo electrónico del jefe inmediato</label>
                 <input type="text" class="form-control" id="boss_email" name="boss_email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Correo electrónico del jefe"
                     title="Indique el correo del jefe inmediato" />

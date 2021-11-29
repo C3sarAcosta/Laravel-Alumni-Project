@@ -27,6 +27,7 @@
                         <tr>
                             <th>Número</th>
                             <th>Nombre</th>
+                            <th>Número de Control</th>
                             <th>Correo electrónico</th>
                             <th>Año de egreso</th>
                             <th>Registrado</th>
@@ -42,6 +43,7 @@
                                 </a>
                             </td>
                             <td>{{ $data->name }}</td>
+                            <td>{{ $data->control_number }}</td>
                             <td>{{ $data->email }}</td>
                             <td>{{ $data->year_graduated }}</td>
                             <td>{{ $data->created_at }}</td>
