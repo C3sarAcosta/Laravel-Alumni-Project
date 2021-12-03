@@ -126,6 +126,7 @@
             <div class="form-group">
                 <label for="zip">Código Postal <a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a></label>
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()" required
+                    maxlength="20"    
                     onkeypress="ValidateNumbers(event);"
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"
                     oninput="setCustomValidity('')"

@@ -119,6 +119,7 @@
                 <label for="zip">Código Postal <a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a> </label>
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()" required
                     onkeypress="ValidateNumbers(event);"
+                    maxlength="20"
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"
                     oninput="setCustomValidity('')"
                     title="Al escribir puedes esperar y se rellanará la información por ti si existe información con este código"

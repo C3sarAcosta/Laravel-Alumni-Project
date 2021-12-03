@@ -45,6 +45,7 @@
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Número de Control</th>
+                            <th>Año de egreso</th>
                             <th>¿Pertenece a organizaciones sociales?</th>
                             <th>Mencionar organizaciones</th>
                             <th>¿Pertenece a organismos de profesionistas?</th>
@@ -61,6 +62,7 @@
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->graduate->control_number }}</td>
+                            <td>{{ $data->graduate->year_graduated }}</td>
                             <td>{{ $data->organization_yes_no }}</td>
                             <td>{{ $data->organization }}</td>
                             <td>{{ $data->agency_yes_no }}</td>
@@ -88,7 +90,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[7]);
+            var startDate = new Date(data[10]);
             if (min == null && max == null) {
                 return true;
             }

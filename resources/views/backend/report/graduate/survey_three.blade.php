@@ -43,6 +43,7 @@
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Número de Control</th>
+                            <th>Año de egreso</th>
                             <th>Actividad a la que se dedica actualmente</th>
                             <th>¿Qué están estudiando?</th>
                             <th>Especialidad</th>
@@ -90,6 +91,7 @@
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->graduate->control_number }}</td>
+                            <td>{{ $data->graduate->year_graduated }}</td>
                             <td>{{ $data->do_for_living }}</td>
                             <td>
                                 {{ (str_contains($data->do_for_living, 'ESTUDIA') &&
@@ -188,7 +190,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[38]);
+            var startDate = new Date(data[41]);
             if (min == null && max == null) {
                 return true;
             }

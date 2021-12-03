@@ -43,6 +43,7 @@
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Número de Control</th>
+                            <th>Año de egreso</th>
                             <th>Eficiencia para realizar las actividades laborales, en relación con su formación
                                 académica</th>
                             <th>Cómo califica su formación académica con respecto a su desempeño laboral</th>
@@ -70,6 +71,7 @@
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->graduate->control_number }}</td>
+                            <td>{{ $data->graduate->year_graduated }}</td>
                             <td>{{ $data->efficiency_work_activities }}</td>
                             <td>{{ $data->academic_training }}</td>
                             <td>{{ $data->usefulness_professional_residence }}</td>
@@ -104,7 +106,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[14]);
+            var startDate = new Date(data[17]);
             if (min == null && max == null) {
                 return true;
             }

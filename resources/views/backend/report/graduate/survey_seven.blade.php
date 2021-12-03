@@ -45,6 +45,7 @@
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Número de Control</th>
+                            <th>Año de egreso</th>
                             <th>Comentarios</th>
                             <th>Contestada</th>
                             <th>Actualizada</th>
@@ -56,6 +57,7 @@
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->graduate->control_number }}</td>
+                            <td>{{ $data->graduate->year_graduated }}</td>
                             <td>{{ $data->comments }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>
@@ -78,7 +80,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[2]);
+            var startDate = new Date(data[5]);
             if (min == null && max == null) {
                 return true;
             }
