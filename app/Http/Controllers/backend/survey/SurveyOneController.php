@@ -40,7 +40,10 @@ class SurveyOneController extends Controller
             'user_id' => 'required|unique:survey_ones,user_id',
             'curp' => 'required|unique:survey_ones,curp',
             'email' => 'required|unique:survey_ones,email',
-        ]);
+        ],
+            [
+                'curp.unique' => 'The :attribute field can not be blank value.'
+            ]);
 
         $data = new SurveyOne();
         $data->user_id = $request->user_id;

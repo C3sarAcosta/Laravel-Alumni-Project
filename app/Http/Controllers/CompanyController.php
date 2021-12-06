@@ -20,6 +20,7 @@ class CompanyController extends Controller
         $data['postulates'] = Postulate::join('company_jobs', 'company_jobs.id', '=', 'postulates.job_id')
             ->where('company_jobs.id_user', $id)
             ->get()->count();
+            
         $data['companySurvey'] = CompanySurvey::where('user_id', $id)->first();
         
         if (empty($data['companySurvey'])) {

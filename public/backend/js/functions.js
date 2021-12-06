@@ -111,7 +111,6 @@ function WorkAndStudy(val) {
         $("#saveRow").removeClass("d-flex justify-content-sm-center");
         $("#cancelRow").removeClass("d-flex justify-content-sm-center");
     }
-
 }
 
 //Survey Three functions
@@ -126,29 +125,6 @@ function changeActivity() {
         val.includes('ESTUDIA') ? $("#study_row").css("display", "flex") : $("#study_row").css("display", "none");
         val.includes('TRABAJA') ? $("#hr2").css("display", "flex") : $("#hr2").css("display", "none");
         val.includes('TRABAJA') ? $("#work_row").css("display", "flex") : $("#work_row").css("display", "none");
-        // assignValues('TRABAJA', $("#long_take_job"), 'Por favor mencione el tiempo transcurrido');
-        // assignValues('TRABAJA', $("#hear_about"), 'Por favor mencione el modo de obtención del empleo');
-        // assignValues('TRABAJA', $("#language_most_spoken"), 'Por favor mencione el idioma utilizado');
-        // assignValues('TRABAJA', $("#seniority"), 'Por favor mencione la antigüedad');
-        // assignValues('TRABAJA', $("#year"), 'Por favor mencione el año de ingreso');
-        // assignValues('TRABAJA', $("#salary"), 'Por favor mencione el salario');
-        // assignValues('TRABAJA', $("#management_level"), 'Por favor mencione el nivel jerárgico');
-        // assignValues('TRABAJA', $("#job_condition"), 'Por favor mencione la condición de trabajo');
-        // assignValues('TRABAJA', $("#job_relationship"), 'Por favor mencione la relación del trabajo con su área de formación');
-        // assignValues('TRABAJA', $("#business_name"), 'Por favor mencione la razón social');
-        // assignValues('TRABAJA', $("#business_activity"), 'Por favor mencione giro o actividad principal');
-        // assignValues('TRABAJA', $("#address"), 'Por favor mencione el domicilio');
-        // assignValues('TRABAJA', $("#zip"), 'Por favor mencione el código postal');
-        // assignValues('TRABAJA', $("#suburb"), 'Por favor mencione la colonia');
-        // assignValues('TRABAJA', $("#state"), 'Por favor mencione el estado');
-        // assignValues('TRABAJA', $("#city"), 'Por favor mencione la ciudad');
-        // assignValues('TRABAJA', $("#municipality"), 'Por favor mencione el municipio');
-        // assignValues('TRABAJA', $("#boss_email"), 'Por favor mencione el correo de su jefe');
-        // assignValues('TRABAJA', $("#business_structure"), 'Por favor mencione la estructura de la empresa u organismo');
-        // assignValues('TRABAJA', $("#company_size"), 'Por favor mencione el tamaño de la empresa u organismo');
-        // assignValues('TRABAJA', $("#business_activity_selector"), 'Por favor mencione la actividad económica de la empresa u organismo');
-        // assignValues('ESTUDIA', $("#speciality"), 'Por favor mencione su especialidad');
-        // assignValues('ESTUDIA', $("#school"), 'Por favor mencione la escuela');
     } else {
         $("#clean").click();
         $("#hr1").css("display", "none");
