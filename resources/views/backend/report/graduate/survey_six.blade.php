@@ -41,6 +41,7 @@
                             <th>Usuario</th>
                             <th>Número de Control</th>
                             <th>Año de egreso</th>
+                            <th>Período de egreso</th>
                             <th>¿Pertenece a organizaciones sociales?</th>
                             <th>Mencionar organizaciones</th>
                             <th>¿Pertenece a organismos de profesionistas?</th>
@@ -58,6 +59,9 @@
                             <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->graduate->control_number }}</td>
                             <td>{{ $data->graduate->year_graduated }}</td>
+                            <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
+                                ? ""
+                                : $data->graduate->surveyOne->month }}</td>                            
                             <td>{{ $data->organization_yes_no }}</td>
                             <td>{{ $data->organization }}</td>
                             <td>{{ $data->agency_yes_no }}</td>
@@ -85,7 +89,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[10]);
+            var startDate = new Date(data[11]);
             if (min == null && max == null) {
                 return true;
             }

@@ -121,7 +121,7 @@ class JobController extends Controller
             $data->graduate_id = Auth::user()->id;
             $data->save();
 
-            $this->notification['message'] = 'Postulado exitosamente.';
+            $this->notification['message'] = 'Postulado exitosamente. La empresa se pondrá en contacto contigo si eres candidato.';
             $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
         } else {
             $this->notification['message'] = 'Ya te postulaste anteriormente.';

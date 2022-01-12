@@ -188,7 +188,7 @@
         '<p style="text-align:justify;">Hola empleador este es el asistente para apoyarte en este sistema. ' +
         'Comencemos con lo importante, lo que para el tecnológico es conocer los datos de la empresa,'+ 
         'conocer las necesidades de las empresas a la hora de formar profesionista y conocer el rendimiento de'+ 
-        'los egresados en el campo laboral. Para comenzar con este puedes dirigirte a este enlace: <a href="{{ route('company.index', $user_id_encrypt) }}">Tablero</a>.</p>'+
+        'los egresados en el campo laboral. Para comenzar con este puedes dirigirte a este enlace: <a href="{{ route('company.index') }}">Tablero</a>.</p>'+
         '<p style="text-align:justify;">Una vez que se haya cumplido con las encuestas se puede ir al apartardo de perfil para poder subir una fotografía empresarial'+
         'para los empleos que sean publicados los egresados puedan observar bien el logo de la empresa en el siguiente enlace: <a href="{{ route('company.view') }}">Perfil</a>.</p>'+
         '<p style="text-align:justify;">Con estos pasos cumplidos puedes buscar a los egresados publicando vacantes de empleo en el siguiente enlace: <a href="{{ route('company.jobs.view') }}">Empleos</a>.</p>' +

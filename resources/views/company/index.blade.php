@@ -106,11 +106,11 @@
         <!-- small box -->
         <div class="small-box {!! !$survey_done ? " bg-success": "bg-danger" !!}">
             <div class="inner">
-                <h3>{{ !$survey_done "Completadas": "Sin completar" }}</h3>
+                <h3>{{ !$survey_done ? "Completadas": "Sin completar" }}</h3>
                 <p>Encuestas completadas</p>
             </div>
             <div class="icon">
-                <i class="ion {!! !$survey_done " ion-checkmark": "ion-close-circled" !!} "></i>
+                <i class="ion {!! !$survey_done ? " ion-checkmark": "ion-close-circled" !!} "></i>
             </div>
             <a href="#" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
             </div>

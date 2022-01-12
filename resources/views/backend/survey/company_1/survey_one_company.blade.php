@@ -14,7 +14,8 @@
                 <input type="text" class="form-control" id="business_name" name="business_name"
                     title="Por favor escriba el nombre de la empresa" required
                     oninvalid="this.setCustomValidity('Por favor ingrese el nombre de su empresa')"
-                    oninput="setCustomValidity('')" placeholder="Razón Social" />
+                    oninput="setCustomValidity('')" placeholder="Razón Social" 
+                    value="{{ Auth::user()->name }}"/>
             </div>
         </div>
         <div class="col-6">
@@ -23,7 +24,8 @@
                 <input type="email" class="form-control" id="email" name="email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Por favor escriba su correo electrónico"
                     required oninvalid="this.setCustomValidity('Por favor ingrese su correo electrónico')"
-                    oninput="setCustomValidity('')" placeholder="Correo electrónico" />
+                    oninput="setCustomValidity('')" placeholder="Correo electrónico"
+                    value="{{ Auth::user()->email }}" disabled />
             </div>
         </div>
         <div class="col-6">
@@ -37,7 +39,7 @@
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="zip">Código Postal <a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a></label>
+                <label for="zip">Código Postal</label> {{--<a id="help_zipcode"><i class="fas fa-info-circle"></i></a> --}}
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()"
                     onkeypress="ValidateNumbers(event);" title="Por favor escriba su código postal" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"
@@ -137,7 +139,7 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($business_activity as $activity)
+                        @foreach ($constants['BUSINESS_ACTIVITY'] as $activity)
                         <option value="{{ $activity }}">{{ $activity }}</option>
                         @endforeach
                     </select>

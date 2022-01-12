@@ -9,13 +9,9 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <div class="col-12">
-                    <h3 class="card-title">Lista de empleos</h3>
-                    <div class="col-10 d-flex justify-content-center">
-                        <a href="{{ route('company.jobs.add') }}" class="btn btn-rounded btn-success">
-                            Agregar empleos
-                        </a>
-                    </div>
+                <div class="col-12 d-flex justify-content-md-around">
+                    <h3 class="card-title my-auto font-weight-bold">Lista de empleos</h3>
+                    <a href="{{ route('company.jobs.add') }}" class="btn btn-rounded btn-success">Agregar empleos</a>
                 </div>
             </div>
 
@@ -35,23 +31,23 @@
                     </thead>
                     <tbody>
                         @empty(!$allData)
-                            @foreach ($allData as $data)
-                            <tr>
-                                <td class="text-center">{{ $data->id }}</td>
-                                <td>{{ $data->title }}</td>
-                                <td>{{ $data->description }}</td>
-                                <td>{{ $data->salary }}</td>
-                                <td>{{ $data->created_at }}</td>
-                                <td>{{ $data->updated_at }}</td>
-                                <td>
-                                    <a href="{{route('company.jobs.edit',$data->id)}}" class="btn btn-info">Editar</a>
-                                    <a id="delete" href="{{route('company.jobs.delete', $data->id)}}"
-                                        class="btn btn-danger">
-                                        Eliminar
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
+                        @foreach ($allData as $data)
+                        <tr>
+                            <td class="text-center">{{ $data->id }}</td>
+                            <td>{{ $data->title }}</td>
+                            <td>{{ $data->description }}</td>
+                            <td>{{ $data->salary }}</td>
+                            <td>{{ $data->created_at }}</td>
+                            <td>{{ $data->updated_at }}</td>
+                            <td>
+                                <a href="{{route('company.jobs.edit',$data->id)}}" class="btn btn-info">Editar</a>
+                                <a id="delete" href="{{route('company.jobs.delete', $data->id)}}"
+                                    class="btn btn-danger">
+                                    Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
                         @endempty
                     </tbody>
                 </table>

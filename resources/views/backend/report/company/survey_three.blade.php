@@ -107,7 +107,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[20]);
+            var startDate = new Date(data[21]);
             if (min == null && max == null) {
                 return true;
             }

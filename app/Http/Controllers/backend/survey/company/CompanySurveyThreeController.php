@@ -23,7 +23,7 @@ class CompanySurveyThreeController extends BaseController
         (new User)->newUser();
 
         $data = new CompanySurveyThree();
-        $data->user_id = $this->user_id;
+        $data->user_id = $this->user->id;
         $data->resolve_conflicts = $request->resolve_conflicts;
         $data->orthography = $request->orthography;
         $data->process_improvement = $request->process_improvement;
@@ -46,7 +46,7 @@ class CompanySurveyThreeController extends BaseController
 
         $data->save();
 
-        $this->UpdateSurveyStatus(3);
+        $this->updateSurveyStatus(3);
         
         $this->notification['message'] = 'Encuesta *Competencias Laborales* realizada con éxito.';
         $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
@@ -56,14 +56,14 @@ class CompanySurveyThreeController extends BaseController
 
     public function SurveyEdit()
     {
-        $data['userData'] = CompanySurveyThree::where('user_id', $this->user_id)->first();
+        $data['userData'] = CompanySurveyThree::where('user_id', $this->user->id)->first();
         $data['constants'] = Constants::getConstants();
         return view('backend.survey.company_3.survey_three_company_edit', $data);
     }
 
     public function SurveyUpdate(Request $request)
     {
-        $editData = CompanySurveyThree::where('user_id', $this->user_id)->first();
+        $editData = CompanySurveyThree::where('user_id', $this->user->id)->first();
 
         $editData->resolve_conflicts = $request->resolve_conflicts;
         $editData->orthography = $request->orthography;
@@ -97,7 +97,7 @@ class CompanySurveyThreeController extends BaseController
 
     public function SurveyVerifiedRoute()
     {
-        $data = CompanySurvey::where('user_id', $this->user_id)->first();
+        $data = CompanySurvey::where('user_id', $this->user->id)->first();
 
         return $data['survey_three_company_done'] == Constants::STATUS['Active']
             ? redirect()->route('survey.three.company.edit')

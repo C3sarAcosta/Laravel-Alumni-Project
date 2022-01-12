@@ -23,7 +23,8 @@
                 <input type="email" class="form-control" id="email" name="email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Por favor escriba su correo electrónico"
                     required oninvalid="this.setCustomValidity('Por favor ingrese su correo electrónico')"
-                    oninput="setCustomValidity('')" placeholder="Correo electrónico" value="{{ $userData->email }}" />
+                    oninput="setCustomValidity('')" placeholder="Correo electrónico"
+                    value="{{ $userData->email }}" disabled />
             </div>
         </div>
         <div class="col-6">
@@ -37,8 +38,7 @@
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="zip">Código Postal</label>{{-- <a id="help_zipcode" style="cursor: pointer;"><i
-                        class="fas fa-info-circle"></i></a> --}}
+                <label for="zip">Código Postal</label>{{-- <a id="help_zipcode"><i class="fas fa-info-circle"></i></a> --}}
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()"
                     onkeypress="ValidateNumbers(event);" title="Por favor escriba su código postal" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"
@@ -144,7 +144,7 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($business_activity as $activity)
+                        @foreach ($constants['BUSINESS_ACTIVITY'] as $activity)
                         <option value="{{ $activity }}" {{ $userData->business_activity_selector == $activity ?
                             'selected' : ''
                             }}>

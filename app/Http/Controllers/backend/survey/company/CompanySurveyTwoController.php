@@ -26,7 +26,7 @@ class CompanySurveyTwoController extends BaseController
         (new User)->newUser();
 
         $data = new CompanySurveyTwo();
-        $data->user_id = $this->user_id;
+        $data->user_id = $this->user->id;
         $data->number_graduates = $request->number_graduates;
         $data->congruence = $request->congruence;
         $data->competence1 = $request->competence1 ? Constants::STATUS['Active'] : Constants::STATUS['Inactive'];
@@ -56,9 +56,7 @@ class CompanySurveyTwoController extends BaseController
             }
         }
 
-        $user_update = CompanySurvey::where('user_id', $request->user_id)->first();
-        $user_update->survey_two_company_done = Constants::STATUS['Active'];
-        $user_update->save();
+        $this->updateSurveyStatus(2);
 
         $this->notification['message'] = 'Encuesta *Ubicación Laboral de los Egresados* realizada con éxito.';
         $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
@@ -69,7 +67,7 @@ class CompanySurveyTwoController extends BaseController
     public function SurveyEdit()
     {
         $data['constants'] = Constants::getConstants();
-        $data['userData'] = CompanySurveyTwo::where('user_id', $this->user_id)->first();
+        $data['userData'] = CompanySurveyTwo::where('user_id', $this->user->id)->first();
         $data['userDataGraduates'] = CompanyGraduatesWorking::where('company_survey_id', $data['userData']->id)->get();
         $data['careers'] = Career::pluck('name');
         return view('backend.survey.company_2.survey_two_company_edit', $data);
@@ -77,7 +75,7 @@ class CompanySurveyTwoController extends BaseController
 
     public function SurveyUpdate(Request $request)
     {
-        $editData = CompanySurveyTwo::where('user_id', $this->user_id)->first();
+        $editData = CompanySurveyTwo::where('user_id', $this->user->id)->first();
         $id = $editData->id;
 
         $editData->number_graduates = $request->number_graduates;
@@ -123,7 +121,7 @@ class CompanySurveyTwoController extends BaseController
 
     public function SurveyVerifiedRoute()
     {
-        $data = CompanySurvey::where('user_id', $this->user_id)->first();
+        $data = CompanySurvey::where('user_id', $this->user->id)->first();
 
         return $data['survey_two_company_done'] == Constants::STATUS['Active']
             ? redirect()->route('survey.two.company.edit')
