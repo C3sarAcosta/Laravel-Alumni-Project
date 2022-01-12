@@ -9,18 +9,15 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <div class="col-12">
-                    <h3 class="card-title">Carreras en el Instituto</h3>
-                    <div class="col-10 d-flex justify-content-center">
-                        <a href="{{ route('career.add') }}" class="btn btn-rounded btn-success">Agregar carrera</a>
-                    </div>
+                <div class="col-12 d-flex justify-content-md-around">
+                    <h3 class="card-title my-auto font-weight-bold">Carreras en el Instituto</h3>
+                    <a href="{{ route('career.add') }}" class="btn btn-rounded btn-success">Agregar carrera</a>
                 </div>
             </div>
 
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="table-filter" class="table table-responsive table-bordered table-striped"
-                    style="width: 100%;">
+                <table id="table-filter" class="table table-responsive table-bordered table-striped w-100">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>Número de carrera</th>

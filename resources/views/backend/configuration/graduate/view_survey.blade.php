@@ -16,8 +16,7 @@
 
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="table-filter" class="table table-responsive table-bordered table-striped"
-                    style="width: 100%;">
+                <table id="table-filter" class="table table-responsive table-bordered table-striped w-100">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>Número</th>
@@ -36,21 +35,24 @@
                     <tbody>
                         @foreach ($allData as $data)
                         <tr>
-                            <td class="text-center">
-                                <a href="{{ route('graduate.edit', $data->id) }}">
-                                    {{ $data->id }}
-                                </a>
-                            </td>
+                            <td class="text-center"> {{ $data->id }} </td>
                             <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->graduate->control_number }}</td>
-                            <td>{!! ($data->survey_one_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
-                            <td>{!! ($data->survey_two_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
-                            <td>{!! ($data->survey_three_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
-                            <td>{!! ($data->survey_four_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
-                            <td>{!! ($data->survey_five_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
-                            <td>{!! ($data->survey_six_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
-                            <td>{!! ($data->survey_seven_done == 1 ? '<p class="text-success">Completada</p>' : '<p class="text-danger">Sin completar</p>') !!}</td>
-                            <td>{{  $data->updated_at  }}</td>
+                            <td>{!! ($data->survey_one_done == 1 ? '<p class="text-success">Completada</p>' : '<p
+                                    class="text-danger">Sin completar</p>') !!}</td>
+                            <td>{!! ($data->survey_two_done == 1 ? '<p class="text-success">Completada</p>' : '<p
+                                    class="text-danger">Sin completar</p>') !!}</td>
+                            <td>{!! ($data->survey_three_done == 1 ? '<p class="text-success">Completada</p>' : '<p
+                                    class="text-danger">Sin completar</p>') !!}</td>
+                            <td>{!! ($data->survey_four_done == 1 ? '<p class="text-success">Completada</p>' : '<p
+                                    class="text-danger">Sin completar</p>') !!}</td>
+                            <td>{!! ($data->survey_five_done == 1 ? '<p class="text-success">Completada</p>' : '<p
+                                    class="text-danger">Sin completar</p>') !!}</td>
+                            <td>{!! ($data->survey_six_done == 1 ? '<p class="text-success">Completada</p>' : '<p
+                                    class="text-danger">Sin completar</p>') !!}</td>
+                            <td>{!! ($data->survey_seven_done == 1 ? '<p class="text-success">Completada</p>' : '<p
+                                    class="text-danger">Sin completar</p>') !!}</td>
+                            <td>{{ $data->updated_at }}</td>
                         </tr>
                         @endforeach
                     </tbody>

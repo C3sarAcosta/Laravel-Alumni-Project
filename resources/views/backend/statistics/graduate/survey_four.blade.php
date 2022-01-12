@@ -5,7 +5,7 @@
 @section('title_section')Estadísticas Desempeño profesional de los egresados @endsection
 
 @php
-$arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
+    $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
 @endphp
 
 @section('admin_content')
@@ -14,14 +14,12 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
 </div>
 
 <div class="row">
-
     <div class="col-4">
         <!-- PIE CHART -->
         <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title">Eficiencia para realizar las actividades laborales, en relación con su formación
                     académica</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -40,9 +38,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart1" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
 
@@ -70,7 +66,6 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
         <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Cómo califica su formación académica con respecto a su desempeño laboral</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -89,9 +84,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart1"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart2" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
 
@@ -119,9 +112,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
         <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">Utilidad de las residencias profesionales o prácticas profesionales para su
-                    desarrollo laboral y
-                    profesional</h3>
-
+                    desarrollo laboral y profesional</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -140,9 +131,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart2"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart3" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
 
@@ -191,8 +180,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="bar" style=" max-width: 100%; display: block; width: 548px;" width="685" height="312"
-                    class="chartjs-render-monitor"></canvas>
+                <canvas id="bar" width="685" height="312" class="chartjs-render-monitor bar-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -224,9 +212,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart3"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart4" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
 
@@ -252,7 +238,6 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
         <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Titulación</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -271,9 +256,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart4"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart5" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -316,9 +299,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart5"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart6" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -343,7 +324,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
         <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Competencia Laboral: Resolver problemas, análisis, aprendizaje, trabajo en
-                equipo, etc</h3>
+                    equipo, etc</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -362,9 +343,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart6"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart7" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -407,9 +386,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart7"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart8" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -456,9 +433,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart8"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart9" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -501,9 +476,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart9"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart10" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -546,9 +519,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart10"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart11" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -591,9 +562,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart11"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart12" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -636,9 +605,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart12"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart13" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -657,7 +624,7 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
             </div>
             <!-- /.card-footer -->
         </div>
-        <!-- /.card -->        
+        <!-- /.card -->
 
     </div>
     <!-- /.col (RIGHT) -->
@@ -670,24 +637,24 @@ $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
 
 <script type="text/javascript">
     charts_four(
-        <?php echo $efficiency_work_activities;?>,
-        <?php echo $academic_training;?>,
-        <?php echo $usefulness_professional_residence;?>,
-        <?php echo $study_area;?>,
-        <?php echo $title;?>,
-        <?php echo $experience;?>,
-        <?php echo $job_competence;?>,
-        <?php echo $positioning;?>,
-        <?php echo $languages;?>,
-        <?php echo $recommendations;?>,
-        <?php echo $personality;?>,
-        <?php echo $leadership;?>,
-        <?php echo $others;?>
+        @php echo $efficiency_work_activities; @endphp,
+        @php echo $academic_training; @endphp,
+        @php echo $usefulness_professional_residence; @endphp,
+        @php echo $study_area; @endphp,
+        @php echo $title; @endphp,
+        @php echo $experience; @endphp,
+        @php echo $job_competence; @endphp,
+        @php echo $positioning; @endphp,
+        @php echo $languages; @endphp,
+        @php echo $recommendations; @endphp,
+        @php echo $personality; @endphp,
+        @php echo $leadership; @endphp,
+        @php echo $others; @endphp,
     );
 
     $(function () {
-        var labels_avg = [<?php foreach($averages as $key => $average){ echo ('\'' . $key .'\'' .',');}?>];
-        var data_avg = [<?php foreach($averages as $average){ echo ($average .',');}?>];
+        var labels_avg = [@php foreach($averages as $key => $average){ echo ('\'' . $key .'\'' .',');}@endphp];
+        var data_avg = [@php foreach($averages as $average){ echo ($average .',');}@endphp];
         var colors_avg = randomColor({luminosity: 'light',count: data_avg.length});
 
         const data = {

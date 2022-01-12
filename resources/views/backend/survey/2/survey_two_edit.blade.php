@@ -1,4 +1,4 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Pertenencia y Disponibilidad @endsection
 
@@ -6,10 +6,9 @@
 Pertinencia y disponibilidad de medio y recursos para el aprendizaje
 @endsection
 
-@section('student_content')
+@section('graduate_content')
 <form method="post" action=" {{ route('survey.two.update') }} ">
     @csrf
-    <input id="user_id" name="user_id" value="{{ Auth::user()->id }}" style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -20,7 +19,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['GoodBadQuestion'] as $option)
+                        @foreach ($constants['GOOD_BAD_QUESTION'] as $option)
                         <option value="{{ $option }}" {{ $userData->quality_teachers == $option ? "selected" : ""}}>
                             {{$option}}
                         </option>
@@ -38,7 +37,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['GoodBadQuestion'] as $option)
+                        @foreach ($constants['GOOD_BAD_QUESTION'] as $option)
                         <option value="{{ $option }}" {{ $userData->syllabus == $option ? "selected" : ""}}>
                             {{$option}}
                         </option>
@@ -56,7 +55,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['GoodBadQuestion'] as $option)
+                        @foreach ($constants['GOOD_BAD_QUESTION'] as $option)
                         <option value="{{ $option }}" {{ $userData->study_condition == $option ? "selected" : ""}}>
                             {{$option}}
                         </option>
@@ -77,7 +76,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['GoodBadQuestion'] as $option)
+                        @foreach ($constants['GOOD_BAD_QUESTION'] as $option)
                         <option value="{{ $option }}" {{ $userData->experience == $option ? "selected" : ""}}>
                             {{$option}}
                         </option>
@@ -96,7 +95,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['GoodBadQuestion'] as $option)
+                        @foreach ($constants['GOOD_BAD_QUESTION'] as $option)
                         <option value="{{ $option }}" {{ $userData->study_emphasis == $option ? "selected" : ""}}>
                             {{$option}}
                         </option>
@@ -115,7 +114,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['GoodBadQuestion'] as $option)
+                        @foreach ($constants['GOOD_BAD_QUESTION'] as $option)
                         <option value="{{ $option }}" {{ $userData->participate_projects == $option ? "selected" : ""}}>
                             {{$option}}
                         </option>
@@ -132,7 +131,7 @@ Pertinencia y disponibilidad de medio y recursos para el aprendizaje
     </div>
 </form>
 
-<div class="row mt-3 d-flex justify-content-sm-center">
+<div class="row mt-3 pb-2 d-flex justify-content-sm-center">
     <div class="col-4">
         <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>

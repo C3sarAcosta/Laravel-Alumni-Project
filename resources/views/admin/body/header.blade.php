@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('graduate.view') }}" class="dropdown-item">
+                    <a href="{{ route('graduate.configuration.view') }}" class="dropdown-item">
                         Egresados
                     </a>
                 </li>

@@ -18,10 +18,16 @@
             <div class="mt-10 sm:mt-0">
                 @livewire('profile.update-password-form')
             </div>
-
-            <x-jet-section-border />
             @endif
         </div>
     </div>
 </x-app-layout>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function () {
+    $(".content-header").css("display", "none");
+});
+</script>
 @endsection

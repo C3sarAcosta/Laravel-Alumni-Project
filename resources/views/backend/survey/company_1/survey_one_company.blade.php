@@ -4,16 +4,9 @@
 
 @section('title_section')Datos generales de la empresa u organismo @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-$business_structure = $consts['BusinessStructure'];
-$company_size = $consts['CompanySize'];
-@endphp
-
 @section('company_content')
 <form method="post" action="{{ route('survey.one.company.store') }}">
     @csrf
-    <input id="user_id" name="user_id" value="{{ Auth::user()->id }}" style="display: none">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -112,8 +105,8 @@ $company_size = $consts['CompanySize'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($business_structure as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        @foreach ($constants['BUSINESS_STRUCTURE'] as $business_structure)
+                        <option value="{{ $business_structure }}">{{ $business_structure }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -128,8 +121,8 @@ $company_size = $consts['CompanySize'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($company_size as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        @foreach ($constants['COMPANY_SIZE'] as $company_size)
+                        <option value="{{ $company_size }}">{{ $company_size }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -161,7 +154,7 @@ $company_size = $consts['CompanySize'];
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('company.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ route('company.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 

@@ -5,8 +5,9 @@
 @section('title_section')Editar egresado @endsection
 
 @section('admin_content')
-<form method="post" action="{{ route('graduate.update', $editData->id) }}">
+<form method="post" action="{{ route('graduate.configuration.update') }}">
     @csrf
+    <input class="d-none" id="graduate_id" name="graduate_id" value="{{ $editData->id }}">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -17,24 +18,6 @@
                     value="{{ $editData->name }}" />
             </div>
         </div>
-        {{-- <div class="col-6">
-            <div class="form-group">
-                <label for="career_selector">Carrera</label>
-                <div class="controls">
-                    <select name="career_selector" id="career_selector" class="form-control"
-                        title="Seleccione la carrera" required
-                        oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
-                        oninput="setCustomValidity('')">
-                        <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($careers as $career)
-                        <option value="{{ $career->id }}" {{ $editData->id_career == $career->id ? "selected" : "" }}>
-                            {{ $career->name }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-        </div> --}}
         <div class="col-6">
             <div class="form-group">
                 <label for="email">Correo electrónico</label>

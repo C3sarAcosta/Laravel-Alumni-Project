@@ -1,13 +1,12 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Perfil del Egresado @endsection
 
 @section('title_section')Perfil del Egresado @endsection
 
-@section('student_content')
+@section('graduate_content')
 <form method="post" action=" {{ route('survey.one.update') }} " onsubmit="return validateSubmit();">
     @csrf
-    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -43,7 +42,7 @@
                     pattern="[0-9]{8,10}" maxlength="10" onkeypress="ValidateNumbers(event);"
                     oninvalid="this.setCustomValidity('Por favor ingrese su número de control')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu número de control"
-                    placeholder="Número de Control" value="{{ Auth::user()->control_number }}" disabled/>
+                    placeholder="Número de Control" value="{{ Auth::user()->control_number }}" disabled />
             </div>
         </div>
 
@@ -99,7 +98,7 @@
                         <option value="" selected="" disabled="">
                             Selecciona un estado civil
                         </option>
-                        @foreach ($consts['MaritalStatus'] as $status)
+                        @foreach ($constants['MARITAL_STATUS'] as $status)
                         <option value="{{ $status }}" {{ ($userData->marital_status == $status) ? "selected" : "" }}>
                             {{ $status }}
                         </option>
@@ -116,18 +115,16 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="address">Domicilio</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Calle #Número"
-                    required oninvalid="this.setCustomValidity('Por favor ingrese su domicilio')"
-                    oninput="setCustomValidity('')" title="Por favor escribe tu dirección"
-                    value="{{ $userData->address }}" />
+                <input type="text" class="form-control" id="address" name="address" placeholder="Calle #Número" required
+                    oninvalid="this.setCustomValidity('Por favor ingrese su domicilio')" oninput="setCustomValidity('')"
+                    title="Por favor escribe tu dirección" value="{{ $userData->address }}" />
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
-                <label for="zip">Código Postal <a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a></label>
+                <label for="zip">Código Postal</label> {{--<a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a> --}}
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()" required
-                    maxlength="20"    
-                    onkeypress="ValidateNumbers(event);"
+                    maxlength="20" onkeypress="ValidateNumbers(event);"
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"
                     oninput="setCustomValidity('')"
                     title="Al escribir puedes esperar y se rellanará la información por ti si existe información con este código"
@@ -199,11 +196,8 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
-                    oninvalid="this.setCustomValidity('Por favor ingrese su correo electrónico')"
-                    oninput="setCustomValidity('')" title="Por favor escribe tu correo electrónico" disabled
-                    value="{{ $userData->email }}" />
+                <input type="text" class="form-control" id="user_email" name="user_email"
+                    placeholder="Correo electrónico" required disabled value="{{ $userData->email }}" />
             </div>
         </div>
     </div>
@@ -217,8 +211,7 @@
                 <div class="controls">
                     <select name="career" id="career" required class="form-control" title="Selecciona tu carrera"
                         required oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
-                        oninput="setCustomValidity('')"
-                        onchange="onChangeCareer()">
+                        oninput="setCustomValidity('')" onchange="onChangeCareer()">
                         Selecciona tu carrera
                         </option>
                         @foreach ($careers as $career)
@@ -259,7 +252,7 @@
                         <option value="" selected="" disabled="">
                             Selecciona una opción
                         </option>
-                        @foreach ($consts['YesNoQuestion'] as $option)
+                        @foreach ($constants['YES_NO'] as $option)
                         <option value="{{ $option }}" {{ ($userData->qualified == $option) ? "selected" : "" }}>
                             {{ $option }}
                         </option>
@@ -278,7 +271,7 @@
                         <option value="" selected="" disabled="">
                             Selecciona un mes
                         </option>
-                        @foreach ($consts['Month'] as $month)
+                        @foreach ($constants['MONTH'] as $month)
                         <option value="{{ $month }}" {{ ($userData->month == $month) ? "selected" : "" }}>
                             {{ $month }}
                         </option>
@@ -290,10 +283,8 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="year">Año de Egreso</label>
-                <input pattern="[0-9]{4}" title="Por favor ingrese un año correcto de 4 dígitos" type="text" id="year"
-                    name="year" maxlength="4" class="form-control" required onkeypress="ValidateNumbers(event);"
-                    oninvalid="this.setCustomValidity('Por favor ingrese un año correcto')"
-                    oninput="setCustomValidity('')" value="{{ $userData->year }}" />
+                <input autocomplete="off" pattern="[0-9]{4}" title="Porfavor ingrese un año correcto de 4 dígitos" type="text" id="year"
+                    name="year" class="yearpicker form-control" />
             </div>
         </div>
     </div>
@@ -332,7 +323,7 @@
                         <option value="" selected="" disabled="">
                             Selecciona una lengua
                         </option>
-                        @foreach ($languages as $language)
+                        @foreach ($constants['LANGUAGE'] as $language)
                         <option value="{{ $language }}" {{ ($userData->another_language == $language)?"selected":"" }}>
                             {{$language}}
                         </option>
@@ -382,20 +373,24 @@
     </div>
 </form>
 
-<div class="row mt-3 d-flex justify-content-sm-center">
+<div class="row mt-3 pb-2 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ route('graduate.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
 
 <script type="text/javascript">
+    $(function () {
+        $("#year").val(@php echo $userData->year; @endphp)
+    });
+
     function onChangeCareer() {
     $("#specialty")
             .empty()
             .append(`<option value="" selected="" disabled="">Selecciona tu especialidad</option>`);
-    var specialties = <?php echo $specialties;?>;
+    var specialties = @php echo $specialties; @endphp;
     var career = $("#career").val();
 
     const filter_specialties = specialties.filter(v => v.name === career);
@@ -410,20 +405,20 @@
 @section('scripts')
 <script type="text/javascript">
     function validateSubmit(){
-      if($("#software").val() == null || $("#software").val().trim() == ''){
+      if(!$("#software").val()){
           toastr.error('Por favor no puede dejar paquetes computacionales con un valor vacío.');
           return false;
        }
 
-      if($("#year").val() == null || $("#year").val().trim() == ''){
+      if(!$("#year").val()){
           toastr.error('Por favor ingrese su año de egreso.');
           return false;
        }
 
-      if($("#birthday").val() == null || $("#birthday").val().trim() == ''){
+      if(!$("#birthday").val()){
           toastr.error('Por favor ingrese su fecha de nacimiento.');
           return false;
-       }           
+       }       
     return true;  
 }
 </script>

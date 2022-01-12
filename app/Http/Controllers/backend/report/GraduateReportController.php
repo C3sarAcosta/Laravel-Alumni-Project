@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\backend\report;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Controllers\backend\report\ReportController;
 use App\Models\SurveyOne;
 use App\Models\SurveyTwo;
 use App\Models\SurveyThree;
@@ -12,48 +11,40 @@ use App\Models\SurveyFive;
 use App\Models\SurveySix;
 use App\Models\SurveySeven;
 
-class GraduateReportController extends Controller
+class GraduateReportController extends ReportController
 {
-    public function SurveyOneReport()
+    public function surveyOneReport()
     {
-        $data['survey_data'] = SurveyOne::all();
-        return view('backend.report.graduate.survey_one', $data);
+        return $this->report((new SurveyOne), 'backend.report.graduate.survey_one');
     }
 
-    public function SurveyTwoReport()
+    public function surveyTwoReport()
     {
-        $data['survey_data'] = SurveyTwo::all();
-        return view('backend.report.graduate.survey_two', $data);
+        return $this->report((new SurveyTwo), 'backend.report.graduate.survey_two');
     }
 
-    public function SurveyThreeReport()
+    public function surveyThreeReport()
     {
-        $data['survey_data'] = SurveyThree::all();
-        return view('backend.report.graduate.survey_three', $data);
+        return $this->report((new SurveyThree), 'backend.report.graduate.survey_three');
     }
 
-    public function SurveyFourReport()
+    public function surveyFourReport()
     {
-        $data['survey_data'] = SurveyFour::all();
-        return view('backend.report.graduate.survey_four', $data);
+        return $this->report((new SurveyFour), 'backend.report.graduate.survey_four');
     }
 
-    public function SurveyFiveReport()
+    public function surveyFiveReport()
     {
-        $data['survey_data'] = SurveyFive::all();
-        return view('backend.report.graduate.survey_five', $data);
+        return $this->report((new SurveyFive), 'backend.report.graduate.survey_five');
     }
 
-    public function SurveySixReport()
+    public function surveySixReport()
     {
-        $data['survey_data'] = SurveySix::all();
-        return view('backend.report.graduate.survey_six', $data);
+        return $this->report((new SurveySix), 'backend.report.graduate.survey_six');
     }
 
-    public function SurveySevenReport()
+    public function surveySevenReport()
     {
-        $data['survey_data'] = SurveySeven::all();
-        return view('backend.report.graduate.survey_seven', $data);
+        return $this->report((new SurveySeven), 'backend.report.graduate.survey_seven');
     }
-  
 }

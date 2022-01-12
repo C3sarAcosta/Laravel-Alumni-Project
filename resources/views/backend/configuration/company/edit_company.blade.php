@@ -5,8 +5,9 @@
 @section('title_section')Editar empresa @endsection
 
 @section('admin_content')
-<form method="post" action="{{ route('company.config.update', $editData->id) }}">
+<form method="post" action="{{ route('company.config.update') }}">
     @csrf
+    <input class="d-none" id="company_id" name="company_id" value="{{ $editData->id }}">
     <div class="row">
         <div class="col-6">
             <div class="form-group">

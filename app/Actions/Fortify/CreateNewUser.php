@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
-use App\Enums\Role;
+//Constants
+use App\Constants\Constants;
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
@@ -33,8 +34,8 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'role' => $input['role'],
-            'control_number' => $input['role'] == Role::Student ? $input['control_number'] : null,
-            'year_graduated' => $input['role'] == Role::Student ? $input['year'] : null,
+            'control_number' => $input['role'] == Constants::ROLE['Graduate'] ? $input['control_number'] : null,
+            'year_graduated' => $input['role'] == Constants::ROLE['Graduate'] ? $input['year'] : null,
         ]);
     }
 }

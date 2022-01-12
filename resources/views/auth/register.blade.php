@@ -9,13 +9,20 @@
         * {
             overflow-x: hidden;
         }
+
+        .logo-size {
+            width: 150px;
+            height: 100px;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <a href=" {{route('welcome')}} "><img style="width: 170px; height:100px;"
-                    src="{{asset('backend/img/school/SSE2.png')}}" alt=""></a>
+            <a href=" {{route('welcome')}} ">
+                <img class="logo-size" src="{{asset('backend/img/school/SSE2.png')}}" alt="SSE-Logo">
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -26,6 +33,7 @@
         </div>
         <form method="POST" action="{{ route('register') }}">
             @csrf
+            <input class="d-none" id="role" name="role" value="graduate" />
             <div>
                 <x-jet-label for="name" value="{{ __('Nombre') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
@@ -53,10 +61,10 @@
 
             <div class="mt-4">
                 <x-jet-label for="year" value="{{ __('Año de Egreso') }}" />
-                <x-jet-input pattern="[0-9]{4}" title="Porfavor ingrese un año correcto de 4 dígitos" type="text"
-                    id="year" name="year" class="yearpicker block mt-1 w-full" readonly
+                <x-jet-input title="Porfavor ingrese un año correcto de 4 dígitos" type="text" id="year" name="year"
+                    class="yearpicker block mt-1 w-full" readonly
                     oninvalid="this.setCustomValidity('Por favor ingrese un año correcto')"
-                    oninput="setCustomValidity('')" :value="old('year_graduated')" required />
+                    oninput="setCustomValidity('')" :value="old('year')" required />
             </div>
 
             <div class="mt-4">
@@ -74,9 +82,6 @@
                     oninput="setCustomValidity('')" title="Por favor repite esa contraseña" name="password_confirmation"
                     required autocomplete="new-password" />
             </div>
-
-            <input id="role" name="role" style="display: none" value="student" />
-
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
             <div class="mt-4">
                 <x-jet-label for="terms">
@@ -107,7 +112,6 @@
                 </x-jet-button>
             </div>
         </form>
-
     </x-jet-authentication-card>
 </x-guest-layout>
 

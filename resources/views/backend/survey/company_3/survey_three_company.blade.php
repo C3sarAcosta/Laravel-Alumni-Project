@@ -4,15 +4,9 @@
 
 @section('title_section')Competencias Laborales @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 @section('company_content')
 <form method="post" action="{{ route('survey.three.company.store') }}">
     @csrf
-    <input id="user_id" name="user_id" value="{{ Auth::user()->id }}" style="display: none">
-    <hr>
     <label>En su opinión ¿qué competencias considera deben desarrollar los egresados del Instituto Tecnológico, para
         desempeñarse eficientemente en sus actividades laborales? <br>
         Por favor evalúe conforme a la tabla siguiente: Califique del 1(menor) al 5 (mayor):</label>
@@ -274,7 +268,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['GoodBadQuestion'] as $option)
+                        @foreach ($constants['GOOD_BAD_QUESTION'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -319,7 +313,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('company.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ route('company.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 @endsection

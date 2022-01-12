@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\backend\statistic;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\SurveyOne;
 use App\Models\SurveyTwo;
 use App\Models\SurveyThree;
 use App\Models\SurveyFour;
 use App\Models\SurveyFive;
 use App\Models\SurveySix;
-use App\Models\SurveySeven;
 
 class GraduateStatisticController extends Controller
 {
-    public function SurveyOneStatistic()
+    public function surveyOneStatistic()
     {
         $data['sex'] = SurveyOne::groupBy('sex')->selectRaw('count(*) as total, sex')->get();
         $data['marital_status'] = SurveyOne::groupBy('marital_status')->selectRaw('count(*) as total, marital_status')->get();
@@ -30,7 +28,7 @@ class GraduateStatisticController extends Controller
         return view('backend.statistics.graduate.survey_one', $data);
     }
 
-    public function SurveyTwoStatistic()
+    public function surveyTwoStatistic()
     {
         $data['quality_teachers'] = SurveyTwo::groupBy('quality_teachers')->selectRaw('count(*) as total, quality_teachers')->get();
         $data['syllabus'] = SurveyTwo::groupBy('syllabus')->selectRaw('count(*) as total, syllabus')->get();
@@ -41,7 +39,7 @@ class GraduateStatisticController extends Controller
         return view('backend.statistics.graduate.survey_two', $data);
     }
 
-    public function SurveyThreeStatistic()
+    public function surveyThreeStatistic()
     {
         $data['do_for_living'] = SurveyThree::groupBy('do_for_living')->selectRaw('count(*) as total, do_for_living')->get();
         $data['speciality'] = SurveyThree::where('do_for_living', '=', 'ESTUDIA Y TRABAJA')
@@ -94,7 +92,7 @@ class GraduateStatisticController extends Controller
         return view('backend.statistics.graduate.survey_three', $data);
     }
 
-    public function SurveyFourStatistic()
+    public function surveyFourStatistic()
     {
         $data['efficiency_work_activities'] = SurveyFour::groupBy('efficiency_work_activities')->selectRaw('count(*) as total, efficiency_work_activities')->get();
         $data['academic_training'] = SurveyFour::groupBy('academic_training')->selectRaw('count(*) as total, academic_training')->get();
@@ -126,7 +124,7 @@ class GraduateStatisticController extends Controller
         return view('backend.statistics.graduate.survey_four', $data);
     }
 
-    public function SurveyFiveStatistic()
+    public function surveyFiveStatistic()
     {
         $data['courses_yes_no'] = SurveyFive::groupBy('courses_yes_no')->selectRaw('count(*) as total, courses_yes_no')->get();
         $data['courses'] = SurveyFive::selectRaw('id, courses')->where('courses_yes_no', '=', "SÍ")->get();
@@ -135,7 +133,7 @@ class GraduateStatisticController extends Controller
         return view('backend.statistics.graduate.survey_five', $data);
     }
 
-    public function SurveySixStatistic()
+    public function surveySixStatistic()
     {
         $data['organization_yes_no'] = SurveySix::groupBy('organization_yes_no')->selectRaw('count(*) as total, organization_yes_no')->get();
         $data['organization'] = SurveySix::selectRaw('id, organization')->where('organization_yes_no', '=', "SÍ")->get();

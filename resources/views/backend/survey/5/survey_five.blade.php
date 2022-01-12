@@ -1,13 +1,13 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Expéctativas y Actualización @endsection
 
 @section('title_section')Expéctativas de desarrollo, superación profesional y de actualización @endsection
 
-@section('student_content')
-<form method="post" action=" {{ route('survey.five.store') }} " onsubmit="return validateSubmit();">
+@section('graduate_content')
+
+<form method="post" action=" {{ route('survey.five.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -17,9 +17,11 @@
                         title="¿Le interesa tomar cursos?" required
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
-                        <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['YesNoQuestion'] as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        <option selected="" disabled="">Selecciona una opción</option>
+                        @foreach ($constants['YES_NO'] as $option)
+                        <option value="{{ $option }}" @if(old('courses_selector')==$option) selected @endif>
+                            {{ $option}}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -28,9 +30,10 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="courses">Mencionar cursos</label>
-                <input id="courses" name="courses" type="text" class="form-control" disabled=""
+                <input id="courses" name="courses" type="text" class="form-control"
+                    @if(old('courses_selector')==$constants['YES_NO']['No']) disabled="" @endif
                     title="Mencionar los cursos, como cursos de marketing"
-                    placeholder="Mencione cuáles serían de su agrado">
+                    placeholder="Mencione cuáles serían de su agrado" value="{{old('courses')}}">
             </div>
         </div>
     </div>
@@ -45,8 +48,9 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['YesNoQuestion'] as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        @foreach ($constants['YES_NO'] as $option)
+                        <option value="{{ $option }}" @if(old('master_selector')==$option) selected @endif>{{ $option }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -55,9 +59,10 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="master">Posgrado</label>
-                <input id="master" name="master" type="text" class="form-control" disabled=""
+                <input id="master" name="master" type="text" class="form-control"
+                    @if(old('master_selector')==$constants['YES_NO']['No']) disabled="" @endif
                     title="Mencionar los posgrados, como ejemplo en mecatrónica"
-                    placeholder="Mencione cuál sería de su agrado">
+                    placeholder="Mencione cuál sería de su agrado" value="{{old('master')}}">
             </div>
         </div>
     </div>
@@ -70,31 +75,10 @@
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ route('graduate.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
-
-@section('scripts')
-<script type="text/javascript">
-
-function validateSubmit(){
-    if($("#courses_selector").val() == "SÍ"){
-      if($("#courses").val() == null || $("#courses").val().trim() == ''){
-          toastr.error('Por favor mencione los cursos, es obligatorio si selecciona sí.');
-          return false;
-       }
-    }
-    if($("#master_selector").val() == "SÍ"){
-      if($("#master").val() == null || $("#master").val().trim() == ''){
-          toastr.error('Por favor mencione los posgrados, es obligatorio si selecciona sí.');
-          return false;
-       }
-    }
-    return true;  
-}
-</script>
-@endsection
 
 @endsection

@@ -7,7 +7,7 @@
 @section('company_content')
 <form method="post" action="{{ route('company.jobs.update', $job->id) }}">
     @csrf
-    <input id="id_user" name="id_user" value=" {{ Auth::user()->id }} " style="display: none">
+    <input class="d-none" id="id_user" name="id_user" value=" {{ Auth::user()->id }} ">
     <div class="row">
         <div class="col-6">
             <div class="form-group">

@@ -10,22 +10,21 @@
 @section('title_section')Tablero para empresas @endsection
 
 @php
-function CheckSurvey($userSurveyCheck){
-$check = '<i class="fas fa-check-circle text-success" style="font-size: 25px;"></i>';
-$loader = '<div class="loaderSquare"> <span></span><span></span><span></span> </div>';
-$value = $userSurveyCheck == 1 ? $check : $loader;
-return $value;
-}
+    function CheckSurvey($userSurveyCheck){
+        $check = '<i class="fas fa-check-circle text-success" style="font-size: 25px;"></i>';
+        $loader = '<div class="loaderSquare"> <span></span><span></span><span></span> </div>';
+        $value = $userSurveyCheck == 1 ? $check : $loader;
+        return $value;
+    }
 
-function ReturnRoute($userSurveyCheck, $number){
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-$route_index = 'survey.' . $number . '.company.index';
-$route_edit = 'survey.' . $number . '.company.edit';
-$route = $userSurveyCheck == 1
-? route($route_edit, $user_id_encrypt)
-: route($route_index);
-return $route;
-}
+    function ReturnRoute($userSurveyCheck, $number){
+        $route_index = 'survey.' . $number . '.company.index';
+        $route_edit = 'survey.' . $number . '.company.edit';
+        $route = $userSurveyCheck == 1
+        ? route($route_edit)
+        : route($route_index);
+        return $route;
+    }
 @endphp
 
 @section('company_content')
@@ -105,15 +104,15 @@ return $route;
     <!-- ./col -->
     <div class="col-lg-4 col-6">
         <!-- small box -->
-        <div class="small-box {!!$survey_done == false ? " bg-success": "bg-danger" !!}">
+        <div class="small-box {!! !$survey_done ? " bg-success": "bg-danger" !!}">
             <div class="inner">
-                <h3>{{$survey_done == false ? "Completadas": "Sin completar" }}</h3>
+                <h3>{{ !$survey_done "Completadas": "Sin completar" }}</h3>
                 <p>Encuestas completadas</p>
             </div>
             <div class="icon">
-                <i class="ion {!!$survey_done == false ? " ion-checkmark": "ion-close-circled" !!} "></i>
+                <i class="ion {!! !$survey_done " ion-checkmark": "ion-close-circled" !!} "></i>
             </div>
-            <a href=" #" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -172,7 +171,7 @@ return $route;
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
-    <script>
+    <script type="text/javascript">
         var swiper = new Swiper(".mySwiper", {
             effect: "coverflow",
             grabCursor: true,

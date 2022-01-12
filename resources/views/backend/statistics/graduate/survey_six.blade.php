@@ -14,7 +14,6 @@
         <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title">¿Pertenece a organizaciones sociales?</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -33,9 +32,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart1" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -47,7 +44,6 @@
         <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">¿Pertenece a organismos de profesionistas?</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -66,9 +62,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart1"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart2" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -80,7 +74,6 @@
         <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">¿Pertenece a asociaciones de egresados?</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -99,9 +92,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart2"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart3" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -121,7 +112,7 @@
                     </div>
                     <div id="collapseOne" class="collapse" data-parent="#accordion">
                         <div class="card-body text-justify">
-                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                            <ul class="description-style">
                                 @foreach ($organization as $option)
                                 <li>{{ $option->organization }}</li>
                                 @endforeach
@@ -139,7 +130,7 @@
                     </div>
                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                         <div class="card-body text-justify">
-                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                            <ul class="description-style">
                                 @foreach ($agency as $option)
                                 <li>{{ $option->agency }}</li>
                                 @endforeach
@@ -157,7 +148,7 @@
                     </div>
                     <div id="collapseThird" class="collapse" data-parent="#accordion">
                         <div class="card-body text-justify">
-                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                            <ul class="description-style">
                                 @foreach ($association as $option)
                                 <li>{{ $option->association }}</li>
                                 @endforeach
@@ -170,21 +161,18 @@
     </div>
 </div>
 
-
 @section('scripts')
 <script src="{{ asset('backend/js/chart/graduate_6.js') }}" type="text/javascript"> </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 
-
 <script type="text/javascript">
     charts_six(
-        <?php echo $organization_yes_no;?>,
-        <?php echo $agency_yes_no;?>,
-        <?php echo $association_yes_no;?>
+        @php echo $organization_yes_no; @endphp,
+        @php echo $agency_yes_no; @endphp,
+        @php echo $association_yes_no; @endphp,
     );
 </script>
-
 @endsection
 
 @endsection

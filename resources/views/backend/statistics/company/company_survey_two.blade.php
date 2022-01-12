@@ -15,7 +15,6 @@
             <div class="card-header">
                 <h3 class="card-title">Número de profesionistas con nivel de licenciatura que laboran en la empresa u
                     organismo</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -34,9 +33,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart1"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart1" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
 
@@ -85,8 +82,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="bar" style=" max-width: 100%; display: block; width: 548px;" width="685" height="312"
-                    class="chartjs-render-monitor"></canvas>
+                <canvas id="bar" width="685" height="312" class="chartjs-render-monitor bar-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -100,9 +96,7 @@
         <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title">Congruencia entre perfil profesional y función que desarrollan los egresados del
-                    Instituto Tecnológico en su
-                    empresa u organización</h3>
-
+                    Instituto Tecnológico en su empresa u organización</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -121,9 +115,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart2"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart2" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
 
@@ -172,8 +164,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="bar2" style=" max-width: 100%; display: block; width: 548px;" width="685" height="312"
-                    class="chartjs-render-monitor"></canvas>
+                <canvas id="bar2" width="685" height="312" class="chartjs-render-monitor bar-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -205,9 +196,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart3"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart3" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
 
@@ -237,56 +226,58 @@
 
 <script type="text/javascript">
     charts_two(
-        <?php echo $careers;?>,
-        <?php echo $number_graduates;?>,
-        <?php echo $congruence;?>,
-        <?php echo $most_demanded_career;?>
+        @php echo $careers; @endphp,
+        @php echo $number_graduates; @endphp,
+        @php echo $congruence; @endphp,
+        @php echo $most_demanded_career; @endphp,
     );
 
     $(function () {
-
-        var labels_count = [<?php foreach($counts as $key => $count){ echo ('\'' . $key .'\'' .',');}?>];
-        var data_count = [<?php foreach($counts as $count){ echo ($count .',');}?>];
+        var labels_count = [@php foreach($counts as $key => $count){ echo ('\'' . $key .'\'' .',');}@endphp];
+        var data_count = [@php foreach($counts as $count){ echo ($count .',');}@endphp];
         var colors_count = randomColor({luminosity: 'light',count: data_count.length});
 
         var options = {
-tooltips: {
-        callbacks: {
-            label: function(tooltipItem) {
-                return "$" + Number(tooltipItem.yLabel) + " and so worth it !";
-            }
-        }
-    },   
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                min: 0
-              }    
-            }]
-          },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return (
+                            "$" + Number(tooltipItem.yLabel) + " and so worth it !"
+                        );
+                    },
+                },
+            },
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0,
+                        },
+                    },
+                ],
+            },
         };
 
         const data2 = {
             labels: labels_count,
-            datasets: [{
-                label: 'Cuenta',
-                data: data_count,
-                backgroundColor: colors_count,
-                borderWidth: 1,
-            }]
+            datasets: [
+                {
+                    label: "Cuenta",
+                    data: data_count,
+                    backgroundColor: colors_count,
+                    borderWidth: 1,
+                },
+            ],
         };
 
-        var ctx2 = $('#bar2').get(0).getContext('2d');
+        var ctx2 = $("#bar2").get(0).getContext("2d");
         new Chart(ctx2, {
-            type: 'bar',
+            type: "bar",
             data: data2,
-            options: options
+            options: options,
         });
-
-
     });
-
 
 </script>
 

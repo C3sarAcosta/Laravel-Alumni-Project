@@ -13,8 +13,9 @@ $name = join(" ", $arr);
 @endphp
 
 @section('admin_content')
-<form method="post" action="{{ route('career.update', $editData->id) }}">
+<form method="post" action="{{ route('career.update') }}">
     @csrf
+    <input  id="career_id" name="career_id" class="d-none" value="{{ $editData->id }}">
     <div class="row">
         <div class="col-6">
             <div class="form-group">

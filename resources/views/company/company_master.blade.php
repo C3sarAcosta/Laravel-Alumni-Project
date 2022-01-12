@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@if (!Auth::check())
-@php
-header("Location: " . URL::to('/'), true, 302);
-exit();
-@endphp
+@if (!Auth::check() || Auth::user()->role != 'company')
+    @php
+        header("Location: " . URL::to('/'), true, 302);
+        exit();
+    @endphp
 @endif
-
-@if (Auth::user()->role != 'company')
-@php
-header("Location: " . URL::to('/'), true, 302);
-exit();
-@endphp
-@endif
-
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
 
 <head>
     <meta charset="UTF-8">
@@ -51,11 +40,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/plugins/daterangepicker/daterangepicker.css') }}">
 
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('backend/lib/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-
     <!-- Yearpicker -->
     <script src="{{asset ('backend/lib/adminlte/plugins/yearpicker/jquery.min.js')}}"></script>
     <link rel='stylesheet' href="{{asset ('backend/lib/adminlte/plugins/yearpicker/yearpicker.css')}}" />
@@ -78,12 +62,7 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
 
     {{-- Own libraries --}}
     @yield('head')
-    <style>
-        .TecColor {
-            color: #1b396a;
-        }
-    </style>
-    @yield('style_custom')
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -141,9 +120,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <!-- ChartJS -->
     <script src="{{ asset('backend/lib/adminlte/plugins/chart.js/Chart.min.js') }}"></script>
 
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('backend/lib/adminlte/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-
     <!-- daterangepicker -->
     <script src="{{ asset('backend/lib/adminlte/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -167,7 +143,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     </script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('backend/lib/adminlte/plugins/jszip/jszip.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
@@ -227,7 +202,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
         })
     });
     </script>
-
+    <!-- Messages -->   
+    <script src="{{ asset('backend/js/messages.js') }}"></script>
+    
     {{-- Own scripts --}}
     @yield('scripts')
 </body>

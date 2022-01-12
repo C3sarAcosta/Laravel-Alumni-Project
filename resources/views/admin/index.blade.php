@@ -17,7 +17,7 @@
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="{{ route('graduate.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('graduate.configuration.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -90,9 +90,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="donutChart"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="donutChart" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -121,9 +119,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -155,9 +151,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart2"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart2" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -167,7 +161,6 @@
         <div class="card card-danger">
             <div class="card-header">
                 <h3 class="card-title">Sexo de los egresados</h3>
-        
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -186,9 +179,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="donutChart2"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="donutChart2" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -199,25 +190,25 @@
 
 @section('scripts')
 <script src="{{ asset('backend/js/charts.js') }}" type="text/javascript"> </script>
-<script type="text/javascript">
 
+<script type="text/javascript">
 $(function () {
-    var array_survey_three = <?php echo $survey_three;?>;
+    var array_survey_three = @php echo $survey_three; @endphp;
     var labels_graduates = array_survey_three.map(a => a.do_for_living);
     var colors_graduates = [];
     var data_graduates = array_data(array_survey_three, colors_graduates);
 
-    var array_careers = <?php echo $careers;?>;
+    var array_careers = @php echo $careers; @endphp;
     var labels_careers = array_careers.map(a => a.name);
     var colors_careers = [];
     var data_careers = array_data(array_careers, colors_careers);
 
-    var array_quality = <?php echo $survey_two;?>;
+    var array_quality = @php echo $survey_two; @endphp;
     var labels_quality = array_quality.map(a => a.quality_teachers);
     var colors_quality = [];
     var data_quality = array_data(array_quality, colors_quality);
 
-    var array_sex = <?php echo $survey_one;?>;
+    var array_sex = @php echo $survey_one; @endphp;
     var labels_sex = array_sex.map(a => a.sex);
     var colors_sex = [];
     var data_sex = array_data(array_sex, colors_sex);

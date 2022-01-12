@@ -2,7 +2,7 @@
 
 @section('TopTitle')Reportes @endsection
 
-@section('title_section')Reporte Ubicación Laboral @endsection
+@section('title_section')Reporte Ubicación laboral de los egresados @endsection
 
 @section('head')
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/base/jquery-ui.css" rel="stylesheet"
@@ -13,37 +13,35 @@
 @section('admin_content')
 <div class="row">
     <div class="col-12">
+        <div class="row">
+            <div class="col-5 ml-5">
+                <div class="form-group">
+                    <label>Fecha de inicio:</label>
+                    <input type="text" class="form-control" name="min" id="min"
+                        placeholder="Fecha inicio de contestación" />
+                </div>
+            </div>
+            <div class="col-5 mr-5">
+                <div class="form-group">
+                    <label>Fecha fin:</label>
+                    <input type="text" class="form-control" name="max" id="max"
+                        placeholder="Fecha fin de contestación" />
+                </div>
+            </div>
+        </div>
+        <!-- /.date-filter -->
+    </div>
+    <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Ubicación laboral de los egresados</h3>
-            </div>
-            <!-- /.card-header -->
-
-            <div class="row mt-4">
-                <div class="col-5 ml-5">
-                    <div class="form-group">
-                        <label>Fecha de inicio:</label>
-                        <input type="text" class="form-control" name="min" id="min" placeholder="Fecha inicio de contestación" />
-                    </div>
-                </div>
-                <div class="col-5 mr-5">
-                    <div class="form-group">
-                        <label>Fecha fin:</label>
-                        <input type="text" class="form-control" name="max" id="max" placeholder="Fecha fin de contestación" />
-                    </div>
-                </div>
-            </div>
-            <!-- /.date-filter -->
-
             <div class="card-body">
-                <table id="table-filter" class="table table-responsive table-bordered table-striped"
-                    style="width: 100%;">
+                <table id="table-filter-two" class="table table-responsive table-bordered table-striped w-100">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>ID</th>
                             <th>Usuario</th>
                             <th>Número de Control</th>
                             <th>Año de egreso</th>
+                            <th>Período de egreso</th>
                             <th>Actividad a la que se dedica actualmente</th>
                             <th>¿Qué están estudiando?</th>
                             <th>Especialidad</th>
@@ -92,6 +90,9 @@
                             <td>{{ $data->graduate->name }}</td>
                             <td>{{ $data->graduate->control_number }}</td>
                             <td>{{ $data->graduate->year_graduated }}</td>
+                            <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
+                                ? ""
+                                : $data->graduate->surveyOne->month }}</td>
                             <td>{{ $data->do_for_living }}</td>
                             <td>
                                 {{ (str_contains($data->do_for_living, 'ESTUDIA') &&
@@ -190,7 +191,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[41]);
+            var startDate = new Date(data[42]);
             if (min == null && max == null) {
                 return true;
             }
@@ -221,12 +222,14 @@
         changeMonth: true,
         changeYear: true
     });
-    var table = $('#table-filter').DataTable();
+    var table = $('#table-filter-two').DataTable();
 
     // Event listener to the two range filtering inputs to redraw on input
     $('#min, #max').change(function () {
         table.draw();
     });
+
+    $("#ui-datepicker-div").css("display", "none");
 });
 </script>
 @endsection

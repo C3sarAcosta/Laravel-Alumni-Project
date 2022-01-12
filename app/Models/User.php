@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
+use App\Constants\Constants;
 
 class User extends Authenticatable
 {
@@ -67,5 +68,17 @@ class User extends Authenticatable
     public function career()
     {
         return $this->belongsTo(Career::class, 'id_career', 'id');
+    }
+
+    public function surveyOne()
+    {
+        return $this->belongsTo(SurveyOne::class, 'id', 'user_id');
+    }
+
+    public function newUser()
+    {
+        $user = User::find(Auth::user()->id);
+        $user->is_new_user = Constants::STATUS['Active'];
+        $user->save();
     }
 }

@@ -14,7 +14,6 @@
         <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title">¿Le gustaria tomar cursos de actualización?</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -33,9 +32,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart1" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -47,7 +44,6 @@
         <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">¿Le gustaria tomar algún posgrado?</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -66,9 +62,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart1"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart2" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
         </div>
@@ -88,7 +82,7 @@
                     </div>
                     <div id="collapseOne" class="collapse" data-parent="#accordion">
                         <div class="card-body text-justify">
-                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                            <ul class="description-style">
                                 @foreach ($courses as $option)
                                 <li>{{ $option->courses }}</li>
                                 @endforeach
@@ -106,7 +100,7 @@
                     </div>
                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                         <div class="card-body text-justify">
-                            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                            <ul class="description-style">
                                 @foreach ($master as $option)
                                 <li>{{ $option->master }}</li>
                                 @endforeach
@@ -124,11 +118,10 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 
-
 <script type="text/javascript">
     charts_five(
-        <?php echo $courses_yes_no;?>,
-        <?php echo $master_yes_no;?>
+        @php echo $courses_yes_no; @endphp,
+        @php echo $master_yes_no; @endphp,
     );
 </script>
 

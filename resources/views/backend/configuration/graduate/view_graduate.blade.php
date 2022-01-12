@@ -9,20 +9,17 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <div class="col-12">
-                    <h3 class="card-title">Egresados del Instituto</h3>
-                    <div class="col-10 d-flex justify-content-center">
-                        <a href="{{ route('graduate.add') }}" class="btn btn-rounded btn-success">
-                            Agregar egresado
-                        </a>
-                    </div>
+                <div class="col-12 d-flex justify-content-md-around">
+                    <h3 class="card-title my-auto font-weight-bold">Egresados del Instituto</h3>
+                    <a href="{{ route('graduate.configuration.add') }}" class="btn btn-rounded btn-success">
+                        Agregar egresado
+                    </a>
                 </div>
             </div>
 
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="table-filter" class="table table-responsive table-bordered table-striped"
-                    style="width: 100%;">
+                <table id="table-filter" class="table table-responsive table-bordered table-striped w-100">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>Número</th>
@@ -38,7 +35,7 @@
                         @foreach ($allData as $data)
                         <tr>
                             <td class="text-center">
-                                <a href="{{ route('graduate.edit', $data->id) }}">
+                                <a href="{{ route('graduate.configuration.edit', $data->id) }}">
                                     {{ $data->id }}
                                 </a>
                             </td>

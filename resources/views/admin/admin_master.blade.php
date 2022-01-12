@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@if (!Auth::check())
-@php
-header("Location: " . URL::to('/'), true, 302);
-exit();
-@endphp
+@if (!Auth::check() || Auth::user()->role != 'admin')
+    @php
+        header("Location: " . URL::to('/'), true, 302);
+        exit();
+    @endphp
 @endif
-
-@if (Auth::user()->role != 'admin')
-@php
-header("Location: " . URL::to('/'), true, 302);
-exit();
-@endphp
-@endif
-
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-@endphp
-
 
 <head>
     <meta charset="UTF-8">
@@ -46,10 +34,9 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <link rel="stylesheet"
         href="{{ asset('backend/lib/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('backend/lib/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <!-- Select2 plugin -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
 
     <!-- Yearpicker -->
     <script src="{{asset ('backend/lib/adminlte/plugins/yearpicker/jquery.min.js')}}"></script>
@@ -77,9 +64,11 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('backend/lib/adminlte/css/adminlte.min.css') }}">
 
-    {{-- Own libraries --}}
-    @yield('head')
+    <!-- Project style -->
+    <link rel="stylesheet" href="{{asset ('backend/css/project.css')}}">
 
+    <!-- Own libraries -->
+    @yield('head')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -137,9 +126,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <!-- ChartJS -->
     <script src="{{ asset('backend/lib/adminlte/plugins/chart.js/Chart.min.js') }}"></script>
 
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('backend/lib/adminlte/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-
     <!-- daterangepicker -->
     <script src="{{ asset('backend/lib/adminlte/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -166,7 +152,6 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     </script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('backend/lib/adminlte/plugins/jszip/jszip.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
     <script src="{{ asset('backend/lib/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
@@ -178,9 +163,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.js"></script>
 
-    <script>
-        @if(Session::has('message'))
-    		var type = "{{ Session::get('alert-type', 'info') }}";
+    <!-- Select2 plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    @if(Session::has('message'))
+    <script type="text/javascript">
+        var type = "{{ Session::get('alert-type', 'info') }}";
     		switch(type){
     			case 'info':
     			toastr.info("{{ Session::get('message') }}");
@@ -198,31 +186,12 @@ $user_id_encrypt = Crypt::encrypt(Auth::user()->id);
     			toastr.error("{{ Session::get('message') }}");
     			break;								
     		}
-    		@endif
     </script>
-    
+    @endif
     <!-- General -->
     <script src="{{ asset('backend/js/general.js') }}"></script>
-
-    <script type="text/javascript">
-        $(document).on('click', '#help_admin', function(e){
-            Swal.fire({
-            title: '<strong>Asistente S.S.E</strong>',
-            icon: 'info',
-            html:
-            '<p style="text-align:justify;">Hola administrador este es el asistente para apoyarte en este sistema. ' +
-            'En los apartados de configuración podrás encontrar los datos para que los manipules, como son son los egresados '+
-            'empresas, carreras, etc. En el apartado de reportes podrás revisar las respuestas de las encuestas tanto de empleadores como de egresados, '+
-            'en el apartado de estadístcias podrás revisar todas las respuestas graficadas con forma de pastel.</p>',
-            showCloseButton: true,
-            showCancelButton: false,
-            focusConfirm: false,
-            confirmButtonText:
-            '<i class="fa fa-thumbs-up"></i> Me sirve la información!',
-            confirmButtonAriaLabel: 'Thumbs up, great!',
-            })
-        });
-    </script>
+    <!-- Messages -->
+    <script src="{{ asset('backend/js/messages.js') }}"></script>
 
     {{-- Own scripts --}}
     @yield('scripts')

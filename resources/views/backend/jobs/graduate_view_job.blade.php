@@ -1,10 +1,10 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Trabajos @endsection
 
 @section('title_section')Lista de trabajos disponibles @endsection
 
-@section('student_content')
+@section('graduate_content')
 @if (!$jobs->isEmpty())
 <!-- Default box -->
 <div class="card card-solid">

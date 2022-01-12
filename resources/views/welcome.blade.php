@@ -18,9 +18,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand text-light" href="#">
-                    <h5>Sistema de Seguimiento de Egresados</h5>
-                </a>
+                <h5 class="navbar-brand text-light">Sistema de Seguimiento de Egresados</h5>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -65,7 +63,7 @@
                     <p>El SSE es el sistema que permite el análisis del desempeño e impacto de los egresados en el
                         sector productivo.</p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-outline-primary btn-white">Conocer más!</a>
+                        <a href="#features" class="btn btn-outline-primary btn-white">Conocer más!</a>
                     </div>
                 </div>
                 <div class="col-md-6" style="display: flex; justify-content:center; flex-wrap:wrap; text-align:center;">
@@ -117,7 +115,7 @@
                 <div class="col-md-4">
                     <div class="feature-block">
                         <i class="lni lni-graduation"></i>
-                        <h3 class="text-center">Pefil de Egreso</h3>
+                        <h3 class="text-center">Perfil de Egreso</h3>
                         <p class="text-justify">El perfil del egresado incluye un componente estable, es decir, la
                             información demográfica básica de cada individuo como
                             es, género, lugar de nacimiento, fecha de nacimiento, formación, antecedentes académicos,
@@ -171,10 +169,12 @@
         <div class="container">
             <div class="row d-flex flex-column align-items-center">
                 <div class="social-icons text-light">
-                    <a href="https://www.facebook.com/tecnologico.delicias/"><i
+                    <a title="Facebook del ITD" href="https://www.facebook.com/tecnologico.delicias/"><i
                             class="lni lni-facebook-original"></i></a>
-                    <a href="https://www.delicias.tecnm.mx/"><i class="lni lni-website"></i></a>
-                    <a href="https://www.linkedin.com/school/itdelicias/"><i class="lni lni-linkedin-original"></i></a>
+                    <a title="Sitio oficial del ITD" href="https://www.delicias.tecnm.mx/"><i
+                            class="lni lni-website"></i></a>
+                    <a title="Linkedin del ITD" href="https://www.linkedin.com/school/itdelicias/"><i
+                            class="lni lni-linkedin-original"></i></a>
                 </div>
                 <div class="copyright text-center">
                     <p>Sitios de interés para el ITD</p>

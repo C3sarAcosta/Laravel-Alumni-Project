@@ -9,19 +9,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <div class="col-12">
-                    <h3 class="card-title">Especialidades en el Instituto</h3>
-                    <div class="col-10 d-flex justify-content-center">
-                        <a href="{{ route('specialty.add') }}" class="btn btn-rounded btn-success">
-                            Agregar especialidad</a>
-                    </div>
+                <div class="col-12 d-flex justify-content-md-around">
+                    <h3 class="card-title my-auto font-weight-bold">Especialidades en el Instituto</h3>
+                    <a href="{{ route('specialty.add') }}" class="btn btn-rounded btn-success">
+                        Agregar especialidad</a>
                 </div>
             </div>
 
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="table-filter" class="table table-responsive table-bordered table-striped"
-                    style="width: 100%;">
+                <table id="table-filter" class="table table-responsive table-bordered table-striped w-100">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>Número</th>
@@ -46,16 +43,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    {{-- <tfoot>
-                        <tr>
-                            <th>Número</th>
-                            <th>Nombre</th>
-                            <th>Carrera</th>
-                            <th>Creada:</th>
-                            <th>Actualización:</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </tfoot> --}}
                 </table>
             </div>
             <!-- /.card-body -->

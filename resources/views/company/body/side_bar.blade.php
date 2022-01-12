@@ -1,6 +1,6 @@
 <aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href=" {{ route('company.index', $user_id_encrypt) }} " class="brand-link">
+    <a href=" {{ route('company.index') }} " class="brand-link">
         <img src="{{asset('backend/img/school/schoolicon.png')}}" alt="SSE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Tecnológico Delicias</span>
@@ -28,7 +28,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('company.index', $user_id_encrypt) }}" class="nav-link">
+                    <a href="{{ route('company.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th-large"></i>
                         <p>Tablero</p>
                     </a>
@@ -43,19 +43,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('survey.one.company.verified', $user_id_encrypt) }}" class="nav-link">
+                            <a href="{{ route('survey.one.company.verified') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>1. Datos generales de la empresa</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.two.company.verified', $user_id_encrypt) }}" class="nav-link">
+                            <a href="{{ route('survey.two.company.verified') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>2. Ubicación Laboral del Egresado</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.three.company.verified', $user_id_encrypt) }}" class="nav-link">
+                            <a href="{{ route('survey.three.company.verified') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>3. Competencias Laborales</p>
                             </a>

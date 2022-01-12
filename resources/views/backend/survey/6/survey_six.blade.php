@@ -1,13 +1,12 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Participación Social @endsection
 
 @section('title_section')Participación social de los egresados @endsection
 
-@section('student_content')
-<form method="post" action=" {{ route('survey.six.store') }} " onsubmit="return validateSubmit();">
+@section('graduate_content')
+<form method="post" action=" {{ route('survey.six.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -18,8 +17,10 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['YesNoQuestion'] as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        @foreach ($constants['YES_NO'] as $option)
+                        <option value="{{ $option }}" @if(old('organization_selector')==$option) selected @endif>
+                            {{ $option }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -28,8 +29,10 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="organization">Mencionar organizaciones</label>
-                <input id="organization" name="organization" type="text" class="form-control" disabled=""
-                    title="Mencione esas organizaciones" placeholder="Mencione cuáles organizaciones pertenece">
+                <input id="organization" name="organization" type="text" class="form-control"
+                    @if(old('organization_selector')==$constants['YES_NO']['No']) disabled="" @endif
+                    title="Mencione esas organizaciones" placeholder="Mencione cuáles organizaciones pertenece"
+                    value="{{old('organization')}}">
             </div>
         </div>
         <div class="col-6">
@@ -41,8 +44,10 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['YesNoQuestion'] as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        @foreach ($constants['YES_NO'] as $option)
+                        <option value="{{ $option }}" @if(old('agency_selector')==$option) selected @endif>
+                            {{ $option }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -51,8 +56,10 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="agency">Mencionar organismos</label>
-                <input id="agency" name="agency" type="text" class="form-control" disabled=""
-                    title="Mencione esos organismos" placeholder="Mencione cuáles organismos pertenece">
+                <input id="agency" name="agency" type="text" class="form-control"
+                    @if(old('agency_selector')==$constants['YES_NO']['No']) disabled="" @endif
+                    title="Mencione esos organismos" placeholder="Mencione cuáles organismos pertenece"
+                    value="{{old('agency')}}">
             </div>
         </div>
         <div class="col-6">
@@ -64,8 +71,10 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['YesNoQuestion'] as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        @foreach ($constants['YES_NO'] as $option)
+                        <option value="{{ $option }}" @if(old('association_selector')==$option) selected @endif>
+                            {{ $option }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -74,8 +83,10 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="association">Mencionar asosiación</label>
-                <input id="association" name="association" type="text" class="form-control" disabled=""
-                    title="Mencione esas asosiaciones" placeholder="Mencione cuáles asociaciones pertenece">
+                <input id="association" name="association" type="text" class="form-control"
+                    @if(old('association_selector')==$constants['YES_NO']['No']) disabled="" @endif
+                    title="Mencione esas asosiaciones" placeholder="Mencione cuáles asociaciones pertenece"
+                    value="{{old('association')}}">
             </div>
         </div>
     </div>
@@ -86,38 +97,12 @@
     </div>
 </form>
 
-<div class="row mt-3 d-flex justify-content-sm-center">
+<div class="row mt-3 pb-2 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ route('graduate.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
-
-@section('scripts')
-<script type="text/javascript">
-    function validateSubmit(){
-    if($("#organization_selector").val() == "SÍ"){
-      if($("#organization").val() == null || $("#organization").val().trim() == ''){
-          toastr.error('Por favor mencione los organizaciones, es obligatorio si selecciona sí.');
-          return false;
-       }
-    }
-    if($("#agency_selector").val() == "SÍ"){
-      if($("#agency").val() == null || $("#agency").val().trim() == ''){
-          toastr.error('Por favor mencione los organismos, es obligatorio si selecciona sí.');
-          return false;
-       }
-    }
-    if($("#association_selector").val() == "SÍ"){
-      if($("#association").val() == null || $("#association").val().trim() == ''){
-          toastr.error('Por favor mencione las asociaciones, es obligatorio si selecciona sí.');
-          return false;
-       }
-    }    
-    return true;  
-}
-</script>
-@endsection
 
 @endsection

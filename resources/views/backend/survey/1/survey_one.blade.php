@@ -1,20 +1,20 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Perfil del Egresado @endsection
 
 @section('title_section')Perfil del Egresado @endsection
 
-@section('student_content')
-<form method="post" action=" {{ route('survey.one.store') }} " onsubmit="return validateSubmit();">
+@section('graduate_content')
+<form method="post" action=" {{ route('survey.one.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
                 <label for="name">Nombre(s)</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required
                     oninvalid="this.setCustomValidity('Por favor ingrese sus nombres o nombre')"
-                    oninput="setCustomValidity('')" title=" Por favor escribe tu nombre(s)" />
+                    oninput="setCustomValidity('')" title=" Por favor escribe tu nombre(s)"
+                    value="{{old('name')}}" />
             </div>
         </div>
         <div class="col-4">
@@ -23,7 +23,7 @@
                 <input type="text" class="form-control" id="fathers_surname" name="fathers_surname" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su apellido parterno')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu apellido paterno"
-                    placeholder="Apellido Paterno" />
+                    placeholder="Apellido Paterno" value="{{old('fathers_surname')}}"/>
             </div>
         </div>
         <div class="col-4">
@@ -32,7 +32,7 @@
                 <input type="text" class="form-control" id="mothers_surname" name="mothers_surname" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su apellido materno')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu apellido materno"
-                    placeholder="Apellido Materno" />
+                    placeholder="Apellido Materno" value="{{old('mothers_surname')}}"/>
             </div>
         </div>
         <div class="col-4">
@@ -52,17 +52,20 @@
                 <input type="date" class="form-control" id="birthday" name="birthday" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su fecha de nacimiento')"
                     oninput="setCustomValidity('')" title="Por favor selecciona tu fecha de nacimiento"
-                    placeholder="Fecha de Nacimiento" />
+                    placeholder="Fecha de Nacimiento"
+                    value="{{old('birthday')}}" />
             </div>
         </div>
 
         <div class="col-4">
             <div class="form-group">
-                <label for="curp">CURP <a id="help_curp" style="cursor: pointer;" class="text-warning"><i class="fas fa-exclamation-triangle"></i></a></label>
+                <label for="curp">CURP <a id="help_curp" style="cursor: pointer;" class="text-warning"><i
+                            class="fas fa-exclamation-triangle"></i></a></label>
                 <input type="text" class="form-control" id="curp" name="curp" placeholder="CURP" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su curp correctamente')"
                     oninput="setCustomValidity('')" title="Por favor escribe tu CURP"
-                    pattern="^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$" />
+                    pattern="^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$" 
+                    value="{{old('curp')}}"/>
             </div>
         </div>
     </div>
@@ -77,8 +80,12 @@
                         <option value="" selected="" disabled="">
                             Selecciona un sexo
                         </option>
-                        <option value="FEMENINO">FEMENINO</option>
-                        <option value="MASCULINO">MASCULINO</option>
+                        <option value="FEMENINO" @if(old('sex')=="FEMENINO") selected @endif>
+                            FEMENINO
+                        </option>
+                        <option value="MASCULINO" @if(old('sex')=="MASCULINO") selected @endif>
+                            MASCULINO
+                        </option>
                     </select>
                 </div>
             </div>
@@ -94,8 +101,10 @@
                         <option value="" selected="" disabled="">
                             Selecciona un estado civil
                         </option>
-                        @foreach ($consts['MaritalStatus'] as $status)
-                        <option value="{{ $status }}">{{ $status }}</option>
+                        @foreach ($constants['MARITAL_STATUS'] as $status)
+                        <option value="{{ $status }}" @if(old('marital_status')==$status) selected @endif>
+                            {{ $status }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -109,21 +118,21 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="address">Domicilio</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Calle #Número"
-                    required oninvalid="this.setCustomValidity('Por favor ingrese su domicilio')"
-                    oninput="setCustomValidity('')" title="Por favor escribe tu dirección" />
+                <input type="text" class="form-control" id="address" name="address" placeholder="Calle #Número" required
+                    oninvalid="this.setCustomValidity('Por favor ingrese su domicilio')" oninput="setCustomValidity('')"
+                    title="Por favor escribe tu dirección" value="{{old('address')}}" />
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
-                <label for="zip">Código Postal <a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a> </label>
+                <label for="zip">Código Postal</label> {{--<a id="help_zipcode" style="cursor: pointer;"><i
+                        class="fas fa-info-circle"></i></a> --}}
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()" required
-                    onkeypress="ValidateNumbers(event);"
-                    maxlength="20"
+                    onkeypress="ValidateNumbers(event);" maxlength="20"
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"
                     oninput="setCustomValidity('')"
                     title="Al escribir puedes esperar y se rellanará la información por ti si existe información con este código"
-                    placeholder="Código Postal" />
+                    placeholder="Código Postal" value="{{old('zip')}}" />
             </div>
         </div>
         <div class="col-4">
@@ -132,7 +141,7 @@
                 <div class="controls">
                     <input type="text" class="form-control" id="suburb" name="suburb" placeholder="Colonia" required
                         oninvalid="this.setCustomValidity('Por favor ingrese su colonia')"
-                        oninput="setCustomValidity('')" title="Por favor escribe tu colonia" />
+                        oninput="setCustomValidity('')" title="Por favor escribe tu colonia" value="{{old('suburb')}}"/>
                     <select name="suburb_selector" id="suburb_selector" class="form-control" style="display: none"
                         onchange="onChangeSuburb()" title="Seleccionar alguna colonia disponible">
                         <option value="" selected="" disabled="">
@@ -147,7 +156,7 @@
                 <label for="state">Estado</label>
                 <input type="text" class="form-control" id="state" name="state" placeholder="Estado" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su estado')" oninput="setCustomValidity('')"
-                    title="Por favor escribe tu estado" />
+                    title="Por favor escribe tu estado" value="{{old('state')}}" />
             </div>
         </div>
         <div class="col-4">
@@ -155,7 +164,7 @@
                 <label for="city">Ciudad</label>
                 <input type="text" class="form-control" id="city" name="city" placeholder="Ciudad" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su ciudad')" oninput="setCustomValidity('')"
-                    title="Por favor escribe tu ciudad" />
+                    title="Por favor escribe tu ciudad" value="{{old('city')}}" />
             </div>
         </div>
         <div class="col-4">
@@ -163,7 +172,8 @@
                 <label for="municipality">Municipio</label>
                 <input type="text" class="form-control" id="municipality" name="municipality" placeholder="Municipio"
                     required oninvalid="this.setCustomValidity('Por favor ingrese su municipio')"
-                    oninput="setCustomValidity('')" title="Por favor escribe tu municipio" />
+                    oninput="setCustomValidity('')" title="Por favor escribe tu municipio"
+                    value="{{old('municipality')}}" />
             </div>
         </div>
 
@@ -171,8 +181,8 @@
             <div class="form-group">
                 <label for="phone">Teléfono</label>
                 <input type="tel" maxlength="10" pattern="[0-9]{10}" class="form-control" id="phone" name="phone"
-                    onkeypress="ValidateNumbers(event);"
-                    placeholder="Teléfono" title="Por favor escribe tu teléfono" />
+                    onkeypress="ValidateNumbers(event);" placeholder="Teléfono" title="Por favor escribe tu teléfono"
+                    value="{{old('phone')}}" />
             </div>
         </div>
         <div class="col-4">
@@ -181,17 +191,14 @@
                 <input type="tel" maxlength="10" pattern="[0-9]{10}" class="form-control" id="cellphone"
                     onkeypress="ValidateNumbers(event);" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su celular')" oninput="setCustomValidity('')"
-                    name="cellphone" title="Por favor escribe tu celular" placeholder="Teléfono Celular" />
+                    name="cellphone" title="Por favor escribe tu celular" placeholder="Teléfono Celular" value="{{old('cellphone')}}"/>
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
-                <label for="email">Correo electrónico <a id="help_email" style="cursor: pointer;" class="text-warning"><i class="fas fa-exclamation-triangle"></i></a></label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
-                    oninvalid="this.setCustomValidity('Por favor ingrese su correo electrónico')"
-                    oninput="setCustomValidity('')" title="Por favor escribe tu correo electrónico"
-                    value="{{ Auth::user()->email }}" />
+                <label for="user_email">Correo electrónico</label>
+                <input type="text" class="form-control" id="user_email" name="user_email"
+                    placeholder="Correo Electrónico" value="{{ Auth::user()->email }}" disabled />
             </div>
         </div>
     </div>
@@ -205,8 +212,7 @@
                 <div class="controls">
                     <select name="career" id="career" required class="form-control" title="Selecciona tu carrera"
                         required oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
-                        oninput="setCustomValidity('')"
-                        onchange="onChangeCareer()">
+                        oninput="setCustomValidity('')" onchange="onChangeCareer()">
                         <option value="" selected="" disabled="">
                             Selecciona tu carrera
                         </option>
@@ -243,8 +249,10 @@
                         <option value="" selected="" disabled="">
                             Selecciona una opción
                         </option>
-                        @foreach ($consts['YesNoQuestion'] as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        @foreach ($constants['YES_NO'] as $option)
+                        <option value="{{ $option }}" @if(old('qualified')==$option) selected @endif>
+                            {{ $option }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -260,8 +268,8 @@
                         <option value="" selected="" disabled="">
                             Selecciona un mes
                         </option>
-                        @foreach ($consts['Month'] as $month)
-                        <option value="{{ $month }}">{{ $month }}</option>
+                        @foreach ($constants['MONTH'] as $month)
+                        <option value="{{ $month }}" @if(old('month')==$month) selected @endif>{{ $month }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -273,7 +281,7 @@
                 <input pattern="[0-9]{4}" title="Por favor ingrese un año correcto de 4 dígitos" type="text" id="year"
                     name="year" readonly class="yearpicker form-control" required
                     oninvalid="this.setCustomValidity('Por favor ingrese un año correcto')"
-                    oninput="setCustomValidity('')" />
+                    oninput="setCustomValidity('')" value="{{old('year')}}"/>
             </div>
         </div>
     </div>
@@ -311,8 +319,8 @@
                         <option value="" selected="" disabled="">
                             Selecciona una lengua
                         </option>
-                        @foreach ($languages as $language)
-                        <option value="{{ $language }}">{{ $language }}</option>
+                        @foreach ($constants['LANGUAGE'] as $language)
+                        <option value="{{ $language }}" @if(old('another_language')==$language) selected @endif>{{ $language }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -347,7 +355,7 @@
                 <textarea class="form-control" id="software" name="software" rows="3" required
                     oninvalid="this.setCustomValidity('Por favor mencione al menos un software')"
                     oninput="setCustomValidity('')"
-                    placeholder="Ejemplo: Microsoft Office (Excel, PowerPoint, Word), PowerBI, Wordpress, Adobe Photoshop, Google(Gmail, Docs, Hangouts), Canva, Jira, etc."></textarea>
+                    placeholder="Ejemplo: Microsoft Office (Excel, PowerPoint, Word), PowerBI, Wordpress, Adobe Photoshop, Google(Gmail, Docs, Hangouts), Canva, Jira, etc.">{{ old('software') }}</textarea>
             </div>
         </div>
     </div>
@@ -359,20 +367,20 @@
     </div>
 </form>
 
-<div class="row mt-3 d-flex justify-content-sm-center">
+<div class="row mt-3 pb-2 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ route('graduate.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 
 <script src="{{ asset('backend/js/functions.js') }}" type="text/javascript"> </script>
 
 <script type="text/javascript">
-function onChangeCareer() {
+    function onChangeCareer() {
     $("#specialty")
             .empty()
             .append(`<option value="" selected="" disabled="">Selecciona tu especialidad</option>`);
-    var specialties = <?php echo $specialties;?>;
+    var specialties = @php echo $specialties; @endphp;
     var career = $("#career").val();
 
     const filter_specialties = specialties.filter(v => v.name === career);
@@ -383,28 +391,5 @@ function onChangeCareer() {
     });
 }
 </script>
-
-
-@section('scripts')
-<script type="text/javascript">
-    function validateSubmit(){
-      if($("#software").val() == null || $("#software").val().trim() == ''){
-          toastr.error('Por favor no puede dejar paquetes computacionales con un valor vacío.');
-          return false;
-       }
-
-      if($("#year").val() == null || $("#year").val().trim() == ''){
-          toastr.error('Por favor ingrese su año de egreso.');
-          return false;
-       }
-
-      if($("#birthday").val() == null || $("#birthday").val().trim() == ''){
-          toastr.error('Por favor ingrese su fecha de nacimiento.');
-          return false;
-       }       
-    return true;  
-}
-</script>
-@endsection
 
 @endsection

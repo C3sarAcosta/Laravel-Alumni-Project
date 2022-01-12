@@ -1,13 +1,12 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Comentarios y Sugerencias @endsection
 
 @section('title_section')Comentarios y sugerencias @endsection
 
-@section('student_content')
-<form method="post" action=" {{ route('survey.seven.store') }} " onsubmit="return validateSubmit();">
+@section('graduate_content')
+<form method="post" action=" {{ route('survey.seven.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-12">
             <div class="form-group">
@@ -27,22 +26,9 @@
     </div>
 </form>
 
-<div class="row mt-3 d-flex justify-content-sm-center">
+<div class="row mt-3 pb-2 d-flex justify-content-sm-center">
     <div class="col-4">
         <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
-
-@section('scripts')
-<script type="text/javascript">
-    function validateSubmit(){
-      if($("#comments").val() == null || $("#comments").val().trim() == ''){
-            toastr.error('Por favor no puede dejar los comentarios con espacios en blanco.');
-          return false;
-       }
-    return true;  
-}
-</script>
-@endsection
-
 @endsection

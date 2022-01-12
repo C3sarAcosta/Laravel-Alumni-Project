@@ -5,8 +5,9 @@
 @section('title_section')Editar Especialidad @endsection
 
 @section('admin_content')
-<form method="post" action="{{ route('specialty.update', $editData->id) }}">
+<form method="post" action="{{ route('specialty.update') }}">
     @csrf
+    <input class="d-none" id="specialty_id" name="specialty_id" value="{{ $editData->id }}">
     <div class="row">
         <div class="col-6">
             <div class="form-group">

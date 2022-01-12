@@ -1,13 +1,12 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Desempeño Profesional @endsection
 
 @section('title_section')Desempeño profesional de los egresados @endsection
 
-@section('student_content')
+@section('graduate_content')
 <form method="post" action=" {{ route('survey.four.store') }} ">
     @csrf
-    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -240,7 +239,7 @@
     </div>
 </form>
 
-<div class="row mt-3 d-flex justify-content-sm-center">
+<div class="row mt-3 pb-2 d-flex justify-content-sm-center">
     <div class="col-4">
         <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\backend\statistic;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\CompanySurveyOne;
 use App\Models\CompanySurveyTwo;
 use App\Models\CompanySurveyThree;
@@ -11,7 +10,7 @@ use App\Models\CompanyGraduatesWorking;
 
 class CompanyStatisticController extends Controller
 {
-    public function CompanySurveyOneStatistic()
+    public function companySurveyOneStatistic()
     {
         $data['state'] = CompanySurveyOne::groupBy('state')->selectRaw('count(*) as total, state')->get();
         $data['business_structure'] = CompanySurveyOne::groupBy('business_structure')->selectRaw('count(*) as total, business_structure')->get();
@@ -21,7 +20,7 @@ class CompanyStatisticController extends Controller
         return view('backend.statistics.company.company_survey_one', $data);
     }
 
-    public function CompanySurveyTwoStatistic()
+    public function companySurveyTwoStatistic()
     {
         $data['counts'] = CompanySurveyTwo::selectRaw(
             'SUM(competence1) as \'Área de estudio\', 
@@ -34,7 +33,7 @@ class CompanyStatisticController extends Controller
             SUM(competence8) as \'Liderazgo\''
         )
             ->get()->toArray()[0];
-        $data['careers'] = CompanyGraduatesWorking::groupBy('career')->selectRaw('sum(amount) as total, career')->get();
+        $data['careers'] = CompanyGraduatesWorking::groupBy('career')->selectRaw('sum(total) as total, career')->get();
         $data['number_graduates'] = CompanySurveyTwo::groupBy('number_graduates')->selectRaw('count(*) as total, number_graduates')->get();
         $data['congruence'] = CompanySurveyTwo::groupBy('congruence')->selectRaw('count(*) as total, congruence')->get();
         $data['most_demanded_career'] = CompanySurveyTwo::groupBy('most_demanded_career')->selectRaw('count(*) as total, most_demanded_career')->get();
@@ -42,7 +41,7 @@ class CompanyStatisticController extends Controller
         return view('backend.statistics.company.company_survey_two', $data);
     }
 
-    public function CompanySurveyThreeStatistic()
+    public function companySurveyThreeStatistic()
     {
         $data['averages'] = CompanySurveyThree::selectRaw(
             'ROUND(avg(resolve_conflicts),2) as \'Resolver conflictos\', 

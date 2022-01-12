@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('graduate.view') }}" class="nav-link">
+                            <a href="{{ route('graduate.configuration.view') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
                                 <p>Egresados</p>
                             </a>

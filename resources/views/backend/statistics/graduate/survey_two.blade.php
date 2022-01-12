@@ -14,7 +14,6 @@
         <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title">Calidad de los docentes</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -33,9 +32,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart1" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
 
@@ -61,7 +58,6 @@
         <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Plan de estudios</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -80,9 +76,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart1"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart2" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -107,7 +101,6 @@
         <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title">Satisfacción condiciones de estudio (infraestructura)</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -126,9 +119,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart2"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart3" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -156,7 +147,6 @@
         <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">Experiencia obtenida a través de la residencia profesional</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -175,9 +165,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart3"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart4" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -202,8 +190,7 @@
         <div class="card card-danger">
             <div class="card-header">
                 <h3 class="card-title">Énfasis que se le prestaba a la investigación dentro del proceso de
-                enseñanza</h3>
-
+                    enseñanza</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -222,9 +209,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart4"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart5" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -249,8 +234,7 @@
         <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">Oportunidad de participar en proyectos de investigación y
-                desarrollo</h3>
-
+                    desarrollo</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -269,9 +253,7 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart5"
-                    style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block; width: 548px;"
-                    width="685" height="312" class="chartjs-render-monitor"></canvas>
+                <canvas id="pieChart6" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
@@ -295,23 +277,22 @@
     </div>
     <!-- /.col (RIGHT) -->
 </div>
+
 @section('scripts')
 <script src="{{ asset('backend/js/chart/graduate_2.js') }}" type="text/javascript"> </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 
-
 <script type="text/javascript">
-    charts_two(
-        <?php echo $quality_teachers;?>,
-        <?php echo $syllabus;?>,
-        <?php echo $study_condition;?>,
-        <?php echo $experience;?>,
-        <?php echo $study_emphasis;?>,
-        <?php echo $participate_projects;?>,
+    charts_two( 
+        @php echo $quality_teachers; @endphp,
+        @php echo $syllabus; @endphp,
+        @php echo $study_condition; @endphp,
+        @php echo $experience; @endphp,
+        @php echo $study_emphasis; @endphp,
+        @php echo $participate_projects; @endphp,
     );
 </script>
-
 @endsection
 
 @endsection

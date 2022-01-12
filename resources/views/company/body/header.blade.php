@@ -6,7 +6,7 @@
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('company.index', $user_id_encrypt) }}" class="nav-link">Tablero</a>
+            <a href="{{ route('company.index') }}" class="nav-link">Tablero</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -15,17 +15,17 @@
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
                 style="left: 0px; right: inherit;">
                 <li>
-                    <a href="{{ route('survey.one.company.verified', $user_id_encrypt) }}" class="dropdown-item">
+                    <a href="{{ route('survey.one.company.verified') }}" class="dropdown-item">
                         1.- Datos generales de la empresa u organismo
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('survey.two.company.verified', $user_id_encrypt) }}" class="dropdown-item">
+                    <a href="{{ route('survey.two.company.verified') }}" class="dropdown-item">
                         2.- Ubicación Laboral del Egresado
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('survey.three.company.verified', $user_id_encrypt) }}" class="dropdown-item">
+                    <a href="{{ route('survey.three.company.verified') }}" class="dropdown-item">
                         3.- Competencias Laborales
                     </a>
                 </li>

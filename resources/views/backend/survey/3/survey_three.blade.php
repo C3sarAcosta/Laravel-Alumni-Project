@@ -1,13 +1,12 @@
-@extends('student.student_master')
+@extends('graduate.graduate_master')
 
 @section('TopTitle')Ubicación Laboral @endsection
 
 @section('title_section')Ubicación laboral de los egresados @endsection
 
-@section('student_content')
+@section('graduate_content')
 <form method="post" action="{{ route('survey.three.store') }}" onsubmit="return validateSubmit();">
     @csrf
-    <input id="user_id" name="user_id" value=" {{ Auth::user()->id }} " style="display: none">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
@@ -18,7 +17,7 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['DoForLiving'] as $option)
+                        @foreach ($constants['DO_FOR_LIVING'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -36,7 +35,7 @@
                     <select name="speciality" id="speciality" class="form-control"
                         title="Indique lo que está estudiando">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['Speciality'] as $option)
+                        @foreach ($constants['SPECIALITY'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -64,7 +63,7 @@
                         <option value="" selected="" disabled="">
                             Selecciona una opción
                         </option>
-                        @foreach ($consts['LongTakeJob'] as $option)
+                        @foreach ($constants['LONG_TAKE_JOB'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -78,7 +77,7 @@
                     <select class="form-control" id="hear_about" name="hear_about"
                         title="Indique el medio para obtener el empleo">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['HearAbout'] as $option)
+                        @foreach ($constants['HEAR_ABOUT'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -131,7 +130,7 @@
                     <select name="language_most_spoken" id="language_most_spoken" class="form-control"
                         title="Idioma que es más utilizado en su trabajo">
                         <option value="" selected="" disabled="">Selecciona una lengua</option>
-                        @foreach ($consts['LanguageMostSpoken'] as $option)
+                        @foreach ($constants['LANGUAGE_MOST_SPOKEN'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -223,7 +222,7 @@
                     <select name="seniority" id="seniority" class="form-control"
                         title="Indique la antigüedad en el empleo actual">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['Seniority'] as $option)
+                        @foreach ($constants['SENIORITY'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -243,7 +242,7 @@
                 <div class="controls">
                     <select name="salary" id="salary" class="form-control" title="Indique su salario">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['Salary'] as $option)
+                        @foreach ($constants['SALARY'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -257,7 +256,7 @@
                     <select name="management_level" id="management_level" class="form-control"
                         title="Indique el nivel jerárquico">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['ManagementLevel'] as $option)
+                        @foreach ($constants['MANAGEMENT_LEVEL'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -271,7 +270,7 @@
                     <select name="job_condition" id="job_condition" class="form-control"
                         title="Indique la condición de su trabajo">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['JobCondition'] as $option)
+                        @foreach ($constants['JOB_CONDITION'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -397,7 +396,7 @@
                     <select name="business_structure" id="business_structure" class="form-control"
                         title="Indique la estructura de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['BusinessStructure'] as $option)
+                        @foreach ($constants['BUSINESS_STRUCTURE'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -412,7 +411,7 @@
                     <select name="company_size" id="company_size" class="form-control"
                         title="Indique el tamaño de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($consts['CompanySize'] as $option)
+                        @foreach ($constants['COMPANY_SIZE'] as $option)
                         <option value="{{ $option }}">{{ $option }}</option>
                         @endforeach
                     </select>
@@ -427,7 +426,7 @@
                     <select name="business_activity_selector" id="business_activity_selector" class="form-control"
                         title="Indique la actividad de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($business_activity as $activity)
+                        @foreach ($constants['BUSINESS_ACTIVITY'] as $activity)
                         <option value="{{ $activity }}">{{ $activity }}</option>
                         @endforeach
                     </select>
@@ -443,7 +442,7 @@
     </div>
 </form>
 
-<div class="row mt-3" id="cancelRow">
+<div class="row mt-3 pb-2" id="cancelRow">
     <div class="col-4">
         <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>

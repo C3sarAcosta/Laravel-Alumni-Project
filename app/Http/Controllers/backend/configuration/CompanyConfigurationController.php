@@ -2,69 +2,64 @@
 
 namespace App\Http\Controllers\backend\configuration;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\backend\configuration\ConfigurationController;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Enums\Role;
-use Illuminate\Support\Facades\Hash;
+//Constants
+use App\Constants\Constants;
 
-class CompanyConfigurationController extends Controller
+class CompanyConfigurationController extends ConfigurationController
 {
-    public function CompanyView()
+    public function view()
     {
-        $data['allData'] = User::where('role', Role::Company)->get();
+        $data['allData'] = User::where('role', Constants::ROLE['Company'])->get();
         return view('backend.configuration.company.view_company', $data);
     }
 
-    public function CompanyAdd()
+    public function add()
     {
         return view('backend.configuration.company.add_company');
     }
 
-    public function CompanyStore(Request $request)
+    public function store(Request $request)
     {
-        $validateData = $request->validate(
-            ['email' => 'required|unique:users,email']
-        );
+        $request->validate(['email' => 'required|unique:users,email']);
 
-        $data = new User();
-        $data->name = trim(strtoupper($request->name));
-        $data->email = trim($request->email);
-        $data->password = Hash::make($request->password);
-        $data->role = Role::Company;
-        $data->save();
+        $company = new User();
+        $this->saveController($company, $request);
 
-        $notification = array(
-            'message' => 'Empresa agregada correctamente',
-            'alert-type' => 'success'
-        );
+        $this->notification['message'] = 'Empresa agregada correctamente.';
+        $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
 
-        return redirect()->route('company.config.view')->with($notification);
+        return redirect()->route('company.config.view')->with($this->notification);
     }
 
-    public function CompanyEdit($id)
+    public function edit($id)
     {
         $data['editData'] = User::find($id);
         return view('backend.configuration.company.edit_company', $data);
     }
 
-    public function CompanyUpdate(Request $request, $id)
+    public function update(Request $request)
     {
-        $validateData = $request->validate(
-            ['email' => 'required|unique:users,email']
-        );        
-        $data = User::find($id);
-        $data->name = trim(strtoupper($request->name));
-        $data->email = trim($request->email);
-        $data->password = Hash::make($request->password);
+        $company = User::find($request->company_id);
+        $request->validate(['email' => 'required|unique:users,email,' . $company->id]);
+        
+        $this->saveController($company, $request);
 
-        $data->save();
+        $this->notification['message'] = 'Empresa actualizada correctamente.';
+        $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
 
-        $notification = array(
-            'message' => 'Empresa actualizada correctamente',
-            'alert-type' => 'success'
-        );
+        return redirect()->route('company.config.view')->with($this->notification);
+    }
 
-        return redirect()->route('company.config.view')->with($notification);
+    public function saveController(User $company, Request $request)
+    {
+        $company->name = trim(strtoupper($request->name));
+        $company->email = trim($request->email);
+        $company->password = Hash::make($request->password);
+        $company->role = Constants::ROLE['Company'];
+        $company->save();
     }
 }

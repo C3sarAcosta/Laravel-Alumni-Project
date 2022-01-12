@@ -2,61 +2,61 @@
 
 namespace App\Http\Controllers\backend\configuration;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\backend\configuration\ConfigurationController;
 use Illuminate\Http\Request;
 use App\Models\Career;
+//Constants
+use App\Constants\Constants;
 
-class CareerController extends Controller
+class CareerController extends ConfigurationController
 {
-    public function CareerView()
+    protected function view()
     {
         $data['allData'] = Career::all();
         return view('backend.configuration.career.view_career', $data);
     }
 
-    public function CareerAdd()
+    public function add()
     {
         return view('backend.configuration.career.add_career');
     }
 
-    public function CareerStore(Request $request)
+    public function store(Request $request)
     {
-        $validateData = $request->validate(
-            ['career' => 'required|unique:careers,name']
-        );
+        $request->validate(['career' => 'required|unique:careers,name']);
 
-        $career_name = $request->career_selector . ' ' . strtoupper(trim($request->career));
+        $career = new Career();
+        $this->saveController($career, $request);
 
-        $data = new Career();
-        $data->name = $career_name;
-        $data->save();
+        $this->notification['message'] = 'Carrera agregada correctamente.';
+        $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
 
-        $notification = array(
-            'message' => 'Carrera agregada correctamente',
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('career.view')->with($notification);
+        return redirect()->route('career.view')->with($this->notification);
     }
 
-    public function CareerEdit($id)
+    public function edit($id)
     {
         $editData = Career::find($id);
         return view('backend.configuration.career.edit_career', compact('editData'));
     }
 
-    public function CareerUpdate(Request $request, $id)
+    public function update(Request $request)
     {
-        $data = Career::find($id);
-        $career_name = $request->career_selector . ' ' . strtoupper(trim($request->career));   
-        $data->name = $career_name;
-        $data->save();
+        $career = Career::find($request->career_id);
+        $request->validate(['career' => 'required|unique:careers,name,' . $career->id]);
 
-        $notification = array(
-            'message' => 'Carrera actualizada correctamente',
-            'alert-type' => 'success'
-        );
+        $this->saveController($career, $request);
 
-        return redirect()->route('career.view')->with($notification);
+        $this->notification['message'] = 'Carrera actualizada correctamente.';
+        $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
+
+        return redirect()->route('career.view')->with($this->notification);
+    }
+
+    protected function saveController(Career $career, Request $request)
+    {
+        $career_name = $request->career_selector . ' ' . strtoupper(trim($request->career));
+        $career->name = $career_name;
+        $career->save();
     }
 }

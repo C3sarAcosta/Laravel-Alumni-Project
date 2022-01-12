@@ -4,16 +4,9 @@
 
 @section('title_section')Datos generales de la empresa u organismo @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-$business_structure = $consts['BusinessStructure'];
-$company_size = $consts['CompanySize'];
-@endphp
-
 @section('company_content')
 <form method="post" action="{{ route('survey.one.company.update') }}">
     @csrf
-    <input id="user_id" name="user_id" value="{{ Auth::user()->id }}" style="display: none">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -44,7 +37,8 @@ $company_size = $consts['CompanySize'];
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="zip">Código Postal <a id="help_zipcode" style="cursor: pointer;"><i class="fas fa-info-circle"></i></a></label>
+                <label for="zip">Código Postal</label>{{-- <a id="help_zipcode" style="cursor: pointer;"><i
+                        class="fas fa-info-circle"></i></a> --}}
                 <input type="text" class="form-control" id="zip" name="zip" onchange="getZipCode()"
                     onkeypress="ValidateNumbers(event);" title="Por favor escriba su código postal" required
                     oninvalid="this.setCustomValidity('Por favor ingrese su código postal')"
@@ -111,10 +105,11 @@ $company_size = $consts['CompanySize'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($business_structure as $option)
-                        <option value="{{ $option }}" {{ $userData->business_structure == $option ? 'selected' : ''
+                        @foreach ( $constants['BUSINESS_STRUCTURE'] as $business_structure)
+                        <option value="{{ $business_structure }}" {{ $userData->business_structure ==
+                            $business_structure ? 'selected' : ''
                             }}>
-                            {{ $option }}
+                            {{ $business_structure }}
                         </option>
                         @endforeach
                     </select>
@@ -130,10 +125,10 @@ $company_size = $consts['CompanySize'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($company_size as $option)
-                        <option value="{{ $option }}" {{ $userData->company_size == $option ? 'selected' : ''
-                            }}>
-                            {{ $option }}
+                        @foreach ($constants['COMPANY_SIZE'] as $company_size)
+                        <option value="{{ $company_size }}" 
+                                {{ $userData->company_size == $company_size ? 'selected' : ''}}>
+                            {{ $company_size }}
                         </option>
                         @endforeach
                     </select>
@@ -170,7 +165,7 @@ $company_size = $consts['CompanySize'];
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('company.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ route('company.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 

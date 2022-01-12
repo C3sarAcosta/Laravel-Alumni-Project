@@ -4,18 +4,9 @@
 
 @section('title_section')Ubicación laboral de los egresados @endsection
 
-@php
-$user_id_encrypt = Crypt::encrypt(Auth::user()->id);
-$number_graduates = $consts['NumberGraduates'];
-$congruence = $consts['Congruence'];
-$requirements = $consts['Requirements'];
-$levels = $consts['Level'];
-@endphp
-
 @section('company_content')
 <form method="post" action="{{ route('survey.two.company.update') }}">
     @csrf
-    <input id="user_id" name="user_id" value="{{ Auth::user()->id }}" style="display: none">
     <label>Número de profesionistas con nivel de licenciatura que laboran en la empresa u organismo.</label>
     <div class="row mt-2 d-flex justify-content-sm-center">
         <div class="col-4">
@@ -26,9 +17,9 @@ $levels = $consts['Level'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($number_graduates as $number)
-                        <option value="{{ $number }}" {{ $userData->number_graduates == $number ? "selected" : "" }}>
-                            {{ $number }}
+                        @foreach ($constants['NUMBER_GRADUATES'] as $number_graduates)
+                        <option value="{{ $number_graduates }}" {{ $userData->number_graduates == $number_graduates ? "selected" : "" }}>
+                            {{ $number_graduates }}
                         </option>
                         @endforeach
                     </select>
@@ -67,7 +58,7 @@ $levels = $consts['Level'];
                             <option value="" selected="" disabled="">
                                 Seleccione el nivel jerárquico
                             </option>
-                            @foreach ($levels as $level)
+                            @foreach ($constants['LEVEL'] as $level)
                             <option value="{{ $level }}">{{ $level }}</option>
                             @endforeach
                         </select>
@@ -115,7 +106,7 @@ $levels = $consts['Level'];
                                 <option value="" selected="" disabled="">
                                     Seleccione el nivel jerárquico
                                 </option>
-                                @foreach ($levels as $level)
+                                @foreach ($constants['LEVEL'] as $level)
                                 <option value="{{ $level }}" {{ $graduates->level == $level ? "selected" : "" }}>
                                     {{ $level }}
                                 </option>
@@ -155,9 +146,9 @@ $levels = $consts['Level'];
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($congruence as $option)
-                        <option value="{{ $option }}" {{ $userData->congruence == $option ? "selected" : "" }}>
-                            {{ $option }}
+                        @foreach ($constants['CONGRUENCE'] as $congruence)
+                        <option value="{{ $congruence }}" {{ $userData->congruence == $congruence ? "selected" : "" }}>
+                            {{ $congruence }}
                         </option>
                         @endforeach
                     </select>
@@ -243,7 +234,7 @@ $levels = $consts['Level'];
 
 <div class="row mt-3 d-flex justify-content-sm-center">
     <div class="col-4">
-        <a href="{{ route('company.index', $user_id_encrypt) }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+        <a href="{{ route('company.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
     </div>
 </div>
 
@@ -275,7 +266,7 @@ $levels = $consts['Level'];
                                 <option value="" selected="" disabled="">
                                     Seleccione el nivel jerárquico
                                 </option>
-                                @foreach ($levels as $level)
+                                @foreach ($constants['LEVEL'] as $level)
                                 <option value="{{ $level }}">{{ $level }}</option>
                                 @endforeach
                             </select>
