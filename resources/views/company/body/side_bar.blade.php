@@ -28,13 +28,16 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('company.index') }}" class="nav-link">
+                    <a href="{{ route('company.index') }}" class="nav-link 
+                    {!! Request::segment(2) == "index" ? "active" : "" !!}">
                         <i class="nav-icon fas fa-th-large"></i>
                         <p>Tablero</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "empresas/encuesta")
+                    ? "menu-is-opening menu-open" : "" !!}">
+                    <a href="#" class="nav-link 
+                    {!! str_contains(request()->route()->getPrefix(), "empresas/encuesta") ? "active" : "" !!}">
                         <i class="nav-icon fas fa-poll"></i>
                         <p>
                             Encuestas
@@ -43,27 +46,32 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('survey.one.company.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.one.company.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "datos" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>1. Datos generales de la empresa</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.two.company.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.two.company.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "ubicacion" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>2. Ubicación Laboral del Egresado</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.three.company.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.three.company.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "competencias" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>3. Competencias Laborales</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "empresas/trabajo")
+                    ? "menu-is-opening menu-open" : "" !!}">
+                    <a href="#" class="nav-link 
+                    {!! str_contains(request()->route()->getPrefix(), "empresas/trabajo") ? "active" : "" !!}">
                         <i class="nav-icon fas fa-briefcase"></i>
                         <p>
                             Empleos
@@ -72,13 +80,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('company.jobs.view') }}" class="nav-link">
+                            <a href="{{ route('company.jobs.view') }}" class="nav-link 
+                            {!! (Request::segment(2) == "trabajo" && (Request::segment(3) == "" || Request::segment(3) != "postulados")) ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Lista Empleos</p><br>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('company.jobs.postulate') }}" class="nav-link">
+                            <a href="{{ route('company.jobs.postulate') }}" class="nav-link 
+                            {!! Request::segment(3) == "postulados" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Ver postulados</p><br>
                             </a>
@@ -86,7 +96,8 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('company.view') }}" class="nav-link">
+                    <a href="{{ route('company.view') }}" class="nav-link
+                    {!! Request::segment(2) == "perfil" ? "active" : "" !!}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Perfil</p>
                     </a>

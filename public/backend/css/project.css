@@ -2,14 +2,21 @@
     max-height: 100px;
     /* At most, around 3/4 visible items. */
     position: relative;
-    height: 30px;
+    height: 35px;
     width: 250px;
-    border-radius: 20px;
+    margin-right: 10px;
+    margin-bottom: 3px;
+    font-size: 22px;
+}
+
+.cb-dropdown{
+    border-radius: 10px;
 }
 
 .cb-dropdown,
 .cb-dropdown li {
-    margin: 5px 5px;
+    margin: 10px 5px;
+    border-radius: 10px;
     padding: 0;
     list-style: none;
 }
@@ -27,7 +34,7 @@
 
 /* For selected filter. */
 .active .cb-dropdown {
-    background: #f47174;
+    background: #f3a5a7;
 }
 
 .cb-dropdown-wrap:hover .cb-dropdown {
@@ -86,7 +93,7 @@
 }
 
 .description-style {
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    columns: 2;
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
 }

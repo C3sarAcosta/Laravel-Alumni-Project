@@ -24,13 +24,16 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href=" {{ route('graduate.index') }} " class="nav-link">
+                    <a href=" {{ route('graduate.index') }} " class="nav-link 
+                    {!! Request::segment(2) == "index" ? "active" : "" !!}">
                         <i class="nav-icon fas fa-th-large"></i>
                         <p>Tablero</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "egresado/encuesta")
+                    ? "menu-is-opening menu-open" : "" !!}">
+                    <a href="#" class="nav-link 
+                    {!! str_contains(request()->route()->getPrefix(), "egresado/encuesta") ? "active" : "" !!}">
                         <i class="nav-icon fas fa-poll"></i>
                         <p>
                             Encuestas
@@ -39,43 +42,50 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('survey.one.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.one.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "perfil" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>1. Perfil del Egresado</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.two.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.two.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "pertinencia" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>2. Pertinencia y Disponibilidad</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.three.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.three.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "ubicacion" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>3. Ubicación Laboral</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.four.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.four.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "desempeno" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>4. Desempeño Profesional</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.five.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.five.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "expectativas" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>5. Expéctativas y actualización</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.six.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.six.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "partipacion" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>6. Participación social</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('survey.seven.verified') }}" class="nav-link">
+                            <a href="{{ route('survey.seven.verified') }}" class="nav-link 
+                            {!! Request::segment(3) == "comentarios" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>7. Comentarios y sugerencias</p>
                             </a>
@@ -83,19 +93,22 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('jobs.view') }}" class="nav-link">
+                    <a href="{{ route('jobs.view') }}" class="nav-link 
+                    {!! Request::segment(2) == "trabajo" ? "active" : "" !!}">
                         <i class="nav-icon fas fa-briefcase"></i>
                         <p>Ofertas de Trabajo</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('graduate.pdf') }}" class="nav-link">
+                    <a href="{{ route('graduate.pdf') }}" class="nav-link 
+                    {!! Request::segment(2) == "pdf" ? "active" : "" !!}">
                         <i class="nav-icon fas fa-file-pdf"></i>
                         <p>Currículum</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('graduate.view') }}" class="nav-link">
+                    <a href="{{ route('graduate.view') }}" class="nav-link 
+                    {!! Request::segment(2) == "perfil" ? "active" : "" !!}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Perfil</p>
                     </a>

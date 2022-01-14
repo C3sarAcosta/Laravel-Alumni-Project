@@ -5,7 +5,7 @@
 @section('title_section')Estadísticas Desempeño profesional de los egresados @endsection
 
 @php
-    $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pesimo');
+    $arr=array(5=>'Excelente', 4=>'Bueno', 3=>'Regular', 2=>'Malo', 1=>'Pésimo');
 @endphp
 
 @section('admin_content')

@@ -71,10 +71,10 @@
 </div>
 
 <div class="row d-flex justify-content-center">
-    <div class="col-10">
+    <div class="col-12">
         <div id="accordion" class="pb-5">
             <div class="row d-flex justify-content-center">
-                <div class="card w-50 text-dark">
+                <div class="card w-75 text-dark">
                     <div class="card-header bg-gray-dark">
                         <a class="card-link text-light" data-toggle="collapse" href="#collapseOne">
                             Cursos que interesan a los egresados
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
-                <div class="card w-50 text-dark">
+                <div class="card w-75 text-dark">
                     <div class="card-header bg-gray-dark">
                         <a class="collapsed card-link text-light" data-toggle="collapse" href="#collapseTwo">
                             Posgrado que interesan a los egresados

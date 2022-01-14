@@ -47,7 +47,7 @@
                             <th>¿Pertenece a organismos de profesionistas?</th>
                             <th>Mencionar organismos</th>
                             <th>¿Pertenece a asociaciones de egresados?</th>
-                            <th>Mencionar asosiación</th>
+                            <th>Mencionar asociación</th>
                             <th>Contestada</th>
                             <th>Actualizada</th>
                         </tr>
