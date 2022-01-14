@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-gray-dark">
                 <div class="col-12">
                     <h3 class="card-title">Egresados con encuestas completadas</h3>
                 </div>

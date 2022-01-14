@@ -73,7 +73,7 @@
     <hr>
     <div class="row mb-3 mt-4 ml-1 d-flex justify-content-sm-center">
         <label>
-            <h5>Aspectos que valora la empresa u organismo para la contratación de egresados. Llena el formulario
+            <h5 class="text-bold">Aspectos que valora la empresa u organismo para la contratación de egresados. Llena el formulario
                 donde 1 es poco y 5 es mucho.</h5>
         </label>
     </div>

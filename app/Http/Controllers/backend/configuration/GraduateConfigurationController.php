@@ -73,6 +73,17 @@ class GraduateConfigurationController extends ConfigurationController
         return redirect()->route('graduate.configuration.view')->with($this->notification);
     }
 
+    public function delete(int $id)
+    {
+        $graduate = User::find($id);
+        $graduate->delete();
+
+        $this->notification['message'] = 'Egresado eliminado correctamente.';
+        $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
+
+        return redirect()->route('graduate.configuration.view')->with($this->notification);
+    }
+
     protected function saveController(User $graduate, Request $request)
     {
         $graduate->name = trim(strtoupper($request->name));

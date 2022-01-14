@@ -72,7 +72,7 @@
     <div class="row">
         <div class="col-4">
             <div class="form-group">
-                <label for="name">Sexo</label>
+                <label>Sexo</label>
                 <div class="controls">
                     <select name="sex" id="sex" required class="form-control" title="Por favor selecciona tu sexo"
                         required oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
@@ -319,8 +319,8 @@
                         <option value="" selected="" disabled="">
                             Selecciona una lengua
                         </option>
-                        @foreach ($constants['LANGUAGE'] as $language)
-                        <option value="{{ $language }}" @if(old('another_language')==$language) selected @endif>{{ $language }}</option>
+                        @foreach ($languages as $language)
+                        <option value="{{ $language->name }}" @if(old('another_language')==$language->name) selected @endif>{{ $language->name }}</option>
                         @endforeach
                     </select>
                 </div>

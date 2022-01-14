@@ -9,6 +9,7 @@ use App\Models\StudentSurvey;
 use App\Models\Career;
 use App\Models\Specialty;
 use App\Models\User;
+use App\Models\Language;
 //Constants
 use App\Constants\Constants;
 
@@ -19,6 +20,7 @@ class SurveyOneController extends BaseController
         $data['careers'] = Career::all();
         $data['specialties'] = Specialty::selectRaw('specialties.id_career, specialties.name as specialty, careers.name')
             ->join('careers', 'careers.id', '=', 'specialties.id_career')->get();
+        $data['languages'] = Language::where('name', '!=', 'ESPAÑOL')->orWhere('name', '!=', 'INGLÉS')->get();
         $data['constants'] = Constants::getConstants();
         return view('backend.survey.1.survey_one', $data);
     }
@@ -50,6 +52,7 @@ class SurveyOneController extends BaseController
         $data['specialties_data'] = Specialty::pluck('name', 'id');
         $data['specialties'] = Specialty::selectRaw('specialties.id_career, specialties.name as specialty, careers.name')
             ->join('careers', 'careers.id', '=', 'specialties.id_career')->get();
+        $data['languages'] = Language::where('name', '!=','ESPAÑOL')->orWhere('name', '!=', 'INGLÉS')->get();
         $data['constants'] = Constants::getConstants();
         return view('backend.survey.1.survey_one_edit', $data);
     }
@@ -106,8 +109,8 @@ class SurveyOneController extends BaseController
         $surveyOne->month = $request->month;
         $surveyOne->year = $request->year;
         $surveyOne->percent_english = $request->percent_english;
-        $surveyOne->another_language = $request->another_language == '' ? Constants::LANGUAGE['None'] : $request->another_language;
-        $surveyOne->percent_another_language = $request->another_language == Constants::LANGUAGE['None'] ? "0" : $request->percent_another_languag;
+        $surveyOne->another_language = $request->another_language == '' ? 'NINGUNO' : $request->another_language;
+        $surveyOne->percent_another_language = $request->another_language == 'NINGUNO' ? "0" : $request->percent_another_language;
         $surveyOne->software = trim(mb_strtoupper($request->software, 'UTF-8'));
         $surveyOne->save();
     }

@@ -29,11 +29,11 @@ $name = join(" ", $arr);
                         <option value="LICENCIATURA" {{ $degree=="LICENCIATURA" ? "selected" : "" }}>
                             LICENCIATURA
                         </option>
-                        <option value="INGENIERIA" {{ $degree=="INGENIERIA" ? "selected" : "" }}>
-                            INGENIERIA
+                        <option value="INGENIERÍA" {{ $degree=="INGENIERÍA" ? "selected" : "" }}>
+                            INGENIERÍA
                         </option>
-                        <option value="MAESTRIA" {{ $degree=="MAESTRIA" ? "selected" : "" }}>
-                            MAESTRIA
+                        <option value="MAESTRÍA" {{ $degree=="MAESTRÍA" ? "selected" : "" }}>
+                            MAESTRÍA
                         </option>
                         <option value="ESPECIALIDAD" {{ $degree=="ESPECIALIDAD" ? "selected" : "" }}>
                             ESPECIALIDAD

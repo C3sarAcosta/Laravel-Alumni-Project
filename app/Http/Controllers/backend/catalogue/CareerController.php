@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\backend\configuration;
+namespace App\Http\Controllers\backend\catalogue;
 
-use App\Http\Controllers\backend\configuration\ConfigurationController;
+use App\Http\Controllers\backend\catalogue\CatalogueController;
 use Illuminate\Http\Request;
 use App\Models\Career;
+use App\Models\Specialty;
 //Constants
 use App\Constants\Constants;
 
-class CareerController extends ConfigurationController
+class CareerController extends CatalogueController
 {
     protected function view()
     {
         $data['allData'] = Career::all();
-        return view('backend.configuration.career.view_career', $data);
+        return view('backend.catalogue.career.view_career', $data);
     }
 
     public function add()
     {
-        return view('backend.configuration.career.add_career');
+        return view('backend.catalogue.career.add_career');
     }
 
     public function store(Request $request)
@@ -37,7 +38,7 @@ class CareerController extends ConfigurationController
     public function edit($id)
     {
         $editData = Career::find($id);
-        return view('backend.configuration.career.edit_career', compact('editData'));
+        return view('backend.catalogue.career.edit_career', compact('editData'));
     }
 
     public function update(Request $request)
@@ -48,6 +49,19 @@ class CareerController extends ConfigurationController
         $this->saveController($career, $request);
 
         $this->notification['message'] = 'Carrera actualizada correctamente.';
+        $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
+
+        return redirect()->route('career.view')->with($this->notification);
+    }
+
+    public function delete(int $id)
+    {
+        $career = Career::find($id);
+        $career->delete();
+
+        Specialty::where('id_career', $id)->delete();
+
+        $this->notification['message'] = 'Carrera eliminada correctamente.';
         $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
 
         return redirect()->route('career.view')->with($this->notification);

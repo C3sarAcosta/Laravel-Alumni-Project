@@ -17,36 +17,13 @@ class Constants
     [
         'Administrator' => "admin",
         'Graduate' => "graduate",
-        'Company' => "company"
+        'Company' => "company",
+        'Committee' => "committee"
     ];
 
     const STATUS = [
         'Inactive' => 0,
         'Active' => 1
-    ];
-
-    const LANGUAGE = [
-        'None' => "NINGUNO",
-        'Mandarin_Chinese' => "CHINO MANDARÍN",
-        'Hindi' => "HINDI",
-        'French' => "FRANCÉS",
-        'Arab' => "ÁRABE",
-        'Bengali' => "BENGALI",
-        'Russian' => "RUSO",
-        'Portuguese' => "PORTUGUÉS",
-        'Indones' => "INDONES",
-        'Urdu' => "URDU",
-        'German' => "ALEMÁN",
-        'Japanese' => "JAPONÉS",
-        'Swahili' => "SUAJILI",
-        'Marathi' => "MARATHI",
-        'Telugu' => "TELUGU",
-        'Chinese_Wu' => "CHINO WU",
-        'Tamil' => "TAMIL",
-        'Turkish' => "TURCO",
-        'Italian' => "ITALIANO",
-        'Korean' => "COREANO",
-        'Tarahumara' => "TARAHUMARA",
     ];
 
     const YES_NO = [
@@ -59,45 +36,6 @@ class Constants
         "Study" => "ESTUDIA",
         "WorkAndStudy" => "ESTUDIA Y TRABAJA",
         "NotWorkStudy" => "NO ESTUDIA NI TRABAJA",
-    ];
-
-    const BUSINESS_ACTIVITY = [
-        "SportActivities" => "ACTIVIDADES DEPORTIVAS",
-        "Administration" => "ADMINISTRACIÓN",
-        "Agrifood" => "AGRO-ALIMENTARIO",
-        "Agriindustial" => "AGRO-INDUSTRIAL",
-        "Food" => "ALIMENTOS, BEBIDAS Y TABACO",
-        "GraphicArts" => "ARTES GRÁFICAS",
-        "Automotive" => "AUTOMOTRIZ",
-        "Plastic" => "CAUCHO Y PLÁSTICO",
-        "Construction" => "CONSTRUCCIÓN",
-        "Commerce" => "COMERCIO Y TURISMO",
-        "Education" => "EDUCACIÓN",
-        "Electricity" => "ELECTRICIDAD, GAS Y AGUA",
-        "Energy" => "ENERGÍA",
-        "PersonalImage" => "IMAGEN PERSONAL",
-        "ImageSound" => "IMAGEN Y SONIDO",
-        "Industrial" => "INDUSTRIAL",
-        "IndustrialBasic" => "INDUSTRIAS METÁLICAS BÁSICAS",
-        "Software" => "INFORMÁTICA Y SOFTWARE",
-        "Milkmaid" => "LECHERA",
-        "LogisticsTransportation" => "LOGÍSTICA Y TRANSPORTE",
-        "Manufacturing" => "MANUFACTURERA",
-        "Maquiladora" => "MAQUILADORA",
-        "Environment" => "MEDIO AMBIENTE",
-        "Mining" => "MINERÍA",
-        "Furniture" => "MUEBLERA, MADERA Y SUS PRODUCTOS",
-        "Walnut" => "NOGALERA",
-        "Paper" => "PAPEL, IMPRENTA Y EDITORIALES",
-        "Fishing" => "PESCA Y ACUACULTURA",
-        "MetallicProducts" => "PRODUCTOS METÁLICOS, MAQUINARÍA Y EQUIPO",
-        "Chemistry" => "QUÍMICA",
-        "Health" => "SALUD Y SERVICIOS A LA COMUNIDAD",
-        "Tourist" => "SERVICIO TURISTICO Y HOSTELEROS",
-        "Financialervices" => "SERVICIOS FINANCIEROS",
-        "Textile" => "TEXTIL",
-        "Transport" => "TRANSPORTE, ALMACENAJE Y COMUNICACIONES",
-        "other" => "OTRA"
     ];
 
     const ALERT_TYPE = [
@@ -148,21 +86,6 @@ class Constants
         1 => "CONTACTO PERSONAL",
         2 => "RESIDENCIA PROFESIONAL",
         3 => "MEDIOS MASIVOS DE COMUNICACIÓN",
-    ];
-
-    const LANGUAGE_MOST_SPOKEN = [
-        0 => "ESPAÑOL",
-        1 => "INGLÉS",
-        2 => "CHINO MANDARÍN",
-        3 => "FRANCÉS",
-        4 => "ÁRABE",
-        5 => "BENGALI",
-        6 => "RUSO",
-        7 => "PORTUGUÉS",
-        8 => "ALEMÁN",
-        9 => "JAPONÉS",
-        10 => "COREANO",
-        11 => "ITALIANO",
     ];
 
     const SENIORITY = [

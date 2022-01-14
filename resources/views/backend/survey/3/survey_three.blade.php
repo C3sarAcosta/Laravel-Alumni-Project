@@ -130,8 +130,8 @@
                     <select name="language_most_spoken" id="language_most_spoken" class="form-control"
                         title="Idioma que es más utilizado en su trabajo">
                         <option value="" selected="" disabled="">Selecciona una lengua</option>
-                        @foreach ($constants['LANGUAGE_MOST_SPOKEN'] as $option)
-                        <option value="{{ $option }}">{{ $option }}</option>
+                        @foreach ($languages as $language)
+                        <option value="{{ $language->name }}">{{ $language->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -232,7 +232,7 @@
         <div class="col-6 mt-3">
             <div class="form-group">
                 <label for="year">Año de ingreso</label>
-                <input autocomplete="off" pattern="[0-9]{4}" title="Porfavor ingrese un año correcto de 4 dígitos"
+                <input autocomplete="off" pattern="[0-9]{4}" readonly title="Porfavor ingrese un año correcto de 4 dígitos"
                     type="text" id="year" name="year" class="yearpicker form-control" />
             </div>
         </div>
@@ -426,8 +426,8 @@
                     <select name="business_activity_selector" id="business_activity_selector" class="form-control"
                         title="Indique la actividad de la empresa">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($constants['BUSINESS_ACTIVITY'] as $activity)
-                        <option value="{{ $activity }}">{{ $activity }}</option>
+                        @foreach ($business_activity as $activity)
+                        <option value="{{ $activity->name }}">{{ $activity->name }}</option>
                         @endforeach
                     </select>
                 </div>

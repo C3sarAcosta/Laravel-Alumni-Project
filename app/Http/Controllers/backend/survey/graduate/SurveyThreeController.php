@@ -7,19 +7,23 @@ use App\Models\SurveyThree;
 use App\Models\StudentSurvey;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Language;
+use App\Models\Business;
 //Constants
 use App\Constants\Constants;
 
 class SurveyThreeController extends BaseController
 {
     protected $work = Constants::DO_FOR_LIVING['Work'];
-    protected $Study = Constants::DO_FOR_LIVING['Study'];
+    protected $study = Constants::DO_FOR_LIVING['Study'];
     protected $workAndStudy = Constants::DO_FOR_LIVING['WorkAndStudy'];
     protected $notWorkStudy = Constants::DO_FOR_LIVING['NotWorkStudy'];
 
     public function surveyView()
     {
         $data['constants'] = Constants::getConstants();
+        $data['languages'] = Language::where('name', '!=', 'NINGUNO')->get();
+        $data['business_activity'] = Business::all();
         return view('backend.survey.3.survey_three', $data);
     }
 
@@ -89,6 +93,8 @@ class SurveyThreeController extends BaseController
     {
         $id = $this->user->id;;
         $data['constants'] = Constants::getConstants();
+        $data['languages'] = Language::where('name', '!=', 'NINGUNO')->get();
+        $data['business_activity'] = Business::all();
         $data['userData'] = SurveyThree::where('user_id', $id)->first();
         return view('backend.survey.3.survey_three_edit', $data);
     }

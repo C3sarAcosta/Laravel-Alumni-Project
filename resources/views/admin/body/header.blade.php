@@ -9,11 +9,17 @@
             <a href="{{ route('admin.index') }}" class="nav-link">Tablero</a>
         </li>
 
+        @if(Auth::user()->role == "admin")
         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                class="nav-link dropdown-toggle">Configuración</a>
+                class="nav-link dropdown-toggle">Catálogo</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
                 style="left: 0px; right: inherit;">
+                <li>
+                    <a href="{{ route('business.view') }}" class="dropdown-item">
+                        Actividad económica
+                    </a>
+                </li>                
                 <li>
                     <a href="{{ route('career.view') }}" class="dropdown-item">
                         Carreras
@@ -24,6 +30,19 @@
                         Especialidad
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('language.view') }}" class="dropdown-item">
+                        Lenguaje
+                    </a>
+                </li>                
+            </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                class="nav-link dropdown-toggle">Configuración</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
+                style="left: 0px; right: inherit;">
                 <li>
                     <a href="{{ route('graduate.configuration.view') }}" class="dropdown-item">
                         Egresados
@@ -39,6 +58,11 @@
                         Empresas
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('users.configuration.view') }}" class="dropdown-item">
+                        Usuarios
+                    </a>
+                </li>                
             </ul>
         </li>
 
@@ -93,6 +117,8 @@
                 <!-- End Level two -->
             </ul>
         </li>
+
+        @endif
 
         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"

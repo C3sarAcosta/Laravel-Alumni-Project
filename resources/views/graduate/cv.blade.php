@@ -33,7 +33,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-4">
-                    <a href="{{ URL::previous() }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
+                    <a href="{{ route('graduate.index') }}" class="btn btn-block bg-gradient-danger">Cancelar</a>
                 </div>
             </div>
         </div>

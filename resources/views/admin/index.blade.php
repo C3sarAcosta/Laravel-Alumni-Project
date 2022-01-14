@@ -5,7 +5,6 @@
 @section('title_section')Tablero de Administrator @endsection
 
 @section('admin_content')
-
 <div class="row">
     <div class="col-lg-3 col-6">
         <!-- small box -->
@@ -17,7 +16,7 @@
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="{{ route('graduate.configuration.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            @if(Auth::user()->role == 'admin')<a href="{{ route('graduate.configuration.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>@endif
         </div>
     </div>
     <!-- ./col -->
@@ -31,7 +30,7 @@
             <div class="icon">
                 <i class="ion ion-briefcase"></i>
             </div>
-            <a href="{{ route('company.config.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            @if(Auth::user()->role == 'admin')<a href="{{ route('company.config.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>@endif
         </div>
     </div>
     <!-- ./col -->
@@ -45,7 +44,7 @@
             <div class="icon">
                 <i class="ion ion-document"></i>
             </div>
-            <a href="{{ route('graduate.survey.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            @if(Auth::user()->role == 'admin')<a href="{{ route('graduate.survey.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>@endif
         </div>
     </div>
     <!-- ./col -->
@@ -54,12 +53,12 @@
         <div class="small-box bg-danger">
             <div class="inner">
                 <h3>{{ $percent }}<sup style="font-size: 20px">%</sup></h3>
-                <p>% personas con todas las encuestas respondidas</p>
+                <p>% personas con 7 encuestas respondidas</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="{{ route('graduate.survey.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            @if(Auth::user()->role == 'admin')<a href="{{ route('graduate.survey.view') }}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>@endif
         </div>
     </div>
     <!-- ./col -->

@@ -54,9 +54,20 @@ class CompanyConfigurationController extends ConfigurationController
         return redirect()->route('company.config.view')->with($this->notification);
     }
 
+    public function delete(int $id)
+    {
+        $company = User::find($id);
+        $company->delete();
+
+        $this->notification['message'] = 'Empresa eliminada correctamente.';
+        $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
+
+        return redirect()->route('company.config.view')->with($this->notification);
+    }
+
     public function saveController(User $company, Request $request)
     {
-        $company->name = trim(strtoupper($request->name));
+        $company->name = trim($request->name);
         $company->email = trim($request->email);
         $company->password = Hash::make($request->password);
         $company->role = Constants::ROLE['Company'];

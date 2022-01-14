@@ -7,18 +7,20 @@ use App\Models\CompanySurveyOne;
 use App\Models\CompanySurvey;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Business;
 //Constants
 use App\Constants\Constants;
 
 class CompanySurveyOneController extends BaseController
 {
-    public function SurveyView()
+    public function surveyView()
     {
         $data['constants'] = Constants::getConstants();
+        $data['business_activity'] = Business::all();
         return view('backend.survey.company_1.survey_one_company', $data);
     }
 
-    public function SurveyStore(Request $request)
+    public function surveyStore(Request $request)
     {
         (new User)->newUser();
 
@@ -32,14 +34,15 @@ class CompanySurveyOneController extends BaseController
         return redirect()->route('company.index')->with($this->notification);
     }
 
-    public function SurveyEdit()
+    public function surveyEdit()
     {
         $data['constants'] = Constants::getConstants();
         $data['userData'] = CompanySurveyOne::where('user_id', $this->user->id)->first();
+        $data['business_activity'] = Business::all();
         return view('backend.survey.company_1.survey_one_company_edit', $data);
     }
 
-    public function SurveyUpdate(Request $request)
+    public function surveyUpdate(Request $request)
     {
         $companySurveyOne = CompanySurveyOne::where('user_id', $this->user->id)->first();
         $this->SaveController($companySurveyOne, $request);
@@ -50,7 +53,7 @@ class CompanySurveyOneController extends BaseController
         return redirect()->route('company.index')->with($this->notification);
     }
 
-    public function SurveyVerifiedRoute()
+    public function surveyVerifiedRoute()
     {
         $data = CompanySurvey::where('user_id', $this->user->id)->first();
 
@@ -59,7 +62,7 @@ class CompanySurveyOneController extends BaseController
             : redirect()->route('survey.one.company.index');
     }
 
-    function SaveController(CompanySurveyOne $companySurveyOne, Request $request)
+    function saveController(CompanySurveyOne $companySurveyOne, Request $request)
     {
         $companySurveyOne->user_id = $this->user->id;
         $companySurveyOne->business_name = trim(mb_strtoupper($request->business_name, 'UTF-8'));

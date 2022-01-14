@@ -139,8 +139,8 @@
                         oninvalid="this.setCustomValidity('Por favor seleccione una opción correcta')"
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
-                        @foreach ($constants['BUSINESS_ACTIVITY'] as $activity)
-                        <option value="{{ $activity }}">{{ $activity }}</option>
+                        @foreach ($business_activity as $activity)
+                        <option value="{{ $activity->name }}">{{ $activity->name }}</option>
                         @endforeach
                     </select>
                 </div>

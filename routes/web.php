@@ -20,11 +20,15 @@ use App\Http\Controllers\backend\survey\graduate\SurveySevenController;
 use App\Http\Controllers\backend\survey\company\CompanySurveyOneController;
 use App\Http\Controllers\backend\survey\company\CompanySurveyTwoController;
 use App\Http\Controllers\backend\survey\company\CompanySurveyThreeController;
+//Catalogue
+use App\Http\Controllers\backend\catalogue\CareerController;
+use App\Http\Controllers\backend\catalogue\SpecialtyController;
+use App\Http\Controllers\backend\catalogue\LanguageController;
+use App\Http\Controllers\backend\catalogue\BusinessController;
 //Setup
-use App\Http\Controllers\backend\configuration\CareerController;
-use App\Http\Controllers\backend\configuration\SpecialtyController;
 use App\Http\Controllers\backend\configuration\GraduateConfigurationController;
 use App\Http\Controllers\backend\configuration\CompanyConfigurationController;
+use App\Http\Controllers\backend\configuration\UsersConfigurationController;
 //Statistic
 use App\Http\Controllers\backend\statistic\GraduateStatisticController;
 use App\Http\Controllers\backend\statistic\CompanyStatisticController;
@@ -56,23 +60,45 @@ Route::prefix('administrador')->group(function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::prefix('catalago')->group(function () {
-        //--------Language
-        Route::prefix('lenguaje')->group(function () {
+    Route::prefix('catalogo')->group(function () {
+        //--------Career
+        Route::prefix('carrera')->group(function () {
             Route::get('/', [CareerController::class, 'view'])->name('career.view');
             Route::get('/agregar', [CareerController::class, 'add'])->name('career.add');
             Route::post('/guardar', [CareerController::class, 'store'])->name('career.store');
             Route::get('/editar/{id}', [CareerController::class, 'edit'])->name('career.edit');
+            Route::get('/eliminar/{id}', [CareerController::class, 'delete'])->name('career.delete');
             Route::post('/actualizar', [CareerController::class, 'update'])->name('career.update');
         });
 
-        //--------Business Activity
-        Route::prefix('actividad')->group(function () {
+        //--------Specialty
+        Route::prefix('especialidad')->group(function () {
             Route::get('/', [SpecialtyController::class, 'view'])->name('specialty.view');
             Route::get('/agregar', [SpecialtyController::class, 'add'])->name('specialty.add');
             Route::post('/guardar', [SpecialtyController::class, 'store'])->name('specialty.store');
             Route::get('/editar/{id}', [SpecialtyController::class, 'edit'])->name('specialty.edit');
+            Route::get('/eliminar/{id}', [SpecialtyController::class, 'delete'])->name('specialty.delete');
             Route::post('/actualizar', [SpecialtyController::class, 'update'])->name('specialty.update');
+        });
+
+        //--------Language
+        Route::prefix('lenguaje')->group(function () {
+            Route::get('/', [LanguageController::class, 'view'])->name('language.view');
+            Route::get('/agregar', [LanguageController::class, 'add'])->name('language.add');
+            Route::post('/guardar', [LanguageController::class, 'store'])->name('language.store');
+            Route::get('/editar/{id}', [LanguageController::class, 'edit'])->name('language.edit');
+            Route::get('/eliminar/{id}', [LanguageController::class, 'delete'])->name('language.delete');
+            Route::post('/actualizar', [LanguageController::class, 'update'])->name('language.update');
+        });
+
+        //--------Business Activity
+        Route::prefix('actividad')->group(function () {
+            Route::get('/', [BusinessController::class, 'view'])->name('business.view');
+            Route::get('/agregar', [BusinessController::class, 'add'])->name('business.add');
+            Route::post('/guardar', [BusinessController::class, 'store'])->name('business.store');
+            Route::get('/editar/{id}', [BusinessController::class, 'edit'])->name('business.edit');
+            Route::get('/eliminar/{id}', [BusinessController::class, 'delete'])->name('business.delete');
+            Route::post('/actualizar', [BusinessController::class, 'update'])->name('business.update');
         });
     });
 
@@ -83,24 +109,6 @@ Route::prefix('administrador')->group(function () {
     */
 
     Route::prefix('configuracion')->group(function () {
-        //--------Career
-        Route::prefix('carrera')->group(function () {
-            Route::get('/', [CareerController::class, 'view'])->name('career.view');
-            Route::get('/agregar', [CareerController::class, 'add'])->name('career.add');
-            Route::post('/guardar', [CareerController::class, 'store'])->name('career.store');
-            Route::get('/editar/{id}', [CareerController::class, 'edit'])->name('career.edit');
-            Route::post('/actualizar', [CareerController::class, 'update'])->name('career.update');
-        });
-
-        //--------Specialty
-        Route::prefix('especialidad')->group(function () {
-            Route::get('/', [SpecialtyController::class, 'view'])->name('specialty.view');
-            Route::get('/agregar', [SpecialtyController::class, 'add'])->name('specialty.add');
-            Route::post('/guardar', [SpecialtyController::class, 'store'])->name('specialty.store');
-            Route::get('/editar/{id}', [SpecialtyController::class, 'edit'])->name('specialty.edit');
-            Route::post('/actualizar', [SpecialtyController::class, 'update'])->name('specialty.update');
-        });
-
         //--------Gradute
         Route::prefix('egresado')->group(function () {
             Route::get('/', [GraduateConfigurationController::class, 'view'])->name('graduate.configuration.view');
@@ -108,6 +116,7 @@ Route::prefix('administrador')->group(function () {
             Route::get('/agregar', [GraduateConfigurationController::class, 'add'])->name('graduate.configuration.add');
             Route::post('/guardar', [GraduateConfigurationController::class, 'store'])->name('graduate.configuration.store');
             Route::get('/editar/{id}', [GraduateConfigurationController::class, 'edit'])->name('graduate.configuration.edit');
+            Route::get('/eliminar/{id}', [GraduateConfigurationController::class, 'delete'])->name('graduate.configuration.delete');
             Route::post('/actualizar', [GraduateConfigurationController::class, 'update'])->name('graduate.configuration.update');
         });
 
@@ -117,8 +126,19 @@ Route::prefix('administrador')->group(function () {
             Route::get('/agregar', [CompanyConfigurationController::class, 'add'])->name('company.config.add');
             Route::post('/guardar', [CompanyConfigurationController::class, 'store'])->name('company.config.store');
             Route::get('/editar/{id}', [CompanyConfigurationController::class, 'edit'])->name('company.config.edit');
+            Route::get('/eliminar/{id}', [CompanyConfigurationController::class, 'delete'])->name('company.config.delete');
             Route::post('/actualizar', [CompanyConfigurationController::class, 'update'])->name('company.config.update');
         });
+
+        //--------Users
+        Route::prefix('usuario')->group(function () {
+            Route::get('/', [UsersConfigurationController::class, 'view'])->name('users.configuration.view');
+            Route::get('/agregar', [UsersConfigurationController::class, 'add'])->name('users.configuration.add');
+            Route::post('/guardar', [UsersConfigurationController::class, 'store'])->name('users.configuration.store');
+            Route::get('/editar/{id}', [UsersConfigurationController::class, 'edit'])->name('users.configuration.edit');
+            Route::get('/eliminar/{id}', [UsersConfigurationController::class, 'delete'])->name('users.configuration.delete');
+            Route::post('/actualizar', [UsersConfigurationController::class, 'update'])->name('users.configuration.update');
+        });        
     });
 
     /*

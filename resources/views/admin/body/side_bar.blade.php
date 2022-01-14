@@ -33,9 +33,9 @@
                     </a>
                 </li>
 
-
-                <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "administrador/catalogo") ? "menu-is-opening menu-open" : ""!!}">
-                    <a href="#" class="nav-link {!! (Request::segment(2) == "catalogo") ? "active" : "" !!}">
+                @if(Auth::user()->role == "admin")
+                <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "administrador/catalogo") ? "menu-is-opening menu-open" : "" !!}">
+                    <a href="#" class="nav-link {!! Request::segment(2) == "catalogo" ? "active" : "" !!}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Catálogo
@@ -44,23 +44,38 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('career.view') }}" class="nav-link {!! (Request::segment(3) == "carrera") ? "active" : "" !!}">
+                            <a href="{{ route('business.view') }}" class="nav-link {!! (Request::segment(3) == "actividad") ? "active" : "" !!}">
+                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <p>Actividad económica</p>
+                            </a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a href="{{ route('career.view') }}" class="nav-link 
+                                {!! (Request::segment(3) == "carrera") ? "active" : "" !!}">
+                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <p>Carreras</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('specialty.view') }}" class="nav-link 
+                                {!! (Request::segment(3) == "especialidad") ? "active" : "" !!}">
+                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <p>Especialidad</p>
+                            </a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a href="{{ route('language.view') }}" class="nav-link {!! Request::segment(3) == "lenguaje" ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
                                 <p>Lenguaje</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('specialty.view') }}" class="nav-link {!! (Request::segment(3) == "especialidad") ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                <p>Actividad económica</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
-
-
-                <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "administrador/configuracion") ? "menu-is-opening menu-open" : ""!!}">
-                    <a href="#" class="nav-link {!! (Request::segment(2) == "configuracion") ? "active" : "" !!}">
+                
+                <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "administrador/configuracion") 
+                    ? "menu-is-opening menu-open" : ""!!}">
+                    <a href="#" class="nav-link {!! (Request::segment(2) == "configuracion") 
+                        ? "active" : "" !!}">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Configuración
@@ -69,35 +84,37 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('career.view') }}" class="nav-link {!! (Request::segment(3) == "carrera") ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                <p>Carreras</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('specialty.view') }}" class="nav-link {!! (Request::segment(3) == "especialidad") ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                <p>Especialidad</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('graduate.configuration.view') }}" class="nav-link {!! (Request::segment(3) == "egresado" && last(request()->segments()) != "encuesta"  && Request::segment(2) == "configuracion") ? "active" : "" !!}">
+                            <a href="{{ route('graduate.configuration.view') }}" class="nav-link 
+                                {!! (Request::segment(3) == "egresado" && last(request()->segments()) != "encuesta" && Request::segment(2) == "configuracion") 
+                                    ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
                                 <p>Egresados</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('graduate.survey.view') }}" class="nav-link {!! (Request::segment(3) == "egresado" && last(request()->segments()) == "encuesta" && Request::segment(2) == "configuracion") ? "active" : "" !!}">
+                            <a href="{{ route('graduate.survey.view') }}" class="nav-link 
+                                {!! (Request::segment(3) == "egresado" && last(request()->segments()) == "encuesta" && Request::segment(2) == "configuracion") 
+                                    ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
                                 <p>Egresados encuestas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('company.config.view') }}" class="nav-link {!! (Request::segment(3) == "empresa") ? "active" : "" !!}">
+                            <a href="{{ route('company.config.view') }}" class="nav-link 
+                                {!! (Request::segment(3) == "empresa" && Request::segment(2) == "configuracion") 
+                                    ? "active" : "" !!}">
                                 <i class="far fa-dot-circle nav-icon ml-3"></i>
                                 <p>Empresas</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('users.configuration.view') }}" class="nav-link 
+                                {!! (Request::segment(3) == "usuario" && Request::segment(2) == "configuracion") 
+                                    ? "active" : "" !!}">
+                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>                        
                     </ul>
                 </li>
 
@@ -192,7 +209,7 @@
                         </li>
                     </ul>
                 </li>
-
+                @endif
 
                 <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "administrador/reporte") ? "menu-is-opening menu-open" : ""!!}"> 
                     <a href="#" class="nav-link {!! (Request::segment(2) == "reporte") ? "active" : "" !!}">

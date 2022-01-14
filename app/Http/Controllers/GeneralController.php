@@ -19,7 +19,7 @@ class GeneralController extends Controller
         $data['careers'] = Career::all();
         return view('auth.register', $data);
     }
-    
+
     public function companyRegister()
     {
         return view('auth.company_register');
@@ -31,6 +31,9 @@ class GeneralController extends Controller
 
         switch ($role) {
             case Constants::ROLE['Administrator']:
+                return  redirect()->route('admin.index');
+                break;
+            case Constants::ROLE['Committee']:
                 return  redirect()->route('admin.index');
                 break;
             case Constants::ROLE['Graduate']:

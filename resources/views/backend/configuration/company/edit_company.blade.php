@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                <label for="name">Nombre de usuario</label>
+                <label for="name">Razón social</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required
                     oninvalid="this.setCustomValidity('Por favor ingrese el nombre del usuario')"
                     oninput="setCustomValidity('')" title=" Por favor escribe el nombre del usuario"

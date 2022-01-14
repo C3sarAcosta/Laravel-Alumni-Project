@@ -18,8 +18,8 @@
                         oninput="setCustomValidity('')">
                         <option value="" selected="" disabled="">Selecciona una opción</option>
                         <option value="LICENCIATURA">LICENCIATURA</option>
-                        <option value="INGENIERIA">INGENIERIA</option>
-                        <option value="MAESTRIA">MAESTRIA</option>
+                        <option value="INGENIERÍA">INGENIERÍA</option>
+                        <option value="MAESTRÍA">MAESTRÍA</option>
                         <option value="ESPECIALIDAD">ESPECIALIDAD</option>
                         <option value="DOCTORADO">DOCTORADO</option>
                     </select>

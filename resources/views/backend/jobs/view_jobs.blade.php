@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-gray-dark">
                 <div class="col-12 d-flex justify-content-md-around">
                     <h3 class="card-title my-auto font-weight-bold">Lista de empleos</h3>
                     <a href="{{ route('company.jobs.add') }}" class="btn btn-rounded btn-success">Agregar empleos</a>
@@ -17,7 +17,7 @@
 
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="table-filter" class="table table-responsive table-bordered table-striped w-100">
+                <table id="table-simple" class="table table-responsive table-bordered table-striped w-100">
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>ID</th>
@@ -39,7 +39,7 @@
                             <td>{{ $data->salary }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>
-                            <td>
+                            <td class="d-flex justify-content-between">
                                 <a href="{{route('company.jobs.edit',$data->id)}}" class="btn btn-info">Editar</a>
                                 <a id="delete" href="{{route('company.jobs.delete', $data->id)}}"
                                     class="btn btn-danger">
@@ -58,7 +58,6 @@
     </div>
     <!-- /.col -->
 </div>
-
 
 @section('scripts')
 <script type="text/javascript">
@@ -86,6 +85,5 @@
     });
 </script>
 @endsection
-
 
 @endsection

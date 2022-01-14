@@ -204,3 +204,17 @@ $(function () {
         .container()
         .appendTo("#table-filter-two_wrapper .col-md-6:eq(0)");
 });
+
+
+$(function () {
+    $("#table-simple")
+        .DataTable({
+            responsive: true,
+            lengthChange: true,
+            autoWidth: true,
+            buttons: ["copy", "csv", "excel", "colvis"],
+        })
+        .buttons()
+        .container()
+        .appendTo("#table-simple_wrapper .col-md-6:eq(0)");
+});

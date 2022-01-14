@@ -14,14 +14,14 @@ use App\Constants\Constants;
 
 class CompanySurveyTwoController extends BaseController
 {
-    public function SurveyView()
+    public function surveyView()
     {
         $data['constants'] = Constants::getConstants();
         $data['careers'] = Career::pluck('name');
         return view('backend.survey.company_2.survey_two_company', $data);
     }
 
-    public function SurveyStore(Request $request)
+    public function surveyStore(Request $request)
     {
         (new User)->newUser();
 
@@ -64,7 +64,7 @@ class CompanySurveyTwoController extends BaseController
         return redirect()->route('company.index')->with($this->notification);
     }
 
-    public function SurveyEdit()
+    public function surveyEdit()
     {
         $data['constants'] = Constants::getConstants();
         $data['userData'] = CompanySurveyTwo::where('user_id', $this->user->id)->first();
@@ -73,7 +73,7 @@ class CompanySurveyTwoController extends BaseController
         return view('backend.survey.company_2.survey_two_company_edit', $data);
     }
 
-    public function SurveyUpdate(Request $request)
+    public function surveyUpdate(Request $request)
     {
         $editData = CompanySurveyTwo::where('user_id', $this->user->id)->first();
         $id = $editData->id;
@@ -119,7 +119,7 @@ class CompanySurveyTwoController extends BaseController
         return redirect()->route('company.index')->with($this->notification);
     }
 
-    public function SurveyVerifiedRoute()
+    public function surveyVerifiedRoute()
     {
         $data = CompanySurvey::where('user_id', $this->user->id)->first();
 

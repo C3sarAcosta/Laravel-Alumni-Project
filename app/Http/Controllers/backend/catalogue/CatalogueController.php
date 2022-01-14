@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\backend\configuration;
+namespace App\Http\Controllers\backend\catalogue;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //Constants
 use App\Constants\Constants;
 
-abstract class ConfigurationController extends Controller
+abstract class CatalogueController extends Controller
 {
     protected $notification;
 

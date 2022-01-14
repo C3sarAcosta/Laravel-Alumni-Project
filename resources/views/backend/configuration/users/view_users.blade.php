@@ -1,8 +1,8 @@
 @extends('admin.admin_master')
 
-@section('TopTitle')Empresas @endsection
+@section('TopTitle')Usuarios @endsection
 
-@section('title_section')Administrar empresas @endsection
+@section('title_section')Administrar usuarios @endsection
 
 @section('admin_content')
 <div class="row">
@@ -10,9 +10,9 @@
         <div class="card">
             <div class="card-header bg-gray-dark">
                 <div class="col-12 d-flex justify-content-md-around">
-                    <h3 class="card-title my-auto font-weight-bold">Empresas relacionadas</h3>
-                    <a href="{{ route('company.config.add') }}" class="btn btn-rounded btn-success">
-                        Agregar empresa
+                    <h3 class="card-title my-auto font-weight-bold">Usuarios administradores</h3>
+                    <a href="{{ route('users.configuration.add') }}" class="btn btn-rounded btn-success">
+                        Agregar usuario
                     </a>
                 </div>
             </div>
@@ -23,8 +23,9 @@
                     <thead class="bg-gray-dark">
                         <tr>
                             <th>Número</th>
-                            <th>Razón social</th>
+                            <th>Nombre</th>
                             <th>Correo electrónico</th>
+                            <th>Tipo de usuario</th>
                             <th>Registrado</th>
                             <th>Actualización</th>
                             <th>Acciones</th>
@@ -36,15 +37,18 @@
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->email }}</td>
+                            <td>{{ $data->role == "admin" ? "Administrador" : "Comité" }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>
                             <td class="d-flex justify-content-between">
-                                <a href="{{route('company.config.edit', $data->id)}}" class="btn btn-info">Editar</a>
-                                <a id="delete" href="{{route('company.config.delete', $data->id)}}"
+                                @if ($data->id != 1)
+                                <a href="{{route('users.configuration.edit', $data->id)}}" class="btn btn-info">Editar</a>
+                                <a id="delete" href="{{route('users.configuration.delete', $data->id)}}"
                                     class="btn btn-danger">
                                     Eliminar
                                 </a>
-                            </td>                            
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\backend\configuration;
+namespace App\Http\Controllers\backend\catalogue;
 
-use App\Http\Controllers\backend\configuration\ConfigurationController;
+use App\Http\Controllers\backend\catalogue\CatalogueController;
 use Illuminate\Http\Request;
 use App\Models\Specialty;
 use App\Models\Career;
 //Constants
 use App\Constants\Constants;
 
-class SpecialtyController extends ConfigurationController
+class SpecialtyController extends CatalogueController
 {
     public function view()
     {
         $data['allData'] = Specialty::all();
-        return view('backend.configuration.specialty.view_specialty', $data);
+        return view('backend.catalogue.specialty.view_specialty', $data);
     }
 
     public function add()
     {
         $data['careers'] = Career::all();
-        return view('backend.configuration.specialty.add_specialty', $data);
+        return view('backend.catalogue.specialty.add_specialty', $data);
     }
 
     public function store(Request $request)
@@ -38,7 +38,7 @@ class SpecialtyController extends ConfigurationController
     {
         $data['editData'] = Specialty::find($id);
         $data['careers'] = Career::all();
-        return view('backend.configuration.specialty.edit_specialty', $data);
+        return view('backend.catalogue.specialty.edit_specialty', $data);
     }
 
     public function update(Request $request)
@@ -47,6 +47,17 @@ class SpecialtyController extends ConfigurationController
         $this->saveController($specialty, $request);
 
         $this->notification['message'] = 'Especialidad actualizada correctamente.';
+        $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
+
+        return redirect()->route('specialty.view')->with($this->notification);
+    }
+
+    public function delete(int $id)
+    {
+        $specialty = Specialty::find($id);
+        $specialty->delete();
+
+        $this->notification['message'] = 'Especialidad eliminada correctamente.';
         $this->notification['alert-type'] = Constants::ALERT_TYPE['Success'];
 
         return redirect()->route('specialty.view')->with($this->notification);

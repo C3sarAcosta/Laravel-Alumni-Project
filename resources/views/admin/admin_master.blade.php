@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@if (!Auth::check() || Auth::user()->role != 'admin')
+@if (!Auth::check() || Auth::user()->role == 'graduate' || !Auth::user()->role == 'company')
     @php
         header("Location: " . URL::to('/'), true, 302);
         exit();
