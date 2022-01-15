@@ -42,6 +42,7 @@
                             <th>Número de Control</th>
                             <th>Año de egreso</th>
                             <th>Período de egreso</th>
+                            <th>Carrera de egreso</th>
                             <th>¿Le gustaria tomar cursos de actualización?</th>
                             <th>Mencionar cursos</th>
                             <th>¿Le gustaria tomar algún posgrado?</th>
@@ -59,7 +60,10 @@
                             <td>{{ $data->graduate->year_graduated }}</td>
                             <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
                                 ? ""
-                                : $data->graduate->surveyOne->month }}</td>                             
+                                : $data->graduate->surveyOne->month }}</td>
+                            <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
+                                ? ""
+                                : $data->graduate->surveyOne->career }}</td>                                                            
                             <td>{{ $data->courses_yes_no }}</td>
                             <td>{{ $data->courses }}</td>
                             <td>{{ $data->master_yes_no }}</td>
@@ -85,7 +89,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[9]);
+            var startDate = new Date(data[10]);
             if (min == null && max == null) {
                 return true;
             }

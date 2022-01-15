@@ -42,6 +42,7 @@
                             <th>Número de Control</th>
                             <th>Año de egreso</th>
                             <th>Período de egreso</th>
+                            <th>Carrera de egreso</th>
                             <th>Calidad de docentes</th>
                             <th>Plan de estudios</th>
                             <th>Satisfacción condiciones de estudio (infraestructura)</th>
@@ -63,7 +64,10 @@
                             <td>{{ $data->graduate->year_graduated }}</td>
                             <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
                                 ? ""
-                                : $data->graduate->surveyOne->month }}</td>                            
+                                : $data->graduate->surveyOne->month }}</td>
+                            <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
+                                ? ""
+                                : $data->graduate->surveyOne->career }}</td>                                                            
                             <td>{{ $data->quality_teachers }}</td>
                             <td>{{ $data->syllabus }}</td>
                             <td>{{ $data->study_condition }}</td>
@@ -91,7 +95,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[11]);
+            var startDate = new Date(data[12]);
             if (min == null && max == null) {
                 return true;
             }

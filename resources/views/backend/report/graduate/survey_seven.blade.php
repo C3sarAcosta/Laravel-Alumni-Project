@@ -42,6 +42,7 @@
                             <th>Número de Control</th>
                             <th>Año de egreso</th>
                             <th>Período de egreso</th>
+                            <th>Carrera de egreso</th>
                             <th>Comentarios</th>
                             <th>Contestada</th>
                             <th>Actualizada</th>
@@ -56,7 +57,10 @@
                             <td>{{ $data->graduate->year_graduated }}</td>
                             <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
                                 ? ""
-                                : $data->graduate->surveyOne->month }}</td>                            
+                                : $data->graduate->surveyOne->month }}</td>
+                            <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
+                                ? ""
+                                : $data->graduate->surveyOne->career }}</td>                                                            
                             <td>{{ $data->comments }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>
@@ -79,7 +83,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[6]);
+            var startDate = new Date(data[7]);
             if (min == null && max == null) {
                 return true;
             }

@@ -42,6 +42,7 @@
                             <th>Número de Control</th>
                             <th>Año de egreso</th>
                             <th>Período de egreso</th>
+                            <th>Carrera de egreso</th>
                             <th>Actividad a la que se dedica actualmente</th>
                             <th>¿Qué están estudiando?</th>
                             <th>Especialidad</th>
@@ -93,6 +94,9 @@
                             <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
                                 ? ""
                                 : $data->graduate->surveyOne->month }}</td>
+                            <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
+                                ? ""
+                                : $data->graduate->surveyOne->career }}</td>                                
                             <td>{{ $data->do_for_living }}</td>
                             <td>
                                 {{ (str_contains($data->do_for_living, 'ESTUDIA') &&
@@ -191,7 +195,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[42]);
+            var startDate = new Date(data[43]);
             if (min == null && max == null) {
                 return true;
             }

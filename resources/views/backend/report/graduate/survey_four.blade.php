@@ -42,6 +42,7 @@
                             <th>Número de Control</th>
                             <th>Año de egreso</th>
                             <th>Período de egreso</th>
+                            <th>Carrera de egreso</th>
                             <th>Eficiencia para realizar las actividades laborales, en relación con su formación
                                 académica</th>
                             <th>Cómo califica su formación académica con respecto a su desempeño laboral</th>
@@ -72,7 +73,10 @@
                             <td>{{ $data->graduate->year_graduated }}</td>
                             <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
                                 ? ""
-                                : $data->graduate->surveyOne->month }}</td>                             
+                                : $data->graduate->surveyOne->month }}</td>
+                            <td>{{ (is_null($data->graduate->surveyOne) || empty($data->graduate->surveyOne))
+                                ? ""
+                                : $data->graduate->surveyOne->career }}</td>                                                             
                             <td>{{ $data->efficiency_work_activities }}</td>
                             <td>{{ $data->academic_training }}</td>
                             <td>{{ $data->usefulness_professional_residence }}</td>
@@ -107,7 +111,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[18]);
+            var startDate = new Date(data[19]);
             if (min == null && max == null) {
                 return true;
             }
