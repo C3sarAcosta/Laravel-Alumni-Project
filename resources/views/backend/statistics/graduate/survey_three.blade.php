@@ -275,49 +275,6 @@
         <!-- /.card -->
 
         <!-- PIE CHART -->
-        <div class="card card-info">
-            <div class="card-header">
-                <h3 class="card-title">Año de ingreso</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body d-none" style="display: none;">
-                <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                        <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                        <div class=""></div>
-                    </div>
-                </div>
-                <canvas id="pieChart6" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
-                <ul class="nav nav-pills flex-column">
-                    @foreach ($year as $option)
-                    <li class="nav-item">
-                        <span class="nav-link text-decoration-none">
-                            {{ $option->year }}:&nbsp;
-                            <span class="float-right text-primary font-weight-bold">
-                                {{ $option->total }}
-                            </span>
-                        </span>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            <!-- /.card-footer -->
-        </div>
-        <!-- /.card -->
-
-        <!-- PIE CHART -->
         <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Ingreso (Salario minimo diario)</h3>
@@ -580,52 +537,68 @@
             <!-- /.card-footer -->
         </div>
         <!-- /.card -->
-
-        <!-- PIE CHART -->
-        <div class="card card-success">
-            <div class="card-header">
-                <h3 class="card-title">Actividad económica de la empresa u organismo</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body" style="display: none;">
-                <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                        <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                        <div class=""></div>
-                    </div>
-                </div>
-                <canvas id="pieChart13" width="685" height="312" class="chartjs-render-monitor pie-style"></canvas>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer bg-light p-0 d-flex justify-content-sm-center">
-                <ul class="nav nav-pills flex-column">
-                    @foreach ($business_activity_selector as $option)
-                    <li class="nav-item">
-                        <span class="nav-link text-decoration-none">
-                            {{ $option->business_activity_selector }}:&nbsp;
-                            <span class="float-right text-primary font-weight-bold">
-                                {{ $option->total }}
-                            </span>
-                        </span>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            <!-- /.card-footer -->
-        </div>
-        <!-- /.card -->
-
     </div>
     <!-- /.col (RIGHT) -->
+    <div class="row">
+        <div class="col-12">
+            <!-- BAR CHART -->
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Año de ingreso</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <canvas id="barChart1" width="685" height="312" class="chartjs-render-monitor bar-style"></canvas>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <div class="col-12">
+            <!-- BAR CHART -->
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Actividad económica de la empresa u organismo</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <canvas id="barChart2" width="685" height="312" class="chartjs-render-monitor bar-style"></canvas>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>        
+    </div>
 </div>
 
 @section('scripts')

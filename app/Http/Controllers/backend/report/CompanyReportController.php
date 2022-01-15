@@ -18,8 +18,13 @@ class CompanyReportController extends ReportController
     public function surveyTwoReport()
     {
         $data['survey_data'] = CompanySurveyTwo::all();
-        $data['graduates'] = CompanyGraduatesWorking::all();
         return view('backend.report.company.survey_two', $data);
+    }
+
+    public function surveyTwoReportGraduate()
+    {
+        $data['survey_data'] = CompanyGraduatesWorking::all();
+        return view('backend.report.company.survey_two_graduates', $data);
     }
 
     public function surveyThreeReport()

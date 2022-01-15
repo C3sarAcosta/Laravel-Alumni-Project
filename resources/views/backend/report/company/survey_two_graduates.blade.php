@@ -2,7 +2,7 @@
 
 @section('TopTitle')Reportes @endsection
 
-@section('title_section')Reporte Ubicación laboral de los egresados @endsection
+@section('title_section')Reporte Ubicación laboral de los egresados / Egresados trabajando @endsection
 
 @section('head')
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/themes/base/jquery-ui.css" rel="stylesheet"
@@ -39,10 +39,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Empresa</th>
-                            <th>Número de Profesionistas</th>
-                            <th>Congruencia</th>
-                            <th>Requisito</th>
-                            <th>Carrera Demandada</th>
+                            <th>Carrera</th>
+                            <th>Nivel jerárquico</th>
+                            <th>Cantidad</th>
                             <th>Contestada</th>
                             <th>Actualizada</th>
                         </tr>
@@ -52,10 +51,9 @@
                         <tr>
                             <td class="text-center">{{ $data->id }}</td>
                             <td>{{ $data->company->name }}</td>
-                            <td>{{ $data->number_graduates }}</td>
-                            <td>{{ $data->congruence }}</td>
-                            <td>{{ $data->requirements }}</td>
-                            <td>{{ $data->most_demanded_career }}</td>
+                            <td>{{ $data->career }}</td>
+                            <td>{{ $data->level }}</td>
+                            <td>{{ $data->total }}</td>
                             <td>{{ $data->created_at }}</td>
                             <td>{{ $data->updated_at }}</td>
                         </tr>
@@ -77,7 +75,7 @@
         function (settings, data, dataIndex) {
             var min = $('#min').datepicker("getDate");
             var max = $('#max').datepicker("getDate");
-            var startDate = new Date(data[6]);
+            var startDate = new Date(data[9]);
             if (min == null && max == null) {
                 return true;
             }

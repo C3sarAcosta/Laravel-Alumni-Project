@@ -45,27 +45,27 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('business.view') }}" class="nav-link {!! (Request::segment(3) == "actividad") ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <i class="far {!! (Request::segment(3) == "actividad") ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                 <p>Actividad económica</p>
                             </a>
                         </li>                        
                         <li class="nav-item">
                             <a href="{{ route('career.view') }}" class="nav-link 
                                 {!! (Request::segment(3) == "carrera") ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <i class="far {!! (Request::segment(3) == "carrera") ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                 <p>Carreras</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('specialty.view') }}" class="nav-link 
                                 {!! (Request::segment(3) == "especialidad") ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <i class="far {!! (Request::segment(3) == "especialidad") ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                 <p>Especialidad</p>
                             </a>
                         </li>                        
                         <li class="nav-item">
                             <a href="{{ route('language.view') }}" class="nav-link {!! Request::segment(3) == "lenguaje" ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <i class="far {!! (Request::segment(3) == "lenguaje") ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                 <p>Lenguaje</p>
                             </a>
                         </li>
@@ -87,7 +87,8 @@
                             <a href="{{ route('graduate.configuration.view') }}" class="nav-link 
                                 {!! (Request::segment(3) == "egresado" && last(request()->segments()) != "encuesta" && Request::segment(2) == "configuracion") 
                                     ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <i class="far {!! (Request::segment(3) == "egresado" && last(request()->segments()) != "encuesta" && Request::segment(2) == "configuracion") 
+                                    ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                 <p>Egresados</p>
                             </a>
                         </li>
@@ -95,7 +96,8 @@
                             <a href="{{ route('graduate.survey.view') }}" class="nav-link 
                                 {!! (Request::segment(3) == "egresado" && last(request()->segments()) == "encuesta" && Request::segment(2) == "configuracion") 
                                     ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <i class="far {!! (Request::segment(3) == "egresado" && last(request()->segments()) == "encuesta" && Request::segment(2) == "configuracion") 
+                                    ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                 <p>Egresados encuestas</p>
                             </a>
                         </li>
@@ -103,7 +105,8 @@
                             <a href="{{ route('company.config.view') }}" class="nav-link 
                                 {!! (Request::segment(3) == "empresa" && Request::segment(2) == "configuracion") 
                                     ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <i class="far {!! (Request::segment(3) == "empresa" && Request::segment(2) == "configuracion") 
+                                    ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                 <p>Empresas</p>
                             </a>
                         </li>
@@ -111,7 +114,7 @@
                             <a href="{{ route('users.configuration.view') }}" class="nav-link 
                                 {!! (Request::segment(3) == "usuario" && Request::segment(2) == "configuracion") 
                                     ? "active" : "" !!}">
-                                <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                <i class="far {!! (Request::segment(3) == "usuario") ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                 <p>Usuarios</p>
                             </a>
                         </li>                        
@@ -130,7 +133,7 @@
                     <ul class="nav nav-treeview" style="display:{!! str_contains(request()->route()->getPrefix(), "administrador/estadistica") ? "block" : "none"!!};">
                         <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "estadistica/egresado") ? "menu-is-opening menu-open" : ""!!}">
                             <a href="#" class="nav-link">
-                                <i class="fas fa-user-graduate nav-icon ml-3"></i>
+                                <i class="fas fa-user-graduate nav-icon"></i>
                                 <p class="ml-1">
                                     Egresado
                                     <i class="right fas fa-angle-left"></i>
@@ -139,37 +142,37 @@
                             <ul class="nav nav-treeview" style="display: {!! str_contains(request()->route()->getPrefix(), "estadistica/egresado") ? "block" : "none"!!};">
                                 <li class="nav-item">
                                     <a href="{{ route('survey.one.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "perfil" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "perfil" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>1. Perfil</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.two.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "pertinencia" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "pertinencia" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>2. Pertinencia</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.three.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "ubicacion" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "ubicacion" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>3. Ubicación laboral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.four.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "desempeno" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "desempeno" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>4. Desempeño</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.five.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "expectativas" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "expectativas" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>5. Expéctativas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.six.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "participacion" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "participacion" && str_contains(request()->route()->getPrefix(), "estadistica/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>6. Participación</p>
                                     </a>
                                 </li>
@@ -180,7 +183,7 @@
                     <ul class="nav nav-treeview" style="display: {!! str_contains(request()->route()->getPrefix(), "administrador/estadistica") ? "block" : "none"!!};">
                         <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "estadistica/empresa") ? "menu-is-opening menu-open" : ""!!}">
                             <a href="#" class="nav-link">
-                                <i class="fas fa-building nav-icon ml-3"></i>
+                                <i class="fas fa-building nav-icon"></i>
                                 <p class="ml-1">
                                     Empresas
                                     <i class="right fas fa-angle-left"></i>
@@ -189,19 +192,19 @@
                             <ul class="nav nav-treeview" style="display: {!! str_contains(request()->route()->getPrefix(), "estadistica/empresa") ? "block" : "none"!!};">
                                 <li class="nav-item">
                                     <a href="{{ route('company.survey.one.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "datos" && str_contains(request()->route()->getPrefix(), "estadistica/empresa")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "datos" && str_contains(request()->route()->getPrefix(), "estadistica/empresa")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>1. Datos generales</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('company.survey.two.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "ubicacion" && str_contains(request()->route()->getPrefix(), "estadistica/empresa")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "ubicacion" && str_contains(request()->route()->getPrefix(), "estadistica/empresa")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>2. Ubicación laboral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('company.survey.three.statistic.view') }}" class="nav-link {!! (last(request()->segments()) == "competencias" && str_contains(request()->route()->getPrefix(), "estadistica/empresa")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "competencias" && str_contains(request()->route()->getPrefix(), "estadistica/empresa")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>3. Competencias</p>
                                     </a>
                                 </li>
@@ -222,7 +225,7 @@
                     <ul class="nav nav-treeview" style="display: {!! str_contains(request()->route()->getPrefix(), "administrador/reporte") ? "block" : "none"!!};">
                         <li class="nav-item {!! str_contains(request()->route()->getPrefix(), "reporte/egresado") ? "menu-is-opening menu-open" : ""!!}">
                             <a href="#" class="nav-link">
-                                <i class="fas fa-user-graduate nav-icon ml-3"></i>
+                                <i class="fas fa-user-graduate nav-icon"></i>
                                 <p class="ml-1">
                                     Egresado
                                     <i class="right fas fa-angle-left"></i>
@@ -231,43 +234,43 @@
                             <ul class="nav nav-treeview" style="display: {!! str_contains(request()->route()->getPrefix(), "reporte/egresado") ? "block" : "none"!!};">
                                 <li class="nav-item">
                                     <a href="{{ route('survey.one.report.view') }}" class="nav-link {!! (last(request()->segments()) == "perfil" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "perfil" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>1. Perfil</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.two.report.view') }}" class="nav-link {!! (last(request()->segments()) == "pertinencia" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "pertinencia" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>2. Pertinencia</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.three.report.view') }}" class="nav-link {!! (last(request()->segments()) == "ubicacion" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "ubicacion" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>3. Ubicación laboral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.four.report.view') }}" class="nav-link {!! (last(request()->segments()) == "desempeno" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "desempeno" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>4. Desempeño</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.five.report.view') }}" class="nav-link {!! (last(request()->segments()) == "expectativas" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "expectativas" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>5. Expéctativas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.six.report.view') }}" class="nav-link {!! (last(request()->segments()) == "participacion" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "participacion" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>6. Participación</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('survey.seven.report.view') }}" class="nav-link {!! (last(request()->segments()) == "comentarios" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "comentarios" && str_contains(request()->route()->getPrefix(), "reporte/egresado")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>7. Comentarios</p>
                                     </a>
                                 </li>
@@ -278,7 +281,7 @@
                     <ul class="nav nav-treeview" style="display: {!! str_contains(request()->route()->getPrefix(), "administrador/reporte") ? "block" : "none"!!};">
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="fas fa-building nav-icon ml-3"></i>
+                                <i class="fas fa-building nav-icon"></i>
                                 <p class="ml-1">
                                     Empresas
                                     <i class="right fas fa-angle-left"></i>
@@ -287,19 +290,25 @@
                             <ul class="nav nav-treeview" style="display: {!! str_contains(request()->route()->getPrefix(), "reporte/empresa") ? "block" : "none"!!};">
                                 <li class="nav-item">
                                     <a href="{{ route('company.survey.one.report.view') }}" class="nav-link {!! (last(request()->segments()) == "datos" && str_contains(request()->route()->getPrefix(), "reporte/empresa")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "datos" && str_contains(request()->route()->getPrefix(), "reporte/empresa")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>1. Datos generales</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('company.survey.two.report.view') }}" class="nav-link {!! (last(request()->segments()) == "ubicacion" && str_contains(request()->route()->getPrefix(), "reporte/empresa")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "ubicacion" && str_contains(request()->route()->getPrefix(), "reporte/empresa")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>2. Ubicación laboral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{ route('company.survey.two.graduates.report.view') }}" class="nav-link {!! (last(request()->segments()) == "egresados_trabajando" && str_contains(request()->route()->getPrefix(), "reporte/empresa")) ? "active" : "" !!}">
+                                        <i class="far {!! (last(request()->segments()) == "egresados_trabajando" && str_contains(request()->route()->getPrefix(), "reporte/empresa")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
+                                        <p>2.1. Ubicación laboral / Egresados trabajando</p>
+                                    </a>
+                                </li>                                
+                                <li class="nav-item">
                                     <a href="{{ route('company.survey.three.report.view') }}" class="nav-link {!! (last(request()->segments()) == "competencias" && str_contains(request()->route()->getPrefix(), "reporte/empresa")) ? "active" : "" !!}">
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        <i class="far {!! (last(request()->segments()) == "competencias" && str_contains(request()->route()->getPrefix(), "reporte/empresa")) ? "fa-dot-circle" : "fa-circle" !!} nav-icon"></i>
                                         <p>3. Competencias</p>
                                     </a>
                                 </li>

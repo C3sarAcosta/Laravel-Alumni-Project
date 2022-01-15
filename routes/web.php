@@ -188,6 +188,7 @@ Route::prefix('administrador')->group(function () {
         Route::prefix('empresa')->group(function () {
             Route::get('/datos', [CompanyReportController::class, 'surveyOneReport'])->name('company.survey.one.report.view');
             Route::get('/ubicacion', [CompanyReportController::class, 'surveyTwoReport'])->name('company.survey.two.report.view');
+            Route::get('/egresados_trabajando', [CompanyReportController::class, 'surveyTwoReportGraduate'])->name('company.survey.two.graduates.report.view');
             Route::get('/competencias', [CompanyReportController::class, 'surveyThreeReport'])->name('company.survey.three.report.view');
         });
     });
